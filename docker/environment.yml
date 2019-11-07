@@ -15,6 +15,7 @@ dependencies:
   - descartes
   - rasterio
   - gdal  # for osgeo
+  - geopandas
   # can re-enable xclim from conda once we have write access to
   # https://github.com/conda-forge/xclim-feedstock
   # - xclim
@@ -45,3 +46,4 @@ dependencies:
     - xclim
     # visual debugger for Jupyter Notebook, not working with JupyterLab at this moment
     - pixiedust
+    - -e git+https://github.com/Ouranosinc/requests-magpie@master#egg=request-magpie
