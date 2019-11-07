@@ -46,4 +46,4 @@ dependencies:
     - xclim
     # visual debugger for Jupyter Notebook, not working with JupyterLab at this moment
     - pixiedust
-    - -e git+https://github.com/Ouranosinc/requests-magpie@master#egg=request-magpie
+    - -e git+https://github.com/Ouranosinc/requests-magpie@master#egg=requests-magpie
