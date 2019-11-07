@@ -130,6 +130,25 @@ To stop the notebook:
 docker stop birdy-notebook  # the container created by launchnotebook
 ```
 
+## Build the docker image locally for testing a new version
+
+```shell
+cd docker
+docker build -t my_image_name .
+```
+
+
+## Start Jupyter notebook to test a local docker image build
+
+```shell
+DOCKER_IMAGE="my_image_name" ./launchnotebook [port]
+
+# to volume mount more local dir into the container for testing new notebooks
+DOCKER_IMAGE="my_image_name" DOCKER_RUN_OPTS="-v /some/dir/locally:/some/dir/in/container ./launchnotebook [port]
+```
+
+For usage, same instructions as 'Start Jupyter notebook to modify one of the notebooks' above.
+
 
 ## Releasing a new Docker image
 
