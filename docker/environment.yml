@@ -16,6 +16,7 @@ dependencies:
   - rasterio
   - gdal  # for osgeo
   - geopandas
+  - ipyleaflet
   # can re-enable xclim from conda once we have write access to
   # https://github.com/conda-forge/xclim-feedstock
   # - xclim
