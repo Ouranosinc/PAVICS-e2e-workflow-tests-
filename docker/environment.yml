@@ -9,6 +9,7 @@ dependencies:
   - xarray
   - numpy
   - birdy
+  - owslib>=0.19.0
   - netcdf4
   - pydap
   - cartopy
