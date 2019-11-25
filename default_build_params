@@ -5,11 +5,25 @@ else
     echo "PAVICS_SDI_BRANCH has been set to '$PAVICS_SDI_BRANCH'"
 fi
 
+if [ -z "$PAVICS_SDI_REPO" ]; then
+    PAVICS_SDI_REPO='Ouranosinc/pavics-sdi'
+    echo "PAVICS_SDI_REPO not set, default to '$PAVICS_SDI_REPO'"
+else
+    echo "PAVICS_SDI_REPO has been set to '$PAVICS_SDI_REPO'"
+fi
+
 if [ -z "$FINCH_BRANCH" ]; then
     FINCH_BRANCH=master
     echo "FINCH_BRANCH not set, default to '$FINCH_BRANCH'"
 else
     echo "FINCH_BRANCH has been set to '$FINCH_BRANCH'"
+fi
+
+if [ -z "$FINCH_REPO" ]; then
+    FINCH_REPO='bird-house/finch'
+    echo "FINCH_REPO not set, default to '$FINCH_REPO'"
+else
+    echo "FINCH_REPO has been set to '$FINCH_REPO'"
 fi
 
 if [ -z "$RAVEN_BRANCH" ]; then
@@ -19,9 +33,23 @@ else
     echo "RAVEN_BRANCH has been set to '$RAVEN_BRANCH'"
 fi
 
+if [ -z "$RAVEN_REPO" ]; then
+    RAVEN_REPO='Ouranosinc/raven'
+    echo "RAVEN_REPO not set, default to '$RAVEN_REPO'"
+else
+    echo "RAVEN_REPO has been set to '$RAVEN_REPO'"
+fi
+
 if [ -z "$ESGF_COMPUTE_API_BRANCH" ]; then
     ESGF_COMPUTE_API_BRANCH=devel
     echo "ESGF_COMPUTE_API_BRANCH not set, default to '$ESGF_COMPUTE_API_BRANCH'"
 else
     echo "ESGF_COMPUTE_API_BRANCH has been set to '$ESGF_COMPUTE_API_BRANCH'"
+fi
+
+if [ -z "$ESGF_COMPUTE_API_REPO" ]; then
+    ESGF_COMPUTE_API_REPO='ESGF/esgf-compute-api'
+    echo "ESGF_COMPUTE_API_REPO not set, default to '$ESGF_COMPUTE_API_REPO'"
+else
+    echo "ESGF_COMPUTE_API_REPO has been set to '$ESGF_COMPUTE_API_REPO'"
 fi
