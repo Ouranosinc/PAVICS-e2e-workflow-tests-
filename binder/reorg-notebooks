@@ -1,6 +1,7 @@
 #!/bin/sh
 
 . ./default_build_params
+# no need to calculate each REPO_NAME since Binder only uses defaults
 
 # if name clash, last command wins
 

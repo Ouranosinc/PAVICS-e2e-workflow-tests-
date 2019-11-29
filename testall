@@ -14,9 +14,13 @@ git clean -fdx
 # for branch name of the format "feature/my_wizbang-feature"
 # github does the same when downloading repo archive by downloadrepos above
 PAVICS_SDI_BRANCH="`echo "$PAVICS_SDI_BRANCH" | sed "s@/@-@g"`"
+PAVICS_SDI_REPO_NAME="`echo "$PAVICS_SDI_REPO" | sed "s@^.*/@@g"`"
 FINCH_BRANCH="`echo "$FINCH_BRANCH" | sed "s@/@-@g"`"
+FINCH_REPO_NAME="`echo "$FINCH_REPO" | sed "s@^.*/@@g"`"
 RAVEN_BRANCH="`echo "$RAVEN_BRANCH" | sed "s@/@-@g"`"
+RAVEN_REPO_NAME="`echo "$RAVEN_REPO" | sed "s@^.*/@@g"`"
 ESGF_COMPUTE_API_BRANCH="`echo "$ESGF_COMPUTE_API_BRANCH" | sed "s@/@-@g"`"
+ESGF_COMPUTE_API_REPO_NAME="`echo "$ESGF_COMPUTE_API_REPO" | sed "s@^.*/@@g"`"
 
 # lowercase VERIFY_SSL string
 VERIFY_SSL="`echo "$VERIFY_SSL" | tr '[:upper:]' '[:lower:]'`"
@@ -30,17 +34,17 @@ if [ x"$VERIFY_SSL" = xfalse ]; then
 fi
 
 # presence of setup.cfg, tox.ini files confuse py.test execution rootdir discovery
-rm -v finch-$FINCH_BRANCH/setup.cfg
-rm -v raven-$RAVEN_BRANCH/setup.cfg
-rm -v esgf-compute-api-$ESGF_COMPUTE_API_BRANCH/setup.cfg
-rm -v esgf-compute-api-$ESGF_COMPUTE_API_BRANCH/tox.ini
+rm -v $FINCH_REPO_NAME-$FINCH_BRANCH/setup.cfg
+rm -v $RAVEN_REPO_NAME-$RAVEN_BRANCH/setup.cfg
+rm -v $ESGF_COMPUTE_API_REPO_NAME-$ESGF_COMPUTE_API_BRANCH/setup.cfg
+rm -v $ESGF_COMPUTE_API_REPO_NAME-$ESGF_COMPUTE_API_BRANCH/tox.ini
 
 # last notebooks higher chance for name clash
 ./runtest "notebooks/*.ipynb \
-    finch-$FINCH_BRANCH/docs/source/notebooks/*.ipynb \
-    pavics-sdi-$PAVICS_SDI_BRANCH/docs/source/notebooks/*.ipynb"
-# esgf-compute-api-$ESGF_COMPUTE_API_BRANCH/examples/*.ipynb"
-# raven-$RAVEN_BRANCH/docs/source/notebooks/*.ipynb
+    $FINCH_REPO_NAME-$FINCH_BRANCH/docs/source/notebooks/*.ipynb \
+    $PAVICS_SDI_REPO_NAME-$PAVICS_SDI_BRANCH/docs/source/notebooks/*.ipynb"
+# $ESGF_COMPUTE_API_REPO_NAME-$ESGF_COMPUTE_API_BRANCH/examples/*.ipynb"
+# $RAVEN_REPO_NAME-$RAVEN_BRANCH/docs/source/notebooks/*.ipynb
 EXIT_CODE="$?"
 
 

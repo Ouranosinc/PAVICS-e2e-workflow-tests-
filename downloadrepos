@@ -9,8 +9,9 @@ downloadrepos() {
 }
 
 downloadgithubrepos() {
-    repo_owner="$1"; shift
-    repo_name="$1"; shift
+    owner_and_repo_name="$1"; shift
+    repo_owner="`echo "$owner_and_repo_name" | sed "s@/.*\\$@@g"`"
+    repo_name="`echo "$owner_and_repo_name" | sed "s@^.*/@@g"`"
     repo_branch="$1"; shift
     set -x
     # clean up other previously downloaded branches of the same repo as well
@@ -24,10 +25,10 @@ downloadgithubrepos() {
 . ./default_build_params
 
 if [ -z "$1" ]; then
-    downloadgithubrepos Ouranosinc pavics-sdi $PAVICS_SDI_BRANCH
-    downloadgithubrepos bird-house finch $FINCH_BRANCH
-    downloadgithubrepos Ouranosinc raven $RAVEN_BRANCH
-    downloadgithubrepos ESGF esgf-compute-api $ESGF_COMPUTE_API_BRANCH
+    downloadgithubrepos $PAVICS_SDI_REPO $PAVICS_SDI_BRANCH
+    downloadgithubrepos $FINCH_REPO $FINCH_BRANCH
+    downloadgithubrepos $RAVEN_REPO $RAVEN_BRANCH
+    downloadgithubrepos $ESGF_COMPUTE_API_REPO $ESGF_COMPUTE_API_BRANCH
 else
     set -x
     downloadrepos "$@"
