@@ -1,3 +1,10 @@
+if [ -z "$TEST_PAVICS_SDI_REPO" ]; then
+    TEST_PAVICS_SDI_REPO=true
+    echo "TEST_PAVICS_SDI_REPO not set, default to '$TEST_PAVICS_SDI_REPO'"
+else
+    echo "TEST_PAVICS_SDI_REPO has been set to '$TEST_PAVICS_SDI_REPO'"
+fi
+
 if [ -z "$PAVICS_SDI_BRANCH" ]; then
     PAVICS_SDI_BRANCH=master
     echo "PAVICS_SDI_BRANCH not set, default to '$PAVICS_SDI_BRANCH'"
@@ -10,6 +17,13 @@ if [ -z "$PAVICS_SDI_REPO" ]; then
     echo "PAVICS_SDI_REPO not set, default to '$PAVICS_SDI_REPO'"
 else
     echo "PAVICS_SDI_REPO has been set to '$PAVICS_SDI_REPO'"
+fi
+
+if [ -z "$TEST_FINCH_REPO" ]; then
+    TEST_FINCH_REPO=true
+    echo "TEST_FINCH_REPO not set, default to '$TEST_FINCH_REPO'"
+else
+    echo "TEST_FINCH_REPO has been set to '$TEST_FINCH_REPO'"
 fi
 
 if [ -z "$FINCH_BRANCH" ]; then
@@ -26,6 +40,13 @@ else
     echo "FINCH_REPO has been set to '$FINCH_REPO'"
 fi
 
+if [ -z "$TEST_RAVEN_REPO" ]; then
+    TEST_RAVEN_REPO=false
+    echo "TEST_RAVEN_REPO not set, default to '$TEST_RAVEN_REPO'"
+else
+    echo "TEST_RAVEN_REPO has been set to '$TEST_RAVEN_REPO'"
+fi
+
 if [ -z "$RAVEN_BRANCH" ]; then
     RAVEN_BRANCH=master
     echo "RAVEN_BRANCH not set, default to '$RAVEN_BRANCH'"
@@ -38,6 +59,13 @@ if [ -z "$RAVEN_REPO" ]; then
     echo "RAVEN_REPO not set, default to '$RAVEN_REPO'"
 else
     echo "RAVEN_REPO has been set to '$RAVEN_REPO'"
+fi
+
+if [ -z "$TEST_ESGF_COMPUTE_API_REPO" ]; then
+    TEST_ESGF_COMPUTE_API_REPO=false
+    echo "TEST_ESGF_COMPUTE_API_REPO not set, default to '$TEST_ESGF_COMPUTE_API_REPO'"
+else
+    echo "TEST_ESGF_COMPUTE_API_REPO has been set to '$TEST_ESGF_COMPUTE_API_REPO'"
 fi
 
 if [ -z "$ESGF_COMPUTE_API_BRANCH" ]; then
