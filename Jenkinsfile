@@ -62,7 +62,9 @@ Note this is another run, will double the time and no guaranty to have same erro
                                           passwordVariable: 'ESGF_AUTH_PASSWORD',
                                           usernameVariable: 'ESGF_AUTH_USERNAME'),
                          string(credentialsId: 'esgf_auth_token',
-                                variable: 'ESGF_AUTH_TOKEN')
+                                variable: 'ESGF_AUTH_TOKEN'),  // Kept old env var name for backward compat
+                         string(credentialsId: 'esgf_auth_token',
+                                variable: 'COMPUTE_TOKEN')  // ESGF expect this env var name
                          ]) {
                         sh("VERIFY_SSL=${params.VERIFY_SSL} \
                             SAVE_RESULTING_NOTEBOOK=${params.SAVE_RESULTING_NOTEBOOK} \
