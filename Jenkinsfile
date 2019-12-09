@@ -1,6 +1,6 @@
 String cron_only_on_master = ""
 if (env.IS_PROD == "true" || env.ENABLE_SCHEDULED_TRIGGER == "true") {
-    cron_only_on_master = env.BRANCH_NAME == "master" ? "@midnight" : ""
+    cron_only_on_master = env.BRANCH_NAME == "master" || env.GIT_BRANCH == 'origin/master' ? "@midnight" : ""
 }
 
 String default_pavics_host = env.DEFAULT_PAVICS_HOST != null ? env.DEFAULT_PAVICS_HOST : "pavics.ouranos.ca"
