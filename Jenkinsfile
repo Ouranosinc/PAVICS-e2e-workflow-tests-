@@ -1,4 +1,7 @@
-String cron_only_on_master = env.BRANCH_NAME == "master" ? "@midnight" : ""
+String cron_only_on_master = ""
+if (env.IS_PROD == "true" || env.ENABLE_SCHEDULED_TRIGGER == "true") {
+    cron_only_on_master = env.BRANCH_NAME == "master" ? "@midnight" : ""
+}
 
 pipeline {
     // Guide book on Jenkins declarative pipelines
