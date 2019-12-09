@@ -3,6 +3,8 @@ if (env.IS_PROD == "true" || env.ENABLE_SCHEDULED_TRIGGER == "true") {
     cron_only_on_master = env.BRANCH_NAME == "master" ? "@midnight" : ""
 }
 
+String default_pavics_host = env.DEFAULT_PAVICS_HOST != null ? env.DEFAULT_PAVICS_HOST : "pavics.ouranos.ca"
+
 pipeline {
     // Guide book on Jenkins declarative pipelines
     // https://jenkins.io/doc/book/pipeline/syntax/
@@ -14,7 +16,7 @@ pipeline {
     }
 
     parameters {
-        string(name: 'PAVICS_HOST', defaultValue: 'pavics.ouranos.ca',
+        string(name: 'PAVICS_HOST', defaultValue: default_pavics_host,
                description: 'PAVICS host to run notebooks against.', trim: true)
         string(name: 'PAVICS_SDI_BRANCH', defaultValue: 'master',
                description: 'PAVICS_SDI_REPO branch to test against.', trim: true)
