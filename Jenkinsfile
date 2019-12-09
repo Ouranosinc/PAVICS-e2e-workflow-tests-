@@ -82,7 +82,8 @@ Note this is another run, will double the time and no guaranty to have same erro
         timestamps()
         timeout(time: 1, unit: 'HOURS')
         // trying to keep 2 months worth of history with buffer for manual
-        // build trigger
-        buildDiscarder(logRotator(numToKeepStr: '100'))
+        // build trigger on failed builds or manual test after each production
+        // deployment or test deployment
+        buildDiscarder(logRotator(numToKeepStr: '200'))
     }
 }
