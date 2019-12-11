@@ -39,12 +39,28 @@ rm -v $RAVEN_REPO_NAME-$RAVEN_BRANCH/setup.cfg
 rm -v $ESGF_COMPUTE_API_REPO_NAME-$ESGF_COMPUTE_API_BRANCH/setup.cfg
 rm -v $ESGF_COMPUTE_API_REPO_NAME-$ESGF_COMPUTE_API_BRANCH/tox.ini
 
+# lowercase
+TEST_PAVICS_SDI_REPO="`echo "$TEST_PAVICS_SDI_REPO" | tr '[:upper:]' '[:lower:]'`"
+TEST_FINCH_REPO="`echo "$TEST_FINCH_REPO" | tr '[:upper:]' '[:lower:]'`"
+TEST_RAVEN_REPO="`echo "$TEST_RAVEN_REPO" | tr '[:upper:]' '[:lower:]'`"
+TEST_ESGF_COMPUTE_API_REPO="`echo "$TEST_ESGF_COMPUTE_API_REPO" | tr '[:upper:]' '[:lower:]'`"
+
+NOTEBOOKS_TO_TEST="notebooks/*.ipynb"
+if [ x"$TEST_PAVICS_SDI_REPO" = xtrue ]; then
+    NOTEBOOKS_TO_TEST="$NOTEBOOKS_TO_TEST $PAVICS_SDI_REPO_NAME-$PAVICS_SDI_BRANCH/docs/source/notebooks/*.ipynb"
+fi
+if [ x"$TEST_FINCH_REPO" = xtrue ]; then
+    NOTEBOOKS_TO_TEST="$NOTEBOOKS_TO_TEST $FINCH_REPO_NAME-$FINCH_BRANCH/docs/source/notebooks/*.ipynb"
+fi
+if [ x"$TEST_RAVEN_REPO" = xtrue ]; then
+    NOTEBOOKS_TO_TEST="$NOTEBOOKS_TO_TEST $RAVEN_REPO_NAME-$RAVEN_BRANCH/docs/source/notebooks/*.ipynb"
+fi
+if [ x"$TEST_ESGF_COMPUTE_API_REPO" = xtrue ]; then
+    NOTEBOOKS_TO_TEST="$NOTEBOOKS_TO_TEST $ESGF_COMPUTE_API_REPO_NAME-$ESGF_COMPUTE_API_BRANCH/examples/*.ipynb"
+fi
+
 # last notebooks higher chance for name clash
-./runtest "notebooks/*.ipynb \
-    $FINCH_REPO_NAME-$FINCH_BRANCH/docs/source/notebooks/*.ipynb \
-    $PAVICS_SDI_REPO_NAME-$PAVICS_SDI_BRANCH/docs/source/notebooks/*.ipynb"
-# $ESGF_COMPUTE_API_REPO_NAME-$ESGF_COMPUTE_API_BRANCH/examples/*.ipynb"
-# $RAVEN_REPO_NAME-$RAVEN_BRANCH/docs/source/notebooks/*.ipynb
+./runtest "$NOTEBOOKS_TO_TEST"
 EXIT_CODE="$?"
 
 

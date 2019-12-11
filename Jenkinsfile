@@ -1,4 +1,9 @@
-String cron_only_on_master = env.BRANCH_NAME == "master" ? "@midnight" : ""
+String cron_only_on_master = ""
+if (env.IS_PROD == "true" || env.ENABLE_SCHEDULED_TRIGGER == "true") {
+    cron_only_on_master = env.BRANCH_NAME == "master" || env.GIT_BRANCH == 'origin/master' ? "@midnight" : ""
+}
+
+String default_pavics_host = env.DEFAULT_PAVICS_HOST != null ? env.DEFAULT_PAVICS_HOST : "pavics.ouranos.ca"
 
 pipeline {
     // Guide book on Jenkins declarative pipelines
@@ -11,24 +16,32 @@ pipeline {
     }
 
     parameters {
-        string(name: 'PAVICS_HOST', defaultValue: 'pavics.ouranos.ca',
+        string(name: 'PAVICS_HOST', defaultValue: default_pavics_host,
                description: 'PAVICS host to run notebooks against.', trim: true)
+        booleanParam(name: 'TEST_PAVICS_SDI_REPO', defaultValue: true,
+                     description: 'Check the box to test pavics-sdi repo.')
         string(name: 'PAVICS_SDI_BRANCH', defaultValue: 'master',
                description: 'PAVICS_SDI_REPO branch to test against.', trim: true)
         string(name: 'PAVICS_SDI_REPO', defaultValue: 'Ouranosinc/pavics-sdi',
                description: 'https://github.com/Ouranosinc/pavics-sdi repo or fork to test against.', trim: true)
+        booleanParam(name: 'TEST_FINCH_REPO', defaultValue: true,
+                     description: 'Check the box to test finch repo.')
         string(name: 'FINCH_BRANCH', defaultValue: 'master',
                description: 'FINCH_REPO branch to test against.', trim: true)
         string(name: 'FINCH_REPO', defaultValue: 'bird-house/finch',
                description: 'https://github.com/bird-house/finch repo or fork to test against.', trim: true)
-//        string(name: 'RAVEN_BRANCH', defaultValue: 'master',
-//               description: 'RAVEN_REPO branch to test against.', trim: true)
-//        string(name: 'RAVEN_REPO', defaultValue: 'Ouranosinc/raven',
-//               description: 'https://github.com/Ouranosinc/raven repo or fork to test against.', trim: true)
-//        string(name: 'ESGF_COMPUTE_API_BRANCH', defaultValue: 'devel',
-//               description: 'ESGF_COMPUTE_API_REPO branch to test against.', trim: true)
-//        string(name: 'ESGF_COMPUTE_API_REPO', defaultValue: 'ESGF/esgf-compute-api',
-//               description: 'https://github.com/ESGF/esgf-compute-api repo or fork to test against.', trim: true)
+        booleanParam(name: 'TEST_RAVEN_REPO', defaultValue: false,
+                     description: 'Check the box to test raven repo.')
+        string(name: 'RAVEN_BRANCH', defaultValue: 'master',
+               description: 'RAVEN_REPO branch to test against.', trim: true)
+        string(name: 'RAVEN_REPO', defaultValue: 'Ouranosinc/raven',
+               description: 'https://github.com/Ouranosinc/raven repo or fork to test against.', trim: true)
+        booleanParam(name: 'TEST_ESGF_COMPUTE_API_REPO', defaultValue: false,
+                     description: 'Check the box to test esgf-compute-api repo.')
+        string(name: 'ESGF_COMPUTE_API_BRANCH', defaultValue: 'devel',
+               description: 'ESGF_COMPUTE_API_REPO branch to test against.', trim: true)
+        string(name: 'ESGF_COMPUTE_API_REPO', defaultValue: 'ESGF/esgf-compute-api',
+               description: 'https://github.com/ESGF/esgf-compute-api repo or fork to test against.', trim: true)
         booleanParam(name: 'VERIFY_SSL', defaultValue: true,
                      description: 'Check the box to verify SSL certificate for https connections to PAVICS host.')
         booleanParam(name: 'SAVE_RESULTING_NOTEBOOK', defaultValue: true,
@@ -49,7 +62,9 @@ Note this is another run, will double the time and no guaranty to have same erro
                                           passwordVariable: 'ESGF_AUTH_PASSWORD',
                                           usernameVariable: 'ESGF_AUTH_USERNAME'),
                          string(credentialsId: 'esgf_auth_token',
-                                variable: 'ESGF_AUTH_TOKEN')
+                                variable: 'ESGF_AUTH_TOKEN'),  // Kept old env var name for backward compat
+                         string(credentialsId: 'esgf_auth_token',
+                                variable: 'COMPUTE_TOKEN')  // ESGF expect this env var name
                          ]) {
                         sh("VERIFY_SSL=${params.VERIFY_SSL} \
                             SAVE_RESULTING_NOTEBOOK=${params.SAVE_RESULTING_NOTEBOOK} \
@@ -79,7 +94,8 @@ Note this is another run, will double the time and no guaranty to have same erro
         timestamps()
         timeout(time: 1, unit: 'HOURS')
         // trying to keep 2 months worth of history with buffer for manual
-        // build trigger
-        buildDiscarder(logRotator(numToKeepStr: '100'))
+        // build trigger on failed builds or manual test after each production
+        // deployment or test deployment
+        buildDiscarder(logRotator(numToKeepStr: '200'))
     }
 }
