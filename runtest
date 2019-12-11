@@ -7,6 +7,13 @@ fi
 
 set -x
 
+if [ -n "$FORCE_PAVICS_HOST" ]; then
+    # jenkins work-around for envinject incompatibility with pipeline
+    echo "FORCE_PAVICS_HOST='$FORCE_PAVICS_HOST'"
+    echo "Overriding PAVICS_HOST with value from FORCE_PAVICS_HOST"
+    PAVICS_HOST="$FORCE_PAVICS_HOST"
+fi
+
 if [ ! -z "$PAVICS_HOST" ]; then
     echo "Will run notebooks against $PAVICS_HOST"
     sed -i "s/pavics.ouranos.ca/$PAVICS_HOST/g" $NOTEBOOKS
