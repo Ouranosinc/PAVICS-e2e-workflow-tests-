@@ -18,6 +18,11 @@ dependencies:
   - gdal  # for osgeo
   - geopandas
   - ipyleaflet
+  - ipywidgets
+  - threddsclient
+  - siphon
+  - bokeh
+  - jupyter_bokeh
   # can re-enable xclim from conda once we have write access to
   # https://github.com/conda-forge/xclim-feedstock
   # - xclim
@@ -49,3 +54,5 @@ dependencies:
     # visual debugger for Jupyter Notebook, not working with JupyterLab at this moment
     - pixiedust
     - requests-magpie
+    # block execution of 'run_all_cells' until user input finished
+    - ipython_blocking
