@@ -4,6 +4,7 @@ channels:
   - conda-forge
   - cdat
   - defaults
+  - bokeh
 dependencies:
   - matplotlib
   - xarray
@@ -23,6 +24,7 @@ dependencies:
   - siphon
   - bokeh
   - jupyter_bokeh
+  - pscript
   # can re-enable xclim from conda once we have write access to
   # https://github.com/conda-forge/xclim-feedstock
   # - xclim
