@@ -4,11 +4,15 @@ if [ -z "$DOCKER_IMAGE" ]; then
     DOCKER_IMAGE="pavics/workflow-tests:191122"
 fi
 
+if [ -z "$CONTAINER_NAME" ]; then
+    CONTAINER_NAME="birdy"
+fi
+
 UID="`id -u`"
 GID="`id -g`"
 
 # launch with current user UID and GID to not have write permission problems
-docker run -it --rm --name birdy \
+docker run -it --rm --name $CONTAINER_NAME \
     -v `pwd`:`pwd` -u 0:0 -w `pwd` \
     $DOCKER_RUN_OPTS \
     $DOCKER_IMAGE \
