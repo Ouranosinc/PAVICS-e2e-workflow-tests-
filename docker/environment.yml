@@ -3,6 +3,7 @@ name: birdy
 channels:
   - conda-forge
   - cdat
+  - bokeh
   - defaults
 dependencies:
   - matplotlib
@@ -18,6 +19,8 @@ dependencies:
   - gdal  # for osgeo
   - geopandas
   - ipyleaflet
+  - threddsclient
+  - bokeh
   # can re-enable xclim from conda once we have write access to
   # https://github.com/conda-forge/xclim-feedstock
   # - xclim
