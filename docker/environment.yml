@@ -3,8 +3,8 @@ name: birdy
 channels:
   - conda-forge
   - cdat
-  - defaults
   - bokeh
+  - defaults
 dependencies:
   - matplotlib
   - xarray
@@ -19,10 +19,10 @@ dependencies:
   - gdal  # for osgeo
   - geopandas
   - ipyleaflet
-  - ipywidgets
   - threddsclient
-  - siphon
   - bokeh
+  - ipywidgets
+  - siphon
   - jupyter_bokeh
   - pscript
   - h5netcdf
