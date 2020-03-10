@@ -9,7 +9,7 @@ dependencies:
   - matplotlib
   - xarray
   - numpy
-  - birdy
+#  - birdy
   - owslib>=0.19.0
   - netcdf4
   - pydap
@@ -54,3 +54,4 @@ dependencies:
     - pixiedust
     - requests-magpie
     - salem
+    - -e git+https://github.com/bird-house/birdy@v0.6.8#egg=birdhouse-birdy
