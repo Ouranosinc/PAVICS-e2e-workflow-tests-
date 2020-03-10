@@ -3,7 +3,7 @@ name: birdy
 channels:
   - conda-forge
   - cdat
-  - bokeh
+#  - bokeh
   - defaults
 dependencies:
   - matplotlib
@@ -20,7 +20,8 @@ dependencies:
   - geopandas
   - ipyleaflet
   - threddsclient
-  - bokeh
+#  - bokeh
+  - regionmask
   # can re-enable xclim from conda once we have write access to
   # https://github.com/conda-forge/xclim-feedstock
   # - xclim
@@ -52,3 +53,4 @@ dependencies:
     # visual debugger for Jupyter Notebook, not working with JupyterLab at this moment
     - pixiedust
     - requests-magpie
+    - salem
