@@ -17,7 +17,9 @@ dependencies:
   - descartes
   - rasterio
   - gdal  # for osgeo
-  - geopandas
+  - geopandas==0.6.2
+  - pandas==0.25.3
+  - scikit-image
   - ipyleaflet
   - threddsclient
 #  - bokeh
