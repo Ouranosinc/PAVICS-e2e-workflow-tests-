@@ -17,6 +17,8 @@ dependencies:
   - descartes
   - rasterio
   - gdal  # for osgeo
+# can unpin geopandas and pandas once there is newer salem release than 0.2.4
+# test using Raven notebook gridded_data_subset.ipynb
   - geopandas==0.6.2
   - pandas==0.25.3
   - scikit-image
