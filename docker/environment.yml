@@ -51,9 +51,9 @@ dependencies:
   # for pip packages
   - pip
   - pip:
+    - birdhouse-birdy
     - xclim
     # visual debugger for Jupyter Notebook, not working with JupyterLab at this moment
     - pixiedust
     - requests-magpie
     - salem
-    - -e git+https://github.com/bird-house/birdy@v0.6.8#egg=birdhouse-birdy
