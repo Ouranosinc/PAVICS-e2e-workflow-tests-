@@ -9,7 +9,7 @@ dependencies:
   - matplotlib
   - xarray
   - numpy
-  - birdy
+#  - birdy
   - owslib>=0.19.0
   - netcdf4
   - pydap
@@ -17,7 +17,11 @@ dependencies:
   - descartes
   - rasterio
   - gdal  # for osgeo
-  - geopandas
+# can unpin geopandas and pandas once there is newer salem release than 0.2.4
+# test using Raven notebook gridded_data_subset.ipynb
+  - geopandas==0.6.2
+  - pandas==0.25.3
+  - scikit-image
   - ipyleaflet
   - threddsclient
 #  - bokeh
@@ -49,6 +53,7 @@ dependencies:
   # for pip packages
   - pip
   - pip:
+    - birdhouse-birdy
     - xclim
     # visual debugger for Jupyter Notebook, not working with JupyterLab at this moment
     - pixiedust
