@@ -1,4 +1,4 @@
-FROM conda/miniconda3
+FROM continuumio/miniconda3
 
 RUN conda update conda
 
@@ -17,7 +17,7 @@ RUN groupadd --gid 1000 jenkins \
     && useradd --uid 1000 --gid jenkins --create-home jenkins
 
 # alternate way to 'source activate birdy'
-ENV PATH="/usr/local/envs/birdy/bin:$PATH"
+ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
 
 # our notebooks are hardcoded to lookup for kernel named 'birdy'
 # this python is from the birdy env above
@@ -27,7 +27,7 @@ RUN python -m ipykernel install --name birdy
 # anything accidentally
 # this is for debug only, all dependencies should be specified in
 # environment.yml above
-# RUN conda install -n birdy -c conda-forge -c cdat -c bokeh -c defaults nbdime
+# RUN conda install -c conda-forge -c cdat -c bokeh -c defaults nbdime
 
 # build jupyterlab extensions installed by conda, see `jupyter labextension list`
 RUN jupyter lab build
@@ -35,8 +35,8 @@ RUN jupyter lab build
 # for ipywidgets to work with jupyter lab (notebooks works out of the box)
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager \
     && jupyter serverextension enable voila --sys-prefix \
-    && jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-leaflet
-#    && jupyter labextension install @bokeh/jupyter_bokeh
+    && jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-leaflet \
+    && jupyter labextension install @bokeh/jupyter_bokeh
 
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start.sh /usr/local/bin/
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-singleuser.sh /usr/local/bin/

@@ -3,7 +3,7 @@ name: birdy
 channels:
   - conda-forge
   - cdat
-#  - bokeh
+  - bokeh
   - defaults
 dependencies:
   - matplotlib
@@ -17,15 +17,22 @@ dependencies:
   - descartes
   - rasterio
   - gdal  # for osgeo
-# can unpin geopandas and pandas once there is newer salem release than 0.2.4
-# test using Raven notebook gridded_data_subset.ipynb
-  - geopandas==0.6.2
-  - pandas==0.25.3
+  - geopandas
+  - pandas
+  - rioxarray
   - scikit-image
   - ipyleaflet
   - threddsclient
-#  - bokeh
+  - bokeh
   - regionmask
+  - siphon
+  - jupyter_bokeh
+  - pscript
+  - h5netcdf
+  - panel
+  - holoviews
+  - geoviews
+  - hvplot
   # can re-enable xclim from conda once we have write access to
   # https://github.com/conda-forge/xclim-feedstock
   # - xclim
@@ -58,4 +65,5 @@ dependencies:
     # visual debugger for Jupyter Notebook, not working with JupyterLab at this moment
     - pixiedust
     - requests-magpie
-    - salem
+    # block execution of 'run_all_cells' until user input finished
+    - ipython_blocking
