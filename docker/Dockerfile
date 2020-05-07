@@ -36,8 +36,7 @@ RUN jupyter lab build
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager \
     && jupyter serverextension enable voila --sys-prefix \
     && jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-leaflet \
-    && jupyter labextension install @bokeh/jupyter_bokeh \
-    && jupyter labextension install @pyviz/jupyterlab_pyviz
+    && jupyter labextension install @bokeh/jupyter_bokeh
 
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start.sh /usr/local/bin/
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-singleuser.sh /usr/local/bin/
