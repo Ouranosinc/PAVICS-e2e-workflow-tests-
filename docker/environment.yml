@@ -32,6 +32,7 @@ dependencies:
   - panel
   - holoviews
   - geoviews
+  - hvplot
   # can re-enable xclim from conda once we have write access to
   # https://github.com/conda-forge/xclim-feedstock
   # - xclim
