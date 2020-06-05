@@ -38,8 +38,8 @@ RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager \
     && jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-leaflet \
     && jupyter labextension install @bokeh/jupyter_bokeh \
     && jupyter labextension install @pyviz/jupyterlab_pyviz \
-    && jupyter labextension install @jupyterlab/debugger \
-    && jupyter labextension install jupyterlab-clipboard
+    && jupyter labextension install @jupyterlab/debugger
+#    && jupyter labextension install jupyterlab-clipboard
 
 
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start.sh /usr/local/bin/
