@@ -50,6 +50,11 @@ RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults jupyterl
     && pip install jupyterlab_thredds \
     && jupyter labextension install @ewatercycle/jupyterlab_thredds
 
+# dask-labextension
+RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults nodejs dask-labextension \
+    && jupyter labextension install dask-labextension \
+    && jupyter serverextension enable dask_labextension
+
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start.sh /usr/local/bin/
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-singleuser.sh /usr/local/bin/
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-notebook.sh /usr/local/bin/
