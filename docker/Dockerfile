@@ -41,6 +41,14 @@ RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager \
     && jupyter labextension install @jupyterlab/debugger
 #    && jupyter labextension install jupyterlab-clipboard
 
+# New layer for devel stuff to not have to rebuild all the previous layer
+RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults jupyterlab-git \
+    intake \
+    iris \
+    && jupyter lab build \
+    && jupyter labextension install @jupyterlab/google-drive \
+    && pip install jupyterlab_thredds \
+    && jupyter labextension install @ewatercycle/jupyterlab_thredds
 
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start.sh /usr/local/bin/
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-singleuser.sh /usr/local/bin/
