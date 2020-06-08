@@ -44,11 +44,8 @@ RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager \
 # New layer for devel stuff to not have to rebuild all the previous layer
 RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults jupyterlab-git \
     intake \
-    iris \
     && jupyter lab build \
-    && jupyter labextension install @jupyterlab/google-drive \
-    && pip install jupyterlab_thredds \
-    && jupyter labextension install @ewatercycle/jupyterlab_thredds
+    && jupyter labextension install @jupyterlab/google-drive
 
 # dask-labextension
 RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults nodejs dask-labextension \
