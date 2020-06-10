@@ -62,6 +62,11 @@ RUN jupyter labextension install @jupyterlab/toc
 RUN pip install jupyterlab-commenting-service \
     && jupyter labextension install @jupyterlab/commenting-extension
 
+# for debugging
+RUN jupyter serverextension list \
+    && jupyter nbextension list \
+    && jupyter labextension list
+
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start.sh /usr/local/bin/
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-singleuser.sh /usr/local/bin/
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-notebook.sh /usr/local/bin/
