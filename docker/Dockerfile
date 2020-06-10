@@ -42,20 +42,20 @@ RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager \
 #    && jupyter labextension install jupyterlab-clipboard
 
 # New layer for devel stuff to not have to rebuild all the previous layer
-RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults jupyterlab-git \
+RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy jupyterlab-git \
     intake \
     && jupyter lab build \
     && jupyter labextension install @jupyterlab/google-drive
 
 # dask-labextension
-RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults nodejs dask-labextension \
+RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy nodejs dask-labextension \
     && jupyter labextension install dask-labextension \
     && jupyter serverextension enable dask_labextension
 
 # jupyterlab-git
-RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults jupyterlab-git \
-    && jupyter serverextension enable --py jupyterlab_git \
-    && jupyter labextension install @jupyterlab/git
+#RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy jupyterlab-git \
+#    && jupyter serverextension enable --py jupyterlab_git \
+#    && jupyter labextension install @jupyterlab/git
 
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start.sh /usr/local/bin/
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-singleuser.sh /usr/local/bin/
