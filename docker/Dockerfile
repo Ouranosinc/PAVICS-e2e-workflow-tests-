@@ -52,13 +52,15 @@ RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy
     && jupyter labextension install dask-labextension \
     && jupyter serverextension enable dask_labextension
 
-# jupyterlab-git
-#RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy jupyterlab-git \
-#    && jupyter serverextension enable --py jupyterlab_git \
-#    && jupyter labextension install @jupyterlab/git
-
 # copy dask-labextension config
 RUN cp -rv /root/.jupyter /home/jenkins/
+
+# https://github.com/jupyterlab/jupyterlab-toc
+RUN jupyter labextension install @jupyterlab/toc
+
+# https://github.com/jupyterlab/jupyterlab-commenting
+RUN pip install jupyterlab-commenting-service \
+    && jupyter labextension install @jupyterlab/commenting-extension
 
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start.sh /usr/local/bin/
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-singleuser.sh /usr/local/bin/
