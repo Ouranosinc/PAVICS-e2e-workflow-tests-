@@ -62,6 +62,10 @@ RUN jupyter labextension install @jupyterlab/toc
 RUN pip install jupyterlab-commenting-service \
     && jupyter labextension install @jupyterlab/commenting-extension
 
+# https://github.com/jupyterhub/jupyter-server-proxy/ for use with dask-labextension
+RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy jupyter-server-proxy \
+    && jupyter labextension install @jupyterlab/server-proxy
+
 # for debugging
 RUN jupyter serverextension list \
     && jupyter nbextension list \
