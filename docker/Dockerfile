@@ -27,7 +27,7 @@ RUN python -m ipykernel install --name birdy
 # anything accidentally
 # this is for debug only, all dependencies should be specified in
 # environment.yml above
-# RUN conda install -c conda-forge -c cdat -c bokeh -c defaults nbdime
+# RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults nbdime
 
 # build jupyterlab extensions installed by conda, see `jupyter labextension list`
 RUN jupyter lab build
@@ -36,7 +36,11 @@ RUN jupyter lab build
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager \
     && jupyter serverextension enable voila --sys-prefix \
     && jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-leaflet \
-    && jupyter labextension install @bokeh/jupyter_bokeh
+    && jupyter labextension install @bokeh/jupyter_bokeh \
+    && jupyter labextension install @pyviz/jupyterlab_pyviz \
+    && jupyter labextension install @jupyterlab/debugger
+#    && jupyter labextension install jupyterlab-clipboard
+
 
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start.sh /usr/local/bin/
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-singleuser.sh /usr/local/bin/
