@@ -44,7 +44,8 @@ dependencies:
   - vcs
   - mesalib
   # tests
-  - pytest
+  # pin pytest, see https://github.com/bird-house/cookiecutter-birdhouse/commit/b6969697401008114c8e25846ae5801e7e65224d
+  - pytest==5.4.3
   - nbval
   # to edit .ipynb
   - jupyter
