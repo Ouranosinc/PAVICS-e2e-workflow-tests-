@@ -33,7 +33,9 @@ dependencies:
   - panel
   - holoviews
   - geoviews
-  - hvplot
+  # unpin hvplot when https://github.com/holoviz/hvplot/issues/498 (violin plot
+  # not working with hvplot 0.6.0) is fixed
+  - hvplot==0.5.2
   - nc-time-axis
   # can re-enable xclim from conda once we have write access to
   # https://github.com/conda-forge/xclim-feedstock
