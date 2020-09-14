@@ -75,3 +75,7 @@ dependencies:
     - requests-magpie
     # block execution of 'run_all_cells' until user input finished
     - ipython_blocking
+    # Mimics how one might format their calculation if it were written with a
+    # pencil: write the symbolic formula, followed by numeric substitutions,
+    # and then the result.
+    - handcalcs
