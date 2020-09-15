@@ -33,9 +33,12 @@ dependencies:
   - panel
   - holoviews
   - geoviews
-  # unpin hvplot when https://github.com/holoviz/hvplot/issues/498 (violin plot
-  # not working with hvplot 0.6.0) is fixed
-  - hvplot==0.5.2
+  # this might still be relevant https://github.com/holoviz/hvplot/issues/498
+  # (violin plot not working with hvplot 0.6.0).
+  # Per this comment
+  # https://github.com/bird-house/birdhouse-deploy/pull/63#issuecomment-668270608
+  # pinning hvplot did not solve the problem with violin plot.
+  - hvplot
   - nc-time-axis
   # can re-enable xclim from conda once we have write access to
   # https://github.com/conda-forge/xclim-feedstock
@@ -75,3 +78,7 @@ dependencies:
     - requests-magpie
     # block execution of 'run_all_cells' until user input finished
     - ipython_blocking
+    # Mimics how one might format their calculation if it were written with a
+    # pencil: write the symbolic formula, followed by numeric substitutions,
+    # and then the result.
+    - handcalcs
