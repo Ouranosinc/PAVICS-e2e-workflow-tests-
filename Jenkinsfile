@@ -10,7 +10,7 @@ pipeline {
     // https://jenkins.io/doc/book/pipeline/syntax/
     agent {
         docker {
-            image "pavics/workflow-tests:200920"
+            image "pavics/workflow-tests:200925"
             label 'linux && docker'
         }
     }
