@@ -84,3 +84,6 @@ dependencies:
     - jupyternotify
     # Needed for https://github.com/jtpio/jupyterlab-topbar
     - nbresuse
+    # Needed to run notebook tests.  Missing indirect recursive dependencies
+    # somewhere, should not need to manually add it here.
+    - pytest-tornasync
