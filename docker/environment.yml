@@ -79,3 +79,8 @@ dependencies:
     # pencil: write the symbolic formula, followed by numeric substitutions,
     # and then the result.
     - handcalcs
+    # https://github.com/ShopRunner/jupyter-notify
+    # Jupyter Magic For Browser Notifications of Cell Completion.
+    - jupyternotify
+    # Needed for https://github.com/jtpio/jupyterlab-topbar
+    - nbresuse
