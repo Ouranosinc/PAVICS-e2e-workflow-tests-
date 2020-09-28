@@ -40,9 +40,7 @@ dependencies:
   # pinning hvplot did not solve the problem with violin plot.
   - hvplot
   - nc-time-axis
-  # can re-enable xclim from conda once we have write access to
-  # https://github.com/conda-forge/xclim-feedstock
-  # - xclim
+  - xclim
   # for esgf notebooks
   - esgf-compute-api
   - cdms2
@@ -72,7 +70,6 @@ dependencies:
   - pip
   - pip:
     - birdhouse-birdy
-    - xclim
     # visual debugger for Jupyter Notebook, not working with JupyterLab at this moment
     - pixiedust
     - requests-magpie
@@ -82,3 +79,11 @@ dependencies:
     # pencil: write the symbolic formula, followed by numeric substitutions,
     # and then the result.
     - handcalcs
+    # https://github.com/ShopRunner/jupyter-notify
+    # Jupyter Magic For Browser Notifications of Cell Completion.
+    - jupyternotify
+    # Needed for https://github.com/jtpio/jupyterlab-topbar
+    - nbresuse
+    # Needed to run notebook tests.  Missing indirect recursive dependencies
+    # somewhere, should not need to manually add it here.
+    - pytest-tornasync
