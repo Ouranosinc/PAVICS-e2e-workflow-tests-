@@ -38,7 +38,12 @@ RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager \
     && jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-leaflet \
     && jupyter labextension install @bokeh/jupyter_bokeh \
     && jupyter labextension install @pyviz/jupyterlab_pyviz \
-    && jupyter labextension install @jupyterlab/debugger
+    && jupyter labextension install @jupyterlab/debugger \
+    && jupyter labextension install jupyterlab-topbar-extension \
+                                    jupyterlab-system-monitor \
+                                    jupyterlab-topbar-text \
+                                    jupyterlab-logout \
+                                    jupyterlab-theme-toggle
 #    && jupyter labextension install jupyterlab-clipboard
 
 # New layer for devel stuff to not have to rebuild all the previous layer

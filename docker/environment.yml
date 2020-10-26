@@ -33,13 +33,18 @@ dependencies:
   - panel
   - holoviews
   - geoviews
-  # unpin hvplot when https://github.com/holoviz/hvplot/issues/498 (violin plot
-  # not working with hvplot 0.6.0) is fixed
-  - hvplot==0.5.2
+  # this might still be relevant https://github.com/holoviz/hvplot/issues/498
+  # (violin plot not working with hvplot 0.6.0).
+  # Per this comment
+  # https://github.com/bird-house/birdhouse-deploy/pull/63#issuecomment-668270608
+  # pinning hvplot did not solve the problem with violin plot.
+  - hvplot
   - nc-time-axis
-  # can re-enable xclim from conda once we have write access to
-  # https://github.com/conda-forge/xclim-feedstock
-  # - xclim
+  - xclim
+  # https://anaconda.org/anaconda/memory_profiler
+  # Monitor memory consumption of a process as well as line-by-line analysis
+  # of memory consumption for Python programs.
+  - memory_profiler
   # for esgf notebooks
   - esgf-compute-api
   - cdms2
@@ -69,9 +74,20 @@ dependencies:
   - pip
   - pip:
     - birdhouse-birdy
-    - xclim
     # visual debugger for Jupyter Notebook, not working with JupyterLab at this moment
     - pixiedust
     - requests-magpie
     # block execution of 'run_all_cells' until user input finished
     - ipython_blocking
+    # Mimics how one might format their calculation if it were written with a
+    # pencil: write the symbolic formula, followed by numeric substitutions,
+    # and then the result.
+    - handcalcs
+    # https://github.com/ShopRunner/jupyter-notify
+    # Jupyter Magic For Browser Notifications of Cell Completion.
+    - jupyternotify
+    # Needed for https://github.com/jtpio/jupyterlab-topbar
+    - nbresuse
+    # Needed to run notebook tests.  Missing indirect recursive dependencies
+    # somewhere, should not need to manually add it here.
+    - pytest-tornasync
