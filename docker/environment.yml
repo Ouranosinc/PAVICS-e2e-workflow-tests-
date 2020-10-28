@@ -41,6 +41,10 @@ dependencies:
   - hvplot
   - nc-time-axis
   - xclim
+  # https://anaconda.org/anaconda/memory_profiler
+  # Monitor memory consumption of a process as well as line-by-line analysis
+  # of memory consumption for Python programs.
+  - memory_profiler
   # for esgf notebooks
   - esgf-compute-api
   - cdms2
