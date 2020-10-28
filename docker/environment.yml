@@ -57,6 +57,12 @@ dependencies:
   - jupyterhub
   # to diff .ipynb files
   - nbdime
+  # extension to produce .py files from notebook .ipynb files
+  - jupytext
+  # jupyterlab extension for git
+  - jupyterlab-git
+  # jupyterlab extension for conda
+  - jupyter_conda
   # Voila turns Jupyter notebooks into standalone web applications
   - voila
   - jupyter-archive

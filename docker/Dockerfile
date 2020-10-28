@@ -39,13 +39,18 @@ RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager \
     && jupyter labextension install @bokeh/jupyter_bokeh \
     && jupyter labextension install @pyviz/jupyterlab_pyviz \
     && jupyter labextension install @jupyterlab/debugger \
+    && jupyter labextension install @jupyterlab/google-drive \
     && jupyter labextension install jupyterlab-topbar-extension \
                                     jupyterlab-system-monitor \
                                     jupyterlab-topbar-text \
                                     jupyterlab-logout \
-                                    jupyterlab-theme-toggle
+                                    jupyterlab-theme-toggle \
+                                    jupyterlab_conda
 #    && jupyter labextension install jupyterlab-clipboard
 
+ENV USER jenkins
+
+COPY drive.jupyterlab-settings "/home/$USER/.jupyter/lab/user-settings/@jupyterlab/google-drive/drive.jupyterlab-settings"
 
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start.sh /usr/local/bin/
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-singleuser.sh /usr/local/bin/
@@ -55,9 +60,17 @@ ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook
 RUN chmod a+rx /usr/local/bin/start.sh /usr/local/bin/start-singleuser.sh /usr/local/bin/start-notebook.sh /usr/local/bin/fix-permissions; \
     chmod a+r /etc/jupyter/jupyter_notebook_config.py
 
+# Change these folders' permissions for jupyter extensions
+RUN chmod -R 777 /home/jenkins/.jupyter
+RUN chmod -R 777 /opt/conda
+
+RUN python -m ipykernel install
+
 # problem running start-notebook.sh when being root
 # the jupyter/base-notebook image also do not default to root user so we do the same here
-USER jenkins
+USER $USER
+
+RUN conda init bash
 
 # follow jupyter/base-notebook image so config in jupyterhub is simpler
-CMD ["/usr/local/bin/start-notebook.sh"]
+CMD ["conda", "run", "-n", "birdy", "/usr/local/bin/start-notebook.sh"]
