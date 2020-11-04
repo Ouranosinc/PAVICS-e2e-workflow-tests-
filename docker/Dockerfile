@@ -60,10 +60,6 @@ ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook
 RUN chmod a+rx /usr/local/bin/start.sh /usr/local/bin/start-singleuser.sh /usr/local/bin/start-notebook.sh /usr/local/bin/fix-permissions; \
     chmod a+r /etc/jupyter/jupyter_notebook_config.py
 
-
-COPY drive.jupyterlab-settings "/home/jenkins/.jupyter/lab/user-settings/@jupyterlab/google-drive/drive.jupyterlab-settings"
-RUN chown -R jenkins /home/jenkins/.jupyter
-
 # problem running start-notebook.sh when being root
 # the jupyter/base-notebook image also do not default to root user so we do the same here
 USER jenkins
