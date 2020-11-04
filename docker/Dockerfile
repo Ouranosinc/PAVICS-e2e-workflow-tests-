@@ -9,12 +9,16 @@ RUN apt-get update && \
 
 COPY environment.yml /environment.yml
 
-# create env "birdy"
-RUN conda env create -f /environment.yml
-
 # needed for our specific jenkins
 RUN groupadd --gid 1000 jenkins \
     && useradd --uid 1000 --gid jenkins --create-home jenkins
+
+# Change these folders' permissions for jupyter-conda extension
+RUN chmod -R a+rwx /opt/conda
+
+# create env "birdy"
+# use umask 0000 so that the files for the new environment are usable by user 'jenkins' for the jupyter-conda-extension
+RUN umask 0000 && conda env create -f /environment.yml
 
 # alternate way to 'source activate birdy'
 ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
@@ -48,10 +52,6 @@ RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager \
                                     jupyterlab_conda
 #    && jupyter labextension install jupyterlab-clipboard
 
-ENV USER jenkins
-
-COPY drive.jupyterlab-settings "/home/$USER/.jupyter/lab/user-settings/@jupyterlab/google-drive/drive.jupyterlab-settings"
-
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start.sh /usr/local/bin/
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-singleuser.sh /usr/local/bin/
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-notebook.sh /usr/local/bin/
@@ -60,17 +60,14 @@ ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook
 RUN chmod a+rx /usr/local/bin/start.sh /usr/local/bin/start-singleuser.sh /usr/local/bin/start-notebook.sh /usr/local/bin/fix-permissions; \
     chmod a+r /etc/jupyter/jupyter_notebook_config.py
 
-# Change these folders' permissions for jupyter extensions
-RUN chmod -R 777 /home/jenkins/.jupyter
-RUN chmod -R 777 /opt/conda
 
-RUN python -m ipykernel install
+COPY drive.jupyterlab-settings "/home/jenkins/.jupyter/lab/user-settings/@jupyterlab/google-drive/drive.jupyterlab-settings"
+RUN chown -R jenkins /home/jenkins/.jupyter
 
 # problem running start-notebook.sh when being root
 # the jupyter/base-notebook image also do not default to root user so we do the same here
-USER $USER
-
-RUN conda init bash
+USER jenkins
 
 # follow jupyter/base-notebook image so config in jupyterhub is simpler
+# start notebook in conda environment to have working jupyter extensions
 CMD ["conda", "run", "-n", "birdy", "/usr/local/bin/start-notebook.sh"]
