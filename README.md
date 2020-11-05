@@ -1,5 +1,5 @@
 # PAVICS-e2e-workflow-tests
-Test user-level workflow.
+Test user-level end-to-end workflow.
 
 
 ## Description
@@ -28,6 +28,9 @@ Resulting benefits:
 
 [nbval](https://github.com/computationalmodelling/nbval) pytest plugin used to
 validate Jupyter notebooks.
+
+Fully pre-configured turnkey deployment of Jenkins for this test suite can be
+found at https://github.com/Ouranosinc/jenkins-config.
 
 ## Launch Jupyter Notebook server using Binder
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Ouranosinc/PAVICS-e2e-workflow-tests/master)
