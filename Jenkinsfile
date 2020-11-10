@@ -47,6 +47,8 @@ pipeline {
         booleanParam(name: 'SAVE_RESULTING_NOTEBOOK', defaultValue: true,
                      description: '''Check the box to save the resulting notebooks of the run.
 Note this is another run, will double the time and no guaranty to have same error as the run from py.test.''')
+        booleanParam(name: 'TEST_MAGPIE_AUTH', defaultValue: true,
+                     description: 'Check the box to test Authentication/Authorization using Magpie/Twitcher services.')
     }
 
     triggers {
