@@ -47,8 +47,12 @@ pipeline {
         booleanParam(name: 'SAVE_RESULTING_NOTEBOOK', defaultValue: true,
                      description: '''Check the box to save the resulting notebooks of the run.
 Note this is another run, will double the time and no guaranty to have same error as the run from py.test.''')
-        booleanParam(name: 'TEST_MAGPIE_AUTH', defaultValue: true,
+        booleanParam(name: 'TEST_MAGPIE_AUTH', defaultValue: false,
                      description: 'Check the box to test Authentication/Authorization using Magpie/Twitcher services.')
+        string(name: 'TEST_MAGPIE_ADMIN_USERNAME', defaultValue: '',
+               description: 'Username of admin-level user to employ when running notebooks-auth tests.', trim: true)
+        string(name: 'TEST_MAGPIE_ADMIN_PASSWORD', defaultValue: '',
+               description: 'Password of admin-level user to employ when running notebooks-auth tests.', trim: false)
     }
 
     triggers {
@@ -66,7 +70,12 @@ Note this is another run, will double the time and no guaranty to have same erro
                          string(credentialsId: 'esgf_auth_token',
                                 variable: 'ESGF_AUTH_TOKEN'),  // Kept old env var name for backward compat
                          string(credentialsId: 'esgf_auth_token',
-                                variable: 'COMPUTE_TOKEN')  // ESGF expect this env var name
+                                variable: 'COMPUTE_TOKEN'),  // ESGF expect this env var name
+                         usernamePassword(credentialsId: 'magpie_test_admin_auth',
+                                          usernameVariable: 'TEST_MAGPIE_ADMIN_USERNAME',
+                                          passwordVariable: 'TEST_MAGPIE_ADMIN_PASSWORD'),
+                         string(credentialsId: 'magpie_request_cookies', variable: 'auth_tkt'),
+                         string(credentialsId: 'magpie_admin_cookies', variable: 'ADMIN_COOKIES')
                          ]) {
                         sh("VERIFY_SSL=${params.VERIFY_SSL} \
                             SAVE_RESULTING_NOTEBOOK=${params.SAVE_RESULTING_NOTEBOOK} \
