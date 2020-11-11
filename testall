@@ -60,7 +60,7 @@ if [ x"$TEST_ESGF_COMPUTE_API_REPO" = xtrue ]; then
     NOTEBOOKS_TO_TEST="$NOTEBOOKS_TO_TEST $ESGF_COMPUTE_API_REPO_NAME-$ESGF_COMPUTE_API_BRANCH/examples/*.ipynb"
 fi
 if [ x"$TEST_MAGPIE_AUTH" = xtrue ]; then
-    TEST_SUITES="$TEST_SUITES notebooks-auth/*.ipynb"
+    NOTEBOOKS_TO_TEST="$NOTEBOOKS_TO_TEST notebooks-auth/*.ipynb"
 fi
 
 # last notebooks higher chance for name clash
