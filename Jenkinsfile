@@ -50,9 +50,9 @@ Note this is another run, will double the time and no guaranty to have same erro
         booleanParam(name: 'TEST_MAGPIE_AUTH', defaultValue: false,
                      description: 'Check the box to test Authentication/Authorization using Magpie/Twitcher services.')
         password(name: 'TEST_MAGPIE_ADMIN_USERNAME', defaultValue: '',
-                 description: 'Username of admin-level user to employ when running notebooks-auth tests.', trim: true)
+                 description: 'Username of admin-level user to employ when running notebooks-auth tests.')
         password(name: 'TEST_MAGPIE_ADMIN_PASSWORD', defaultValue: '',
-                  description: 'Password of admin-level user to employ when running notebooks-auth tests.', trim: false)
+                  description: 'Password of admin-level user to employ when running notebooks-auth tests.')
     }
 
     triggers {
