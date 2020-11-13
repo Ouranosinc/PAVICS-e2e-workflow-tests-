@@ -9,12 +9,16 @@ RUN apt-get update && \
 
 COPY environment.yml /environment.yml
 
-# create env "birdy"
-RUN conda env create -f /environment.yml
-
 # needed for our specific jenkins
 RUN groupadd --gid 1000 jenkins \
     && useradd --uid 1000 --gid jenkins --create-home jenkins
+
+# Change these folders' permissions for jupyter-conda extension
+RUN chmod -R a+rwx /opt/conda
+
+# create env "birdy"
+# use umask 0000 so that the files for the new environment are usable by user 'jenkins' for the jupyter-conda-extension
+RUN umask 0000 && conda env create -f /environment.yml
 
 # alternate way to 'source activate birdy'
 ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
@@ -39,13 +43,14 @@ RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager \
     && jupyter labextension install @bokeh/jupyter_bokeh \
     && jupyter labextension install @pyviz/jupyterlab_pyviz \
     && jupyter labextension install @jupyterlab/debugger \
+    && jupyter labextension install @jupyterlab/google-drive \
     && jupyter labextension install jupyterlab-topbar-extension \
                                     jupyterlab-system-monitor \
                                     jupyterlab-topbar-text \
                                     jupyterlab-logout \
-                                    jupyterlab-theme-toggle
+                                    jupyterlab-theme-toggle \
+                                    jupyterlab_conda
 #    && jupyter labextension install jupyterlab-clipboard
-
 
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start.sh /usr/local/bin/
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-singleuser.sh /usr/local/bin/
@@ -60,4 +65,5 @@ RUN chmod a+rx /usr/local/bin/start.sh /usr/local/bin/start-singleuser.sh /usr/l
 USER jenkins
 
 # follow jupyter/base-notebook image so config in jupyterhub is simpler
-CMD ["/usr/local/bin/start-notebook.sh"]
+# start notebook in conda environment to have working jupyter extensions
+CMD ["conda", "run", "-n", "birdy", "/usr/local/bin/start-notebook.sh"]
