@@ -47,11 +47,13 @@ pipeline {
         booleanParam(name: 'SAVE_RESULTING_NOTEBOOK', defaultValue: true,
                      description: '''Check the box to save the resulting notebooks of the run.
 Note this is another run, will double the time and no guaranty to have same error as the run from py.test.''')
-        booleanParam(name: 'TEST_MAGPIE_AUTH', defaultValue: false,
+        booleanParam(name: 'TEST_MAGPIE_AUTH', defaultValue: true,
                      description: 'Check the box to test Authentication/Authorization using Magpie/Twitcher services.')
-        password(name: 'TEST_MAGPIE_ADMIN_USERNAME', defaultValue: '',
+        // below credentials are the defaults from bootstrap script:
+        //   https://github.com/bird-house/birdhouse-deploy/blob/master/birdhouse/scripts/create-magpie-authtest-user
+        password(name: 'TEST_MAGPIE_ADMIN_USERNAME', defaultValue: 'authtest',
                  description: 'Username of admin-level user to employ when running notebooks-auth tests.')
-        password(name: 'TEST_MAGPIE_ADMIN_PASSWORD', defaultValue: '',
+        password(name: 'TEST_MAGPIE_ADMIN_PASSWORD', defaultValue: 'authtest1234',
                   description: 'Password of admin-level user to employ when running notebooks-auth tests.')
     }
 
