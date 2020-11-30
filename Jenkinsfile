@@ -51,9 +51,9 @@ Note this is another run, will double the time and no guaranty to have same erro
                      description: 'Check the box to test Authentication/Authorization using Magpie/Twitcher services.')
         // below credentials are the defaults from bootstrap script:
         //   https://github.com/bird-house/birdhouse-deploy/blob/master/birdhouse/scripts/create-magpie-authtest-user
-        password(name: 'TEST_MAGPIE_ADMIN_USERNAME', defaultValue: 'authtest',
+        password(name: 'TEST_MAGPIE_ADMIN_USERNAME', defaultValue: 'admin',
                  description: 'Username of admin-level user to employ when running notebooks-auth tests.')
-        password(name: 'TEST_MAGPIE_ADMIN_PASSWORD', defaultValue: 'authtest1234',
+        password(name: 'TEST_MAGPIE_ADMIN_PASSWORD', defaultValue: 'qwerty',
                   description: 'Password of admin-level user to employ when running notebooks-auth tests.')
     }
 
