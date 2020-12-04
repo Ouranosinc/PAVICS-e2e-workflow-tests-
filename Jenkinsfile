@@ -28,7 +28,9 @@ pipeline {
         //   midway during execution. Employed users/groups are not critical (not modifying existing users permissions),
         //   but could 'pollute' the user list over time.
         booleanParam(name: 'TEST_MAGPIE_AUTH', defaultValue: true,
-                     description: 'Check the box to test Authentication/Authorization using Magpie/Twitcher services.')
+                     description: '''Check the box to test Authentication/Authorization using Magpie/Twitcher services.
+Note: This test suite might require manual clean-up on failure (if critical error).
+                     ''')
         // below credentials are the defaults from bootstrap script:
         //   https://github.com/bird-house/birdhouse-deploy/blob/master/birdhouse/scripts/create-magpie-authtest-user
         // overrides are needed when using custom values (strongly recommended for production server with real data)
