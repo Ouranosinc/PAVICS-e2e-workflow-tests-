@@ -35,7 +35,7 @@ Note: This test suite might require manual clean-up on failure (if critical erro
         //   https://github.com/bird-house/birdhouse-deploy/blob/master/birdhouse/scripts/create-magpie-authtest-user
         // overrides are needed when using custom values (strongly recommended for production server with real data)
         password(name: 'TEST_MAGPIE_ADMIN_USERNAME', defaultValue: 'admin',
-                 description: 'Username of admin-level user to employ when running notebooks-auth tests.')
+                 description: 'Username of admin-level user to employ when running notebooks-auth tests.', trim: true)
         password(name: 'TEST_MAGPIE_ADMIN_PASSWORD', defaultValue: 'qwerty',
                   description: 'Password of admin-level user to employ when running notebooks-auth tests.')
         booleanParam(name: 'TEST_PAVICS_SDI_REPO', defaultValue: true,
