@@ -27,7 +27,7 @@ export PYTHONWARNINGS="ignore:Unverified HTTPS request"
 # suppress cells containing extended tests (aka taking long time to run, for example big file download test)
 # add the '# EXTENDED_TEST' tag to a cell, to consider it as extended test cell
 # beware that since this cell wouldn't be executed during tests, it should not be required by subsequent cells
-if [ -z "$RUN_EXTENDED_NOTEBOOK_TESTS" ]; then
+if [ x"$RUN_EXTENDED_NOTEBOOK_TESTS" = xfalse ]; then
     echo "Will run extended tests. Might take longer before getting test results."
     for nb in $NOTEBOOKS; do
         jupyter nbconvert --to notebook \
