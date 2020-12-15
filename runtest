@@ -28,10 +28,10 @@ export PYTHONWARNINGS="ignore:Unverified HTTPS request"
 # add the '# EXTENDED_TEST' tag to a cell, to consider it as extended test cell
 # beware that since this cell wouldn't be executed during tests, it should not be required by subsequent cells
 if [ x"$RUN_EXTENDED_NOTEBOOK_TESTS" = xfalse ]; then
-    echo "Will run extended tests. Might take longer before getting test results."
+    echo "Will not run extended tests."
     for nb in $NOTEBOOKS; do
         jupyter nbconvert --to notebook \
-            --RegexRemovePreprocessor.patterns="# EXTENDED_TEST" \
+            --RegexRemovePreprocessor.patterns="EXTENDED_TEST" \
             --inplace "$nb"
     done
 fi
