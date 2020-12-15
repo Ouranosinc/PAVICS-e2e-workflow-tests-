@@ -29,12 +29,28 @@ export PYTHONWARNINGS="ignore:Unverified HTTPS request"
 # beware that since this cell wouldn't be executed during tests, it should not be required by subsequent cells
 if [ x"$RUN_EXTENDED_NOTEBOOK_TESTS" = xfalse ]; then
     echo "Will not run extended tests."
-    for nb in $NOTEBOOKS; do
-        jupyter nbconvert --to notebook \
-            --RegexRemovePreprocessor.patterns="EXTENDED_TEST" \
-            --inplace "$nb"
-    done
+    # for nb in $NOTEBOOKS; do
+    #     jupyter nbconvert --to notebook \
+    #         --RegexRemovePreprocessor.patterns="EXTENDED_TEST" \
+    #         --inplace "$nb"
+    # done
+
+    # declare -a filtered_nb=()
+
+    # for nb in $NOTEBOOKS; do
+    #     if [[ "$nb" != *"_extended_test"* ]]; then
+    #         filtered_nb+=("$nb")
+    #     fi
+    # done
+
+    # nb=filtered_nb
+
+    NOTEBOOKS=$NOTEBOOKS" | grep -v _extended_test"
 fi
+
+echo $NOTEBOOKS
+
+exit
 
 py.test --nbval $NOTEBOOKS --sanitize-with notebooks/output-sanitize.cfg
 EXIT_CODE="$?"
