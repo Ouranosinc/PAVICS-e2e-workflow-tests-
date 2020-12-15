@@ -32,7 +32,7 @@ if [ -z "$RUN_EXTENDED_NOTEBOOK_TESTS" ]; then
     for nb in $NOTEBOOKS; do
         jupyter nbconvert --to notebook \
             --RegexRemovePreprocessor.patterns="# EXTENDED_TEST" \
-            --output "$nb" "$nb"
+            --inplace "$nb"
     done
 fi
 
