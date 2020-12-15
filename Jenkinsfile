@@ -47,6 +47,9 @@ pipeline {
         booleanParam(name: 'SAVE_RESULTING_NOTEBOOK', defaultValue: true,
                      description: '''Check the box to save the resulting notebooks of the run.
 Note this is another run, will double the time and no guaranty to have same error as the run from py.test.''')
+        booleanParam(name: 'RUN_EXTENDED_NOTEBOOK_TESTS', defaultValue: false,
+                     description: 'Also run tests on extended notebook cells, ones that contains "# EXTENDED_TEST" tag. 
+If false, skip these tests.')
     }
 
     triggers {
