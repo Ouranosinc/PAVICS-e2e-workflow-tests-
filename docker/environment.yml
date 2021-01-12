@@ -13,6 +13,10 @@ dependencies:
 #  - birdy
   - owslib>=0.19.0
   - netcdf4
+  # https://github.com/ecmwf/cfgrib
+  # Python interface to map GRIB files to the Unidata's Common Data Model v4
+  # following the CF Conventions.
+  - cfgrib
   - pydap
   - cartopy
   - descartes
