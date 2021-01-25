@@ -21,6 +21,10 @@ Resulting benefits:
   output or code in the Jupyter notebooks.  No more mismatched, outdated
   documentation!
 
+* The runtime environment used by Jenkins is the exact same Jupyter environment
+  deployed on PAVICS, ensuring we do not provide broken Jupyter environment to
+  our users when then need to try out the tutorial notebooks.
+
 * Indirectly this also serve as a monitoring tool for the servers.  Standard
   monitoring tools normally just ensure the services are up and running.  This
   will actually monitor that the most useful and frequently used user workflows
