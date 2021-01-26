@@ -44,6 +44,7 @@ dependencies:
   # pinning hvplot did not solve the problem with violin plot.
   - hvplot
   - nc-time-axis
+  - statsmodels  # for ravenpy
   - xclim
   # https://anaconda.org/anaconda/memory_profiler
   # Monitor memory consumption of a process as well as line-by-line analysis
