@@ -28,6 +28,7 @@ ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
 # Can move ravenpy install into environment.yml if this issue is resolved
 # https://github.com/conda/conda/issues/10119#issuecomment-767697552.
 RUN python -m ipykernel install --name birdy \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y make && apt-get clean \
     && pip install ravenpy --install-option="--with-binaries"
 
 # install using same channel preferences as birdy original env to not downgrade
