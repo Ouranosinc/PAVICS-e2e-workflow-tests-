@@ -101,6 +101,15 @@ xarray html dataset output which is more rich for the end-users but it breaks
 the checks.  In the case where the cell output is important to assert the
 correctness of the notebook, we can add `# NBVAL_CHECK_OUTPUT` to the cell.
 
+By default we regex replace `pavics.ouranos.ca` to the hostname of the server
+under test to test all components of the server under test.  However, we do not
+perform this regex replace for `.ncml` links so `.ncml` links will come from
+our production server `pavics.ouranos.ca`.  The reason is that `.ncml` files
+require a large amount of `.nc` matching files to be copied to the server under
+test so we want to avoid this setup burden for the server under test.  Regular
+`.nc` files will still have to be copied over so the Thredds component is
+tested.
+
 
 ## Adding more notebooks to tests
 

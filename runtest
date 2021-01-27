@@ -16,7 +16,9 @@ fi
 
 if [ ! -z "$PAVICS_HOST" ]; then
     echo "Will run notebooks against $PAVICS_HOST"
-    sed -i "s/pavics.ouranos.ca/$PAVICS_HOST/g" $NOTEBOOKS
+    # .ncml links will always comes from the production server, not the server
+    # under test since we do not perform regex replace for .ncml links.
+    sed -i "/\.ncml/!s/pavics.ouranos.ca/$PAVICS_HOST/g" $NOTEBOOKS
     git diff  # not working for notebooks from other repos
 fi
 
