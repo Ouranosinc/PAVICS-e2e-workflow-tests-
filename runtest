@@ -24,7 +24,16 @@ fi
 # so tests still pass when user want to disable ssl cert verification
 export PYTHONWARNINGS="ignore:Unverified HTTPS request"
 
-py.test --nbval $NOTEBOOKS --sanitize-with notebooks/output-sanitize.cfg
+# --nbval-lax do not check notebook cell output.  Add '# NBVAL_CHECK_OUTPUT' to
+# cells that require output check.
+#
+# xarray html dataset output breaks cell output check.  Also prevent harmless
+# changes like field ordering in output, external service version change,
+# timestamp/uuid change to break the run.
+#
+# So for some very important notebook cells, have to remember to activate
+# '# NBVAL_CHECK_OUTPUT' to properly ensure the notebooks are working correctly.
+py.test --nbval-lax $NOTEBOOKS --sanitize-with notebooks/output-sanitize.cfg
 EXIT_CODE="$?"
 
 # lowercase SAVE_RESULTING_NOTEBOOK string
