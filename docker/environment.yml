@@ -64,7 +64,7 @@ dependencies:
   - jupyter
   # to be launched by image jupyterhub/jupyterhub
   - notebook
-  - jupyterlab
+  - jupyterlab==2.2.9
   - jupyterhub
   # to diff .ipynb files
   - nbdime
