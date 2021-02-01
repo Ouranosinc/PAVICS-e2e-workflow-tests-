@@ -23,6 +23,13 @@ RUN umask 0000 && conda env create -f /environment.yml
 # alternate way to 'source activate birdy'
 ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
 
+# TODO: remove this hacked pin.  Should pin in environment.yml instead.
+# Added this pin here to not have to rebuild the gigantic `conda env create`
+# layer and also invalidate the layer below to force get latest ravenpy 0.2.3.
+# Pins cftime >= 1.2 < 1.4. Because 1.4 breaks xarray (pydata/xarray#4853).
+# https://github.com/Ouranosinc/xclim/pull/641
+RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults cftime~=1.3
+
 # our notebooks are hardcoded to lookup for kernel named 'birdy'
 # this python is from the birdy env above
 # Make, g++ and libnetcdf-dev needed for ravenpy install using --install-option.
