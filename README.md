@@ -4,7 +4,7 @@ Test user-level end-to-end workflow.
 
 ## Description
 This repo ensure the various Jupyter notebooks run without errors against the
-chosen PAVICS server and still produce approximatively the same output.
+chosen PAVICS server and still produce the same output.
 
 Resulting benefits:
 
@@ -94,12 +94,6 @@ runner can even run notebooks from several external repos (current also
 running the notebooks from the
 [pavics-sdi](https://github.com/Ouranosinc/pavics-sdi/tree/master/docs/source/notebooks)
 repo, more can be added easily).
-
-By default, we do not check notebooks cell output to avoid compromising the
-documentation role of the notebooks.  If we did, we would not be able to use
-xarray html dataset output which is more rich for the end-users but it breaks
-the checks.  In the case where the cell output is important to assert the
-correctness of the notebook, we can add `# NBVAL_CHECK_OUTPUT` to the cell.
 
 By default we regex replace `pavics.ouranos.ca` to the hostname of the server
 under test to test all components of the server under test.  However, we do not
