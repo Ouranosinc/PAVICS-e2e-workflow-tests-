@@ -11,9 +11,7 @@ dependencies:
   - xarray
   - numpy
 #  - birdy
-  # avoid owslib 0.22 with timeout bug
-  # https://github.com/geopython/OWSLib/issues/737
-  - owslib==0.21.0
+  - owslib>=0.23.0
   - netcdf4
   # https://github.com/ecmwf/cfgrib
   # Python interface to map GRIB files to the Unidata's Common Data Model v4
