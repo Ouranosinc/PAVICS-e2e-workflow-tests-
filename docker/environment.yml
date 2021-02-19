@@ -11,9 +11,7 @@ dependencies:
   - xarray
   - numpy
 #  - birdy
-  # avoid owslib 0.22 with timeout bug
-  # https://github.com/geopython/OWSLib/issues/737
-  - owslib==0.21.0
+  - owslib>=0.23.0
   - netcdf4
   # https://github.com/ecmwf/cfgrib
   # Python interface to map GRIB files to the Unidata's Common Data Model v4
@@ -48,6 +46,9 @@ dependencies:
   - nc-time-axis
   - statsmodels  # for ravenpy
   - xclim
+  # Universal Regridder for Geospatial Data
+  # https://github.com/pangeo-data/xESMF
+  - xesmf
   # https://anaconda.org/anaconda/memory_profiler
   # Monitor memory consumption of a process as well as line-by-line analysis
   # of memory consumption for Python programs.
