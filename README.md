@@ -21,6 +21,10 @@ Resulting benefits:
   output or code in the Jupyter notebooks.  No more mismatched, outdated
   documentation!
 
+* The runtime environment used by Jenkins is the exact same Jupyter environment
+  deployed on PAVICS, ensuring we do not provide broken Jupyter environment to
+  our users when then need to try out the tutorial notebooks.
+
 * Indirectly this also serve as a monitoring tool for the servers.  Standard
   monitoring tools normally just ensure the services are up and running.  This
   will actually monitor that the most useful and frequently used user workflows
@@ -90,6 +94,15 @@ runner can even run notebooks from several external repos (current also
 running the notebooks from the
 [pavics-sdi](https://github.com/Ouranosinc/pavics-sdi/tree/master/docs/source/notebooks)
 repo, more can be added easily).
+
+By default we regex replace `pavics.ouranos.ca` to the hostname of the server
+under test to test all components of the server under test.  However, we do not
+perform this regex replace for `.ncml` links so `.ncml` links will come from
+our production server `pavics.ouranos.ca`.  The reason is that `.ncml` files
+require a large amount of `.nc` matching files to be copied to the server under
+test so we want to avoid this setup burden for the server under test.  Regular
+`.nc` files will still have to be copied over so the Thredds component is
+tested.
 
 
 ## Adding more notebooks to tests
