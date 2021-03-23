@@ -17,7 +17,7 @@ downloadgithubrepos() {
     # clean up other previously downloaded branches of the same repo as well
     rm -rf ${repo_name}-*
     ls | grep $repo_name
-    downloadrepos https://github.com/$repo_owner/$repo_name $repo_branch
+    downloadrepos https://github.com/$repo_owner/$repo_name "$repo_branch"
     ls | grep $repo_name
     set +x
 }
