@@ -46,12 +46,16 @@ rm -v $ESGF_COMPUTE_API_REPO_NAME-$ESGF_COMPUTE_API_BRANCH/setup.cfg
 rm -v $ESGF_COMPUTE_API_REPO_NAME-$ESGF_COMPUTE_API_BRANCH/tox.ini
 
 # lowercase
+TEST_MAGPIE_AUTH="`echo "$TEST_MAGPIE_AUTH" | tr '[:upper:]' '[:lower:]'`"
 TEST_PAVICS_SDI_REPO="`echo "$TEST_PAVICS_SDI_REPO" | tr '[:upper:]' '[:lower:]'`"
 TEST_FINCH_REPO="`echo "$TEST_FINCH_REPO" | tr '[:upper:]' '[:lower:]'`"
 TEST_RAVEN_REPO="`echo "$TEST_RAVEN_REPO" | tr '[:upper:]' '[:lower:]'`"
 TEST_ESGF_COMPUTE_API_REPO="`echo "$TEST_ESGF_COMPUTE_API_REPO" | tr '[:upper:]' '[:lower:]'`"
 
 NOTEBOOKS_TO_TEST="notebooks/*.ipynb"
+if [ x"$TEST_MAGPIE_AUTH" = xtrue ]; then
+    NOTEBOOKS_TO_TEST="$NOTEBOOKS_TO_TEST notebooks-auth/*.ipynb"
+fi
 if [ x"$TEST_PAVICS_SDI_REPO" = xtrue ]; then
     NOTEBOOKS_TO_TEST="$NOTEBOOKS_TO_TEST ${PAVICS_SDI_DIR}/docs/source/notebooks/*.ipynb"
 fi
