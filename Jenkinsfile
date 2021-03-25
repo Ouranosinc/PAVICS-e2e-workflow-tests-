@@ -27,7 +27,7 @@ pipeline {
         //   The script attempts to remove everything, but could be incapable of doing so if Magpie become inaccessible
         //   midway during execution. Employed users/groups are not critical (not modifying existing users permissions),
         //   but could 'pollute' the user list over time.
-        booleanParam(name: 'TEST_MAGPIE_AUTH', defaultValue: true,
+        booleanParam(name: 'TEST_MAGPIE_AUTH', defaultValue: false,
                      description: '''Check the box to test Authentication/Authorization using Magpie/Twitcher services.
 Note: This test suite might require manual clean-up on failure (if critical error).
                      ''')
