@@ -1,6 +1,7 @@
 # conda env create -f environment.yml
 name: birdy
 channels:
+  - zeitsperre  # for ravenpy
   - conda-forge
   - cdat
   - bokeh
@@ -46,6 +47,7 @@ dependencies:
   - nc-time-axis
   - statsmodels  # for ravenpy
   - xclim
+  - ravenpy
   # Universal Regridder for Geospatial Data
   # https://github.com/pangeo-data/xESMF
   - xesmf
