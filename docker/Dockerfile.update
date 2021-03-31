@@ -1,0 +1,11 @@
+FROM pavics/workflow-tests:210216
+
+RUN conda install -c zeitsperre -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy clisops xclim ravenpy
+
+USER root
+
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y fonts-humor-sans && \
+    apt-get clean
+
+USER jenkins
