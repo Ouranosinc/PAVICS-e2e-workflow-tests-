@@ -1,3 +1,7 @@
+# IDE caches
+.idea/
+.vscode/
+
 # vim temp files
 *.swp
 
@@ -12,3 +16,5 @@ esgf-compute-api-*/
 
 # files produced by build
 buildout/
+*.userdata
+*.local

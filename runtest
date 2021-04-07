@@ -51,8 +51,12 @@ if [ x"$SAVE_RESULTING_NOTEBOOK" = xtrue ]; then
             # prevent name clash
             filename="${filename}_`date '+%s'`"
         fi
+        # Timeout must not be more than 240s (4 mins).
+        # Tutorial notebooks should be fast so user do not lose patience waiting
+        # for them to run.  If more than 4 mins, in addition to simplifying the
+        # notebook, should also check machine performance.
         jupyter nbconvert --to notebook --execute \
-            --ExecutePreprocessor.timeout=60 --allow-errors \
+            --ExecutePreprocessor.timeout=240 --allow-errors \
             --output-dir buildout --output "${filename}.output.ipynb" "$nb"
     done
 fi

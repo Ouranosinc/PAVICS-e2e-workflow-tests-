@@ -1,3 +1,5 @@
+#!/bin/sh
+
 if [ -z "$TEST_PAVICS_SDI_REPO" ]; then
     TEST_PAVICS_SDI_REPO=true
     echo "TEST_PAVICS_SDI_REPO not set, default to '$TEST_PAVICS_SDI_REPO'"
