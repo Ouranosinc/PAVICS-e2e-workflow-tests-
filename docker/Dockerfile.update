@@ -1,6 +1,7 @@
 FROM pavics/workflow-tests:210216
 
-RUN conda update -c zeitsperre -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy clisops xclim
+RUN conda update -c zeitsperre -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy clisops xclim \
+    && conda install -c zeitsperre -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy ravenpy
 
 USER root
 
