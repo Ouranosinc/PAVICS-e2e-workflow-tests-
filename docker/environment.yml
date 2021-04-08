@@ -46,6 +46,9 @@ dependencies:
   - hvplot
   - nc-time-axis
   - statsmodels  # for ravenpy
+  # for error 'ImportError: HTTPFileSystem requires "requests" and "aiohttp" to
+  # be installed' with call 'fsspec.filesystem('https')'
+  - aiohttp
   - xclim
   - ravenpy
   # Universal Regridder for Geospatial Data
