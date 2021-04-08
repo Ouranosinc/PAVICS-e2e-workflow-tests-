@@ -36,7 +36,7 @@ Note: This test suite might require manual clean-up on failure (if critical erro
         // overrides are needed when using custom values (strongly recommended for production server with real data)
         password(name: 'TEST_MAGPIE_ADMIN_USERNAME', defaultValue: 'admin',
                  description: 'Username of admin-level user to employ when running notebooks-auth tests.')
-        password(name: 'TEST_MAGPIE_ADMIN_PASSWORD', defaultValue: 'qwerty',
+        password(name: 'TEST_MAGPIE_ADMIN_PASSWORD', defaultValue: 'qwertyqwerty!',
                   description: 'Password of admin-level user to employ when running notebooks-auth tests.')
         booleanParam(name: 'TEST_PAVICS_SDI_REPO', defaultValue: true,
                      description: 'Check the box to test pavics-sdi repo.')
