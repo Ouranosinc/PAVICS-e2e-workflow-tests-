@@ -4,7 +4,7 @@ RUN conda update conda
 
 # to checkout other notebooks and to run pip install
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y git mercurial gcc && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y git mercurial gcc fonts-humor-sans && \
     apt-get clean
 
 COPY environment.yml /environment.yml
@@ -25,18 +25,13 @@ ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
 
 # our notebooks are hardcoded to lookup for kernel named 'birdy'
 # this python is from the birdy env above
-# Make, g++ and libnetcdf-dev needed for ravenpy install using --install-option.
-# Can move ravenpy install into environment.yml if this issue is resolved
-# https://github.com/conda/conda/issues/10119#issuecomment-767697552.
-RUN python -m ipykernel install --name birdy \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y make g++ libnetcdf-dev && apt-get clean \
-    && pip install ravenpy --install-option="--with-binaries"
+RUN python -m ipykernel install --name birdy
 
 # install using same channel preferences as birdy original env to not downgrade
 # anything accidentally
 # this is for debug only, all dependencies should be specified in
 # environment.yml above
-# RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy nbdime
+# RUN conda install -c zeitsperre -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy nbdime
 
 # build jupyterlab extensions installed by conda, see `jupyter labextension list`
 RUN jupyter lab build
