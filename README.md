@@ -61,6 +61,9 @@ cloud to test out all the notebooks in this test suite.
 # this assume the PAVICS host hardcoded inside the notebooks is pavics.ouranos.ca
 PAVICS_HOST=host.example.com ./runtest
 
+# provide more cli options to py.test
+PYTEST_EXTRA_OPTS="--nbval-lax" ./runtest
+
 # disable SSL cert verification for notebooks that support this flag
 # useful together with PAVICS_HOST to hit hosts using self-signed SSL cert
 DISABLE_VERIFY_SSL=1 ./runtest
