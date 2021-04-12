@@ -23,10 +23,10 @@ ESGF_COMPUTE_API_BRANCH="`echo "$ESGF_COMPUTE_API_BRANCH" | sed "s@/@-@g"`"
 ESGF_COMPUTE_API_REPO_NAME="`echo "$ESGF_COMPUTE_API_REPO" | sed "s@^.*/@@g"`"
 
 # branches that have allowed characters such as '+' other than alphanum, '-' and '_' are converted to '-' in archives
-PAVICS_SDI_DIR=`echo "${PAVICS_SDI_REPO_NAME}-${PAVICS_SDI_BRANCH}" | sed "s@[^a-zA-Z0-9_-\.]@-@g"`
-FINCH_DIR=`echo "${FINCH_REPO_NAME}-${FINCH_BRANCH}" | sed "s@[^a-zA-Z0-9_-\.]@-@g"`
-RAVEN_DIR=`echo "${RAVEN_REPO_NAME}-${RAVEN_BRANCH}" | sed "s@[^a-zA-Z0-9_-\.]@-@g"`
-ESGF_COMPUTE_API_DIR=`echo "${ESGF_COMPUTE_API_REPO_NAME}-${ESGF_COMPUTE_API_BRANCH}" | sed "s@[^a-zA-Z0-9_-\.]@-@g"`
+PAVICS_SDI_DIR=`echo "${PAVICS_SDI_REPO_NAME}-${PAVICS_SDI_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
+FINCH_DIR=`echo "${FINCH_REPO_NAME}-${FINCH_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
+RAVEN_DIR=`echo "${RAVEN_REPO_NAME}-${RAVEN_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
+ESGF_COMPUTE_API_DIR=`echo "${ESGF_COMPUTE_API_REPO_NAME}-${ESGF_COMPUTE_API_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
 
 # lowercase VERIFY_SSL string
 VERIFY_SSL="`echo "$VERIFY_SSL" | tr '[:upper:]' '[:lower:]'`"
