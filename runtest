@@ -26,7 +26,7 @@ fi
 # so tests still pass when user want to disable ssl cert verification
 export PYTHONWARNINGS="ignore:Unverified HTTPS request"
 
-py.test --nbval $NOTEBOOKS --sanitize-with notebooks/output-sanitize.cfg
+py.test --nbval $NOTEBOOKS --sanitize-with notebooks/output-sanitize.cfg $PYTEST_EXTRA_OPTS
 EXIT_CODE="$?"
 
 # lowercase SAVE_RESULTING_NOTEBOOK string

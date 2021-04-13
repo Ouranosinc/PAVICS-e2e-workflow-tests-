@@ -62,6 +62,8 @@ Note: This test suite might require manual clean-up on failure (if critical erro
                description: 'ESGF_COMPUTE_API_REPO branch to test against.', trim: true)
         string(name: 'ESGF_COMPUTE_API_REPO', defaultValue: 'ESGF/esgf-compute-api',
                description: 'https://github.com/ESGF/esgf-compute-api repo or fork to test against.', trim: true)
+        string(name: 'PYTEST_EXTRA_OPTS', defaultValue: '',
+               description: 'Extra options to pass to pytest, ex: --nbval-lax', trim: true)
         booleanParam(name: 'VERIFY_SSL', defaultValue: true,
                      description: 'Check the box to verify SSL certificate for https connections to PAVICS host.')
         booleanParam(name: 'SAVE_RESULTING_NOTEBOOK', defaultValue: true,
