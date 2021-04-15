@@ -96,6 +96,7 @@ dependencies:
     # visual debugger for Jupyter Notebook, not working with JupyterLab at this moment
     - pixiedust
     - requests-magpie
+    - pymetalink  # for Raven notebook Extract_geographical_watershed_properties.ipynb
     # block execution of 'run_all_cells' until user input finished
     - ipython_blocking
     # Mimics how one might format their calculation if it were written with a
