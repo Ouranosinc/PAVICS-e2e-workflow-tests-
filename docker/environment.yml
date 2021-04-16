@@ -11,7 +11,7 @@ dependencies:
   - matplotlib
   - xarray
   - numpy
-#  - birdy
+  - birdy
   - owslib>=0.23.0
   - netcdf4
   # https://github.com/ecmwf/cfgrib
@@ -92,7 +92,6 @@ dependencies:
   # for pip packages
   - pip
   - pip:
-    - birdhouse-birdy
     # visual debugger for Jupyter Notebook, not working with JupyterLab at this moment
     - pixiedust
     - requests-magpie
