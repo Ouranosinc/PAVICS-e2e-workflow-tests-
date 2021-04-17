@@ -3,8 +3,11 @@ Test user-level end-to-end workflow.
 
 
 ## Description
+
 This repo ensure the various Jupyter notebooks run without errors against the
-chosen PAVICS server and still produce the same output.
+chosen [PAVICS
+server](https://github.com/bird-house/birdhouse-deploy/blob/master/birdhouse)
+and still produce the same output.
 
 Resulting benefits:
 
