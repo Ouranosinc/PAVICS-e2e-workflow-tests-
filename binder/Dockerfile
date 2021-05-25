@@ -1,4 +1,4 @@
-FROM pavics/workflow-tests:210415
+FROM pavics/workflow-tests:210525
 
 USER root
 
