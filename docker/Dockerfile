@@ -31,7 +31,7 @@ RUN python -m ipykernel install --name birdy
 # anything accidentally
 # this is for debug only, all dependencies should be specified in
 # environment.yml above
-# RUN conda install -c zeitsperre -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy nbdime
+# RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy nbdime
 
 # build jupyterlab extensions installed by conda, see `jupyter labextension list`
 RUN jupyter lab build
