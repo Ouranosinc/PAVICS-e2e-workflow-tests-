@@ -1,6 +1,6 @@
 # For testing quickly without having to do a full rebuild.
 
-FROM pavics/workflow-tests:210525
+FROM pavics/workflow-tests:210527.1
 
 USER root
 
@@ -12,9 +12,9 @@ USER root
 #    && conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy ravenpy aiohttp
 
 RUN umask 0000 \
-    && conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy pydantic
+    && conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy rasterio=1.2.2
 
-RUN umask 0000 \
-    && pip install https://github.com/CSHS-CWRA/RavenPy/archive/refs/heads/master.zip
+#RUN umask 0000 \
+#    && pip install https://github.com/CSHS-CWRA/RavenPy/archive/refs/heads/master.zip
 
 USER jenkins
