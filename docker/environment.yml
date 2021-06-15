@@ -51,6 +51,10 @@ dependencies:
   # be installed' with call 'fsspec.filesystem('https')'
   - aiohttp
   - pydantic
+  - intake
+  - intake-esm
+  - gcsfs
+  - zarr
   - xclim
   - ravenpy
   # Universal Regridder for Geospatial Data
