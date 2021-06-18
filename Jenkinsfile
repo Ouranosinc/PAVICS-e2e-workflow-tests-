@@ -50,6 +50,12 @@ Note: This test suite might require manual clean-up on failure (if critical erro
                description: 'FINCH_REPO branch to test against.', trim: true)
         string(name: 'FINCH_REPO', defaultValue: 'bird-house/finch',
                description: 'https://github.com/bird-house/finch repo or fork to test against.', trim: true)
+        booleanParam(name: 'TEST_PAVICS_LANDING_REPO', defaultValue: true,
+                     description: 'Check the box to test pavics-landing repo.')
+        string(name: 'PAVICS_LANDING_BRANCH', defaultValue: 'master',
+               description: 'PAVICS_LANDING_REPO branch to test against.', trim: true)
+        string(name: 'PAVICS_LANDING_REPO', defaultValue: 'Ouranosinc/PAVICS-landing',
+               description: 'https://github.com/Ouranosinc/PAVICS-landing repo or fork to test against.', trim: true)
         booleanParam(name: 'TEST_RAVEN_REPO', defaultValue: false,
                      description: 'Check the box to test raven repo.')
         string(name: 'RAVEN_BRANCH', defaultValue: 'master',
