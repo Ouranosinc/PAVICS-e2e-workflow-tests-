@@ -65,8 +65,6 @@ dependencies:
   # geopandas (geojson, postgis, shapefile, spatialite) and regionmask for
   # opening shapefiles into regionmask.
   - intake-geopandas
-  # Intake Driver for SpatioTemporal Asset Catalogs (STAC).
-  - intake-stac
   # Intake interface to THREDDS data catalogs (thredds_cat, thredds_merged_source)
   - intake-thredds
   - gcsfs
