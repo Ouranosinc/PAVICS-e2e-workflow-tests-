@@ -1,6 +1,6 @@
 # For testing quickly without having to do a full rebuild.
 
-FROM pavics/workflow-tests:210527.1
+FROM pavics/workflow-tests:210527.1-update20210615
 
 USER root
 
@@ -12,8 +12,7 @@ USER root
 #    && conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy ravenpy aiohttp
 
 RUN umask 0000 \
-    && conda update -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy xclim \
-    && conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy intake intake-esm gcsfs zarr
+    && conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy intake-xarray intake-geopandas intake-thredds
 
 #RUN umask 0000 \
 #    && pip install https://github.com/CSHS-CWRA/RavenPy/archive/refs/heads/master.zip

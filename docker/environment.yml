@@ -51,8 +51,22 @@ dependencies:
   # be installed' with call 'fsspec.filesystem('https')'
   - aiohttp
   - pydantic
+  # Intake is a lightweight set of tools for loading and sharing data in data science projects
   - intake
+  # https://intake.readthedocs.io/en/latest/plugin-directory.html
+  # Plugin for building and loading intake catalogs for earth system data sets
+  # holdings, such as CMIP (Coupled Model Intercomparison Project) and CESM
+  # Large Ensemble datasets.
   - intake-esm
+  # load netCDF, Zarr and other multi-dimensional data (xarray_image, netcdf,
+  # grib, opendap, rasterio, remote-xarray, zarr)
+  - intake-xarray
+  # load from ESRI Shape Files, GeoJSON, and geospatial databases with
+  # geopandas (geojson, postgis, shapefile, spatialite) and regionmask for
+  # opening shapefiles into regionmask.
+  - intake-geopandas
+  # Intake interface to THREDDS data catalogs (thredds_cat, thredds_merged_source)
+  - intake-thredds
   - gcsfs
   - zarr
   - xclim
