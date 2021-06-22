@@ -70,7 +70,7 @@ dependencies:
   - gcsfs
   - zarr
   - xclim
-  - ravenpy>=6.0.0
+  - ravenpy>=0.6.0
   # Universal Regridder for Geospatial Data
   # https://github.com/pangeo-data/xESMF
   - xesmf
