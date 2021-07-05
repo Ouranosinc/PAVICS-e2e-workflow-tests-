@@ -10,7 +10,7 @@ COPY binder/reorg-notebooks /notebooks
 
 WORKDIR /notebooks
 
-RUN ./downloadrepos; ./reorg-notebooks; rm -rfv downloadrepos default_build_params reorg-notebooks; chown -R jenkins:jenkins .
+RUN ./downloadrepos; DEPLOY_PAVICS_LANDING_NB=1 ./reorg-notebooks; rm -rfv downloadrepos default_build_params reorg-notebooks; chown -R jenkins:jenkins .
 
 RUN pip install https://github.com/Ouranosinc/xclim/archive/master.tar.gz
 

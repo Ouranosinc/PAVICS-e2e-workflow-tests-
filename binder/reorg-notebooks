@@ -8,8 +8,13 @@
 mv -v esgf-compute-api-$ESGF_COMPUTE_API_BRANCH/examples ./esgf-compute-api-examples-$ESGF_COMPUTE_API_BRANCH
 rm -rfv esgf-compute-api-$ESGF_COMPUTE_API_BRANCH
 
-mv -v PAVICS-landing-$PAVICS_LANDING_BRANCH/content/notebooks/climate_indicators ./pavics-homepage
-rm -v ./pavics-homepage/*.html
+if [ -n "$DEPLOY_PAVICS_LANDING_NB" ]; then
+    # Pavics landing notebooks already deployed to Jupyter env via
+    # https://github.com/bird-house/birdhouse-deploy-ouranos/blob/5dd7608e0639feec4b70cdee6325fad137bc5993/scheduler-jobs/deploy_pavics_landing_notebooks.yml#L16-L17.
+    # This switch is meant for Binder only.
+    mv -v PAVICS-landing-$PAVICS_LANDING_BRANCH/content/notebooks/climate_indicators ./pavics-homepage
+    rm -v ./pavics-homepage/*.html
+fi
 rm -rfv PAVICS-landing-$PAVICS_LANDING_BRANCH
 
 mv -v pavics-sdi-$PAVICS_SDI_BRANCH/docs/source/notebooks/*.ipynb ./
