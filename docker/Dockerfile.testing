@@ -14,8 +14,8 @@ USER root
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y unzip && \
     apt-get clean && \
-    mkdir -p /notebook_dir/writable-workspace && \
-    chown jenkins /notebook_dir/writable-workspace
+    mkdir /notebook_dir && \
+    chown jenkins /notebook_dir
 
 #RUN umask 0000 \
 #    && pip install https://github.com/CSHS-CWRA/RavenPy/archive/refs/heads/master.zip
