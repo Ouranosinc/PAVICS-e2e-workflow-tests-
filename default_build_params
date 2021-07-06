@@ -42,6 +42,27 @@ else
     echo "FINCH_REPO has been set to '$FINCH_REPO'"
 fi
 
+if [ -z "$TEST_PAVICS_LANDING_REPO" ]; then
+    TEST_PAVICS_LANDING_REPO=true
+    echo "TEST_PAVICS_LANDING_REPO not set, default to '$TEST_PAVICS_LANDING_REPO'"
+else
+    echo "TEST_PAVICS_LANDING_REPO has been set to '$TEST_PAVICS_LANDING_REPO'"
+fi
+
+if [ -z "$PAVICS_LANDING_BRANCH" ]; then
+    PAVICS_LANDING_BRANCH=master
+    echo "PAVICS_LANDING_BRANCH not set, default to '$PAVICS_LANDING_BRANCH'"
+else
+    echo "PAVICS_LANDING_BRANCH has been set to '$PAVICS_LANDING_BRANCH'"
+fi
+
+if [ -z "$PAVICS_LANDING_REPO" ]; then
+    PAVICS_LANDING_REPO='Ouranosinc/PAVICS-landing'
+    echo "PAVICS_LANDING_REPO not set, default to '$PAVICS_LANDING_REPO'"
+else
+    echo "PAVICS_LANDING_REPO has been set to '$PAVICS_LANDING_REPO'"
+fi
+
 if [ -z "$TEST_RAVEN_REPO" ]; then
     TEST_RAVEN_REPO=false
     echo "TEST_RAVEN_REPO not set, default to '$TEST_RAVEN_REPO'"

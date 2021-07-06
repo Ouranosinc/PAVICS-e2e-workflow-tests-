@@ -16,6 +16,9 @@ fi
 
 if [ ! -z "$PAVICS_HOST" ]; then
     echo "Will run notebooks against $PAVICS_HOST"
+    # Any lines marked with TEST_USE_PROD_DATA will replace pavics to boreas to
+    # use data from prod and avoid having to replicate data to test servers.
+    sed -i "/TEST_USE_PROD_DATA/s/pavics.ouranos.ca/boreas.ouranos.ca/g" $NOTEBOOKS
     # .ncml links will always comes from the production server, not the server
     # under test since we do not perform regex replace for .ncml links.
     sed -i "/\.ncml/!s/pavics.ouranos.ca/$PAVICS_HOST/g" $NOTEBOOKS

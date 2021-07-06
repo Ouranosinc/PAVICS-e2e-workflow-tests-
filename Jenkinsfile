@@ -10,7 +10,7 @@ pipeline {
     // https://jenkins.io/doc/book/pipeline/syntax/
     agent {
         docker {
-            image "pavics/workflow-tests:210527.1-update20210618"
+            image "pavics/workflow-tests:210527.1-update20210705"
             label 'linux && docker'
         }
     }
@@ -50,6 +50,12 @@ Note: This test suite might require manual clean-up on failure (if critical erro
                description: 'FINCH_REPO branch to test against.', trim: true)
         string(name: 'FINCH_REPO', defaultValue: 'bird-house/finch',
                description: 'https://github.com/bird-house/finch repo or fork to test against.', trim: true)
+        booleanParam(name: 'TEST_PAVICS_LANDING_REPO', defaultValue: true,
+                     description: 'Check the box to test pavics-landing repo.')
+        string(name: 'PAVICS_LANDING_BRANCH', defaultValue: 'master',
+               description: 'PAVICS_LANDING_REPO branch to test against.', trim: true)
+        string(name: 'PAVICS_LANDING_REPO', defaultValue: 'Ouranosinc/PAVICS-landing',
+               description: 'https://github.com/Ouranosinc/PAVICS-landing repo or fork to test against.', trim: true)
         booleanParam(name: 'TEST_RAVEN_REPO', defaultValue: false,
                      description: 'Check the box to test raven repo.')
         string(name: 'RAVEN_BRANCH', defaultValue: 'master',
@@ -99,7 +105,7 @@ Note this is another run, will double the time and no guaranty to have same erro
 
     post {
         always {
-            archiveArtifacts(artifacts: 'notebooks/*.ipynb, pavics-sdi-*/docs/source/notebooks/*.ipynb, finch-*/docs/source/notebooks/*.ipynb, raven-*/docs/source/notebooks/*.ipynb, esgf-compute-api-*/examples/*.ipynb, buildout/*.output.ipynb, buildout/env-dump/',
+            archiveArtifacts(artifacts: 'notebooks/*.ipynb, pavics-sdi-*/docs/source/notebooks/*.ipynb, finch-*/docs/source/notebooks/*.ipynb, raven-*/docs/source/notebooks/*.ipynb, esgf-compute-api-*/examples/*.ipynb, PAVICS-landing-*/content/notebooks/climate_indicators/*.ipynb, buildout/*.output.ipynb, buildout/env-dump/',
                              fingerprint: true)
         }
 	unsuccessful {  // Run if the current builds status is "Aborted", "Failure" or "Unstable"

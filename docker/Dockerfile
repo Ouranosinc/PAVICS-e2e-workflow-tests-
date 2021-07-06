@@ -4,7 +4,7 @@ RUN conda update conda
 
 # to checkout other notebooks and to run pip install
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y git mercurial gcc fonts-humor-sans && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y git mercurial gcc unzip fonts-humor-sans && \
     apt-get clean
 
 COPY environment.yml /environment.yml
@@ -59,6 +59,15 @@ ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/jupyter_notebook_config.py /etc/jupyter/
 RUN chmod a+rx /usr/local/bin/start.sh /usr/local/bin/start-singleuser.sh /usr/local/bin/start-notebook.sh /usr/local/bin/fix-permissions; \
     chmod a+r /etc/jupyter/jupyter_notebook_config.py
+
+# For Pavics-landing notebooks to re-create Jupyter env layout:
+# /notebook_dir/writable-workspace, /notebook_dir/pavics-homepage.
+#
+# Path to the /notebook_dir/pavics-homepage/tutorial_data/*.geojson files are
+# hardcoded so users can copy the nb to writable-workspace/ dir and still be able
+# to run them seemlessly from the Jupyter env (without having to also copy
+# those *.geojson files with the notebooks).
+RUN mkdir /notebook_dir && chown jenkins /notebook_dir
 
 # problem running start-notebook.sh when being root
 # the jupyter/base-notebook image also do not default to root user so we do the same here

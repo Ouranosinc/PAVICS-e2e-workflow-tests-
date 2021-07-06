@@ -27,6 +27,7 @@ downloadgithubrepos() {
 if [ -z "$1" ]; then
     downloadgithubrepos $PAVICS_SDI_REPO $PAVICS_SDI_BRANCH
     downloadgithubrepos $FINCH_REPO $FINCH_BRANCH
+    downloadgithubrepos $PAVICS_LANDING_REPO $PAVICS_LANDING_BRANCH
     downloadgithubrepos $RAVEN_REPO $RAVEN_BRANCH
     downloadgithubrepos $ESGF_COMPUTE_API_REPO $ESGF_COMPUTE_API_BRANCH
 else
