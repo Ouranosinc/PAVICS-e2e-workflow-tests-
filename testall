@@ -55,8 +55,9 @@ TEST_FINCH_REPO="`echo "$TEST_FINCH_REPO" | tr '[:upper:]' '[:lower:]'`"
 TEST_PAVICS_LANDING_REPO="`echo "$TEST_PAVICS_LANDING_REPO" | tr '[:upper:]' '[:lower:]'`"
 TEST_RAVEN_REPO="`echo "$TEST_RAVEN_REPO" | tr '[:upper:]' '[:lower:]'`"
 TEST_ESGF_COMPUTE_API_REPO="`echo "$TEST_ESGF_COMPUTE_API_REPO" | tr '[:upper:]' '[:lower:]'`"
+TEST_LOCAL_NOTEBOOKS="`echo "$TEST_LOCAL_NOTEBOOKS" | tr '[:upper:]' '[:lower:]'`"
 
-NOTEBOOKS_TO_TEST="notebooks/*.ipynb"
+NOTEBOOKS_TO_TEST=""
 if [ x"$TEST_MAGPIE_AUTH" = xtrue ]; then
     NOTEBOOKS_TO_TEST="$NOTEBOOKS_TO_TEST notebooks-auth/*.ipynb"
 fi
@@ -86,6 +87,12 @@ if [ x"$TEST_RAVEN_REPO" = xtrue ]; then
 fi
 if [ x"$TEST_ESGF_COMPUTE_API_REPO" = xtrue ]; then
     NOTEBOOKS_TO_TEST="$NOTEBOOKS_TO_TEST ${ESGF_COMPUTE_API_DIR}/examples/*.ipynb"
+fi
+
+if [ x"$TEST_LOCAL_NOTEBOOKS" = xtrue ]; then
+    # Add notebooks here last since stress-test.ipynb can possible cause cascading
+    # damage to other notebooks.
+    NOTEBOOKS_TO_TEST="$NOTEBOOKS_TO_TEST notebooks/*.ipynb"
 fi
 
 # last notebooks higher chance for name clash
