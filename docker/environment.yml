@@ -23,7 +23,9 @@ dependencies:
   - rasterio
   - gdal  # for osgeo
   - geopandas
-  - pandas
+  # Pin pandas due to xarray
+  # https://github.com/pydata/xarray/issues/5588#issuecomment-885271773
+  - pandas==1.2.5
   - rioxarray
   - scikit-image
   - ipyleaflet
