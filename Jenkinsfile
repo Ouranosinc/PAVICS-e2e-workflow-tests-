@@ -70,6 +70,10 @@ Note: This test suite might require manual clean-up on failure (if critical erro
                description: 'https://github.com/ESGF/esgf-compute-api repo or fork to test against.', trim: true)
         string(name: 'PYTEST_EXTRA_OPTS', defaultValue: '',
                description: 'Extra options to pass to pytest, ex: --nbval-lax', trim: true)
+        string(name: 'EXTRA_TEST_ENV_VAR', defaultValue: '',
+               description: 'Extra environment variables for the various tests, ex: "TEST_RUNS=50 TEST_WPS_BIRDS=finch,raven,flyingpigeon"', trim: true)
+        booleanParam(name: 'TEST_LOCAL_NOTEBOOKS', defaultValue: true,
+                     description: 'Check the box to test notebooks in this repo (./notebooks/*.ipynb).')
         booleanParam(name: 'VERIFY_SSL', defaultValue: true,
                      description: 'Check the box to verify SSL certificate for https connections to PAVICS host.')
         booleanParam(name: 'SAVE_RESULTING_NOTEBOOK', defaultValue: true,
@@ -96,7 +100,7 @@ Note this is another run, will double the time and no guaranty to have same erro
                          ]) {
                         sh("VERIFY_SSL=${params.VERIFY_SSL} \
                             SAVE_RESULTING_NOTEBOOK=${params.SAVE_RESULTING_NOTEBOOK} \
-                            ./testall")
+                            ${params.EXTRA_TEST_ENV_VAR} ./testall")
                     }
                 }
             }

@@ -104,3 +104,10 @@ if [ -z "$ESGF_COMPUTE_API_REPO" ]; then
 else
     echo "ESGF_COMPUTE_API_REPO has been set to '$ESGF_COMPUTE_API_REPO'"
 fi
+
+if [ -z "$TEST_LOCAL_NOTEBOOKS" ]; then
+    TEST_LOCAL_NOTEBOOKS=true
+    echo "TEST_LOCAL_NOTEBOOKS not set, default to '$TEST_LOCAL_NOTEBOOKS'"
+else
+    echo "TEST_LOCAL_NOTEBOOKS has been set to '$TEST_LOCAL_NOTEBOOKS'"
+fi
