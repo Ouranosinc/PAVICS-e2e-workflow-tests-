@@ -23,7 +23,9 @@ dependencies:
   - rasterio
   - gdal  # for osgeo
   - geopandas
-  - pandas
+  # Pin pandas due to xarray
+  # https://github.com/pydata/xarray/issues/5588#issuecomment-885271773
+  - pandas==1.2.5
   - rioxarray
   - scikit-image
   - ipyleaflet
@@ -44,8 +46,7 @@ dependencies:
   # pinning hvplot did not solve the problem with violin plot.
   - hvplot
   - nc-time-axis
-  # Pin cftime because of https://github.com/SciTools/nc-time-axis/issues/58
-  - cftime==1.4.1
+  - cftime
   - statsmodels  # for ravenpy
   # for error 'ImportError: HTTPFileSystem requires "requests" and "aiohttp" to
   # be installed' with call 'fsspec.filesystem('https')'

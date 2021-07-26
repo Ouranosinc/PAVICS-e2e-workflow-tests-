@@ -4,7 +4,7 @@ RUN conda update conda
 
 # to checkout other notebooks and to run pip install
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y git mercurial gcc unzip fonts-humor-sans && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y git mercurial gcc unzip patch fonts-humor-sans && \
     apt-get clean
 
 COPY environment.yml /environment.yml
