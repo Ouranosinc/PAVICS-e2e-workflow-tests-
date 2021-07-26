@@ -44,11 +44,7 @@ RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager \
     && jupyter labextension install @pyviz/jupyterlab_pyviz \
     && jupyter labextension install @jupyterlab/debugger \
     && jupyter labextension install @jupyterlab/google-drive \
-    && jupyter labextension install jupyterlab-topbar-extension \
-                                    jupyterlab-system-monitor \
-                                    jupyterlab-topbar-text \
-                                    jupyterlab-logout \
-                                    jupyterlab-theme-toggle \
+    && jupyter labextension install jupyterlab-topbar-text \
                                     jupyterlab_conda
 #    && jupyter labextension install jupyterlab-clipboard
 

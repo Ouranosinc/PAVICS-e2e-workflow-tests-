@@ -104,6 +104,8 @@ dependencies:
   # Voila turns Jupyter notebooks into standalone web applications
   - voila
   - jupyter-archive
+  # https://github.com/jtpio/jupyterlab-topbar
+  - jupyterlab-topbar
   # xeus-python: back-end kernel implementing the Jupyter Debug Protocol
   - xeus-python
   - jupyter-dash
