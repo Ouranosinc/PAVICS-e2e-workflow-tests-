@@ -93,6 +93,8 @@ dependencies:
   - notebook
   - jupyterlab
   - jupyterhub
+  # https://github.com/mamba-org/gator (was jupyter_conda)
+  - mamba_gator
   # to diff .ipynb files
   - nbdime
   # extension to produce .py files from notebook .ipynb files
