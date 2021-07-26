@@ -35,6 +35,8 @@ dependencies:
   - pscript
   - h5netcdf
   - panel
+  # https://github.com/holoviz/panel
+  - pyviz_comms
   - holoviews
   - geoviews
   # this might still be relevant https://github.com/holoviz/hvplot/issues/498
