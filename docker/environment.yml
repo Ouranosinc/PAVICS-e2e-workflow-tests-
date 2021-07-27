@@ -106,6 +106,10 @@ dependencies:
   - jupyter-archive
   # https://github.com/jtpio/jupyterlab-topbar
   - jupyterlab-topbar
+  # https://github.com/jtpio/jupyterlab-system-monitor (was from jupyterlab-topbar)
+  - jupyterlab-system-monitor
+  - jupyter-resource-usage  # needed by jupyterlab-system-monitor
+  - nbresuse  # needed by jupyterlab-system-monitor
   # xeus-python: back-end kernel implementing the Jupyter Debug Protocol
   - xeus-python
   - jupyter-dash
@@ -128,8 +132,6 @@ dependencies:
     # https://github.com/ShopRunner/jupyter-notify
     # Jupyter Magic For Browser Notifications of Cell Completion.
     - jupyternotify
-    # Needed for https://github.com/jtpio/jupyterlab-topbar
-    - nbresuse
     # Needed to run notebook tests.  Missing indirect recursive dependencies
     # somewhere, should not need to manually add it here.
     - pytest-tornasync
