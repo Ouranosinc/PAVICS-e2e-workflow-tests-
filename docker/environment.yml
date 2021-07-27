@@ -36,7 +36,7 @@ dependencies:
   - h5netcdf
   - panel
   # https://github.com/holoviz/panel
-  - pyviz_comms
+  - pyviz_comms  # (was labextension pyviz/jupyterlab_pyviz in jupyterlab v2)
   - holoviews
   - geoviews
   # this might still be relevant https://github.com/holoviz/hvplot/issues/498
