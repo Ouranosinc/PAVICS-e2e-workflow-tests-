@@ -132,6 +132,8 @@ dependencies:
     # https://github.com/ShopRunner/jupyter-notify
     # Jupyter Magic For Browser Notifications of Cell Completion.
     - jupyternotify
+    # https://github.com/jupyterlab-contrib/jupyterlab-logout (was from jupyterlab-topbar)
+    - jupyterlab-logout
     # Needed to run notebook tests.  Missing indirect recursive dependencies
     # somewhere, should not need to manually add it here.
     - pytest-tornasync
