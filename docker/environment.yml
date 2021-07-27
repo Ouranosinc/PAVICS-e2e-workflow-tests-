@@ -101,8 +101,6 @@ dependencies:
   - jupytext
   # jupyterlab extension for git
   - jupyterlab-git
-  # jupyterlab extension for conda
-  - jupyter_conda
   # Voila turns Jupyter notebooks into standalone web applications
   - voila
   - jupyter-archive
