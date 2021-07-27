@@ -40,7 +40,6 @@ RUN jupyter lab build
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager \
     && jupyter serverextension enable voila --sys-prefix \
     && jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-leaflet \
-    && jupyter labextension install @jupyterlab/debugger \
     && jupyter labextension install jupyterlab-topbar-text
 #    && jupyter labextension install jupyterlab-clipboard
 
