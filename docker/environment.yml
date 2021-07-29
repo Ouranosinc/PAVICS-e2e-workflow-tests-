@@ -23,9 +23,7 @@ dependencies:
   - rasterio
   - gdal  # for osgeo
   - geopandas
-  # Pin pandas due to xarray
-  # https://github.com/pydata/xarray/issues/5588#issuecomment-885271773
-  - pandas==1.2.5
+  - pandas
   - rioxarray
   - scikit-image
   - ipyleaflet
@@ -37,6 +35,8 @@ dependencies:
   - pscript
   - h5netcdf
   - panel
+  # https://github.com/holoviz/panel
+  - pyviz_comms  # (was labextension pyviz/jupyterlab_pyviz in jupyterlab v2)
   - holoviews
   - geoviews
   # this might still be relevant https://github.com/holoviz/hvplot/issues/498
@@ -91,19 +91,25 @@ dependencies:
   - jupyter
   # to be launched by image jupyterhub/jupyterhub
   - notebook
-  - jupyterlab==2.2.9
+  - jupyterlab
   - jupyterhub
+  # https://github.com/mamba-org/gator (was jupyter_conda)
+  - mamba_gator
   # to diff .ipynb files
   - nbdime
   # extension to produce .py files from notebook .ipynb files
   - jupytext
   # jupyterlab extension for git
   - jupyterlab-git
-  # jupyterlab extension for conda
-  - jupyter_conda
   # Voila turns Jupyter notebooks into standalone web applications
   - voila
   - jupyter-archive
+  # https://github.com/jtpio/jupyterlab-topbar
+  - jupyterlab-topbar
+  # https://github.com/jtpio/jupyterlab-system-monitor (was from jupyterlab-topbar)
+  - jupyterlab-system-monitor
+  - jupyter-resource-usage  # needed by jupyterlab-system-monitor
+  - nbresuse  # needed by jupyterlab-system-monitor
   # xeus-python: back-end kernel implementing the Jupyter Debug Protocol
   - xeus-python
   - jupyter-dash
@@ -126,8 +132,8 @@ dependencies:
     # https://github.com/ShopRunner/jupyter-notify
     # Jupyter Magic For Browser Notifications of Cell Completion.
     - jupyternotify
-    # Needed for https://github.com/jtpio/jupyterlab-topbar
-    - nbresuse
+    # https://github.com/jupyterlab-contrib/jupyterlab-logout (was from jupyterlab-topbar)
+    - jupyterlab-logout
     # Needed to run notebook tests.  Missing indirect recursive dependencies
     # somewhere, should not need to manually add it here.
     - pytest-tornasync

@@ -40,16 +40,8 @@ RUN jupyter lab build
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager \
     && jupyter serverextension enable voila --sys-prefix \
     && jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-leaflet \
-    && jupyter labextension install @bokeh/jupyter_bokeh \
-    && jupyter labextension install @pyviz/jupyterlab_pyviz \
-    && jupyter labextension install @jupyterlab/debugger \
-    && jupyter labextension install @jupyterlab/google-drive \
-    && jupyter labextension install jupyterlab-topbar-extension \
-                                    jupyterlab-system-monitor \
-                                    jupyterlab-topbar-text \
-                                    jupyterlab-logout \
-                                    jupyterlab-theme-toggle \
-                                    jupyterlab_conda
+    && jupyter labextension install jupyterlab-topbar-text \
+                                    jupyterlab-theme-toggle
 #    && jupyter labextension install jupyterlab-clipboard
 
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start.sh /usr/local/bin/
