@@ -70,6 +70,8 @@ dependencies:
   - intake-thredds
   - gcsfs
   - zarr
+  # https://github.com/dask/s3fs/
+  - s3fs
   - xclim
   - ravenpy
   # Universal Regridder for Geospatial Data
