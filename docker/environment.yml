@@ -116,6 +116,9 @@ dependencies:
   # utilities
   - curl
   - wget
+  - nested_dict
+  - paramiko
+  - scp
   # for pip packages
   - pip
   - pip:
