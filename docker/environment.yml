@@ -119,6 +119,9 @@ dependencies:
   - nested_dict
   - paramiko
   - scp
+  - selenium
+  - firefox
+  - geckodriver
   # for pip packages
   - pip
   - pip:
