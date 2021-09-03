@@ -74,6 +74,8 @@ dependencies:
   - s3fs
   - xclim
   - ravenpy
+  # https://github.com/roocs/clisops
+  - clisops
   # Universal Regridder for Geospatial Data
   # https://github.com/pangeo-data/xESMF
   - xesmf
