@@ -72,7 +72,9 @@ dependencies:
   - zarr
   # https://github.com/dask/s3fs/
   - s3fs
-  - xclim
+  # Pinning xclim and climpred for ravenpy.  Remove on next rebuild.
+  - xclim >=0.26.1,<0.29.0
+  - climpred >=2.1.0,<2.1.6
   - ravenpy
   # https://github.com/roocs/clisops
   - clisops
