@@ -126,7 +126,6 @@ dependencies:
   - paramiko
   - scp
   - selenium
-  - firefox
   - geckodriver
   # for pip packages
   - pip
