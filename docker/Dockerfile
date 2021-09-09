@@ -6,7 +6,7 @@ RUN conda update conda
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
     git mercurial gcc unzip patch fonts-humor-sans \
-    firefox-esr && \
+    firefox-esr x11-utils && \
     apt-get clean
 
 COPY environment.yml /environment.yml
