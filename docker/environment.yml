@@ -70,8 +70,14 @@ dependencies:
   - intake-thredds
   - gcsfs
   - zarr
-  - xclim
+  # https://github.com/dask/s3fs/
+  - s3fs
+  # Pinning xclim and climpred for ravenpy.  Remove on next rebuild.
+  - xclim >=0.26.1,<0.29.0
+  - climpred >=2.1.0,<2.1.6
   - ravenpy
+  # https://github.com/roocs/clisops
+  - clisops
   # Universal Regridder for Geospatial Data
   # https://github.com/pangeo-data/xESMF
   - xesmf
@@ -116,6 +122,11 @@ dependencies:
   # utilities
   - curl
   - wget
+  - nested_dict
+  - paramiko
+  - scp
+  - selenium
+  - geckodriver
   # for pip packages
   - pip
   - pip:
