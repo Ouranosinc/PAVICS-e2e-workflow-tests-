@@ -114,7 +114,8 @@ Note this is another run, will double the time and no guaranty to have same erro
     post {
         always {
             archiveArtifacts(artifacts: 'notebooks/*.ipynb', fingerprint: true)
-            archiveArtifacts(artifacts: 'pavics-sdi-*/docs/source/**/*.ipynb', fingerprint: true, excludes: 'pavics-sdi-*/docs/source/deprecated/**/*')
+            archiveArtifacts(artifacts: 'pavics-sdi-*/docs/source/notebooks/*.ipynb', fingerprint: true)
+            archiveArtifacts(artifacts: 'pavics-sdi-*/docs/source/notebook-components/*.ipynb', fingerprint: true)
             archiveArtifacts(artifacts: 'finch-*/docs/source/notebooks/*.ipynb', fingerprint: true)
             archiveArtifacts(artifacts: 'raven-*/docs/source/notebooks/*.ipynb', fingerprint: true)
             archiveArtifacts(artifacts: 'esgf-compute-api-*/examples/*.ipynb', fingerprint: true)
