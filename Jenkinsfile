@@ -113,8 +113,15 @@ Note this is another run, will double the time and no guaranty to have same erro
 
     post {
         always {
-            archiveArtifacts(artifacts: 'notebooks/*.ipynb, pavics-sdi-*/docs/source/notebooks/*.ipynb, finch-*/docs/source/notebooks/*.ipynb, raven-*/docs/source/notebooks/*.ipynb, esgf-compute-api-*/examples/*.ipynb, PAVICS-landing-*/content/notebooks/climate_indicators/*.ipynb, buildout/*.output.ipynb, buildout/env-dump/',
-                             fingerprint: true)
+            archiveArtifacts(artifacts: 'notebooks/*.ipynb', fingerprint: true)
+            archiveArtifacts(artifacts: 'pavics-sdi-*/docs/source/notebooks/*.ipynb', fingerprint: true)
+            archiveArtifacts(artifacts: 'pavics-sdi-*/docs/source/notebook-components/*.ipynb', fingerprint: true)
+            archiveArtifacts(artifacts: 'finch-*/docs/source/notebooks/*.ipynb', fingerprint: true)
+            archiveArtifacts(artifacts: 'raven-*/docs/source/notebooks/*.ipynb', fingerprint: true)
+            archiveArtifacts(artifacts: 'esgf-compute-api-*/examples/*.ipynb', fingerprint: true)
+            archiveArtifacts(artifacts: 'PAVICS-landing-*/content/notebooks/climate_indicators/*.ipynb', fingerprint: true)
+            archiveArtifacts(artifacts: 'buildout/*.output.ipynb', fingerprint: true)
+            archiveArtifacts(artifacts: 'buildout/env-dump/', fingerprint: true)
         }
 	unsuccessful {  // Run if the current builds status is "Aborted", "Failure" or "Unstable"
             step([$class: 'Mailer', notifyEveryUnstableBuild: false,
