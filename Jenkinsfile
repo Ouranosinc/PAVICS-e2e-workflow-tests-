@@ -121,7 +121,12 @@ Note this is another run, will double the time and no guaranty to have same erro
             archiveArtifacts(artifacts: 'esgf-compute-api-*/examples/*.ipynb', fingerprint: true)
             archiveArtifacts(artifacts: 'PAVICS-landing-*/content/notebooks/climate_indicators/*.ipynb', fingerprint: true)
             archiveArtifacts(artifacts: 'buildout/*.output.ipynb', fingerprint: true)
-            archiveArtifacts(artifacts: 'buildout/env-dump/', fingerprint: true)
+            if (fileExists('buildout/env-dump/')) {
+                archiveArtifacts(artifacts: 'buildout/env-dump/', fingerprint: true)
+            }
+            else {
+                echo "[INFO] No 'buildout/env-dump/' directory to archive artifacts. Skipping it."
+            }
         }
 	unsuccessful {  // Run if the current builds status is "Aborted", "Failure" or "Unstable"
             step([$class: 'Mailer', notifyEveryUnstableBuild: false,
