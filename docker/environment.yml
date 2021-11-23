@@ -81,7 +81,10 @@ dependencies:
   - clisops
   # Universal Regridder for Geospatial Data
   # https://github.com/pangeo-data/xESMF
-  - xesmf
+  # Pin xesmf because latest xesmf-0.6.2 is not compatible with latest clisops-0.7.0.
+  # xesmf-0.6.1 is buggy.
+  # Unpin when new compatible clisops is released.
+  - xesmf <= 0.6.0
   # https://anaconda.org/anaconda/memory_profiler
   # Monitor memory consumption of a process as well as line-by-line analysis
   # of memory consumption for Python programs.
