@@ -36,7 +36,7 @@ RUN python -m ipykernel install --name birdy
 # RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy nbdime
 
 # build jupyterlab extensions installed by conda, see `jupyter labextension list`
-RUN jupyter lab build
+#RUN jupyter lab build
 
 # for ipywidgets to work with jupyter lab (notebooks works out of the box)
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager \
