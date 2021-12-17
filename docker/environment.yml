@@ -20,7 +20,9 @@ dependencies:
   - pydap
   - cartopy
   - descartes
-  - rasterio
+  # Pin rasterio for ravenpy, remove on next build.
+  # See https://github.com/CSHS-CWRA/RavenPy/commit/eae66e9afc30e2381e9119644a0695d1d248c739
+  - rasterio <= 1.2.6
   - gdal  # for osgeo
   - geopandas
   - pandas
