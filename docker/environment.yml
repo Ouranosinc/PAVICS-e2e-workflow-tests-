@@ -20,7 +20,9 @@ dependencies:
   - pydap
   - cartopy
   - descartes
-  - rasterio
+  # Pin rasterio for ravenpy, remove on next build.
+  # See https://github.com/CSHS-CWRA/RavenPy/commit/eae66e9afc30e2381e9119644a0695d1d248c739
+  - rasterio <= 1.2.6
   - gdal  # for osgeo
   - geopandas
   - pandas
@@ -72,15 +74,19 @@ dependencies:
   - zarr
   # https://github.com/dask/s3fs/
   - s3fs
-  # Pinning xclim and climpred for ravenpy.  Remove on next rebuild.
-  - xclim >=0.26.1,<0.29.0
-  - climpred >=2.1.0,<2.1.6
+  - xclim
+  # Pinning shapely for ravenpy.  Remove on next rebuild.
+  # https://github.com/CSHS-CWRA/RavenPy/blob/f63e1e5b967c0d7c17e679c8f9d6d309a94096e6/environment.yml#L35
+  - shapely <=1.7.1
   - ravenpy
   # https://github.com/roocs/clisops
   - clisops
   # Universal Regridder for Geospatial Data
   # https://github.com/pangeo-data/xESMF
-  - xesmf
+  # Pin xesmf because latest xesmf-0.6.2 is not compatible with latest clisops-0.7.0.
+  # xesmf-0.6.1 is buggy.
+  # Unpin when new compatible clisops is released.
+  - xesmf <= 0.6.0
   # https://anaconda.org/anaconda/memory_profiler
   # Monitor memory consumption of a process as well as line-by-line analysis
   # of memory consumption for Python programs.
