@@ -1,6 +1,6 @@
 FROM continuumio/miniconda3
 
-RUN conda update conda
+RUN conda update conda && conda install mamba -n base -c conda-forge
 
 # to checkout other notebooks and to run pip install
 RUN apt-get update && \
@@ -20,7 +20,11 @@ RUN chmod -R a+rwx /opt/conda
 
 # create env "birdy"
 # use umask 0000 so that the files for the new environment are usable by user 'jenkins' for the jupyter-conda-extension
-RUN umask 0000 && conda env create -f /environment.yml
+RUN umask 0000 && \
+    mamba env create -n birdy && \
+    mamba install -n birdy -c conda-forge xclim && \
+    mamba install -n birdy -c conda-forge ravenpy && \
+    mamba install -n birdy -f /environment.yml
 
 # alternate way to 'source activate birdy'
 ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
