@@ -21,7 +21,7 @@ RUN chmod -R a+rwx /opt/conda
 # create env "birdy"
 # use umask 0000 so that the files for the new environment are usable by user 'jenkins' for the jupyter-conda-extension
 RUN umask 0000 && \
-    mamba create --name birdy --channel conda-forge --channel defaults "xclim>=0.32.1" "ravenpy>=0.7.5"
+    mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy
 
 COPY environment.yml /environment.yml
 
@@ -29,10 +29,6 @@ COPY environment.yml /environment.yml
 # This one downgraded xclim and ravenpy.
 RUN umask 0000 && \
     mamba env update --name birdy --file /environment.yml
-
-# TODO: put back with previous layer, this one is to make sure we get latest xclim and ravenpy
-RUN umask 0000 && \
-    mamba install --name birdy --channel conda-forge --channel defaults "xclim>=0.32.1" "ravenpy>=0.7.5"
 
 # alternate way to 'source activate birdy'
 ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
