@@ -20,8 +20,12 @@ RUN chmod -R a+rwx /opt/conda
 
 # create env "birdy"
 # use umask 0000 so that the files for the new environment are usable by user 'jenkins' for the jupyter-conda-extension
+# Pin python=3.8 for vtk-cdat needed by vcs.  Otherwise, 3.9 would have been selected.
+#   package vcs-8.1-py_0 requires vtk-cdat >8.1, but none of the providers can be installed
+#   package vtk-cdat-8.2.0.8.2.1-py38hbc81915_0 requires python >=3.8,<3.9.0a0 *_cpython
+# TODO remove python=3.8 pin once a vtk-cdat for py39 exist.
 RUN umask 0000 && \
-    mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy
+    mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy python=3.8
 
 COPY environment.yml /environment.yml
 

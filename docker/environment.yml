@@ -101,8 +101,7 @@ dependencies:
   # for esgf notebooks
   - esgf-compute-api
   - cdms2
-  # vcs mamba install error: package vcs-8.1-py_0 requires vtk-cdat >8.1, but none of the providers can be installed
-  # - vcs
+  - vcs
   - mesalib
   # tests
   - pytest
