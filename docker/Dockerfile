@@ -46,10 +46,8 @@ RUN python -m ipykernel install --name birdy
 # build jupyterlab extensions installed by conda, see `jupyter labextension list`
 #RUN jupyter lab build
 
-# for ipywidgets to work with jupyter lab (notebooks works out of the box)
-RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager \
-    && jupyter serverextension enable voila --sys-prefix \
-    && jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-leaflet \
+RUN jupyter serverextension enable voila --sys-prefix \
+    && jupyter labextension install jupyter-leaflet \
     && jupyter labextension install jupyterlab-topbar-text \
                                     jupyterlab-theme-toggle
 #    && jupyter labextension install jupyterlab-clipboard

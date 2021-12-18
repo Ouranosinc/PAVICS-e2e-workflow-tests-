@@ -113,6 +113,8 @@ dependencies:
   - notebook
   - jupyterlab
   - jupyterhub
+  # https://ipywidgets.readthedocs.io/en/latest/user_install.html
+  - ipywidgets
   # https://github.com/mamba-org/gator (was jupyter_conda)
   - mamba_gator
   # to diff .ipynb files
