@@ -47,7 +47,6 @@ RUN python -m ipykernel install --name birdy
 #RUN jupyter lab build
 
 RUN jupyter serverextension enable voila --sys-prefix \
-    && jupyter labextension install jupyter-leaflet \
     && jupyter labextension install jupyterlab-topbar-text \
                                     jupyterlab-theme-toggle
 #    && jupyter labextension install jupyterlab-clipboard
