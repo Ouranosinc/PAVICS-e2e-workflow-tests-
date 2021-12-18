@@ -32,7 +32,7 @@ RUN umask 0000 && \
 
 # TODO: put back with previous layer, this one is to make sure we get latest xclim and ravenpy
 RUN umask 0000 && \
-    mamba update --name birdy --channel conda-forge --channel defaults xclim ravenpy
+    mamba install --name birdy --channel conda-forge --channel defaults "xclim>=0.32.1" "ravenpy>=0.7.5"
 
 # alternate way to 'source activate birdy'
 ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
