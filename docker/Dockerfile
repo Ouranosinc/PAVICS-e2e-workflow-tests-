@@ -26,8 +26,13 @@ RUN umask 0000 && \
 COPY environment.yml /environment.yml
 
 # TODO: put back with previous layer, temporary taken out to leverage build caching
+# This one downgraded xclim and ravenpy.
 RUN umask 0000 && \
     mamba env update --name birdy --file /environment.yml
+
+# TODO: put back with previous layer, this one is to make sure we get latest xclim and ravenpy
+RUN umask 0000 && \
+    mamba install --name birdy --channel conda-forge --channel defaults xclim ravenpy
 
 # alternate way to 'source activate birdy'
 ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
