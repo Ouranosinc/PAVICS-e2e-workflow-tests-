@@ -11,8 +11,6 @@ RUN apt-get update && \
     firefox-esr x11-utils && \
     apt-get clean
 
-COPY environment.yml /environment.yml
-
 # needed for our specific jenkins
 RUN groupadd --gid 1000 jenkins \
     && useradd --uid 1000 --gid jenkins --create-home jenkins
@@ -24,6 +22,8 @@ RUN chmod -R a+rwx /opt/conda
 # use umask 0000 so that the files for the new environment are usable by user 'jenkins' for the jupyter-conda-extension
 RUN umask 0000 && \
     mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy
+
+COPY environment.yml /environment.yml
 
 # TODO: put back with previous layer, temporary taken out to leverage build caching
 RUN umask 0000 && \
