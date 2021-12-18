@@ -3,6 +3,7 @@ name: birdy
 channels:
   - conda-forge
   - cdat
+  - uvcdat  # for vtk-cdat needed by vcs
   - bokeh
   - plotly  # for jupyter-dash
 dependencies:
