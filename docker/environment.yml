@@ -13,8 +13,8 @@ dependencies:
 # xclim direct dependencies: https://github.com/conda-forge/xclim-feedstock/blob/master/recipe/meta.yaml
 # ravenpy direct dependencies: https://github.com/conda-forge/ravenpy-feedstock/blob/master/recipe/meta.yaml
 
-  - xclim >= 0.32.1
-  - ravenpy >= 0.7.5
+  - xclim # >= 0.32.1
+  - ravenpy # >= 0.7.5
 
   - matplotlib
     # - xarray  # from xclim and ravenpy
