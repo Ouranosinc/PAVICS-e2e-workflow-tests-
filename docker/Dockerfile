@@ -1,8 +1,8 @@
 FROM continuumio/miniconda3
 
 RUN conda update conda -n base && \
-    conda install mamba -n base -c defaults -c conda-forge
-#    conda config --set channel_priority strict
+    conda install mamba -n base -c defaults -c conda-forge && \
+    conda config --set channel_priority strict
 
 # to checkout other notebooks and to run pip install
 RUN apt-get update && \
