@@ -80,11 +80,11 @@ dependencies:
   - zarr
   # https://github.com/dask/s3fs/
   - s3fs
-  - xclim == 0.31.0
+  - xclim
   # Pinning shapely for ravenpy.  Remove on next rebuild.
   # https://github.com/CSHS-CWRA/RavenPy/blob/f63e1e5b967c0d7c17e679c8f9d6d309a94096e6/environment.yml#L35
   # - shapely <=1.7.1  # from ravenpy
-  - ravenpy == 0.7.5
+  - ravenpy
   # https://github.com/roocs/clisops
   - clisops
   # Universal Regridder for Geospatial Data
