@@ -23,9 +23,11 @@ RUN chmod -R a+rwx /opt/conda
 # Pin python=3.8 for vtk-cdat needed by vcs.  Otherwise, 3.9 would have been selected.
 #   package vcs-8.1-py_0 requires vtk-cdat >8.1, but none of the providers can be installed
 #   package vtk-cdat-8.2.0.8.2.1-py38hbc81915_0 requires python >=3.8,<3.9.0a0 *_cpython
-# TODO remove python=3.8 pin once a vtk-cdat for py39 exist.
+# Pin python=3.7 for libgdal (note libgdal was working with python 3.9 but blew up when we pin 3.8 for vcs)
+#   package gdal-3.1.4-py38h25844d8_1 requires libgdal 3.1.4 h50e41a3_1, but none of the providers can be installed
+# TODO remove python pin once a vtk-cdat for py39 exist, libgdal already worked for 3.9.
 RUN umask 0000 && \
-    mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy python=3.8
+    mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy python=3.7
 
 COPY environment.yml /environment.yml
 
