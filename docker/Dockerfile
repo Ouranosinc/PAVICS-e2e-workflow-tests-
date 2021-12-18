@@ -1,7 +1,7 @@
 FROM continuumio/miniconda3
 
 RUN conda update conda && \
-    conda install mamba -n base -c conda-forge && \
+    conda install mamba -n base -c defaults -c conda-forge && \
     conda config --set channel_priority strict
 
 # to checkout other notebooks and to run pip install
@@ -22,7 +22,7 @@ RUN chmod -R a+rwx /opt/conda
 
 # create env "birdy"
 # use umask 0000 so that the files for the new environment are usable by user 'jenkins' for the jupyter-conda-extension
-RUN umask 0000 && conda env create --verbose --verbose --file /environment.yml
+RUN umask 0000 && mamba env create --verbose --verbose --file /environment.yml
 
 # alternate way to 'source activate birdy'
 ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
