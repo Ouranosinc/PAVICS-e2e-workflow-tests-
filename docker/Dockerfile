@@ -44,11 +44,10 @@ RUN python -m ipykernel install --name birdy
 # RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy nbdime
 
 # build jupyterlab extensions installed by conda, see `jupyter labextension list`
+# Not needed with jupyterlab v3 anymore.
 #RUN jupyter lab build
 
-RUN jupyter serverextension enable voila --sys-prefix \
-    && jupyter labextension install jupyterlab-topbar-text \
-                                    jupyterlab-theme-toggle
+RUN jupyter serverextension enable voila --sys-prefix
 #    && jupyter labextension install jupyterlab-clipboard
 
 ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start.sh /usr/local/bin/
