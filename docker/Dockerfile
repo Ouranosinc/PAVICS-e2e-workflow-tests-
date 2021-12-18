@@ -22,7 +22,7 @@ RUN chmod -R a+rwx /opt/conda
 
 # create env "birdy"
 # use umask 0000 so that the files for the new environment are usable by user 'jenkins' for the jupyter-conda-extension
-RUN umask 0000 && conda create --name birdy --strict-channel-priority --verbose --verbose -f /environment.yml
+RUN umask 0000 && conda create --name birdy --strict-channel-priority --verbose --verbose --file /environment.yml
 
 # alternate way to 'source activate birdy'
 ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
