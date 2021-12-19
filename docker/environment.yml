@@ -5,6 +5,8 @@ channels:
   - cdat
   - bokeh
   - plotly  # for jupyter-dash
+  - defaults
+
 dependencies:
 
 # Do not put xclim and ravenpy direct dependencies here to let xclim and ravenpy
