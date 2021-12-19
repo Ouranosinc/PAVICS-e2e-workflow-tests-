@@ -9,12 +9,15 @@ channels:
 
 dependencies:
 
-# Do not put xclim and ravenpy direct dependencies here to let xclim and ravenpy
-# manage their own dependencies pinning.
-#
-# xclim direct dependencies: https://github.com/conda-forge/xclim-feedstock/blob/master/recipe/meta.yaml
-# ravenpy direct dependencies: https://github.com/conda-forge/ravenpy-feedstock/blob/master/recipe/meta.yaml
+  # Do not put xclim and ravenpy direct dependencies here to let xclim and ravenpy
+  # manage their own dependencies pinning.
+  #
+  # xclim direct dependencies: https://github.com/conda-forge/xclim-feedstock/blob/master/recipe/meta.yaml
+  # ravenpy direct dependencies: https://github.com/conda-forge/ravenpy-feedstock/blob/master/recipe/meta.yaml
 
+  # Pin latest xclim and ravenpy to avoid downgrading during the second install
+  # phase.  Mamba is quicker to solve dependencies than conda but it is less
+  # precise so accidental downgrade happends.
   - xclim >= 0.32.1
   - ravenpy >= 0.7.5
 

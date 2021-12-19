@@ -1,5 +1,7 @@
 FROM continuumio/miniconda3
 
+# Use mamba for much improved performance over conda.
+# The 'channel_priority strict' did help conda but it was not enough.
 RUN conda update conda -n base && \
     conda install mamba -n base -c defaults -c conda-forge && \
     conda config --set channel_priority strict
@@ -21,6 +23,15 @@ COPY environment.yml /environment.yml
 
 # create env "birdy"
 # use umask 0000 so that the files for the new environment are usable by user 'jenkins' for the jupyter-conda-extension
+#
+# Perform 2 stages install because one single 'conda env create -f
+# /environment.yml' was taking forever to complete, same with mamba.
+# Had to do this 2 stages install.  2 stages install was also taking forever
+# with conda so had to switch to mamba.
+#
+# Conda was stuck at this step:
+# DEBUG conda.common._logic:_run_sat(607): Invoking SAT with clause count: 2500273
+#
 # Pin python=3.8 for vtk-cdat needed by vcs.  Otherwise, 3.9 would have been selected.
 #   package vcs-8.1-py_0 requires vtk-cdat >8.1, but none of the providers can be installed
 #   package vtk-cdat-8.2.0.8.2.1-py38hbc81915_0 requires python >=3.8,<3.9.0a0 *_cpython
