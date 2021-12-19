@@ -11,12 +11,13 @@ RUN apt-get update && \
     firefox-esr x11-utils && \
     apt-get clean
 
-# needed for our specific jenkins
+# Create user jenkins for our Jenkins e2e notebooks test suite.
+# Change /opt/conda folder permissions for jupyter-conda extension.
 RUN groupadd --gid 1000 jenkins \
-    && useradd --uid 1000 --gid jenkins --create-home jenkins
+    && useradd --uid 1000 --gid jenkins --create-home jenkins && \
+    chmod -R a+rwx /opt/conda
 
-# Change these folders' permissions for jupyter-conda extension
-RUN chmod -R a+rwx /opt/conda
+COPY environment.yml /environment.yml
 
 # create env "birdy"
 # use umask 0000 so that the files for the new environment are usable by user 'jenkins' for the jupyter-conda-extension
@@ -27,13 +28,7 @@ RUN chmod -R a+rwx /opt/conda
 #   package gdal-3.1.4-py38h25844d8_1 requires libgdal 3.1.4 h50e41a3_1, but none of the providers can be installed
 # TODO remove python pin once a vtk-cdat for py39 exist, libgdal already worked for 3.9.
 RUN umask 0000 && \
-    mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy python=3.7
-
-COPY environment.yml /environment.yml
-
-# TODO: put back with previous layer, temporary taken out to leverage build caching
-# This one downgraded xclim and ravenpy.
-RUN umask 0000 && \
+    mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy python=3.7 && \
     mamba env update --name birdy --file /environment.yml
 
 # alternate way to 'source activate birdy'
@@ -47,7 +42,7 @@ RUN python -m ipykernel install --name birdy
 # anything accidentally
 # this is for debug only, all dependencies should be specified in
 # environment.yml above
-# RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy nbdime
+# RUN mamba install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy nbdime
 
 # build jupyterlab extensions installed by conda, see `jupyter labextension list`
 # Not needed with jupyterlab v3 anymore.
@@ -56,22 +51,21 @@ RUN python -m ipykernel install --name birdy
 RUN jupyter serverextension enable voila --sys-prefix
 #    && jupyter labextension install jupyterlab-clipboard
 
-ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start.sh /usr/local/bin/
-ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-singleuser.sh /usr/local/bin/
-ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-notebook.sh /usr/local/bin/
-ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/fix-permissions /usr/local/bin/
-ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/jupyter_notebook_config.py /etc/jupyter/
-RUN chmod a+rx /usr/local/bin/start.sh /usr/local/bin/start-singleuser.sh /usr/local/bin/start-notebook.sh /usr/local/bin/fix-permissions; \
-    chmod a+r /etc/jupyter/jupyter_notebook_config.py
-
-# For Pavics-landing notebooks to re-create Jupyter env layout:
+# /notebook_dir for Pavics-landing notebooks to re-create Jupyter env layout:
 # /notebook_dir/writable-workspace, /notebook_dir/pavics-homepage.
 #
 # Path to the /notebook_dir/pavics-homepage/tutorial_data/*.geojson files are
 # hardcoded so users can copy the nb to writable-workspace/ dir and still be able
 # to run them seemlessly from the Jupyter env (without having to also copy
 # those *.geojson files with the notebooks).
-RUN mkdir /notebook_dir && chown jenkins /notebook_dir
+RUN wget https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start.sh --output-document /usr/local/bin/start.sh && \
+    wget https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-singleuser.sh --output-document /usr/local/bin/start-singleuser.sh && \
+    wget https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-notebook.sh --output-document /usr/local/bin/start-notebook.sh && \
+    wget https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/fix-permissions --output-document /usr/local/bin/fix-permissions && \
+    wget https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/jupyter_notebook_config.py --output-document /etc/jupyter/jupyter_notebook_config.py && \
+    chmod a+rx /usr/local/bin/start.sh /usr/local/bin/start-singleuser.sh /usr/local/bin/start-notebook.sh /usr/local/bin/fix-permissions && \
+    chmod a+r /etc/jupyter/jupyter_notebook_config.py && \
+    mkdir /notebook_dir && chown jenkins /notebook_dir
 
 # problem running start-notebook.sh when being root
 # the jupyter/base-notebook image also do not default to root user so we do the same here
