@@ -62,6 +62,7 @@ RUN wget https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-not
     wget https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-singleuser.sh --output-document /usr/local/bin/start-singleuser.sh && \
     wget https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-notebook.sh --output-document /usr/local/bin/start-notebook.sh && \
     wget https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/fix-permissions --output-document /usr/local/bin/fix-permissions && \
+    mkdir /etc/jupyter && \
     wget https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/jupyter_notebook_config.py --output-document /etc/jupyter/jupyter_notebook_config.py && \
     chmod a+rx /usr/local/bin/start.sh /usr/local/bin/start-singleuser.sh /usr/local/bin/start-notebook.sh /usr/local/bin/fix-permissions && \
     chmod a+r /etc/jupyter/jupyter_notebook_config.py && \
