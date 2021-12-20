@@ -83,6 +83,7 @@ RUN wget https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-not
 # the jupyter/base-notebook image also do not default to root user so we do the same here
 USER jenkins
 
-# follow jupyter/base-notebook image so config in jupyterhub is simpler
-# start notebook in conda environment to have working jupyter extensions
-CMD ["conda", "run", "-n", "birdy", "/usr/local/bin/start-notebook.sh"]
+# Follow jupyter/base-notebook image so config in jupyterhub is simpler.
+# Unable to use the wrapper start-notebook.sh, it just does nothing so had to
+# hardcode what it should do.
+CMD ["jupyter", "lab", "${NOTEBOOK_ARGS}"]
