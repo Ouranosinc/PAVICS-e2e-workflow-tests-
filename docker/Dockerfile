@@ -86,4 +86,4 @@ USER jenkins
 # Follow jupyter/base-notebook image so config in jupyterhub is simpler.
 # Unable to use the wrapper start-notebook.sh, it just does nothing so had to
 # hardcode what it should do.
-CMD ["jupyter", "lab", "${NOTEBOOK_ARGS}"]
+CMD ["jupyter", "lab"]
