@@ -56,8 +56,9 @@ RUN python -m ipykernel install --name birdy
 # RUN mamba install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy nbdime
 
 # build jupyterlab extensions installed by conda, see `jupyter labextension list`
-# Not needed with jupyterlab v3 anymore.
-#RUN jupyter lab build
+# Supposedly not needed with jupyterlab v3 anymore but see
+# https://github.com/jupyterlab/jupyterlab/issues/11726#issuecomment-998901247
+RUN jupyter lab build
 
 RUN jupyter serverextension enable voila --sys-prefix
 #    && jupyter labextension install jupyterlab-clipboard

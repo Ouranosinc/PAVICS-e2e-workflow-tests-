@@ -141,6 +141,9 @@ dependencies:
   # xeus-python: back-end kernel implementing the Jupyter Debug Protocol
   - xeus-python
   - jupyter-dash
+  # Force newer nodejs for 'jupyter lab build' issue
+  # https://github.com/jupyterlab/jupyterlab/issues/11726#issuecomment-998901247
+  - nodejs >= 17.1.0
   # utilities
   - curl
   - wget
