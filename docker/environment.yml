@@ -19,7 +19,7 @@ dependencies:
   # phase.  Mamba is quicker to solve dependencies than conda but it is less
   # precise so accidental downgrade happends.
   - xclim >= 0.32.1
-  - ravenpy >= 0.7.5
+  - ravenpy >= 0.7.6
 
   - matplotlib
     # - xarray  # from xclim and ravenpy
