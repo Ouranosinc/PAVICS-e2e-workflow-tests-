@@ -67,6 +67,11 @@ RUN jupyter lab build
 RUN jupyter serverextension enable voila --sys-prefix
 #    && jupyter labextension install jupyterlab-clipboard
 
+# This should be "master" but commit
+# https://github.com/jupyter/docker-stacks/commit/c772e98ac794173d6ed83a08ec249038b27ca3be
+# is breaking with us since we do not have user jovyan.
+ENV DOCKER_STACKS_COMMIT=709206ac8788475728cc9c992c25fb5f1501bc29
+
 # /notebook_dir for Pavics-landing notebooks to re-create Jupyter env layout:
 # /notebook_dir/writable-workspace, /notebook_dir/pavics-homepage.
 #
@@ -74,12 +79,12 @@ RUN jupyter serverextension enable voila --sys-prefix
 # hardcoded so users can copy the nb to writable-workspace/ dir and still be able
 # to run them seemlessly from the Jupyter env (without having to also copy
 # those *.geojson files with the notebooks).
-RUN wget https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start.sh --output-document /usr/local/bin/start.sh && \
-    wget https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-singleuser.sh --output-document /usr/local/bin/start-singleuser.sh && \
-    wget https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-notebook.sh --output-document /usr/local/bin/start-notebook.sh && \
-    wget https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/fix-permissions --output-document /usr/local/bin/fix-permissions && \
+RUN wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_COMMIT/base-notebook/start.sh --output-document /usr/local/bin/start.sh && \
+    wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_COMMIT/base-notebook/start-singleuser.sh --output-document /usr/local/bin/start-singleuser.sh && \
+    wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_COMMIT/base-notebook/start-notebook.sh --output-document /usr/local/bin/start-notebook.sh && \
+    wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_COMMIT/base-notebook/fix-permissions --output-document /usr/local/bin/fix-permissions && \
     mkdir /etc/jupyter && \
-    wget https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/jupyter_notebook_config.py --output-document /etc/jupyter/jupyter_notebook_config.py && \
+    wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_COMMIT/base-notebook/jupyter_notebook_config.py --output-document /etc/jupyter/jupyter_notebook_config.py && \
     chmod a+rx /usr/local/bin/start.sh /usr/local/bin/start-singleuser.sh /usr/local/bin/start-notebook.sh /usr/local/bin/fix-permissions && \
     chmod a+r /etc/jupyter/jupyter_notebook_config.py && \
     mkdir /notebook_dir && chown jenkins /notebook_dir
@@ -88,7 +93,6 @@ RUN wget https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-not
 # the jupyter/base-notebook image also do not default to root user so we do the same here
 USER jenkins
 
-# Follow jupyter/base-notebook image so config in jupyterhub is simpler.
-# Unable to use the wrapper start-notebook.sh, it just does nothing so had to
-# hardcode what it should do.
-CMD ["jupyter", "lab"]
+# follow jupyter/base-notebook image so config in jupyterhub is simpler
+# start notebook in conda environment to have working jupyter extensions
+CMD ["conda", "run", "-n", "birdy", "/usr/local/bin/start-notebook.sh"]
