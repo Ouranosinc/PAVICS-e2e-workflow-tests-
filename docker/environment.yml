@@ -34,9 +34,7 @@ dependencies:
   - pydap
   - cartopy
   - descartes
-  # Pin rasterio for ravenpy, remove on next build.
-  # See https://github.com/CSHS-CWRA/RavenPy/commit/eae66e9afc30e2381e9119644a0695d1d248c739
-    # - rasterio <= 1.2.6  # from ravenpy
+    # - rasterio  # from ravenpy
     # - gdal  # for osgeo, from ravenpy
     # - geopandas  # from ravenpy
     # - pandas  # from xclim and ravenpy
@@ -88,9 +86,7 @@ dependencies:
   - zarr
   # https://github.com/dask/s3fs/
   - s3fs
-  # Pinning shapely for ravenpy.  Remove on next rebuild.
-  # https://github.com/CSHS-CWRA/RavenPy/blob/f63e1e5b967c0d7c17e679c8f9d6d309a94096e6/environment.yml#L35
-  # - shapely <=1.7.1  # from ravenpy
+    # - shapely  # from ravenpy
   # https://github.com/roocs/clisops
   - clisops
   # Universal Regridder for Geospatial Data
