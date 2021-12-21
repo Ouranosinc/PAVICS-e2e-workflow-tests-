@@ -29,6 +29,12 @@ COPY environment.yml /environment.yml
 # Had to do this 2 stages install.  2 stages install was also taking forever
 # with conda so had to switch to mamba.
 #
+# One single 'conda env create -f /environment.yml' takes forever because we
+# removed all direct dependencies of xclim and ravenpy in /environment.yml for
+# dependencies pinning by xclim and ravenpy to take effect.  This results in
+# conda having a lot more packages to "solve" and it seems the solver
+# performance dropped exponentially with the number of packages to solve.
+#
 # Conda was stuck at this step:
 # DEBUG conda.common._logic:_run_sat(607): Invoking SAT with clause count: 2500273
 #
