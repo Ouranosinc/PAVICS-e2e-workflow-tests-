@@ -51,10 +51,6 @@ RUN mamba create --name birdy --channel conda-forge --channel defaults xclim rav
 # alternate way to 'source activate birdy'
 ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
 
-# our notebooks are hardcoded to lookup for kernel named 'birdy'
-# this python is from the birdy env above
-RUN python -m ipykernel install --name birdy
-
 # install using same channel preferences as birdy original env to not downgrade
 # anything accidentally
 # this is for debug only, all dependencies should be specified in
@@ -74,6 +70,10 @@ RUN jupyter serverextension enable voila --sys-prefix
 #    && jupyter labextension install jupyterlab-clipboard
 
 USER root
+
+# our notebooks are hardcoded to lookup for kernel named 'birdy'
+# this python is from the birdy env above
+RUN python -m ipykernel install --name birdy
 
 # This should be "master" but commit
 # https://github.com/jupyter/docker-stacks/commit/c772e98ac794173d6ed83a08ec249038b27ca3be
