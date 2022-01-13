@@ -21,11 +21,6 @@ dependencies:
   - xclim >= 0.32.1
   - ravenpy >= 0.7.7
 
-  # Avoid openssl downgrade during second install phase by mamba.
-  # - openssl 3.0.0 h7f98852_2 installed
-  # + openssl 1.1.1l h7f98852_0 conda-forge/linux-64 2 MB
-  - openssl >= 3.0
-
   - matplotlib
     # - xarray  # from xclim and ravenpy
     # - numpy  # from xclim and ravenpy
