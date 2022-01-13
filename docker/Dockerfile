@@ -21,6 +21,14 @@ RUN groupadd --gid 1000 jenkins \
 
 COPY environment.yml /environment.yml
 
+# Use normal user to create the conda env so the user have full priviledge to
+# customize the env.
+USER jenkins
+
+# Mamba creates temporary files in the PWD so have to switch to where jenkins
+# have write access.
+WORKDIR /home/jenkins
+
 # create env "birdy"
 # use umask 0000 so that the files for the new environment are usable by user 'jenkins' for the jupyter-conda-extension
 #
@@ -37,8 +45,7 @@ COPY environment.yml /environment.yml
 #
 # Conda was stuck at this step:
 # DEBUG conda.common._logic:_run_sat(607): Invoking SAT with clause count: 2500273
-RUN umask 0000 && \
-    mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy && \
+RUN mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy && \
     mamba env update --name birdy --file /environment.yml
 
 # alternate way to 'source activate birdy'
@@ -65,6 +72,8 @@ RUN jupyter lab build
 
 RUN jupyter serverextension enable voila --sys-prefix
 #    && jupyter labextension install jupyterlab-clipboard
+
+USER root
 
 # This should be "master" but commit
 # https://github.com/jupyter/docker-stacks/commit/c772e98ac794173d6ed83a08ec249038b27ca3be
