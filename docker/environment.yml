@@ -102,7 +102,11 @@ dependencies:
   # for esgf notebooks
   - esgf-compute-api
   - cdms2
-  - vcs
+  # Disable vcs because it was forcing python downgrade to below 3.9.
+  # See https://github.com/CDAT/vcs/issues/457
+  #   package vcs-8.1-py_0 requires vtk-cdat >8.1, but none of the providers can be installed
+  #   package vtk-cdat-8.2.0.8.2.1-py38hbc81915_0 requires python >=3.8,<3.9.0a0 *_cpython
+  #- vcs
   - mesalib
   # tests
   - pytest
