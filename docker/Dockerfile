@@ -39,7 +39,8 @@ COPY environment.yml /environment.yml
 # DEBUG conda.common._logic:_run_sat(607): Invoking SAT with clause count: 2500273
 RUN umask 0000 && \
     mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy && \
-    mamba env update --name birdy --file /environment.yml
+    mamba env update --name birdy --file /environment.yml && \
+    conda remove mamba -n base
 
 # alternate way to 'source activate birdy'
 ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
