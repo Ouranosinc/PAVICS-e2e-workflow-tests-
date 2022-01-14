@@ -19,7 +19,7 @@ dependencies:
   # phase.  Mamba is quicker to solve dependencies than conda but it is less
   # precise so accidental downgrade happends.
   - xclim >= 0.32.1
-  - ravenpy >= 0.7.7
+  - ravenpy >= 0.7.8
 
   - matplotlib
     # - xarray  # from xclim and ravenpy
@@ -88,13 +88,11 @@ dependencies:
   - s3fs
     # - shapely  # from ravenpy
   # https://github.com/roocs/clisops
-  - clisops
+  - clisops >= 0.8.0
   # Universal Regridder for Geospatial Data
   # https://github.com/pangeo-data/xESMF
-  # Pin xesmf because latest xesmf-0.6.2 is not compatible with latest clisops-0.7.0.
-  # xesmf-0.6.1 is buggy.
-  # Unpin when new compatible clisops is released.
-  - xesmf <= 0.6.0
+  # xesmf-0.6.2 requires clisops>=0.8.0
+  - xesmf >= 0.6.2
   # https://anaconda.org/anaconda/memory_profiler
   # Monitor memory consumption of a process as well as line-by-line analysis
   # of memory consumption for Python programs.
