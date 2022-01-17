@@ -32,7 +32,7 @@ dependencies:
   # following the CF Conventions.
   - cfgrib
   - pydap
-  - cartopy
+  - cartopy >= 0.20.1
   - descartes
     # - rasterio  # from ravenpy
     # - gdal  # for osgeo, from ravenpy
