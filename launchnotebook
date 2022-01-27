@@ -26,4 +26,4 @@ docker run --rm --name $CONTAINER_NAME \
              usermod -u $UID jenkins; \
              echo 'ENV_PATH PATH=/usr/local/envs/birdy/bin:/opt/conda/bin:/usr/local/bin:/usr/bin:/bin' >> /etc/login.defs; \
              su jenkins -s /bin/bash -c \
-                 'jupyter notebook --ip=0.0.0.0 --port=$PORT --no-browser'"
+                 'jupyter lab --ip=0.0.0.0 --port=$PORT --no-browser'"
