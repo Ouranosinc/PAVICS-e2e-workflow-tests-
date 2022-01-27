@@ -6,27 +6,39 @@ channels:
   - bokeh
   - plotly  # for jupyter-dash
   - defaults
+
 dependencies:
+
+  # Do not put xclim and ravenpy direct dependencies here to let xclim and ravenpy
+  # manage their own dependencies pinning.
+  #
+  # xclim direct dependencies: https://github.com/conda-forge/xclim-feedstock/blob/master/recipe/meta.yaml
+  # ravenpy direct dependencies: https://github.com/conda-forge/ravenpy-feedstock/blob/master/recipe/meta.yaml
+
+  # Pin latest xclim and ravenpy to avoid downgrading during the second install
+  # phase.  Mamba is quicker to solve dependencies than conda but it is less
+  # precise so accidental downgrade happends.
+  - xclim >= 0.32.1
+  - ravenpy >= 0.7.8
+
   - matplotlib
-  - xarray
-  - numpy
+    # - xarray  # from xclim and ravenpy
+    # - numpy  # from xclim and ravenpy
   - birdy
-  - owslib>=0.23.0
-  - netcdf4
+    # - owslib>=0.23.0  # from ravenpy
+    # - netcdf4  # from ravenpy
   # https://github.com/ecmwf/cfgrib
   # Python interface to map GRIB files to the Unidata's Common Data Model v4
   # following the CF Conventions.
   - cfgrib
   - pydap
-  - cartopy
+  - cartopy >= 0.20.1
   - descartes
-  # Pin rasterio for ravenpy, remove on next build.
-  # See https://github.com/CSHS-CWRA/RavenPy/commit/eae66e9afc30e2381e9119644a0695d1d248c739
-  - rasterio <= 1.2.6
-  - gdal  # for osgeo
-  - geopandas
-  - pandas
-  - rioxarray
+    # - rasterio  # from ravenpy
+    # - gdal  # for osgeo, from ravenpy
+    # - geopandas  # from ravenpy
+    # - pandas  # from xclim and ravenpy
+    # - rioxarray  # from ravenpy
   - scikit-image
   - ipyleaflet
   - threddsclient
@@ -48,12 +60,12 @@ dependencies:
   # pinning hvplot did not solve the problem with violin plot.
   - hvplot
   - nc-time-axis
-  - cftime
-  - statsmodels  # for ravenpy
+    # - cftime  # from xclim and ravenpy
+    # - statsmodels  # for ravenpy
   # for error 'ImportError: HTTPFileSystem requires "requests" and "aiohttp" to
   # be installed' with call 'fsspec.filesystem('https')'
   - aiohttp
-  - pydantic
+    # - pydantic  # from ravenpy
   # Intake is a lightweight set of tools for loading and sharing data in data science projects
   - intake
   # https://intake.readthedocs.io/en/latest/plugin-directory.html
@@ -74,19 +86,34 @@ dependencies:
   - zarr
   # https://github.com/dask/s3fs/
   - s3fs
-  - xclim
-  # Pinning shapely for ravenpy.  Remove on next rebuild.
-  # https://github.com/CSHS-CWRA/RavenPy/blob/f63e1e5b967c0d7c17e679c8f9d6d309a94096e6/environment.yml#L35
-  - shapely <=1.7.1
-  - ravenpy
+    # - shapely  # from ravenpy
+  # PIN shapely due to notebook failure
+  # PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb:
+  #   /opt/conda/envs/birdy/lib/python3.7/site-packages/shapely/geometry/base.py in array_interface_base(self)
+  #       324             "removed in Shapely 2.0.",
+  #       325             ShapelyDeprecationWarning, stacklevel=2)
+  #   --> 326         return self._array_interface_base()
+  #       327 
+  #       328     @property
+  #
+  #   TypeError: 'dict' object is not callable
+  #
+  # climex.ipynb:
+  #   /opt/conda/envs/birdy/lib/python3.7/site-packages/cartopy/crs.py:825: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  #     if len(multi_line_string) > 1:
+  #   /opt/conda/envs/birdy/lib/python3.7/site-packages/cartopy/crs.py:877: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  #     for line in multi_line_string:
+  #   /opt/conda/envs/birdy/lib/python3.7/site-packages/cartopy/crs.py:944: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  #     if len(p_mline) > 0:
+  #   /opt/conda/envs/birdy/lib/python3.7/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_coastline.zip
+  #     warnings.warn(f'Downloading: {url}', DownloadWarning)
+  - shapely <= 1.7.1
   # https://github.com/roocs/clisops
-  - clisops
+  - clisops >= 0.8.0
   # Universal Regridder for Geospatial Data
   # https://github.com/pangeo-data/xESMF
-  # Pin xesmf because latest xesmf-0.6.2 is not compatible with latest clisops-0.7.0.
-  # xesmf-0.6.1 is buggy.
-  # Unpin when new compatible clisops is released.
-  - xesmf <= 0.6.0
+  # xesmf-0.6.2 requires clisops>=0.8.0
+  - xesmf >= 0.6.2
   # https://anaconda.org/anaconda/memory_profiler
   # Monitor memory consumption of a process as well as line-by-line analysis
   # of memory consumption for Python programs.
@@ -94,7 +121,11 @@ dependencies:
   # for esgf notebooks
   - esgf-compute-api
   - cdms2
-  - vcs
+  # Disable vcs because it was forcing python downgrade to below 3.9.
+  # See https://github.com/CDAT/vcs/issues/457
+  #   package vcs-8.1-py_0 requires vtk-cdat >8.1, but none of the providers can be installed
+  #   package vtk-cdat-8.2.0.8.2.1-py38hbc81915_0 requires python >=3.8,<3.9.0a0 *_cpython
+  #- vcs
   - mesalib
   # tests
   - pytest
@@ -105,6 +136,10 @@ dependencies:
   - notebook
   - jupyterlab
   - jupyterhub
+  # https://ipywidgets.readthedocs.io/en/latest/user_install.html
+  - ipywidgets
+  # https://github.com/jupyter-widgets/ipyleaflet
+  - ipyleaflet
   # https://github.com/mamba-org/gator (was jupyter_conda)
   - mamba_gator
   # to diff .ipynb files
@@ -125,6 +160,11 @@ dependencies:
   # xeus-python: back-end kernel implementing the Jupyter Debug Protocol
   - xeus-python
   - jupyter-dash
+  # Force newer nodejs for 'jupyter lab build' issue
+  # https://github.com/jupyterlab/jupyterlab/issues/11726#issuecomment-998901247
+  # TODO: remove nodejs once all extensions move to prebuilt extensions, see comment
+  # https://github.com/jupyterlab/jupyterlab/issues/11726#issuecomment-998917305
+  - nodejs >= 16.0
   # utilities
   - curl
   - wget

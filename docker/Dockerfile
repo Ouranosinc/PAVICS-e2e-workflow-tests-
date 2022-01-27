@@ -1,6 +1,10 @@
 FROM continuumio/miniconda3
 
-RUN conda update conda
+# Use mamba for much improved performance over conda.
+# The 'channel_priority strict' did help conda but it was not enough.
+RUN conda update conda -n base && \
+    conda install mamba -n base -c defaults -c conda-forge && \
+    conda config --set channel_priority strict
 
 # to checkout other notebooks and to run pip install
 RUN apt-get update && \
@@ -9,18 +13,40 @@ RUN apt-get update && \
     firefox-esr x11-utils && \
     apt-get clean
 
-COPY environment.yml /environment.yml
-
-# needed for our specific jenkins
+# Create user jenkins for our Jenkins e2e notebooks test suite.
+# Change /opt/conda folder permissions for jupyter-conda extension.
 RUN groupadd --gid 1000 jenkins \
-    && useradd --uid 1000 --gid jenkins --create-home jenkins
+    && useradd --uid 1000 --gid jenkins --create-home jenkins && \
+    chmod -R a+rwx /opt/conda
 
-# Change these folders' permissions for jupyter-conda extension
-RUN chmod -R a+rwx /opt/conda
+COPY environment.yml /environment.yml
 
 # create env "birdy"
 # use umask 0000 so that the files for the new environment are usable by user 'jenkins' for the jupyter-conda-extension
-RUN umask 0000 && conda env create -f /environment.yml
+#
+# Perform 2 stages install because one single 'conda env create -f
+# /environment.yml' was taking forever to complete, same with mamba.
+# Had to do this 2 stages install.  2 stages install was also taking forever
+# with conda so had to switch to mamba.
+#
+# One single 'conda env create -f /environment.yml' takes forever because we
+# removed all direct dependencies of xclim and ravenpy in /environment.yml for
+# dependencies pinning by xclim and ravenpy to take effect.  This results in
+# conda having a lot more packages to "solve" and it seems the solver
+# performance dropped exponentially with the number of packages to solve.
+#
+# Conda was stuck at this step:
+# DEBUG conda.common._logic:_run_sat(607): Invoking SAT with clause count: 2500273
+#
+# Pin python=3.9 because python 3.10 cause this error:
+#   Encountered problems while solving:
+#     - package cartopy-0.20.1-py310h902574e_5 requires geos >=3.10.1,<3.10.2.0a0, but none of the providers can be installed
+#   This means there is no py310 build for geos package but https://anaconda.org/conda-forge/geos/files seems to be python indepdendent !
+# Pin python=3.8 because according to DavidH, xESMF has not been tested with 3.9 yet.
+RUN umask 0000 && \
+    mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy python=3.8 && \
+    mamba env update --name birdy --file /environment.yml && \
+    conda remove mamba -n base
 
 # alternate way to 'source activate birdy'
 ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
@@ -33,35 +59,41 @@ RUN python -m ipykernel install --name birdy
 # anything accidentally
 # this is for debug only, all dependencies should be specified in
 # environment.yml above
-# RUN conda install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy nbdime
+# RUN mamba install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy nbdime
 
 # build jupyterlab extensions installed by conda, see `jupyter labextension list`
+# Supposedly not needed with jupyterlab v3 anymore but see
+# https://github.com/jupyterlab/jupyterlab/issues/11726#issuecomment-998901247
+# TODO: remove 'jupyter lab build' step once all extensions move to prebuilt extensions,
+# see comment https://github.com/jupyterlab/jupyterlab/issues/11726#issuecomment-998917305
+# Currently jupyter-dash is holding back this step, see
+# https://github.com/plotly/jupyter-dash/issues/49
 RUN jupyter lab build
 
-# for ipywidgets to work with jupyter lab (notebooks works out of the box)
-RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager \
-    && jupyter serverextension enable voila --sys-prefix \
-    && jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-leaflet \
-    && jupyter labextension install jupyterlab-topbar-text \
-                                    jupyterlab-theme-toggle
+RUN jupyter serverextension enable voila --sys-prefix
 #    && jupyter labextension install jupyterlab-clipboard
 
-ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start.sh /usr/local/bin/
-ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-singleuser.sh /usr/local/bin/
-ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/start-notebook.sh /usr/local/bin/
-ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/fix-permissions /usr/local/bin/
-ADD https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/jupyter_notebook_config.py /etc/jupyter/
-RUN chmod a+rx /usr/local/bin/start.sh /usr/local/bin/start-singleuser.sh /usr/local/bin/start-notebook.sh /usr/local/bin/fix-permissions; \
-    chmod a+r /etc/jupyter/jupyter_notebook_config.py
+# This should be "master" but commit
+# https://github.com/jupyter/docker-stacks/commit/c772e98ac794173d6ed83a08ec249038b27ca3be
+# is breaking with us since we do not have user jovyan.
+ENV DOCKER_STACKS_COMMIT=709206ac8788475728cc9c992c25fb5f1501bc29
 
-# For Pavics-landing notebooks to re-create Jupyter env layout:
+# /notebook_dir for Pavics-landing notebooks to re-create Jupyter env layout:
 # /notebook_dir/writable-workspace, /notebook_dir/pavics-homepage.
 #
 # Path to the /notebook_dir/pavics-homepage/tutorial_data/*.geojson files are
 # hardcoded so users can copy the nb to writable-workspace/ dir and still be able
 # to run them seemlessly from the Jupyter env (without having to also copy
 # those *.geojson files with the notebooks).
-RUN mkdir /notebook_dir && chown jenkins /notebook_dir
+RUN wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_COMMIT/base-notebook/start.sh --output-document /usr/local/bin/start.sh && \
+    wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_COMMIT/base-notebook/start-singleuser.sh --output-document /usr/local/bin/start-singleuser.sh && \
+    wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_COMMIT/base-notebook/start-notebook.sh --output-document /usr/local/bin/start-notebook.sh && \
+    wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_COMMIT/base-notebook/fix-permissions --output-document /usr/local/bin/fix-permissions && \
+    mkdir /etc/jupyter && \
+    wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_COMMIT/base-notebook/jupyter_notebook_config.py --output-document /etc/jupyter/jupyter_notebook_config.py && \
+    chmod a+rx /usr/local/bin/start.sh /usr/local/bin/start-singleuser.sh /usr/local/bin/start-notebook.sh /usr/local/bin/fix-permissions && \
+    chmod a+r /etc/jupyter/jupyter_notebook_config.py && \
+    mkdir /notebook_dir && chown jenkins /notebook_dir
 
 # problem running start-notebook.sh when being root
 # the jupyter/base-notebook image also do not default to root user so we do the same here
