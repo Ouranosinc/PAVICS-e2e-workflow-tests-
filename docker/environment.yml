@@ -181,6 +181,8 @@ dependencies:
   - scp
   - selenium
   - geckodriver
+  - xlrd
+  - pre-commit
   # for pip packages
   - pip
   - pip:
