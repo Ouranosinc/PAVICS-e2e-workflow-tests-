@@ -21,14 +21,6 @@ dependencies:
   - xclim >= 0.32.1
   - ravenpy >= 0.7.8
 
-  # Pin dask and distributed for slow PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb.
-  # Same as in commit https://github.com/bird-house/finch/pull/226/commits/7bf4a7e1bcb12bc88d15bdcbbd484e81106be67c
-  - dask <= 2022.1.0
-  - distributed <= 2022.1.0
-
-  # Pin cf_xarray for slow WPS_example.ipynb.
-  - cf_xarray<=0.6.3
-
   - matplotlib
     # - xarray  # from xclim and ravenpy
     # - numpy  # from xclim and ravenpy
