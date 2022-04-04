@@ -23,6 +23,7 @@ dependencies:
 
   # Pin dask and distributed for slow PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb.
   # Same as in commit https://github.com/bird-house/finch/pull/226/commits/7bf4a7e1bcb12bc88d15bdcbbd484e81106be67c
+  # See issue https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests/issues/100
   - dask <= 2022.1.0
   - distributed <= 2022.1.0
 
@@ -96,6 +97,7 @@ dependencies:
   - s3fs
     # - shapely  # from ravenpy
   # PIN shapely due to notebook failure
+  # See issue https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests/issues/99
   # PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb:
   #   /opt/conda/envs/birdy/lib/python3.7/site-packages/shapely/geometry/base.py in array_interface_base(self)
   #       324             "removed in Shapely 2.0.",
