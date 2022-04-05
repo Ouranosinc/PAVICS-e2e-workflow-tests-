@@ -1,5 +1,7 @@
 #!/bin/sh
 
+DEFAULT_PRODUCTION_HOST="pavics.ouranos.ca"
+
 NOTEBOOKS="$1"
 if [ -z "$NOTEBOOKS" ]; then
     NOTEBOOKS="notebooks/*.ipynb"
@@ -16,12 +18,19 @@ fi
 
 if [ ! -z "$PAVICS_HOST" ]; then
     echo "Will run notebooks against $PAVICS_HOST"
-    # * .ncml links will always comes from the production server, not the server
-    # under test since we do not perform regex replace for .ncml links.
-    #
-    # * Any lines marked with TEST_USE_PROD_DATA will also use data from prod
-    # and avoid having to replicate data to test servers.
-    sed -i "/\(\.ncml\|TEST_USE_PROD_DATA\)/!s/pavics.ouranos.ca/$PAVICS_HOST/g" $NOTEBOOKS
+
+    if [ -z "$TEST_NO_USE_PROD_DATA" ]; then
+        # * .ncml links will always comes from the production server, not the server
+        # under test since we do not perform regex replace for .ncml links.
+        #
+        # * Any lines marked with TEST_USE_PROD_DATA will also use data from prod
+        # and avoid having to replicate data to test servers.
+        sed -i "/\(\.ncml\|TEST_USE_PROD_DATA\)/!s/$DEFAULT_PRODUCTION_HOST/$PAVICS_HOST/g" $NOTEBOOKS
+    else
+        # Change everything to $PAVICS_HOST (system under test).
+        sed -i "s/$DEFAULT_PRODUCTION_HOST/$PAVICS_HOST/g" $NOTEBOOKS
+    fi
+
     git diff  # not working for notebooks from other repos
 fi
 
