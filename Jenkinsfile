@@ -75,7 +75,7 @@ Requires 'weaver' component to be active on the target 'PAVICS_HOST' server
         string(name: 'PYTEST_EXTRA_OPTS', defaultValue: '',
                description: 'Extra options to pass to pytest, ex: --nbval-lax', trim: true)
         string(name: 'EXTRA_TEST_ENV_VAR', defaultValue: '',
-               description: 'Extra environment variables for the various tests, ex: "TEST_RUNS=50 TEST_WPS_BIRDS=finch,raven,flyingpigeon"', trim: true)
+               description: 'Extra environment variables for the various tests, ex: "TEST_RUNS=50 TEST_WPS_BIRDS=finch,raven,flyingpigeon TEST_NO_USE_PROD_DATA=1"', trim: true)
         booleanParam(name: 'TEST_LOCAL_NOTEBOOKS', defaultValue: true,
                      description: 'Check the box to test notebooks in this repo (./notebooks/*.ipynb).')
         booleanParam(name: 'VERIFY_SSL', defaultValue: true,
