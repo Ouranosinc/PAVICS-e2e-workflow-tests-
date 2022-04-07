@@ -93,7 +93,8 @@ RUN wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_
     wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_COMMIT/base-notebook/jupyter_notebook_config.py --output-document /etc/jupyter/jupyter_notebook_config.py && \
     chmod a+rx /usr/local/bin/start.sh /usr/local/bin/start-singleuser.sh /usr/local/bin/start-notebook.sh /usr/local/bin/fix-permissions && \
     chmod a+r /etc/jupyter/jupyter_notebook_config.py && \
-    mkdir /notebook_dir && chown jenkins /notebook_dir
+    mkdir /notebook_dir && chown jenkins /notebook_dir && \
+    chmod a+rwX -R /opt/conda/envs/birdy/fonts
 
 # problem running start-notebook.sh when being root
 # the jupyter/base-notebook image also do not default to root user so we do the same here
