@@ -70,7 +70,9 @@ RUN python -m ipykernel install --name birdy
 # https://github.com/plotly/jupyter-dash/issues/49
 RUN jupyter lab build
 
-RUN jupyter serverextension enable voila --sys-prefix
+RUN jupyter serverextension enable voila --sys-prefix \
+    && jupyter serverextension enable panel.io.jupyter_server_extension --sys-prefix \
+    && jupyter serverextension list
 #    && jupyter labextension install jupyterlab-clipboard
 
 # This should be "master" but commit

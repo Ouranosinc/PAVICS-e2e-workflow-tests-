@@ -170,6 +170,10 @@ dependencies:
   # xeus-python: back-end kernel implementing the Jupyter Debug Protocol
   - xeus-python
   - jupyter-dash
+  # https:://github.com/jupyterhub/jupyter-server-proxy
+  - jupyter-server-proxy
+  # https://github.com/dask/dask-labextension
+  - dask-labextension
   # Force newer nodejs for 'jupyter lab build' issue
   # https://github.com/jupyterlab/jupyterlab/issues/11726#issuecomment-998901247
   # TODO: remove nodejs once all extensions move to prebuilt extensions, see comment
