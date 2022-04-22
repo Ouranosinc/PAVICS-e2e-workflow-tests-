@@ -14,7 +14,7 @@ WORKDIR /notebooks
 
 ENV BOKEH_ALLOW_WS_ORIGIN "*"
 
-RUN wget https://gist.githubusercontent.com/tlvu/f8a91585bac38af23c4f4490f94fc513/raw/30894efd1c0cd6b759b2a911e6fe50f16deae14d/TEST-panel-binder.ipynb -O TEST-panel-binder.ipynb; wget https://gist.githubusercontent.com/tlvu/f8a91585bac38af23c4f4490f94fc513/raw/30894efd1c0cd6b759b2a911e6fe50f16deae14d/TEST-panel-servable.ipynb -O TEST-panel-servable.ipynb; chown jenkins:jenkins *.ipynb
+RUN wget https://gist.githubusercontent.com/tlvu/f8a91585bac38af23c4f4490f94fc513/raw/30894efd1c0cd6b759b2a911e6fe50f16deae14d/TEST-panel-binder.ipynb -O TEST-panel-binder.ipynb; wget https://gist.githubusercontent.com/tlvu/f8a91585bac38af23c4f4490f94fc513/raw/30894efd1c0cd6b759b2a911e6fe50f16deae14d/TEST-panel-servable.ipynb -O TEST-panel-servable.ipynb; chown jenkins:jenkins -R .
 
 # RUN pip install https://github.com/Ouranosinc/xclim/archive/master.tar.gz
 
