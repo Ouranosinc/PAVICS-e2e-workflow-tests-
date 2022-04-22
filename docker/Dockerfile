@@ -98,6 +98,9 @@ RUN wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_
     mkdir /notebook_dir && chown jenkins /notebook_dir && \
     chmod a+rwX -R /opt/conda/envs/birdy/fonts
 
+# For jupyter-panel-proxy launcher.
+ENV BOKEH_ALLOW_WS_ORIGIN "*"
+
 # problem running start-notebook.sh when being root
 # the jupyter/base-notebook image also do not default to root user so we do the same here
 USER jenkins
