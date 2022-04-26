@@ -20,6 +20,8 @@ RUN mkdir -p subdir1/subdir2; cp TEST-panel-servable.ipynb subdir1/servable1.ipy
 
 RUN chown jenkins:jenkins -R .
 
+RUN chmod a+rwX -R /opt/conda/pkgs/cache/
+
 # RUN pip install https://github.com/Ouranosinc/xclim/archive/master.tar.gz
 
 USER jenkins
