@@ -18,7 +18,8 @@ COPY binder/test-notebooks /notebooks
 
 RUN mkdir -p subdir1/subdir2; cp TEST-panel-servable.ipynb subdir1/servable1.ipynb; cp TEST-panel-servable.ipynb subdir1/subdir2/servable2.ipynb; cp TEST-panel-servable.ipynb TEST-panel-servable-Copy.ipynb
 
-RUN chown jenkins:jenkins -R .
+# test whether Panel launcher requires writable perm at current launch dir
+# RUN chown jenkins:jenkins -R .
 
 # RUN pip install https://github.com/Ouranosinc/xclim/archive/master.tar.gz
 
