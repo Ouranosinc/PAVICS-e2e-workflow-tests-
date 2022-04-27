@@ -25,3 +25,5 @@ RUN chmod a+rwX -R /opt/conda/pkgs/cache/
 # RUN pip install https://github.com/Ouranosinc/xclim/archive/master.tar.gz
 
 USER jenkins
+
+RUN conda install -c pyviz/label/dev jupyter-panel-proxy
