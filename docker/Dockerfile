@@ -17,7 +17,7 @@ RUN apt-get update && \
 # Change /opt/conda folder permissions for jupyter-conda extension.
 RUN groupadd --gid 1000 jenkins \
     && useradd --uid 1000 --gid jenkins --create-home jenkins && \
-    chmod -R a+rwx /opt/conda
+    chmod -R a+rwX /opt/conda
 
 COPY environment.yml /environment.yml
 
