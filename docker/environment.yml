@@ -5,7 +5,7 @@ channels:
   - cdat
   - bokeh
   - plotly  # for jupyter-dash
-  - pyviz  # for jupyter-panel-proxy
+  - pyviz/label/dev  # for jupyter-panel-proxy
   - defaults
 
 dependencies:
@@ -176,7 +176,7 @@ dependencies:
   # https://github.com/dask/dask-labextension
   - dask-labextension
   # https://github.com/holoviz/jupyter-panel-proxy
-  - jupyter-panel-proxy
+  - jupyter-panel-proxy >= 0.2.0a2
   # Force newer nodejs for 'jupyter lab build' issue
   # https://github.com/jupyterlab/jupyterlab/issues/11726#issuecomment-998901247
   # TODO: remove nodejs once all extensions move to prebuilt extensions, see comment
