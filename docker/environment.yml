@@ -5,7 +5,7 @@ channels:
   - cdat
   - bokeh
   - plotly  # for jupyter-dash
-  - pyviz/label/dev  # for jupyter-panel-proxy
+  - pyviz/label/dev  # for jupyter-panel-proxy, panel
   - defaults
 
 dependencies:
@@ -58,7 +58,7 @@ dependencies:
   - jupyter_bokeh
   - pscript
   - h5netcdf
-  - panel
+  - panel >= 0.13.1a2
   # https://github.com/holoviz/panel
   - pyviz_comms  # (was labextension pyviz/jupyterlab_pyviz in jupyterlab v2)
   - holoviews
