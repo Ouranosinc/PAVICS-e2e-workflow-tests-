@@ -201,7 +201,9 @@ dependencies:
     # Mimics how one might format their calculation if it were written with a
     # pencil: write the symbolic formula, followed by numeric substitutions,
     # and then the result.
-    - handcalcs
+    # DISABLE handcalcs, interfere with "Panel preview" button
+    # See comment https://github.com/holoviz/panel/issues/3440#issuecomment-1112182170
+    # - handcalcs
     # https://github.com/ShopRunner/jupyter-notify
     # Jupyter Magic For Browser Notifications of Cell Completion.
     - jupyternotify
