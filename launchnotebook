@@ -7,7 +7,7 @@ if [ -z "$PORT" ]; then
 fi
 
 if [ -z "$DOCKER_IMAGE" ]; then
-    DOCKER_IMAGE="pavics/workflow-tests:220427"
+    DOCKER_IMAGE="pavics/workflow-tests:220428"
 fi
 
 if [ -z "$CONTAINER_NAME" ]; then
