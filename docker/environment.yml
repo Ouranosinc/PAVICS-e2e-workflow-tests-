@@ -28,9 +28,6 @@ dependencies:
   - dask <= 2022.1.0
   - distributed <= 2022.1.0
 
-  # Pin cf_xarray for slow WPS_example.ipynb.
-  - cf_xarray<=0.6.3
-
   - matplotlib
     # - xarray  # from xclim and ravenpy
     # - numpy  # from xclim and ravenpy
