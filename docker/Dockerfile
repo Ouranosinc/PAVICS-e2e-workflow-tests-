@@ -106,11 +106,6 @@ ENV BOKEH_ALLOW_WS_ORIGIN "*"
 # the jupyter/base-notebook image also do not default to root user so we do the same here
 USER jenkins
 
-# Patch Panel for "Render with Panel" button regression fix
-# TODO remove this patch once a Panel release contain this PR https://github.com/holoviz/panel/pull/3469.
-RUN wget https://raw.githubusercontent.com/tlvu/panel/ac8d6fb3efdfb66315af1107070a6c67affaebc8/panel/io/jupyter_server_extension.py \
-    -O /opt/conda/envs/birdy/lib/python3.8/site-packages/panel/io/jupyter_server_extension.py
-
 # follow jupyter/base-notebook image so config in jupyterhub is simpler
 # start notebook in conda environment to have working jupyter extensions
 CMD ["conda", "run", "-n", "birdy", "/usr/local/bin/start-notebook.sh"]
