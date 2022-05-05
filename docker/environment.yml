@@ -5,6 +5,7 @@ channels:
   - cdat
   - bokeh
   - plotly  # for jupyter-dash
+  - pyviz/label/dev  # for jupyter-panel-proxy, panel
   - defaults
 
 dependencies:
@@ -26,9 +27,6 @@ dependencies:
   # See issue https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests/issues/100
   - dask <= 2022.1.0
   - distributed <= 2022.1.0
-
-  # Pin cf_xarray for slow WPS_example.ipynb.
-  - cf_xarray<=0.6.3
 
   - matplotlib
     # - xarray  # from xclim and ravenpy
@@ -57,7 +55,7 @@ dependencies:
   - jupyter_bokeh
   - pscript
   - h5netcdf
-  - panel
+  - panel >= 0.13.1a3
   # https://github.com/holoviz/panel
   - pyviz_comms  # (was labextension pyviz/jupyterlab_pyviz in jupyterlab v2)
   - holoviews
@@ -119,7 +117,7 @@ dependencies:
   #     warnings.warn(f'Downloading: {url}', DownloadWarning)
   - shapely <= 1.7.1
   # https://github.com/roocs/clisops
-  - clisops >= 0.8.0
+  - clisops >= 0.9.0
   # Universal Regridder for Geospatial Data
   # https://github.com/pangeo-data/xESMF
   # xesmf-0.6.2 requires clisops>=0.8.0
@@ -170,6 +168,12 @@ dependencies:
   # xeus-python: back-end kernel implementing the Jupyter Debug Protocol
   - xeus-python
   - jupyter-dash
+  # https:://github.com/jupyterhub/jupyter-server-proxy
+  - jupyter-server-proxy
+  # https://github.com/dask/dask-labextension
+  - dask-labextension
+  # https://github.com/holoviz/jupyter-panel-proxy
+  - jupyter-panel-proxy >= 0.2.0a2
   # Force newer nodejs for 'jupyter lab build' issue
   # https://github.com/jupyterlab/jupyterlab/issues/11726#issuecomment-998901247
   # TODO: remove nodejs once all extensions move to prebuilt extensions, see comment
@@ -197,7 +201,9 @@ dependencies:
     # Mimics how one might format their calculation if it were written with a
     # pencil: write the symbolic formula, followed by numeric substitutions,
     # and then the result.
-    - handcalcs
+    # DISABLE handcalcs, interfere with "Panel preview" button
+    # See comment https://github.com/holoviz/panel/issues/3440#issuecomment-1112182170
+    # - handcalcs
     # https://github.com/ShopRunner/jupyter-notify
     # Jupyter Magic For Browser Notifications of Cell Completion.
     - jupyternotify

@@ -17,7 +17,7 @@ RUN apt-get update && \
 # Change /opt/conda folder permissions for jupyter-conda extension.
 RUN groupadd --gid 1000 jenkins \
     && useradd --uid 1000 --gid jenkins --create-home jenkins && \
-    chmod -R a+rwx /opt/conda
+    chmod -R a+rwX /opt/conda
 
 COPY environment.yml /environment.yml
 
@@ -70,7 +70,9 @@ RUN python -m ipykernel install --name birdy
 # https://github.com/plotly/jupyter-dash/issues/49
 RUN jupyter lab build
 
-RUN jupyter serverextension enable voila --sys-prefix
+RUN jupyter serverextension enable voila --sys-prefix \
+    && jupyter serverextension enable panel.io.jupyter_server_extension --sys-prefix \
+    && jupyter serverextension list
 #    && jupyter labextension install jupyterlab-clipboard
 
 # This should be "master" but commit
@@ -94,7 +96,11 @@ RUN wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_
     chmod a+rx /usr/local/bin/start.sh /usr/local/bin/start-singleuser.sh /usr/local/bin/start-notebook.sh /usr/local/bin/fix-permissions && \
     chmod a+r /etc/jupyter/jupyter_notebook_config.py && \
     mkdir /notebook_dir && chown jenkins /notebook_dir && \
-    chmod a+rwX -R /opt/conda/envs/birdy/fonts
+    chmod a+rwX -R /opt/conda/envs/birdy/fonts && \
+    chmod a+rwX -R /opt/conda/pkgs/cache
+
+# For jupyter-panel-proxy launcher.
+ENV BOKEH_ALLOW_WS_ORIGIN "*"
 
 # problem running start-notebook.sh when being root
 # the jupyter/base-notebook image also do not default to root user so we do the same here
