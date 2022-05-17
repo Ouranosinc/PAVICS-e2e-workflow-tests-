@@ -1,7 +1,7 @@
 #!/bin/sh -x
 
 if [ -z "$DOCKER_IMAGE" ]; then
-    DOCKER_IMAGE="pavics/workflow-tests:220509"
+    DOCKER_IMAGE="pavics/workflow-tests:220517"
 fi
 
 if [ -z "$CONTAINER_NAME" ]; then
