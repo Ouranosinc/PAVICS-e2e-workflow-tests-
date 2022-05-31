@@ -66,6 +66,9 @@ dependencies:
   # https://github.com/bird-house/birdhouse-deploy/pull/63#issuecomment-668270608
   # pinning hvplot did not solve the problem with violin plot.
   - hvplot
+  # https://streamlit.io/
+  # https://anaconda.org/conda-forge/streamlit
+  - streamlit
   - nc-time-axis
     # - cftime  # from xclim and ravenpy
     # - statsmodels  # for ravenpy
