@@ -45,7 +45,7 @@ COPY environment.yml /environment.yml
 # Pin python=3.8 because according to DavidH, xESMF has not been tested with 3.9 yet.
 RUN umask 0000 && \
     micromamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy python=3.8 && \
-    micromamba env update --name birdy --file /environment.yml
+    micromamba update --name birdy --file /environment.yml
 
 # alternate way to 'source activate birdy'
 ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
