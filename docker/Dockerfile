@@ -6,6 +6,9 @@ RUN conda update conda -n base && \
     conda config --set channel_priority strict && \
     wget -qO- https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -C /usr/local -xvj bin/micromamba
 
+# Default is $HOME/micromamba which is wrong.
+ENV MAMBA_ROOT_PREFIX="/opt/conda"
+
 # to checkout other notebooks and to run pip install
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
