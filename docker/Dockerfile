@@ -2,7 +2,10 @@ FROM continuumio/miniconda3
 
 # Use mamba for much improved performance over conda.
 # The 'channel_priority strict' did help conda but it was not enough.
+# libarchive-3.5.2-h5de8990_0 from channel default broken, revert to
+# known working libarchive=3.5.2=hccf745f_1 from conda-forge
 RUN conda update conda -n base && \
+    conda install libarchive=3.5.2=hccf745f_1 -c conda-forge -n base && \
     conda install mamba -n base -c defaults -c conda-forge && \
     conda config --set channel_priority strict && \
     wget -qO- https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -C /usr/local -xvj bin/micromamba
