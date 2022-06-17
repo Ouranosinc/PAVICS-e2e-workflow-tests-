@@ -5,6 +5,7 @@ channels:
   - cdat
   - bokeh
   - plotly  # for jupyter-dash
+  - pyston
   - pyviz/label/dev  # for jupyter-panel-proxy, panel
   - defaults
 
@@ -193,6 +194,8 @@ dependencies:
   - geckodriver
   - xlrd
   - pre-commit
+  # https://github.com/pyston/pyston/
+  - pyston_lite_autoload
   # for pip packages
   - pip
   - pip:
