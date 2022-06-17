@@ -49,8 +49,7 @@ COPY environment.yml /environment.yml
 # Pin python=3.8 because according to DavidH, xESMF has not been tested with 3.9 yet.
 RUN umask 0000 && \
     mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy python=3.8 && \
-    mamba env update --name birdy --file /environment.yml && \
-    conda remove mamba -n base
+    mamba env update --name birdy --file /environment.yml
 
 # alternate way to 'source activate birdy'
 ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
@@ -101,7 +100,8 @@ RUN wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_
     chmod a+r /etc/jupyter/jupyter_notebook_config.py && \
     mkdir /notebook_dir && chown jenkins /notebook_dir && \
     chmod a+rwX -R /opt/conda/envs/birdy/fonts && \
-    chmod a+rwX -R /opt/conda/pkgs/cache
+    chmod a+rwX -R /opt/conda/pkgs/cache && \
+    chown jenkins:jenkins -R /opt/conda/pkgs/cache
 
 # For jupyter-panel-proxy launcher.
 ENV BOKEH_ALLOW_WS_ORIGIN "*"
