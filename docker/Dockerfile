@@ -3,10 +3,11 @@ FROM continuumio/miniconda3
 # Use mamba for much improved performance over conda.
 # The 'channel_priority strict' did help conda but it was not enough.
 RUN conda update conda -n base && \
+    conda install mamba -n base -c defaults -c conda-forge && \
     conda config --set channel_priority strict && \
     wget -qO- https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -C /usr/local -xvj bin/micromamba
 
-# Default is $HOME/micromamba which is wrong.
+# Default for micromamba is $HOME/micromamba which is wrong.
 ENV MAMBA_ROOT_PREFIX="/opt/conda"
 
 # to checkout other notebooks and to run pip install
@@ -47,8 +48,9 @@ COPY environment.yml /environment.yml
 #   This means there is no py310 build for geos package but https://anaconda.org/conda-forge/geos/files seems to be python indepdendent !
 # Pin python=3.8 because according to DavidH, xESMF has not been tested with 3.9 yet.
 RUN umask 0000 && \
-    micromamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy python=3.8 && \
-    micromamba update --name birdy --file /environment.yml
+    mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy python=3.8 && \
+    mamba env update --name birdy --file /environment.yml && \
+    conda remove mamba -n base
 
 # alternate way to 'source activate birdy'
 ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
