@@ -216,6 +216,8 @@ dependencies:
     - jupyternotify
     # https://github.com/jupyterlab-contrib/jupyterlab-logout (was from jupyterlab-topbar)
     - jupyterlab-logout
+    # https://github.com/jupytercalpoly/jupyterlab-tabular-data-editor
+    - jupyterlab-tabular-data-editor
     # Needed to run notebook tests.  Missing indirect recursive dependencies
     # somewhere, should not need to manually add it here.
     - pytest-tornasync
