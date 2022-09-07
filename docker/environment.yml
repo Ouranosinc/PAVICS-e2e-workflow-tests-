@@ -17,10 +17,9 @@ dependencies:
   # xclim direct dependencies: https://github.com/conda-forge/xclim-feedstock/blob/master/recipe/meta.yaml
   # ravenpy direct dependencies: https://github.com/conda-forge/ravenpy-feedstock/blob/master/recipe/meta.yaml
 
-  # Pin latest xclim and ravenpy to avoid downgrading during the second install
-  # phase.  Mamba is quicker to solve dependencies than conda but it is less
-  # precise so accidental downgrade happends.
-  - xclim >= 0.37.0
+  # Pin latest xclim and ravenpy to avoid downgrading during the second installation phase.
+  # Mamba is quicker to solve dependencies than conda, but it is less precise so accidental downgrades can happen.
+  - xclim >= 0.38.0
   - ravenpy >= 0.7.8
 
   # Pin dask and distributed for slow PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb.
@@ -41,7 +40,7 @@ dependencies:
   - cfgrib
   - pydap
   - cartopy >= 0.20.1
-  - descartes
+  - descartes # Is this really needed???
     # - rasterio  # from ravenpy
     # - gdal  # for osgeo, from ravenpy
     # - geopandas  # from ravenpy
@@ -160,7 +159,7 @@ dependencies:
   - jupytext
   # jupyterlab extension for git
   - jupyterlab-git
-  # Voila turns Jupyter notebooks into standalone web applications
+  # Voilà turns Jupyter notebooks into standalone web applications
   - voila
   - jupyter-archive
   # https://github.com/jtpio/jupyterlab-topbar
@@ -189,6 +188,8 @@ dependencies:
   - wget
   - nested_dict
   - paramiko
+  - pymetalink  # for Raven notebook Extract_geographical_watershed_properties.ipynb
+  - requests-magpie
   - scp
   - selenium
   - geckodriver
@@ -201,8 +202,6 @@ dependencies:
   - pip:
     # visual debugger for Jupyter Notebook, not working with JupyterLab at this moment
     - pixiedust
-    - requests-magpie
-    - pymetalink  # for Raven notebook Extract_geographical_watershed_properties.ipynb
     # block execution of 'run_all_cells' until user input finished
     - ipython_blocking
     # Mimics how one might format their calculation if it were written with a
