@@ -10,6 +10,7 @@ channels:
   - defaults
 
 dependencies:
+  - python ==3.8
 
   # Do not put xclim and ravenpy direct dependencies here to let xclim and ravenpy
   # manage their own dependencies pinning.
