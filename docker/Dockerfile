@@ -48,7 +48,7 @@ COPY environment.yml /environment.yml
 #   This means there is no py310 build for geos package but https://anaconda.org/conda-forge/geos/files seems to be python indepdendent !
 # Pin python=3.8 because according to DavidH, xESMF has not been tested with 3.9 yet.
 RUN umask 0000 && \
-    mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy python=3.8 && \
+    mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy python=3.8 --yes && \
     mamba env update --name birdy --file /environment.yml
 
 # alternate way to 'source activate birdy'
