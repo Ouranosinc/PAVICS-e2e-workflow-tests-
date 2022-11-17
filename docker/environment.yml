@@ -27,8 +27,11 @@ dependencies:
   # Pin dask and distributed for slow PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb.
   # Same as in commit https://github.com/bird-house/finch/pull/226/commits/7bf4a7e1bcb12bc88d15bdcbbd484e81106be67c
   # See issue https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests/issues/100
-  - dask <= 2022.1.0
-  - distributed <= 2022.1.0
+  # Pin removed due to rebuild error:
+  #   Encountered problems while solving:
+  #   - package distributed-2022.11.0-pyhd8ed1ab_0 requires dask-core >=2022.11.0,<2022.11.1.0a0, but none of the providers can be installed
+  - dask #<= 2022.1.0
+  - distributed #<= 2022.1.0
 
   - matplotlib
     # - xarray  # from xclim and ravenpy
