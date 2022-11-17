@@ -202,6 +202,10 @@ dependencies:
   - pre-commit
   # https://github.com/pyston/pyston/
   - pyston_lite_autoload
+  # just to prevent accidental downgrade
+  - openssl >= 3.0.7
+  # just to prevent accidental downgrade
+  - setuptools >= 65.5.1
   # for pip packages
   - pip
   - pip:
