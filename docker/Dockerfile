@@ -49,7 +49,7 @@ COPY environment.yml /environment.yml
 # Pin python=3.8 because according to DavidH, xESMF has not been tested with 3.9 yet.
 # Warning: note that python is also pinned in environment.yml. Changes to python version here must also be reflected there.
 RUN umask 0000 && \
-    mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy mamba python=3.8 --yes && \
+    mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy python=3.8 --yes && \
     mamba env update --name birdy --file /environment.yml
 
 # alternate way to 'source activate birdy'
