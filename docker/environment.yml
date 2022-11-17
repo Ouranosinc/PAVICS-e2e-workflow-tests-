@@ -44,7 +44,7 @@ dependencies:
   # following the CF Conventions.
   - cfgrib
   - pydap
-  - cartopy >= 0.20.1
+  - cartopy >= 0.21.0
   - descartes # Is this really needed???
     # - rasterio  # from ravenpy
     # - gdal  # for osgeo, from ravenpy
