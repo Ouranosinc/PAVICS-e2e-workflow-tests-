@@ -87,7 +87,11 @@ dependencies:
   # Plugin for building and loading intake catalogs for earth system data sets
   # holdings, such as CMIP (Coupled Model Intercomparison Project) and CESM
   # Large Ensemble datasets.
-  - intake-esm
+  # Pin intake-esm since newer version activated validation of optional fields and broke our notebooks
+  #  ValidationError: 1 validation error for ESMCatalogModel
+  #  aggregation_control
+  #    field required (type=value_error.missing)
+  - intake-esm <= v2021.8.17
   # load netCDF, Zarr and other multi-dimensional data (xarray_image, netcdf,
   # grib, opendap, rasterio, remote-xarray, zarr)
   - intake-xarray
