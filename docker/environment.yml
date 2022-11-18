@@ -91,7 +91,7 @@ dependencies:
   #  ValidationError: 1 validation error for ESMCatalogModel
   #  aggregation_control
   #    field required (type=value_error.missing)
-  - intake-esm <= v2021.8.17
+  - intake-esm <= 2021.8.17
   # load netCDF, Zarr and other multi-dimensional data (xarray_image, netcdf,
   # grib, opendap, rasterio, remote-xarray, zarr)
   - intake-xarray
