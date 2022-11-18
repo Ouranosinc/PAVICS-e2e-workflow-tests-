@@ -22,14 +22,8 @@ dependencies:
   - xclim >= 0.38.0
   - ravenpy >= 0.7.8
 
-  # Pin dask and distributed for slow PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb.
-  # Same as in commit https://github.com/bird-house/finch/pull/226/commits/7bf4a7e1bcb12bc88d15bdcbbd484e81106be67c
-  # See issue https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests/issues/100
-  # Pin removed due to rebuild error:
-  #   Encountered problems while solving:
-  #   - package distributed-2022.11.0-pyhd8ed1ab_0 requires dask-core >=2022.11.0,<2022.11.1.0a0, but none of the providers can be installed
-  - dask #<= 2022.1.0
-  - distributed #<= 2022.1.0
+    #- dask  # from xclim and ravenpy
+    #- distributed
 
   # flox: fast & furious GroupBy reductions for dask.array
   # https://flox.readthedocs.io/en/latest/
@@ -108,28 +102,6 @@ dependencies:
   # https://github.com/dask/s3fs/
   - s3fs
     # - shapely  # from ravenpy
-  # PIN shapely due to notebook failure
-  # See issue https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests/issues/99
-  # PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb:
-  #   /opt/conda/envs/birdy/lib/python3.7/site-packages/shapely/geometry/base.py in array_interface_base(self)
-  #       324             "removed in Shapely 2.0.",
-  #       325             ShapelyDeprecationWarning, stacklevel=2)
-  #   --> 326         return self._array_interface_base()
-  #       327 
-  #       328     @property
-  #
-  #   TypeError: 'dict' object is not callable
-  #
-  # climex.ipynb:
-  #   /opt/conda/envs/birdy/lib/python3.7/site-packages/cartopy/crs.py:825: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
-  #     if len(multi_line_string) > 1:
-  #   /opt/conda/envs/birdy/lib/python3.7/site-packages/cartopy/crs.py:877: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
-  #     for line in multi_line_string:
-  #   /opt/conda/envs/birdy/lib/python3.7/site-packages/cartopy/crs.py:944: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
-  #     if len(p_mline) > 0:
-  #   /opt/conda/envs/birdy/lib/python3.7/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_coastline.zip
-  #     warnings.warn(f'Downloading: {url}', DownloadWarning)
-  - shapely #<= 1.7.1
   # https://github.com/roocs/clisops
   - clisops >= 0.9.2
   # Universal Regridder for Geospatial Data
