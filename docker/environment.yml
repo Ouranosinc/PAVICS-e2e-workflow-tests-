@@ -31,6 +31,10 @@ dependencies:
   - dask #<= 2022.1.0
   - distributed #<= 2022.1.0
 
+  # flox: fast & furious GroupBy reductions for dask.array
+  # https://flox.readthedocs.io/en/latest/
+  # https://anaconda.org/conda-forge/flox
+  - flox
   - matplotlib
     # - xarray  # from xclim and ravenpy
     # - numpy  # from xclim and ravenpy
@@ -72,6 +76,10 @@ dependencies:
   # https://streamlit.io/
   # https://anaconda.org/conda-forge/streamlit
   - streamlit
+  # python-pptx is a Python library for creating and updating PowerPoint (.pptx) files.
+  # https://python-pptx.readthedocs.io/en/latest/
+  # https://anaconda.org/conda-forge/python-pptx
+  - python-pptx
   - nc-time-axis
     # - cftime  # from xclim and ravenpy
     # - statsmodels  # for ravenpy
