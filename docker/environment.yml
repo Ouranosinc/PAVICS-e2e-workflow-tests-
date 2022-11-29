@@ -5,6 +5,7 @@ channels:
   - cdat
   - bokeh
   - plotly  # for jupyter-dash
+  - pyston
   - pyviz/label/dev  # for jupyter-panel-proxy, panel
   - defaults
 
@@ -16,18 +17,18 @@ dependencies:
   # xclim direct dependencies: https://github.com/conda-forge/xclim-feedstock/blob/master/recipe/meta.yaml
   # ravenpy direct dependencies: https://github.com/conda-forge/ravenpy-feedstock/blob/master/recipe/meta.yaml
 
-  # Pin latest xclim and ravenpy to avoid downgrading during the second install
-  # phase.  Mamba is quicker to solve dependencies than conda but it is less
-  # precise so accidental downgrade happends.
-  - xclim >= 0.32.1
+  # Pin latest xclim and ravenpy to avoid downgrading during the second installation phase.
+  # Mamba is quicker to solve dependencies than conda, but it is less precise so accidental downgrades can happen.
+  - xclim >= 0.38.0
   - ravenpy >= 0.7.8
 
-  # Pin dask and distributed for slow PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb.
-  # Same as in commit https://github.com/bird-house/finch/pull/226/commits/7bf4a7e1bcb12bc88d15bdcbbd484e81106be67c
-  # See issue https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests/issues/100
-  - dask <= 2022.1.0
-  - distributed <= 2022.1.0
+    #- dask  # from xclim and ravenpy
+    #- distributed
 
+  # flox: fast & furious GroupBy reductions for dask.array
+  # https://flox.readthedocs.io/en/latest/
+  # https://anaconda.org/conda-forge/flox
+  - flox
   - matplotlib
     # - xarray  # from xclim and ravenpy
     # - numpy  # from xclim and ravenpy
@@ -39,8 +40,8 @@ dependencies:
   # following the CF Conventions.
   - cfgrib
   - pydap
-  - cartopy >= 0.20.1
-  - descartes
+  - cartopy >= 0.21.0
+  - descartes # Is this really needed???
     # - rasterio  # from ravenpy
     # - gdal  # for osgeo, from ravenpy
     # - geopandas  # from ravenpy
@@ -66,6 +67,13 @@ dependencies:
   # https://github.com/bird-house/birdhouse-deploy/pull/63#issuecomment-668270608
   # pinning hvplot did not solve the problem with violin plot.
   - hvplot
+  # https://streamlit.io/
+  # https://anaconda.org/conda-forge/streamlit
+  - streamlit
+  # python-pptx is a Python library for creating and updating PowerPoint (.pptx) files.
+  # https://python-pptx.readthedocs.io/en/latest/
+  # https://anaconda.org/conda-forge/python-pptx
+  - python-pptx
   - nc-time-axis
     # - cftime  # from xclim and ravenpy
     # - statsmodels  # for ravenpy
@@ -79,7 +87,11 @@ dependencies:
   # Plugin for building and loading intake catalogs for earth system data sets
   # holdings, such as CMIP (Coupled Model Intercomparison Project) and CESM
   # Large Ensemble datasets.
-  - intake-esm
+  # Pin intake-esm since newer version activated validation of optional fields and broke our notebooks
+  #  ValidationError: 1 validation error for ESMCatalogModel
+  #  aggregation_control
+  #    field required (type=value_error.missing)
+  - intake-esm <= 2021.8.17
   # load netCDF, Zarr and other multi-dimensional data (xarray_image, netcdf,
   # grib, opendap, rasterio, remote-xarray, zarr)
   - intake-xarray
@@ -94,34 +106,14 @@ dependencies:
   # https://github.com/dask/s3fs/
   - s3fs
     # - shapely  # from ravenpy
-  # PIN shapely due to notebook failure
-  # See issue https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests/issues/99
-  # PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb:
-  #   /opt/conda/envs/birdy/lib/python3.7/site-packages/shapely/geometry/base.py in array_interface_base(self)
-  #       324             "removed in Shapely 2.0.",
-  #       325             ShapelyDeprecationWarning, stacklevel=2)
-  #   --> 326         return self._array_interface_base()
-  #       327 
-  #       328     @property
-  #
-  #   TypeError: 'dict' object is not callable
-  #
-  # climex.ipynb:
-  #   /opt/conda/envs/birdy/lib/python3.7/site-packages/cartopy/crs.py:825: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
-  #     if len(multi_line_string) > 1:
-  #   /opt/conda/envs/birdy/lib/python3.7/site-packages/cartopy/crs.py:877: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
-  #     for line in multi_line_string:
-  #   /opt/conda/envs/birdy/lib/python3.7/site-packages/cartopy/crs.py:944: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
-  #     if len(p_mline) > 0:
-  #   /opt/conda/envs/birdy/lib/python3.7/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_coastline.zip
-  #     warnings.warn(f'Downloading: {url}', DownloadWarning)
-  - shapely <= 1.7.1
   # https://github.com/roocs/clisops
-  - clisops >= 0.9.0
+  - clisops >= 0.9.2
   # Universal Regridder for Geospatial Data
   # https://github.com/pangeo-data/xESMF
   # xesmf-0.6.2 requires clisops>=0.8.0
   - xesmf >= 0.6.2
+  # https://anaconda.org/conda-forge/geopy
+  - geopy
   # https://anaconda.org/anaconda/memory_profiler
   # Monitor memory consumption of a process as well as line-by-line analysis
   # of memory consumption for Python programs.
@@ -156,7 +148,7 @@ dependencies:
   - jupytext
   # jupyterlab extension for git
   - jupyterlab-git
-  # Voila turns Jupyter notebooks into standalone web applications
+  # Voilà turns Jupyter notebooks into standalone web applications
   - voila
   - jupyter-archive
   # https://github.com/jtpio/jupyterlab-topbar
@@ -173,7 +165,8 @@ dependencies:
   # https://github.com/dask/dask-labextension
   - dask-labextension
   # https://github.com/holoviz/jupyter-panel-proxy
-  - jupyter-panel-proxy >= 0.2.0a2
+  # DISABLE: seems to interfere with 'panel serve' command
+  #- jupyter-panel-proxy >= 0.2.0a2
   # Force newer nodejs for 'jupyter lab build' issue
   # https://github.com/jupyterlab/jupyterlab/issues/11726#issuecomment-998901247
   # TODO: remove nodejs once all extensions move to prebuilt extensions, see comment
@@ -184,18 +177,20 @@ dependencies:
   - wget
   - nested_dict
   - paramiko
+  - pymetalink  # for Raven notebook Extract_geographical_watershed_properties.ipynb
+  - requests-magpie
   - scp
   - selenium
   - geckodriver
   - xlrd
   - pre-commit
+  # https://github.com/pyston/pyston/
+  - pyston_lite_autoload
   # for pip packages
   - pip
   - pip:
     # visual debugger for Jupyter Notebook, not working with JupyterLab at this moment
     - pixiedust
-    - requests-magpie
-    - pymetalink  # for Raven notebook Extract_geographical_watershed_properties.ipynb
     # block execution of 'run_all_cells' until user input finished
     - ipython_blocking
     # Mimics how one might format their calculation if it were written with a
@@ -209,6 +204,8 @@ dependencies:
     - jupyternotify
     # https://github.com/jupyterlab-contrib/jupyterlab-logout (was from jupyterlab-topbar)
     - jupyterlab-logout
+    # https://github.com/jupytercalpoly/jupyterlab-tabular-data-editor
+    - jupyterlab-tabular-data-editor
     # Needed to run notebook tests.  Missing indirect recursive dependencies
     # somewhere, should not need to manually add it here.
     - pytest-tornasync
