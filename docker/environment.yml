@@ -176,6 +176,9 @@ dependencies:
   - curl
   - wget
   - nested_dict
+  # https://anaconda.org/conda-forge/urlpath
+  # https://github.com/brandonschabell/urlpath
+  - urlpath
   - paramiko
   - pymetalink  # for Raven notebook Extract_geographical_watershed_properties.ipynb
   - requests-magpie
@@ -209,4 +212,3 @@ dependencies:
     # Needed to run notebook tests.  Missing indirect recursive dependencies
     # somewhere, should not need to manually add it here.
     - pytest-tornasync
-    - urlpath
