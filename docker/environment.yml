@@ -120,6 +120,8 @@ dependencies:
   - memory_profiler
   # for esgf notebooks
   - esgf-compute-api
+  # https://anaconda.org/conda-forge/esgf-pyclient (for pavics-sdi esgf-dap.ipynb)
+  - esgf-pyclient
   - cdms2
   # Disable vcs because it was forcing python downgrade to below 3.9.
   # See https://github.com/CDAT/vcs/issues/457
