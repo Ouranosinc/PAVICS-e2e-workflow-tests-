@@ -194,6 +194,9 @@ dependencies:
   # for pip packages
   - pip
   - pip:
+    # https://pypi.org/project/xncml/
+    # Tools for manipulating and opening NCML (NetCDF Markup) files with/for xarray
+    - xncml
     # visual debugger for Jupyter Notebook, not working with JupyterLab at this moment
     - pixiedust
     # block execution of 'run_all_cells' until user input finished
