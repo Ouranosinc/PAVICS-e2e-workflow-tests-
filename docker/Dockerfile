@@ -101,7 +101,12 @@ RUN wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_
     mkdir /notebook_dir && chown jenkins /notebook_dir && \
     chmod a+rwX -R /opt/conda/envs/birdy/fonts && \
     chmod a+rwX -R /opt/conda/pkgs/cache && \
-    chown jenkins:jenkins -R /opt/conda/pkgs/cache
+    chown jenkins:jenkins -R /opt/conda/pkgs/cache && \
+    mkdir -p /usr/local/bin && \
+    wget https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz -O /usr/local/bin/globusconnectpersonal-latest.tgz && \
+    tar xzf /usr/local/bin/globusconnectpersonal-latest.tgz -C /usr/local/bin/ && \
+    ln -vs /usr/local/bin/globusconnectpersonal*/globusconnectpersonal /usr/local/bin/globusconnectpersonal && \
+    rm -v /usr/local/bin/globusconnectpersonal-latest.tgz
 
 # For jupyter-panel-proxy launcher.
 ENV BOKEH_ALLOW_WS_ORIGIN "*"
