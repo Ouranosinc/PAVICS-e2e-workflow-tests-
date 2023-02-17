@@ -135,7 +135,7 @@ Note this is another run, will double the time and no guaranty to have same erro
     options {
         ansiColor('xterm')
         timestamps()
-        timeout(time: 1, unit: 'HOURS')
+        timeout(time: 2, unit: 'HOURS')
         // trying to keep 2 months worth of history with buffer for manual
         // build trigger on failed builds or manual test after each production
         // deployment or test deployment
