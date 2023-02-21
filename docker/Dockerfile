@@ -102,6 +102,7 @@ RUN wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_
     chmod a+rwX -R /opt/conda/envs/birdy/fonts && \
     chmod a+rwX -R /opt/conda/pkgs/cache && \
     chown jenkins:jenkins -R /opt/conda/pkgs/cache && \
+    chmod a+rwX -R /opt/conda/envs/birdy/share/proj && \
     mkdir -p /usr/local/bin && \
     wget https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz -O /usr/local/bin/globusconnectpersonal-latest.tgz && \
     tar xzf /usr/local/bin/globusconnectpersonal-latest.tgz -C /usr/local/bin/ && \

@@ -4,7 +4,9 @@ FROM pavics/workflow-tests:230217
 
 ENV ESMFMKFILE="/opt/conda/envs/birdy/lib/esmf.mk"
 
-#USER root
+USER root
+
+RUN chmod a+rwX -R /opt/conda/envs/birdy/share/proj
 
 # Use 'update' for existing and 'install' for new package.
 # Keep same channel ordering to not revert anything.
@@ -22,4 +24,4 @@ ENV ESMFMKFILE="/opt/conda/envs/birdy/lib/esmf.mk"
 #RUN umask 0000 \
 #    && pip install https://github.com/CSHS-CWRA/RavenPy/archive/refs/heads/master.zip
 
-#USER jenkins
+USER jenkins
