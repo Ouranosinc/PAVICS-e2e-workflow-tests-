@@ -102,7 +102,6 @@ RUN wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_
     chmod a+rwX -R /opt/conda/envs/birdy/fonts && \
     chmod a+rwX -R /opt/conda/pkgs/cache && \
     chown jenkins:jenkins -R /opt/conda/pkgs/cache && \
-    chmod a+rwX -R /opt/conda/envs/birdy/share/proj && \
     mkdir -p /usr/local/bin && \
     wget https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz -O /usr/local/bin/globusconnectpersonal-latest.tgz && \
     tar xzf /usr/local/bin/globusconnectpersonal-latest.tgz -C /usr/local/bin/ && \
@@ -115,6 +114,11 @@ ENV BOKEH_ALLOW_WS_ORIGIN "*"
 # For import xesmf since esmf-8.4.0, see
 # https://github.com/conda-forge/esmf-feedstock/issues/91
 ENV ESMFMKFILE="/opt/conda/envs/birdy/lib/esmf.mk"
+
+# To avoid error "PROJ: proj_create_from_database: Open of
+# /opt/conda/envs/birdy/share/proj failed"
+# This simulates a real `conda activate birdy`.
+ENV PROJ_DATA="/opt/conda/envs/birdy/share/proj"
 
 # problem running start-notebook.sh when being root
 # the jupyter/base-notebook image also do not default to root user so we do the same here
