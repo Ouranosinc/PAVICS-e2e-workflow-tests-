@@ -111,6 +111,10 @@ RUN wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_
 # For jupyter-panel-proxy launcher.
 ENV BOKEH_ALLOW_WS_ORIGIN "*"
 
+# For import xesmf since esmf-8.4.0, see
+# https://github.com/conda-forge/esmf-feedstock/issues/91
+ENV ESMFMKFILE="/opt/conda/envs/birdy/lib/esmf.mk"
+
 # problem running start-notebook.sh when being root
 # the jupyter/base-notebook image also do not default to root user so we do the same here
 USER jenkins
