@@ -10,7 +10,7 @@ pipeline {
     // https://jenkins.io/doc/book/pipeline/syntax/
     agent {
         docker {
-            image "pavics/workflow-tests:221130"
+            image "pavics/workflow-tests:221130-update230403"
             label 'linux && docker'
         }
     }
@@ -136,9 +136,8 @@ Note this is another run, will double the time and no guaranty to have same erro
         ansiColor('xterm')
         timestamps()
         timeout(time: 2, unit: 'HOURS')
-        // trying to keep 2 months worth of history with buffer for manual
-        // build trigger on failed builds or manual test after each production
-        // deployment or test deployment
-        buildDiscarder(logRotator(numToKeepStr: '200'))
+        // trying to keep 3 months worth of history
+        // assuming manual build requests are done on a separated job
+        buildDiscarder(logRotator(numToKeepStr: '100'))
     }
 }
