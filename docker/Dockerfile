@@ -42,13 +42,8 @@ COPY environment.yml /environment.yml
 # Conda was stuck at this step:
 # DEBUG conda.common._logic:_run_sat(607): Invoking SAT with clause count: 2500273
 #
-# Pin python=3.9 because python 3.10 cause this error:
-#   Encountered problems while solving:
-#     - package cartopy-0.20.1-py310h902574e_5 requires geos >=3.10.1,<3.10.2.0a0, but none of the providers can be installed
-#   This means there is no py310 build for geos package but https://anaconda.org/conda-forge/geos/files seems to be python indepdendent !
-# Pin python=3.8 because according to DavidH, xESMF has not been tested with 3.9 yet.
 RUN umask 0000 && \
-    mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy python=3.8 --yes && \
+    mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy python=3.10 --yes && \
     mamba env update --name birdy --file /environment.yml
 
 # alternate way to 'source activate birdy'

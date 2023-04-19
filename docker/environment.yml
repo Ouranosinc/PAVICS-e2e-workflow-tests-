@@ -5,7 +5,7 @@ channels:
   - cdat
   - bokeh
   - plotly  # for jupyter-dash
-  - pyston
+    #  - pyston
   - pyviz/label/dev  # for jupyter-panel-proxy, panel
   - defaults
 
@@ -189,8 +189,11 @@ dependencies:
   - geckodriver
   - xlrd
   - pre-commit
+  # pyston_lite_autoload blocked us from using newer Python than 3.8
+  #   package pyston_lite_autoload-2.3.4-pyh44b312d_0 requires pyston_lite
+  #   2.3.4 py38h0a891b7_0, but none of the providers can be installed
   # https://github.com/pyston/pyston/
-  - pyston_lite_autoload
+  #  - pyston_lite_autoload
   # for pip packages
   - pip
   - pip:
