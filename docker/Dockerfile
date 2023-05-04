@@ -4,6 +4,7 @@ FROM continuumio/miniconda3
 # The 'channel_priority strict' did help conda but it was not enough.
 RUN conda update conda -n base && \
     conda install mamba -n base -c conda-forge -c defaults && \
+    conda clean --all --yes && \
     conda config --set channel_priority strict && \
     wget -qO- https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -C /usr/local -xvj bin/micromamba
 
@@ -44,7 +45,8 @@ COPY environment.yml /environment.yml
 #
 RUN umask 0000 && \
     mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy python=3.10 --yes && \
-    mamba env update --name birdy --file /environment.yml
+    mamba env update --name birdy --file /environment.yml && \
+    mamba clean --all --yes
 
 # alternate way to 'source activate birdy'
 ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
@@ -95,7 +97,7 @@ RUN wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_
     chmod a+r /etc/jupyter/jupyter_notebook_config.py && \
     mkdir /notebook_dir && chown jenkins /notebook_dir && \
     chmod a+rwX -R /opt/conda/envs/birdy/fonts && \
-    chmod a+rwX -R /opt/conda/pkgs/cache && \
+    mkdir /opt/conda/pkgs/cache && \
     chown jenkins:jenkins -R /opt/conda/pkgs/cache && \
     mkdir -p /usr/local/bin && \
     wget https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz -O /usr/local/bin/globusconnectpersonal-latest.tgz && \
