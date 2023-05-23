@@ -35,10 +35,6 @@ dependencies:
   - birdy
     # - owslib>=0.23.0  # from ravenpy
     # - netcdf4  # from ravenpy
-
-  # Pin netcdf4 for https://github.com/Unidata/netcdf4-python/issues/1242
-  - netcdf4==1.5.8
-
   # https://github.com/ecmwf/cfgrib
   # Python interface to map GRIB files to the Unidata's Common Data Model v4
   # following the CF Conventions.
