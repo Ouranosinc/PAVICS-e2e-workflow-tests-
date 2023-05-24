@@ -55,6 +55,9 @@ ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
 # this python is from the birdy env above
 RUN python -m ipykernel install --name birdy
 
+# https://github.com/Unidata/netcdf4-python/issues/1192#issuecomment-1251532332
+RUN python -m pip install --upgrade --force-reinstall --no-deps --no-cache-dir netcdf4 --no-binary netcdf4
+
 # install using same channel preferences as birdy original env to not downgrade
 # anything accidentally
 # this is for debug only, all dependencies should be specified in

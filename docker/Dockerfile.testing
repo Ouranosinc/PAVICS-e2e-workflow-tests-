@@ -16,6 +16,8 @@ RUN umask 0000 \
 #    && pip uninstall -y ravenpy \
 #    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy ravenpy aiohttp
 
+RUN umask 0000 \
+    && python -m pip install --upgrade --force-reinstall --no-deps --no-cache-dir netcdf4 --no-binary netcdf4
 # RUN apt-get update && \
 #     DEBIAN_FRONTEND=noninteractive apt-get install -y unzip && \
 #     apt-get clean && \
