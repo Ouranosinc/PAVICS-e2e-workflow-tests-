@@ -1,17 +1,18 @@
 # For testing quickly without having to do a full rebuild.
 
-FROM pavics/workflow-tests:230217
+FROM pavics/workflow-tests:230523
 
-ENV ESMFMKFILE="/opt/conda/envs/birdy/lib/esmf.mk"
+#ENV ESMFMKFILE="/opt/conda/envs/birdy/lib/esmf.mk"
 
-ENV PROJ_DATA="/opt/conda/envs/birdy/share/proj"
+#ENV PROJ_DATA="/opt/conda/envs/birdy/share/proj"
 
-#USER root
+USER root
 
 # Use 'update' for existing and 'install' for new package.
 # Keep same channel ordering to not revert anything.
-#RUN umask 0000 \
-#    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c pyviz/label/dev -c defaults -n birdy geopy
+RUN umask 0000 \
+    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c pyviz/label/dev -c defaults -n birdy pyogrio \
+    && mamba clean --all --yes
 #    && pip uninstall -y ravenpy \
 #    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy ravenpy aiohttp
 
@@ -24,4 +25,4 @@ ENV PROJ_DATA="/opt/conda/envs/birdy/share/proj"
 #RUN umask 0000 \
 #    && pip install https://github.com/CSHS-CWRA/RavenPy/archive/refs/heads/master.zip
 
-#USER jenkins
+USER jenkins

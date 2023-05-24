@@ -47,6 +47,9 @@ dependencies:
     # - geopandas  # from ravenpy
     # - pandas  # from xclim and ravenpy
     # - rioxarray  # from ravenpy
+  # https://anaconda.org/conda-forge/pyogrio
+  # Vectorized vector I/O using GDAL
+  - pyogrio
   - scikit-image
   - ipyleaflet
   - threddsclient
