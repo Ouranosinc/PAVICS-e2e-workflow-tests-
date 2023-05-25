@@ -63,7 +63,7 @@ dependencies:
   # https://github.com/holoviz/panel
   - pyviz_comms  # (was labextension pyviz/jupyterlab_pyviz in jupyterlab v2)
   - holoviews
-  - geoviews
+  - geoviews >= 1.9.6
   # this might still be relevant https://github.com/holoviz/hvplot/issues/498
   # (violin plot not working with hvplot 0.6.0).
   # Per this comment
