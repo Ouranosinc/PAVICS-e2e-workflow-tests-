@@ -19,8 +19,8 @@ dependencies:
 
   # Pin latest xclim and ravenpy to avoid downgrading during the second installation phase.
   # Mamba is quicker to solve dependencies than conda, but it is less precise so accidental downgrades can happen.
-  - xclim >= 0.38.0
-  - ravenpy >= 0.7.8
+  - xclim >= 0.43.0
+  - ravenpy >= 0.12.0
 
     #- dask  # from xclim and ravenpy
     #- distributed
@@ -230,3 +230,5 @@ dependencies:
     # Needed to run notebook tests.  Missing indirect recursive dependencies
     # somewhere, should not need to manually add it here.
     - pytest-tornasync
+    # Was dependency from ravenpy.  Temporary here until conda build works.
+    - climpred
