@@ -59,7 +59,8 @@ dependencies:
   - jupyter_bokeh
   - pscript
   - h5netcdf
-  - panel >= 0.13.1a3
+  # TODO: remove panel pin when Analogues dashboard works
+  - panel <= 0.14.4
   # https://github.com/holoviz/panel
   - pyviz_comms  # (was labextension pyviz/jupyterlab_pyviz in jupyterlab v2)
   - holoviews
