@@ -32,6 +32,10 @@ dependencies:
   - matplotlib
     # - xarray  # from xclim and ravenpy
     # - numpy  # from xclim and ravenpy
+  # TODO: unpin numpy, pinned for hvplot.quadmesh(rasterize=True)
+  # datashade=True is an alias
+  # See https://github.com/holoviz/hvplot/issues/1073
+  - numpy <= 1.23.5
   - birdy
     # - owslib>=0.23.0  # from ravenpy
     # - netcdf4  # from ravenpy
