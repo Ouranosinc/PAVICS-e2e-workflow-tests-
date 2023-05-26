@@ -44,7 +44,7 @@ COPY environment.yml /environment.yml
 # DEBUG conda.common._logic:_run_sat(607): Invoking SAT with clause count: 2500273
 #
 # Python 3.10 cause this "ValueError: `popmean.shape[axis]` must equal 1." in
-# homepage nb 4.
+# homepage nb 4, see https://github.com/Ouranosinc/PAVICS-landing/issues/65
 RUN umask 0000 && \
     mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy python=3.9 --yes && \
     mamba env update --name birdy --file /environment.yml && \
