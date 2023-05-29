@@ -21,6 +21,8 @@ PAVICS_LANDING_BRANCH="`echo "$PAVICS_LANDING_BRANCH" | sed "s@/@-@g"`"
 PAVICS_LANDING_REPO_NAME="`echo "$PAVICS_LANDING_REPO" | sed "s@^.*/@@g"`"
 RAVEN_BRANCH="`echo "$RAVEN_BRANCH" | sed "s@/@-@g"`"
 RAVEN_REPO_NAME="`echo "$RAVEN_REPO" | sed "s@^.*/@@g"`"
+RAVENPY_BRANCH="`echo "$RAVENPY_BRANCH" | sed "s@/@-@g"`"
+RAVENPY_REPO_NAME="`echo "$RAVENPY_REPO" | sed "s@^.*/@@g"`"
 ESGF_COMPUTE_API_BRANCH="`echo "$ESGF_COMPUTE_API_BRANCH" | sed "s@/@-@g"`"
 ESGF_COMPUTE_API_REPO_NAME="`echo "$ESGF_COMPUTE_API_REPO" | sed "s@^.*/@@g"`"
 
@@ -29,6 +31,7 @@ PAVICS_SDI_DIR=`echo "${PAVICS_SDI_REPO_NAME}-${PAVICS_SDI_BRANCH}" | sed "s@[^a
 FINCH_DIR=`echo "${FINCH_REPO_NAME}-${FINCH_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
 PAVICS_LANDING_DIR=`echo "${PAVICS_LANDING_REPO_NAME}-${PAVICS_LANDING_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
 RAVEN_DIR=`echo "${RAVEN_REPO_NAME}-${RAVEN_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
+RAVENPY_DIR=`echo "${RAVENPY_REPO_NAME}-${RAVENPY_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
 ESGF_COMPUTE_API_DIR=`echo "${ESGF_COMPUTE_API_REPO_NAME}-${ESGF_COMPUTE_API_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
 
 # lowercase VERIFY_SSL string
@@ -45,6 +48,8 @@ fi
 # presence of setup.cfg, tox.ini files confuse py.test execution rootdir discovery
 rm -v $FINCH_REPO_NAME-$FINCH_BRANCH/setup.cfg
 rm -v $RAVEN_REPO_NAME-$RAVEN_BRANCH/setup.cfg
+rm -v $RAVENPY_REPO_NAME-$RAVENPY_BRANCH/setup.cfg
+rm -v $RAVENPY_REPO_NAME-$RAVENPY_BRANCH/tox.ini
 rm -v $ESGF_COMPUTE_API_REPO_NAME-$ESGF_COMPUTE_API_BRANCH/setup.cfg
 rm -v $ESGF_COMPUTE_API_REPO_NAME-$ESGF_COMPUTE_API_BRANCH/tox.ini
 
@@ -55,6 +60,7 @@ TEST_PAVICS_SDI_WEAVER="`echo "$TEST_PAVICS_SDI_WEAVER" | tr '[:upper:]' '[:lowe
 TEST_FINCH_REPO="`echo "$TEST_FINCH_REPO" | tr '[:upper:]' '[:lower:]'`"
 TEST_PAVICS_LANDING_REPO="`echo "$TEST_PAVICS_LANDING_REPO" | tr '[:upper:]' '[:lower:]'`"
 TEST_RAVEN_REPO="`echo "$TEST_RAVEN_REPO" | tr '[:upper:]' '[:lower:]'`"
+TEST_RAVENPY_REPO="`echo "$TEST_RAVENPY_REPO" | tr '[:upper:]' '[:lower:]'`"
 TEST_ESGF_COMPUTE_API_REPO="`echo "$TEST_ESGF_COMPUTE_API_REPO" | tr '[:upper:]' '[:lower:]'`"
 TEST_LOCAL_NOTEBOOKS="`echo "$TEST_LOCAL_NOTEBOOKS" | tr '[:upper:]' '[:lower:]'`"
 
@@ -88,6 +94,9 @@ fi
 
 if [ x"$TEST_RAVEN_REPO" = xtrue ]; then
     NOTEBOOKS_TO_TEST="$NOTEBOOKS_TO_TEST ${RAVEN_DIR}/docs/source/notebooks/*.ipynb"
+fi
+if [ x"$TEST_RAVENPY_REPO" = xtrue ]; then
+    NOTEBOOKS_TO_TEST="$NOTEBOOKS_TO_TEST ${RAVENPY_DIR}/docs/notebooks/*.ipynb"
 fi
 if [ x"$TEST_ESGF_COMPUTE_API_REPO" = xtrue ]; then
     NOTEBOOKS_TO_TEST="$NOTEBOOKS_TO_TEST ${ESGF_COMPUTE_API_DIR}/examples/*.ipynb"

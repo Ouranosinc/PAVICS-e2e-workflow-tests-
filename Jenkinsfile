@@ -66,6 +66,12 @@ Requires 'weaver' component to be active on the target 'PAVICS_HOST' server
                description: 'RAVEN_REPO branch to test against.', trim: true)
         string(name: 'RAVEN_REPO', defaultValue: 'Ouranosinc/raven',
                description: 'https://github.com/Ouranosinc/raven repo or fork to test against.', trim: true)
+        booleanParam(name: 'TEST_RAVENPY_REPO', defaultValue: false,
+                     description: 'Check the box to test RavenPy repo.')
+        string(name: 'RAVENPY_BRANCH', defaultValue: 'master',
+               description: 'RAVENPY_REPO branch to test against.', trim: true)
+        string(name: 'RAVENPY_REPO', defaultValue: 'CSHS-CWRA/RavenPy',
+               description: 'https://github.com/CSHS-CWRA/RavenPy repo or fork to test against.', trim: true)
         booleanParam(name: 'TEST_ESGF_COMPUTE_API_REPO', defaultValue: false,
                      description: 'Check the box to test esgf-compute-api repo.')
         string(name: 'ESGF_COMPUTE_API_BRANCH', defaultValue: 'devel',
@@ -118,6 +124,7 @@ Note this is another run, will double the time and no guaranty to have same erro
             archiveArtifacts(artifacts: 'pavics-sdi-*/docs/source/notebook-components/*.ipynb', fingerprint: true)
             archiveArtifacts(artifacts: 'finch-*/docs/source/notebooks/*.ipynb', fingerprint: true)
             archiveArtifacts(artifacts: 'raven-*/docs/source/notebooks/*.ipynb', fingerprint: true)
+            archiveArtifacts(artifacts: 'RavenPy-*/docs/notebooks/*.ipynb', fingerprint: true)
             archiveArtifacts(artifacts: 'esgf-compute-api-*/examples/*.ipynb', fingerprint: true)
             archiveArtifacts(artifacts: 'PAVICS-landing-*/content/notebooks/climate_indicators/*.ipynb', fingerprint: true)
             archiveArtifacts(artifacts: 'buildout/*.output.ipynb', fingerprint: true, allowEmptyArchive: true)
