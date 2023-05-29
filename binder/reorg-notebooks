@@ -5,7 +5,6 @@
 
 # if name clash, last command wins
 
-mv -v esgf-compute-api-$ESGF_COMPUTE_API_BRANCH/examples ./esgf-compute-api-examples-$ESGF_COMPUTE_API_BRANCH
 rm -r esgf-compute-api-$ESGF_COMPUTE_API_BRANCH
 
 mkdir raven
