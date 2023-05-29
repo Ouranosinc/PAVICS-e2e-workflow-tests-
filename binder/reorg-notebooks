@@ -8,7 +8,8 @@
 mv -v esgf-compute-api-$ESGF_COMPUTE_API_BRANCH/examples ./esgf-compute-api-examples-$ESGF_COMPUTE_API_BRANCH
 rm -r esgf-compute-api-$ESGF_COMPUTE_API_BRANCH
 
-mv -v raven-${RAVEN_BRANCH}/docs/source/notebooks ./raven
+mkdir raven
+mv -v raven-${RAVEN_BRANCH}/docs/source/notebooks/*.ipynb ./raven/
 mv -v RavenPy-${RAVENPY_BRANCH}/docs/notebooks/*.ipynb ./raven/
 rm -r raven-${RAVEN_BRANCH} RavenPy-${RAVENPY_BRANCH}
 
