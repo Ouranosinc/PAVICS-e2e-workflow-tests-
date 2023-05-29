@@ -48,6 +48,7 @@ fi
 # presence of setup.cfg, tox.ini, pyproject.toml files confuse py.test execution rootdir discovery
 rm -v $FINCH_REPO_NAME-$FINCH_BRANCH/setup.cfg
 rm -v $RAVEN_REPO_NAME-$RAVEN_BRANCH/setup.cfg
+rm -v $RAVEN_REPO_NAME-$RAVEN_BRANCH/pyproject.toml
 rm -v $RAVENPY_REPO_NAME-$RAVENPY_BRANCH/setup.cfg
 rm -v $RAVENPY_REPO_NAME-$RAVENPY_BRANCH/tox.ini
 rm -v $RAVENPY_REPO_NAME-$RAVENPY_BRANCH/pyproject.toml
