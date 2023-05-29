@@ -45,11 +45,12 @@ if [ x"$VERIFY_SSL" = xfalse ]; then
     echo "setting env var DISABLE_VERIFY_SSL for notebooks"
 fi
 
-# presence of setup.cfg, tox.ini files confuse py.test execution rootdir discovery
+# presence of setup.cfg, tox.ini, pyproject.toml files confuse py.test execution rootdir discovery
 rm -v $FINCH_REPO_NAME-$FINCH_BRANCH/setup.cfg
 rm -v $RAVEN_REPO_NAME-$RAVEN_BRANCH/setup.cfg
 rm -v $RAVENPY_REPO_NAME-$RAVENPY_BRANCH/setup.cfg
 rm -v $RAVENPY_REPO_NAME-$RAVENPY_BRANCH/tox.ini
+rm -v $RAVENPY_REPO_NAME-$RAVENPY_BRANCH/pyproject.toml
 rm -v $ESGF_COMPUTE_API_REPO_NAME-$ESGF_COMPUTE_API_BRANCH/setup.cfg
 rm -v $ESGF_COMPUTE_API_REPO_NAME-$ESGF_COMPUTE_API_BRANCH/tox.ini
 
