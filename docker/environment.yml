@@ -141,6 +141,7 @@ dependencies:
   - mesalib
   # tests
   - pytest
+  - pytest-xdist
   - nbval
   # to edit .ipynb
   - jupyter

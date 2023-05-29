@@ -11,7 +11,7 @@ USER root
 # Use 'update' for existing and 'install' for new package.
 # Keep same channel ordering to not revert anything.
 RUN umask 0000 \
-    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c pyviz/label/dev -c defaults -n birdy numpy==1.23.5 \
+    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c pyviz/label/dev -c defaults -n birdy numpy==1.23.5 pytest-xdist \
     && mamba clean --all --yes
 #    && pip uninstall -y ravenpy \
 #    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy ravenpy aiohttp
