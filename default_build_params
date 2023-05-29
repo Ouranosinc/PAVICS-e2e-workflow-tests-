@@ -84,6 +84,27 @@ else
     echo "RAVEN_REPO has been set to '$RAVEN_REPO'"
 fi
 
+if [ -z "$TEST_RAVENPY_REPO" ]; then
+    TEST_RAVENPY_REPO=false
+    echo "TEST_RAVENPY_REPO not set, default to '$TEST_RAVENPY_REPO'"
+else
+    echo "TEST_RAVENPY_REPO has been set to '$TEST_RAVENPY_REPO'"
+fi
+
+if [ -z "$RAVENPY_BRANCH" ]; then
+    RAVENPY_BRANCH=master
+    echo "RAVENPY_BRANCH not set, default to '$RAVENPY_BRANCH'"
+else
+    echo "RAVENPY_BRANCH has been set to '$RAVENPY_BRANCH'"
+fi
+
+if [ -z "$RAVENPY_REPO" ]; then
+    RAVENPY_REPO='CSHS-CWRA/RavenPy'
+    echo "RAVENPY_REPO not set, default to '$RAVENPY_REPO'"
+else
+    echo "RAVENPY_REPO has been set to '$RAVENPY_REPO'"
+fi
+
 if [ -z "$TEST_ESGF_COMPUTE_API_REPO" ]; then
     TEST_ESGF_COMPUTE_API_REPO=false
     echo "TEST_ESGF_COMPUTE_API_REPO not set, default to '$TEST_ESGF_COMPUTE_API_REPO'"

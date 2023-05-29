@@ -6,7 +6,11 @@
 # if name clash, last command wins
 
 mv -v esgf-compute-api-$ESGF_COMPUTE_API_BRANCH/examples ./esgf-compute-api-examples-$ESGF_COMPUTE_API_BRANCH
-rm -rfv esgf-compute-api-$ESGF_COMPUTE_API_BRANCH
+rm -r esgf-compute-api-$ESGF_COMPUTE_API_BRANCH
+
+mv -v raven-${RAVEN_BRANCH}/docs/source/notebooks ./raven
+mv -v RavenPy-${RAVENPY_BRANCH}/docs/notebooks/*.ipynb ./raven/
+rm -r raven-${RAVEN_BRANCH} RavenPy-${RAVENPY_BRANCH}
 
 if [ -n "$DEPLOY_PAVICS_LANDING_NB" ]; then
     # Pavics landing notebooks already deployed to Jupyter env via
@@ -15,10 +19,10 @@ if [ -n "$DEPLOY_PAVICS_LANDING_NB" ]; then
     mv -v PAVICS-landing-$PAVICS_LANDING_BRANCH/content/notebooks/climate_indicators ./pavics-homepage
     rm -v ./pavics-homepage/*.html
 fi
-rm -rfv PAVICS-landing-$PAVICS_LANDING_BRANCH
+rm -r PAVICS-landing-$PAVICS_LANDING_BRANCH
 
 mv -v pavics-sdi-$PAVICS_SDI_BRANCH/docs/source/notebooks/*.ipynb ./
-rm -rfv pavics-sdi-$PAVICS_SDI_BRANCH
+rm -r pavics-sdi-$PAVICS_SDI_BRANCH
 
 mv -v finch-$FINCH_BRANCH/docs/source/notebooks/*.ipynb ./
-rm -rfv finch-$FINCH_BRANCH
+rm -r finch-$FINCH_BRANCH
