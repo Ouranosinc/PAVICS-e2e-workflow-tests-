@@ -114,6 +114,9 @@ dependencies:
   - intake-geopandas
   # Intake interface to THREDDS data catalogs (thredds_cat, thredds_merged_source)
   - intake-thredds
+  # https://anaconda.org/conda-forge/hs_restclient
+  # HydroShare REST API client library
+  - hs_restclient
   - gcsfs
   - zarr
   # https://github.com/dask/s3fs/
