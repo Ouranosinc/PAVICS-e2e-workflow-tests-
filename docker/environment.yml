@@ -36,6 +36,8 @@ dependencies:
   # datashade=True is an alias
   # See https://github.com/holoviz/hvplot/issues/1073
   - numpy <= 1.23.5
+  # TODO: unpin cf_xarray due to https://github.com/xarray-contrib/cf-xarray/issues/442
+  - cf_xarray != 0.8.1
   - birdy
     # - owslib>=0.23.0  # from ravenpy
     # - netcdf4  # from ravenpy
