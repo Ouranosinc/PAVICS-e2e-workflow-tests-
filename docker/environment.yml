@@ -116,6 +116,7 @@ dependencies:
   - intake-geopandas
   # Intake interface to THREDDS data catalogs (thredds_cat, thredds_merged_source)
   - intake-thredds
+  # TODO: remove hs_restclient on next release, replaced by hsclient
   # https://anaconda.org/conda-forge/hs_restclient
   # HydroShare REST API client library
   - hs_restclient
@@ -219,6 +220,9 @@ dependencies:
     # https://pypi.org/project/xncml/
     # Tools for manipulating and opening NCML (NetCDF Markup) files with/for xarray
     - xncml
+    # https://pypi.org/project/hsclient/
+    # A python client for managing HydroShare resources, replaces hs_restclient
+    - hsclient
     # visual debugger for Jupyter Notebook, not working with JupyterLab at this moment
     - pixiedust
     # block execution of 'run_all_cells' until user input finished
