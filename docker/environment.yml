@@ -80,6 +80,9 @@ dependencies:
   # https://streamlit.io/
   # https://anaconda.org/conda-forge/streamlit
   - streamlit
+  # https://anaconda.org/conda-forge/seaborn
+  # Statistical data visualization
+  - seaborn
   # python-pptx is a Python library for creating and updating PowerPoint (.pptx) files.
   # https://python-pptx.readthedocs.io/en/latest/
   # https://anaconda.org/conda-forge/python-pptx
