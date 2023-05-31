@@ -107,6 +107,16 @@ Note this is another run, will double the time and no guaranty to have same erro
                                 variable: 'ESGF_AUTH_TOKEN'),  // Kept old env var name for backward compat
                          string(credentialsId: 'esgf_auth_token',
                                 variable: 'COMPUTE_TOKEN'),  // ESGF expect this env var name
+                         // For RavenPy HydroShare_integration.ipynb once a token is really required.
+                         // Not enable immediately to not force all existing Jenkins deployments
+                         // to add theses new credentials.
+                         // See required Jenkins config change
+                         // https://github.com/Ouranosinc/jenkins-config/commit/c6b36cfb761b5093375225a121ef5ec04684e84b
+                         // https://github.com/Ouranosinc/jenkins-config/pull/15
+                         // string(credentialsId: 'hydroshare_auth_client_id',
+                         //        variable: 'HYDROSHARE_AUTH_CLIENT_ID'),
+                         // string(credentialsId: 'hydroshare_auth_token',
+                         //        variable: 'HYDROSHARE_AUTH_TOKEN'),
                          ]) {
                         sh("VERIFY_SSL=${params.VERIFY_SSL} \
                             SAVE_RESULTING_NOTEBOOK=${params.SAVE_RESULTING_NOTEBOOK} \
