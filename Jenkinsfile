@@ -78,7 +78,7 @@ Requires 'weaver' component to be active on the target 'PAVICS_HOST' server
                description: 'ESGF_COMPUTE_API_REPO branch to test against.', trim: true)
         string(name: 'ESGF_COMPUTE_API_REPO', defaultValue: 'ESGF/esgf-compute-api',
                description: 'https://github.com/ESGF/esgf-compute-api repo or fork to test against.', trim: true)
-        string(name: 'PYTEST_EXTRA_OPTS', defaultValue: '',
+        string(name: 'PYTEST_EXTRA_OPTS', defaultValue: '--dist=loadscope --numprocesses=0',
                description: 'Extra options to pass to pytest, ex: --nbval-lax --dist=loadscope --numprocesses=0', trim: true)
         string(name: 'EXTRA_TEST_ENV_VAR', defaultValue: '',
                description: 'Extra environment variables for the various tests, ex: "TEST_RUNS=50 TEST_WPS_BIRDS=finch,raven,flyingpigeon TEST_NO_USE_PROD_DATA=1"', trim: true)
