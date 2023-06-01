@@ -29,6 +29,7 @@ if [ -z "$1" ]; then
     downloadgithubrepos $FINCH_REPO $FINCH_BRANCH
     downloadgithubrepos $PAVICS_LANDING_REPO $PAVICS_LANDING_BRANCH
     downloadgithubrepos $RAVEN_REPO $RAVEN_BRANCH
+    downloadgithubrepos $RAVENPY_REPO $RAVENPY_BRANCH
     downloadgithubrepos $ESGF_COMPUTE_API_REPO $ESGF_COMPUTE_API_BRANCH
 else
     set -x

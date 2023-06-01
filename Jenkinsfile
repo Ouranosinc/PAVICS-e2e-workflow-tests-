@@ -10,7 +10,7 @@ pipeline {
     // https://jenkins.io/doc/book/pipeline/syntax/
     agent {
         docker {
-            image "pavics/workflow-tests:221130-update230403"
+            image "pavics/workflow-tests:230530-1"
             label 'linux && docker'
         }
     }
@@ -66,14 +66,20 @@ Requires 'weaver' component to be active on the target 'PAVICS_HOST' server
                description: 'RAVEN_REPO branch to test against.', trim: true)
         string(name: 'RAVEN_REPO', defaultValue: 'Ouranosinc/raven',
                description: 'https://github.com/Ouranosinc/raven repo or fork to test against.', trim: true)
+        booleanParam(name: 'TEST_RAVENPY_REPO', defaultValue: false,
+                     description: 'Check the box to test RavenPy repo.')
+        string(name: 'RAVENPY_BRANCH', defaultValue: 'master',
+               description: 'RAVENPY_REPO branch to test against.', trim: true)
+        string(name: 'RAVENPY_REPO', defaultValue: 'CSHS-CWRA/RavenPy',
+               description: 'https://github.com/CSHS-CWRA/RavenPy repo or fork to test against.', trim: true)
         booleanParam(name: 'TEST_ESGF_COMPUTE_API_REPO', defaultValue: false,
                      description: 'Check the box to test esgf-compute-api repo.')
         string(name: 'ESGF_COMPUTE_API_BRANCH', defaultValue: 'devel',
                description: 'ESGF_COMPUTE_API_REPO branch to test against.', trim: true)
         string(name: 'ESGF_COMPUTE_API_REPO', defaultValue: 'ESGF/esgf-compute-api',
                description: 'https://github.com/ESGF/esgf-compute-api repo or fork to test against.', trim: true)
-        string(name: 'PYTEST_EXTRA_OPTS', defaultValue: '',
-               description: 'Extra options to pass to pytest, ex: --nbval-lax', trim: true)
+        string(name: 'PYTEST_EXTRA_OPTS', defaultValue: '--dist=loadscope --numprocesses=0',
+               description: 'Extra options to pass to pytest, ex: --nbval-lax --dist=loadscope --numprocesses=0', trim: true)
         string(name: 'EXTRA_TEST_ENV_VAR', defaultValue: '',
                description: 'Extra environment variables for the various tests, ex: "TEST_RUNS=50 TEST_WPS_BIRDS=finch,raven,flyingpigeon TEST_NO_USE_PROD_DATA=1"', trim: true)
         booleanParam(name: 'TEST_LOCAL_NOTEBOOKS', defaultValue: true,
@@ -101,6 +107,16 @@ Note this is another run, will double the time and no guaranty to have same erro
                                 variable: 'ESGF_AUTH_TOKEN'),  // Kept old env var name for backward compat
                          string(credentialsId: 'esgf_auth_token',
                                 variable: 'COMPUTE_TOKEN'),  // ESGF expect this env var name
+                         // For RavenPy HydroShare_integration.ipynb once a token is really required.
+                         // Not enable immediately to not force all existing Jenkins deployments
+                         // to add theses new credentials.
+                         // See required Jenkins config change
+                         // https://github.com/Ouranosinc/jenkins-config/commit/c6b36cfb761b5093375225a121ef5ec04684e84b
+                         // https://github.com/Ouranosinc/jenkins-config/pull/15
+                         // string(credentialsId: 'hydroshare_auth_client_id',
+                         //        variable: 'HYDROSHARE_AUTH_CLIENT_ID'),
+                         // string(credentialsId: 'hydroshare_auth_token',
+                         //        variable: 'HYDROSHARE_AUTH_TOKEN'),
                          ]) {
                         sh("VERIFY_SSL=${params.VERIFY_SSL} \
                             SAVE_RESULTING_NOTEBOOK=${params.SAVE_RESULTING_NOTEBOOK} \
@@ -118,6 +134,7 @@ Note this is another run, will double the time and no guaranty to have same erro
             archiveArtifacts(artifacts: 'pavics-sdi-*/docs/source/notebook-components/*.ipynb', fingerprint: true)
             archiveArtifacts(artifacts: 'finch-*/docs/source/notebooks/*.ipynb', fingerprint: true)
             archiveArtifacts(artifacts: 'raven-*/docs/source/notebooks/*.ipynb', fingerprint: true)
+            archiveArtifacts(artifacts: 'RavenPy-*/docs/notebooks/*.ipynb', fingerprint: true)
             archiveArtifacts(artifacts: 'esgf-compute-api-*/examples/*.ipynb', fingerprint: true)
             archiveArtifacts(artifacts: 'PAVICS-landing-*/content/notebooks/climate_indicators/*.ipynb', fingerprint: true)
             archiveArtifacts(artifacts: 'buildout/*.output.ipynb', fingerprint: true, allowEmptyArchive: true)

@@ -4,6 +4,7 @@ FROM continuumio/miniconda3
 # The 'channel_priority strict' did help conda but it was not enough.
 RUN conda update conda -n base && \
     conda install mamba -n base -c conda-forge -c defaults && \
+    conda clean --all --yes && \
     conda config --set channel_priority strict && \
     wget -qO- https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -C /usr/local -xvj bin/micromamba
 
@@ -42,14 +43,12 @@ COPY environment.yml /environment.yml
 # Conda was stuck at this step:
 # DEBUG conda.common._logic:_run_sat(607): Invoking SAT with clause count: 2500273
 #
-# Pin python=3.9 because python 3.10 cause this error:
-#   Encountered problems while solving:
-#     - package cartopy-0.20.1-py310h902574e_5 requires geos >=3.10.1,<3.10.2.0a0, but none of the providers can be installed
-#   This means there is no py310 build for geos package but https://anaconda.org/conda-forge/geos/files seems to be python indepdendent !
-# Pin python=3.8 because according to DavidH, xESMF has not been tested with 3.9 yet.
+# Python 3.10 cause this "ValueError: `popmean.shape[axis]` must equal 1." in
+# homepage nb 4, see https://github.com/Ouranosinc/PAVICS-landing/issues/65
 RUN umask 0000 && \
-    mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy python=3.8 --yes && \
-    mamba env update --name birdy --file /environment.yml
+    mamba create --name birdy --channel conda-forge --channel defaults xclim ravenpy python=3.9 --yes && \
+    mamba env update --name birdy --file /environment.yml && \
+    mamba clean --all --yes
 
 # alternate way to 'source activate birdy'
 ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
@@ -100,11 +99,25 @@ RUN wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_
     chmod a+r /etc/jupyter/jupyter_notebook_config.py && \
     mkdir /notebook_dir && chown jenkins /notebook_dir && \
     chmod a+rwX -R /opt/conda/envs/birdy/fonts && \
-    chmod a+rwX -R /opt/conda/pkgs/cache && \
-    chown jenkins:jenkins -R /opt/conda/pkgs/cache
+    mkdir /opt/conda/pkgs/cache && \
+    chown jenkins:jenkins -R /opt/conda/pkgs/cache && \
+    mkdir -p /usr/local/bin && \
+    wget https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz -O /usr/local/bin/globusconnectpersonal-latest.tgz && \
+    tar xzf /usr/local/bin/globusconnectpersonal-latest.tgz -C /usr/local/bin/ && \
+    ln -vs /usr/local/bin/globusconnectpersonal*/globusconnectpersonal /usr/local/bin/globusconnectpersonal && \
+    rm -v /usr/local/bin/globusconnectpersonal-latest.tgz
 
 # For jupyter-panel-proxy launcher.
 ENV BOKEH_ALLOW_WS_ORIGIN "*"
+
+# For import xesmf since esmf-8.4.0, see
+# https://github.com/conda-forge/esmf-feedstock/issues/91
+ENV ESMFMKFILE="/opt/conda/envs/birdy/lib/esmf.mk"
+
+# To avoid error "PROJ: proj_create_from_database: Open of
+# /opt/conda/envs/birdy/share/proj failed"
+# This simulates a real `conda activate birdy`.
+ENV PROJ_DATA="/opt/conda/envs/birdy/share/proj"
 
 # problem running start-notebook.sh when being root
 # the jupyter/base-notebook image also do not default to root user so we do the same here

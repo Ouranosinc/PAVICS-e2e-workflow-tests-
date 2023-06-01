@@ -1,23 +1,23 @@
 # For testing quickly without having to do a full rebuild.
 
-FROM pavics/workflow-tests:221130
+FROM pavics/workflow-tests:230526-1
 
-# To avoid error "PROJ: proj_create_from_database: Open of /opt/conda/envs/birdy/share/proj failed"
-# This simulates a real `conda activate birdy`.
-ENV PROJ_DATA="/opt/conda/envs/birdy/share/proj"
+#ENV ESMFMKFILE="/opt/conda/envs/birdy/lib/esmf.mk"
+
+#ENV PROJ_DATA="/opt/conda/envs/birdy/share/proj"
 
 USER root
 
 # Use 'update' for existing and 'install' for new package.
 # Keep same channel ordering to not revert anything.
-# esgf-pyclient for pavics-sdi esgf-dap.ipynb, PR https://github.com/Ouranosinc/pavics-sdi/pull/269
-# xncml for gen_catalog refactoring, PR https://github.com/Ouranosinc/pavics-vdb/pull/46
 RUN umask 0000 \
-    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c pyston -c pyviz/label/dev -c defaults -n birdy esgf-pyclient \
-    && pip install xncml
+    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c pyviz/label/dev -c defaults -n birdy numpy==1.23.5 pytest-xdist \
+    && mamba clean --all --yes
 #    && pip uninstall -y ravenpy \
 #    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy ravenpy aiohttp
 
+#RUN umask 0000 \
+#    && python -m pip install --upgrade --force-reinstall --no-deps --no-cache-dir netcdf4==1.6.0 --no-binary netcdf4
 # RUN apt-get update && \
 #     DEBIAN_FRONTEND=noninteractive apt-get install -y unzip && \
 #     apt-get clean && \

@@ -5,7 +5,7 @@ channels:
   - cdat
   - bokeh
   - plotly  # for jupyter-dash
-  - pyston
+    #  - pyston
   - pyviz/label/dev  # for jupyter-panel-proxy, panel
   - defaults
 
@@ -19,8 +19,8 @@ dependencies:
 
   # Pin latest xclim and ravenpy to avoid downgrading during the second installation phase.
   # Mamba is quicker to solve dependencies than conda, but it is less precise so accidental downgrades can happen.
-  - xclim >= 0.38.0
-  - ravenpy >= 0.7.8
+  - xclim >= 0.43.0
+  - ravenpy >= 0.12.0
 
     #- dask  # from xclim and ravenpy
     #- distributed
@@ -32,9 +32,17 @@ dependencies:
   - matplotlib
     # - xarray  # from xclim and ravenpy
     # - numpy  # from xclim and ravenpy
+  # TODO: unpin numpy, pinned for hvplot.quadmesh(rasterize=True)
+  # datashade=True is an alias
+  # See https://github.com/holoviz/hvplot/issues/1073
+  - numpy <= 1.23.5
+  # TODO: unpin cf_xarray due to https://github.com/xarray-contrib/cf-xarray/issues/442
+  - cf_xarray != 0.8.1
   - birdy
     # - owslib>=0.23.0  # from ravenpy
     # - netcdf4  # from ravenpy
+  # TODO: remove libnetcdf PIN because https://github.com/Ouranosinc/PAVICS-landing/issues/66
+  - libnetcdf <= 4.8.1
   # https://github.com/ecmwf/cfgrib
   # Python interface to map GRIB files to the Unidata's Common Data Model v4
   # following the CF Conventions.
@@ -47,6 +55,9 @@ dependencies:
     # - geopandas  # from ravenpy
     # - pandas  # from xclim and ravenpy
     # - rioxarray  # from ravenpy
+  # https://anaconda.org/conda-forge/pyogrio
+  # Vectorized vector I/O using GDAL
+  - pyogrio
   - scikit-image
   - ipyleaflet
   - threddsclient
@@ -56,11 +67,12 @@ dependencies:
   - jupyter_bokeh
   - pscript
   - h5netcdf
-  - panel >= 0.13.1a3
+  # TODO: remove panel pin when Analogues dashboard works
+  - panel <= 0.14.4
   # https://github.com/holoviz/panel
   - pyviz_comms  # (was labextension pyviz/jupyterlab_pyviz in jupyterlab v2)
   - holoviews
-  - geoviews
+  - geoviews >= 1.9.6
   # this might still be relevant https://github.com/holoviz/hvplot/issues/498
   # (violin plot not working with hvplot 0.6.0).
   # Per this comment
@@ -70,6 +82,9 @@ dependencies:
   # https://streamlit.io/
   # https://anaconda.org/conda-forge/streamlit
   - streamlit
+  # https://anaconda.org/conda-forge/seaborn
+  # Statistical data visualization
+  - seaborn
   # python-pptx is a Python library for creating and updating PowerPoint (.pptx) files.
   # https://python-pptx.readthedocs.io/en/latest/
   # https://anaconda.org/conda-forge/python-pptx
@@ -120,6 +135,8 @@ dependencies:
   - memory_profiler
   # for esgf notebooks
   - esgf-compute-api
+  # https://anaconda.org/conda-forge/esgf-pyclient (for pavics-sdi esgf-dap.ipynb)
+  - esgf-pyclient
   - cdms2
   # Disable vcs because it was forcing python downgrade to below 3.9.
   # See https://github.com/CDAT/vcs/issues/457
@@ -129,6 +146,7 @@ dependencies:
   - mesalib
   # tests
   - pytest
+  - pytest-xdist
   - nbval
   # to edit .ipynb
   - jupyter
@@ -187,11 +205,20 @@ dependencies:
   - geckodriver
   - xlrd
   - pre-commit
+  # pyston_lite_autoload blocked us from using newer Python than 3.8
+  #   package pyston_lite_autoload-2.3.4-pyh44b312d_0 requires pyston_lite
+  #   2.3.4 py38h0a891b7_0, but none of the providers can be installed
   # https://github.com/pyston/pyston/
-  - pyston_lite_autoload
+  #  - pyston_lite_autoload
   # for pip packages
   - pip
   - pip:
+    # https://pypi.org/project/xncml/
+    # Tools for manipulating and opening NCML (NetCDF Markup) files with/for xarray
+    - xncml
+    # https://pypi.org/project/hsclient/
+    # A python client for managing HydroShare resources, replaces hs_restclient
+    - hsclient
     # visual debugger for Jupyter Notebook, not working with JupyterLab at this moment
     - pixiedust
     # block execution of 'run_all_cells' until user input finished
