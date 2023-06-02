@@ -7,9 +7,9 @@
 
 rm -r esgf-compute-api-$ESGF_COMPUTE_API_BRANCH
 
-mkdir raven
-mv -v raven-${RAVEN_BRANCH}/docs/source/notebooks/*.ipynb ./raven/
-mv -v RavenPy-${RAVENPY_BRANCH}/docs/notebooks/*.ipynb ./raven/
+mkdir hydro
+mv -v raven-${RAVEN_BRANCH}/docs/source/notebooks/*.ipynb ./hydro/
+mv -v RavenPy-${RAVENPY_BRANCH}/docs/notebooks/*.ipynb ./hydro/
 rm -r raven-${RAVEN_BRANCH} RavenPy-${RAVENPY_BRANCH}
 
 if [ -n "$DEPLOY_PAVICS_LANDING_NB" ]; then
