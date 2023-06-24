@@ -21,7 +21,7 @@ RUN apt-get update && \
 # Create user jenkins for our Jenkins e2e notebooks test suite.
 # Change /opt/conda folder permissions for jupyter-conda extension.
 RUN groupadd --gid 1000 jenkins \
-    && useradd --uid 1000 --gid jenkins --create-home jenkins && \
+    && useradd --uid 1000 --gid jenkins --shell /bin/bash --create-home jenkins && \
     chmod -R a+rwX /opt/conda
 
 COPY environment.yml /environment.yml
