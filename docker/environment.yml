@@ -49,6 +49,10 @@ dependencies:
   - cfgrib
   - pydap
   - cartopy >= 0.21.0
+  # Fixes cartopy bug arising with scipy 1.11.
+  # https://github.com/Ouranosinc/pavics-sdi/pull/298
+  # https://github.com/Ouranosinc/pavics-sdi/issues/294
+  - pykdtree
   - descartes # Is this really needed???
     # - rasterio  # from ravenpy
     # - gdal  # for osgeo, from ravenpy
