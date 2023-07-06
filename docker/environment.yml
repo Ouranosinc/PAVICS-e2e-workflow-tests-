@@ -20,10 +20,7 @@ dependencies:
   # Pin latest xclim and ravenpy to avoid downgrading during the second installation phase.
   # Mamba is quicker to solve dependencies than conda, but it is less precise so accidental downgrades can happen.
   - xclim >= 0.44.0
-  - ravenpy >= 0.12.1
-
-  # TODO: unpin pydantic, breaks ravenpy, needs ravenpy stable for paper submission
-  - pydantic < 2.0
+  - ravenpy >= 0.12.2
 
     #- dask  # from xclim and ravenpy
     #- distributed
