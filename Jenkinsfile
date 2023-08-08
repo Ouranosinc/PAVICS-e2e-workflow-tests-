@@ -135,6 +135,7 @@ Note this is another run, will double the time and no guaranty to have same erro
             archiveArtifacts(artifacts: 'finch-*/docs/source/notebooks/*.ipynb', fingerprint: true)
             archiveArtifacts(artifacts: 'raven-*/docs/source/notebooks/*.ipynb', fingerprint: true)
             archiveArtifacts(artifacts: 'RavenPy-*/docs/notebooks/*.ipynb', fingerprint: true)
+            archiveArtifacts(artifacts: 'RavenPy-*/docs/notebooks/paper/*.ipynb', fingerprint: true)
             archiveArtifacts(artifacts: 'esgf-compute-api-*/examples/*.ipynb', fingerprint: true)
             archiveArtifacts(artifacts: 'PAVICS-landing-*/content/notebooks/climate_indicators/*.ipynb', fingerprint: true)
             archiveArtifacts(artifacts: 'buildout/*.output.ipynb', fingerprint: true, allowEmptyArchive: true)

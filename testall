@@ -99,6 +99,7 @@ if [ x"$TEST_RAVEN_REPO" = xtrue ]; then
 fi
 if [ x"$TEST_RAVENPY_REPO" = xtrue ]; then
     NOTEBOOKS_TO_TEST="$NOTEBOOKS_TO_TEST ${RAVENPY_DIR}/docs/notebooks/*.ipynb"
+    NOTEBOOKS_TO_TEST="$NOTEBOOKS_TO_TEST ${RAVENPY_DIR}/docs/notebooks/paper/*.ipynb"
 fi
 if [ x"$TEST_ESGF_COMPUTE_API_REPO" = xtrue ]; then
     NOTEBOOKS_TO_TEST="$NOTEBOOKS_TO_TEST ${ESGF_COMPUTE_API_DIR}/examples/*.ipynb"
