@@ -32,10 +32,7 @@ dependencies:
   - matplotlib
     # - xarray  # from xclim and ravenpy
     # - numpy  # from xclim and ravenpy
-  # TODO: unpin numpy, pinned for hvplot.quadmesh(rasterize=True)
-  # datashade=True is an alias
-  # See https://github.com/holoviz/hvplot/issues/1073
-  - numpy <= 1.23.5
+  - numpy
   # TODO: unpin cf_xarray due to https://github.com/xarray-contrib/cf-xarray/issues/442
   - cf_xarray != 0.8.1
   - birdy
