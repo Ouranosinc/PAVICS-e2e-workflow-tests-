@@ -2,6 +2,10 @@
 .idea/
 .vscode/
 
+# Python files
+*.py[cod]
+__pycache__/
+
 # vim temp files
 *.swp
 
