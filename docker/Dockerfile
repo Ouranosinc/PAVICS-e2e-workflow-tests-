@@ -95,7 +95,9 @@ RUN wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_
     wget https://raw.githubusercontent.com/jupyter/docker-stacks/$DOCKER_STACKS_COMMIT/base-notebook/jupyter_notebook_config.py --output-document /etc/jupyter/jupyter_notebook_config.py && \
     chmod a+rx /usr/local/bin/start.sh /usr/local/bin/start-singleuser.sh /usr/local/bin/start-notebook.sh /usr/local/bin/fix-permissions && \
     chmod a+r /etc/jupyter/jupyter_notebook_config.py && \
-    mkdir /notebook_dir && chown jenkins /notebook_dir && \
+    mkdir -p /notebook_dir/writable-workspace && chown jenkins /notebook_dir/writable-workspace && \
+    mkdir -p /notebook_dir/pavics-homepage && chown jenkins /notebook_dir/pavics-homepage && \
+    chown root:root /notebook_dir && chmod a-w /notebook_dir && \
     chmod a+rwX -R /opt/conda/envs/birdy/fonts && \
     mkdir /opt/conda/pkgs/cache && \
     chown jenkins:jenkins -R /opt/conda/pkgs/cache && \

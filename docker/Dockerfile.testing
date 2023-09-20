@@ -1,6 +1,6 @@
 # For testing quickly without having to do a full rebuild.
 
-FROM pavics/workflow-tests:py310-230830
+FROM pavics/workflow-tests:230601
 
 #ENV ESMFMKFILE="/opt/conda/envs/birdy/lib/esmf.mk"
 
@@ -11,8 +11,11 @@ USER root
 # Use 'update' for existing and 'install' for new package.
 # Keep same channel ordering to not revert anything.
 RUN umask 0000 \
-    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c pyviz/label/dev -c defaults -n birdy panel==1.2.2 \
-    && mamba clean --all --yes
+    && mkdir -p /notebook_dir/writable-workspace && chown jenkins /notebook_dir/writable-workspace \
+    && mkdir -p /notebook_dir/pavics-homepage && chown jenkins /notebook_dir/pavics-homepage \
+    && chown root:root /notebook_dir && chmod a-w /notebook_dir
+#    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c pyviz/label/dev -c defaults -n birdy panel==1.2.2 \
+#    && mamba clean --all --yes
 #    && pip uninstall -y ravenpy \
 #    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy ravenpy aiohttp
 
