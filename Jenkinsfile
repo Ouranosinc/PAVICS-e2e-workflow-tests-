@@ -18,15 +18,19 @@ pipeline {
     parameters {
         string(name: 'PAVICS_HOST', defaultValue: default_pavics_host,
                description: 'PAVICS host to run notebooks against.', trim: true)
-        // TEST_MAGPIE_AUTH enables the evaluation of end-2-end access to some secured resources by Twitcher/Magpie
-        // and validate that resulting resources are found (or blocked) after proxy resolution of granted/denied access.
+        // TEST_MAGPIE_AUTH enables the evaluation of end-2-end access to some secured Thredds and Geoserver resources
+        // by Twitcher/Magpie and validates that resulting resources are found (or blocked) after proxy resolution of
+        // granted/denied access.
         // If Authentication/Authorization is not needed or not employed for your instance, this should be disabled to
         // avoid failures.
         // NOTE:
         //   This test suite might require manual clean-up on failure (if critical error).
-        //   The script attempts to remove everything, but could be incapable of doing so if Magpie become inaccessible
+        //   The scripts attempt to remove everything, but could be incapable of doing so if Magpie become inaccessible
         //   midway during execution. Employed users/groups are not critical (not modifying existing users permissions),
         //   but could 'pollute' the user list over time.
+        //   Also, a Geoserver workspace/layer with related Magpie resources are created specifically for the Geoserver
+        //   test, but shouldn't impact existing resources. The test should normally clean the Geoserver workspace and
+        //   related Magpie resources upon completion.
         booleanParam(name: 'TEST_MAGPIE_AUTH', defaultValue: false,
                      description: '''Check the box to test Authentication/Authorization using Magpie/Twitcher services.
 Note: This test suite might require manual clean-up on failure (if critical error).
