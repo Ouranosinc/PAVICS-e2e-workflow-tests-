@@ -33,6 +33,7 @@ pipeline {
         //   related Magpie resources upon completion.
         booleanParam(name: 'TEST_MAGPIE_AUTH', defaultValue: false,
                      description: '''Check the box to test Authentication/Authorization using Magpie/Twitcher services.
+This includes tests on Thredds and Geoserver resources.
 Note: This test suite might require manual clean-up on failure (if critical error).
                      ''')
         // below credentials are the defaults from bootstrap script:
