@@ -38,6 +38,10 @@ Note: This test suite might require manual clean-up on failure (if critical erro
                  description: 'Username of admin-level user to employ when running notebooks-auth tests.')
         password(name: 'TEST_MAGPIE_ADMIN_PASSWORD', defaultValue: 'qwertyqwerty!',
                   description: 'Password of admin-level user to employ when running notebooks-auth tests.')
+        password(name: 'TEST_GEOSERVER_ADMIN_USERNAME', defaultValue: 'admin',
+                 description: 'Username of admin-level Geoserver user to employ when running Geoserver tests.')
+        password(name: 'TEST_GEOSERVER_ADMIN_PASSWORD', defaultValue: 'geoserverpass',
+                  description: 'Password of admin-level Geoserver user to employ when running Geoserver tests.')
         booleanParam(name: 'TEST_PAVICS_SDI_REPO', defaultValue: true,
                      description: 'Check the box to test pavics-sdi repo.')
         string(name: 'PAVICS_SDI_BRANCH', defaultValue: 'master',
