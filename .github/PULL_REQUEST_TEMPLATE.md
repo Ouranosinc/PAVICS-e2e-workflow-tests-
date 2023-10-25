@@ -13,8 +13,8 @@ This PR fixes [issue id](url)
   - Change 2 (related PR url)
   - Relevant changes (alphabetical order):
 ```diff
-<   - birdy=0.8.1=pyh6c4a22f_1
->   - birdy=0.8.4=pyh1a96a4e_0
+<   - somelib=0.8.1=pyh6c4a22f_1
+>   - somelib=0.8.4=pyh1a96a4e_0
 
 (...)
 
