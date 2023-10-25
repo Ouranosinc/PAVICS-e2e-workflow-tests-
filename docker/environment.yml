@@ -127,6 +127,9 @@ dependencies:
   # https://github.com/pangeo-data/xESMF
   # xesmf-0.6.2 requires clisops>=0.8.0
   - xesmf >= 0.6.2
+  # Sensitivity Analysis Library
+  # https://anaconda.org/conda-forge/salib
+  - salib
   # https://anaconda.org/conda-forge/geopy
   - geopy
   # https://anaconda.org/anaconda/memory_profiler
