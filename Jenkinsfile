@@ -18,17 +18,22 @@ pipeline {
     parameters {
         string(name: 'PAVICS_HOST', defaultValue: default_pavics_host,
                description: 'PAVICS host to run notebooks against.', trim: true)
-        // TEST_MAGPIE_AUTH enables the evaluation of end-2-end access to some secured resources by Twitcher/Magpie
-        // and validate that resulting resources are found (or blocked) after proxy resolution of granted/denied access.
+        // TEST_MAGPIE_AUTH enables the evaluation of end-2-end access to some secured Thredds and Geoserver resources
+        // by Twitcher/Magpie and validates that resulting resources are found (or blocked) after proxy resolution of
+        // granted/denied access.
         // If Authentication/Authorization is not needed or not employed for your instance, this should be disabled to
         // avoid failures.
         // NOTE:
         //   This test suite might require manual clean-up on failure (if critical error).
-        //   The script attempts to remove everything, but could be incapable of doing so if Magpie become inaccessible
+        //   The scripts attempt to remove everything, but could be incapable of doing so if Magpie become inaccessible
         //   midway during execution. Employed users/groups are not critical (not modifying existing users permissions),
         //   but could 'pollute' the user list over time.
+        //   Also, a Geoserver workspace/layer with related Magpie resources are created specifically for the Geoserver
+        //   test, but shouldn't impact existing resources. The test should normally clean the Geoserver workspace and
+        //   related Magpie resources upon completion.
         booleanParam(name: 'TEST_MAGPIE_AUTH', defaultValue: false,
                      description: '''Check the box to test Authentication/Authorization using Magpie/Twitcher services.
+This includes tests on Thredds and Geoserver resources.
 Note: This test suite might require manual clean-up on failure (if critical error).
                      ''')
         // below credentials are the defaults from bootstrap script:
@@ -38,6 +43,10 @@ Note: This test suite might require manual clean-up on failure (if critical erro
                  description: 'Username of admin-level user to employ when running notebooks-auth tests.')
         password(name: 'TEST_MAGPIE_ADMIN_PASSWORD', defaultValue: 'qwertyqwerty!',
                   description: 'Password of admin-level user to employ when running notebooks-auth tests.')
+        password(name: 'TEST_GEOSERVER_ADMIN_USERNAME', defaultValue: 'admin',
+                 description: 'Username of admin-level Geoserver user to employ when running Geoserver tests.')
+        password(name: 'TEST_GEOSERVER_ADMIN_PASSWORD', defaultValue: 'geoserverpass',
+                  description: 'Password of admin-level Geoserver user to employ when running Geoserver tests.')
         booleanParam(name: 'TEST_PAVICS_SDI_REPO', defaultValue: true,
                      description: 'Check the box to test pavics-sdi repo.')
         string(name: 'PAVICS_SDI_BRANCH', defaultValue: 'master',
@@ -62,7 +71,7 @@ Requires 'weaver' component to be active on the target 'PAVICS_HOST' server
                description: 'https://github.com/Ouranosinc/PAVICS-landing repo or fork to test against.', trim: true)
         booleanParam(name: 'TEST_RAVEN_REPO', defaultValue: false,
                      description: 'Check the box to test raven repo.')
-        string(name: 'RAVEN_BRANCH', defaultValue: 'master',
+        string(name: 'RAVEN_BRANCH', defaultValue: 'main',
                description: 'RAVEN_REPO branch to test against.', trim: true)
         string(name: 'RAVEN_REPO', defaultValue: 'Ouranosinc/raven',
                description: 'https://github.com/Ouranosinc/raven repo or fork to test against.', trim: true)
