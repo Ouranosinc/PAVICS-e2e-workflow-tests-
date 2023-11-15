@@ -10,7 +10,7 @@ pipeline {
     // https://jenkins.io/doc/book/pipeline/syntax/
     agent {
         docker {
-            image "pavics/workflow-tests:230601"
+            image "pavics/workflow-tests:py39-230601-1-update231025"
             label 'linux && docker'
         }
     }
@@ -71,7 +71,7 @@ Requires 'weaver' component to be active on the target 'PAVICS_HOST' server
                description: 'https://github.com/Ouranosinc/PAVICS-landing repo or fork to test against.', trim: true)
         booleanParam(name: 'TEST_RAVEN_REPO', defaultValue: false,
                      description: 'Check the box to test raven repo.')
-        string(name: 'RAVEN_BRANCH', defaultValue: 'master',
+        string(name: 'RAVEN_BRANCH', defaultValue: 'main',
                description: 'RAVEN_REPO branch to test against.', trim: true)
         string(name: 'RAVEN_REPO', defaultValue: 'Ouranosinc/raven',
                description: 'https://github.com/Ouranosinc/raven repo or fork to test against.', trim: true)

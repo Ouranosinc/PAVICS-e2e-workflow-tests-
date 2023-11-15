@@ -71,7 +71,7 @@ else
 fi
 
 if [ -z "$RAVEN_BRANCH" ]; then
-    RAVEN_BRANCH=master
+    RAVEN_BRANCH=main
     echo "RAVEN_BRANCH not set, default to '$RAVEN_BRANCH'"
 else
     echo "RAVEN_BRANCH has been set to '$RAVEN_BRANCH'"
