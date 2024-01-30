@@ -218,6 +218,9 @@ dependencies:
     # https://pypi.org/project/hsclient/
     # A python client for managing HydroShare resources, replaces hs_restclient
     - hsclient
+    # https://pypi.org/project/fstd2nc/
+    # Converts RPN standard files (from Environment Canada) to netCDF files.
+    - fstd2nc
     # visual debugger for Jupyter Notebook, not working with JupyterLab at this moment
     - pixiedust
     # block execution of 'run_all_cells' until user input finished

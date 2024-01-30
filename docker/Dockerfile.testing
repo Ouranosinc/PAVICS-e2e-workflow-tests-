@@ -1,6 +1,6 @@
 # For testing quickly without having to do a full rebuild.
 
-FROM pavics/workflow-tests:py39-230601-1
+FROM pavics/workflow-tests:py39-230601-1-update231122
 
 #ENV ESMFMKFILE="/opt/conda/envs/birdy/lib/esmf.mk"
 
@@ -11,8 +11,9 @@ USER root
 # Use 'update' for existing and 'install' for new package.
 # Keep same channel ordering to not revert anything.
 RUN umask 0000 \
-    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c pyviz/label/dev -c defaults -n birdy panel==1.2.2 bokeh==3.2.2 \
-    && mamba clean --all --yes
+     && pip install --no-cache-dir https://github.com/bird-house/threddsclient/archive/refs/heads/master.zip
+#    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c pyviz/label/dev -c defaults -n birdy salib \
+#    && mamba clean --all --yes
 #    && pip uninstall -y ravenpy \
 #    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy ravenpy aiohttp
 
