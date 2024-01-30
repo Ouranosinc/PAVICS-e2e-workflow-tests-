@@ -11,7 +11,7 @@ USER root
 # Use 'update' for existing and 'install' for new package.
 # Keep same channel ordering to not revert anything.
 RUN umask 0000 \
-    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c pyviz/label/dev -c defaults -n birdy salib threddsclient==0.4.5 \
+    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c pyviz/label/dev -c defaults -n birdy salib threddsclient==0.4.5 xclim==0.47.0 \
     && mamba clean --all --yes \
     && pip install --no-cache-dir --upgrade fstd2nc
 #    && pip uninstall -y ravenpy \
