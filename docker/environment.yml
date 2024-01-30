@@ -61,7 +61,7 @@ dependencies:
   - pyogrio
   - scikit-image
   - ipyleaflet
-  - threddsclient
+  - threddsclient >= 0.4.5
   - bokeh
   - regionmask
   - siphon
