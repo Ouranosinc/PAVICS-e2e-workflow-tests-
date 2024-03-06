@@ -20,7 +20,11 @@ dependencies:
   # Pin latest xclim and ravenpy to avoid downgrading during the second installation phase.
   # Mamba is quicker to solve dependencies than conda, but it is less precise so accidental downgrades can happen.
   - xclim >= 0.47.0
-  - ravenpy >= 0.12.2
+  - ravenpy >= 0.13.0
+
+  # https://anaconda.org/conda-forge/xscen
+  # A climate change scenario-building analysis framework, built with xclim/xarray.
+  - xscen >= 0.8.3
 
     #- dask  # from xclim and ravenpy
     #- distributed
@@ -221,6 +225,10 @@ dependencies:
     # https://pypi.org/project/fstd2nc/
     # Converts RPN standard files (from Environment Canada) to netCDF files.
     - fstd2nc
+    # https://pypi.org/project/figanos/
+    # Outils pour produire des graphiques informatifs sur les impacts des
+    # changements climatiques.
+    - figanos
     # visual debugger for Jupyter Notebook, not working with JupyterLab at this moment
     - pixiedust
     # block execution of 'run_all_cells' until user input finished
