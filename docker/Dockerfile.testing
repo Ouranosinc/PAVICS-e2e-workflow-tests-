@@ -11,7 +11,7 @@ USER root
 # Use 'update' for existing and 'install' for new package.
 # Keep same channel ordering to not revert anything.
 RUN umask 0000 \
-    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c pyviz/label/dev -c defaults -n birdy xscen==0.8.3 ravenpy==0.13.0 pydantic==2.6.3 \
+    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c pyviz/label/dev -c defaults -n birdy xscen==0.8.2 ravenpy==0.13.0 pydantic==2.6.3 \
     && mamba clean --all --yes \
     && pip install --no-cache-dir --upgrade finagos
 #    && pip uninstall -y ravenpy \
