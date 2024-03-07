@@ -1,0 +1,1688 @@
+Started by user Long Vu
+Replayed #243
+ > git rev-parse --is-inside-work-tree # timeout=10
+Setting origin to https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git
+ > git config remote.origin.url https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git # timeout=10
+Fetching origin...
+Fetching upstream changes from origin
+ > git --version # timeout=10
+ > git config --get remote.origin.url # timeout=10
+ > git fetch --tags --progress -- origin +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/current-production-version
+Seen branch in repository origin/devel-new-extensions
+Seen branch in repository origin/extended_tests
+Seen branch in repository origin/master
+Seen branch in repository origin/new-docker-build
+Seen branch in repository origin/test-dockerhub-build
+Seen branch in repository origin/twitcher_perf_test_notebook
+Seen 7 remote branches
+Obtained Jenkinsfile from daaa4896c7358eff3a7bd6434617b4af06c89e42
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on linux1 in /home/jenkins/agent/workspace/_workflow-tests_new-docker-build
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+No credentials specified
+Fetching changes from the remote Git repository
+Fetching without tags
+ > git rev-parse --is-inside-work-tree # timeout=10
+ > git config remote.origin.url https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git # timeout=10
+Fetching upstream changes from https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git
+ > git --version # timeout=10
+ > git fetch --no-tags --progress -- https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Checking out Revision 4f2c0995711f5b6db82991065a652ea056778a2a (new-docker-build)
+Commit message: "release: update to use image pavics/workflow-tests:py310-240306"
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 4f2c0995711f5b6db82991065a652ea056778a2a # timeout=10
+ > git rev-list --no-walk daaa4896c7358eff3a7bd6434617b4af06c89e42 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] sh
++ docker inspect -f . pavics/workflow-tests:py310-231107-update240306
+
+Error: No such object: pavics/workflow-tests:py310-231107-update240306
+[Pipeline] isUnix
+[Pipeline] sh
++ docker pull pavics/workflow-tests:py310-231107-update240306
+py310-231107-update240306: Pulling from pavics/workflow-tests
+e67fdae35593: Already exists
+62aa66a9c405: Already exists
+129bc9a4304f: Already exists
+0ddacba29fe0: Already exists
+dfd48180726c: Already exists
+50cb7caec7ab: Already exists
+8459c54be374: Already exists
+66e47aa8b57b: Already exists
+e1051cee58a0: Already exists
+59919fbc16db: Already exists
+043fc5acd7e1: Already exists
+b9ad0629118e: Already exists
+b34355233be9: Already exists
+43c461133eb1: Pulling fs layer
+43c461133eb1: Verifying Checksum
+43c461133eb1: Download complete
+43c461133eb1: Pull complete
+Digest: sha256:e7d640b3e25c12aa63d14aa4133152afd0f30bad264aa8589ccc2654461f6dd8
+Status: Downloaded newer image for pavics/workflow-tests:py310-231107-update240306
+[Pipeline] withDockerContainer
+linux1 seems to be running inside container c7b47b12d037a55684325ed6aba8c5cdbf14095a9ef2302738499cdd57ccd08b
+$ docker run -t -d -u 1000:1000 -w /home/jenkins/agent/workspace/_workflow-tests_new-docker-build --volumes-from c7b47b12d037a55684325ed6aba8c5cdbf14095a9ef2302738499cdd57ccd08b -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** pavics/workflow-tests:py310-231107-update240306 cat
+$ docker top ebc4e7303a12c810c96a8434d5c76564d1e50dadf347acfd670d3521f77f648b -eo pid,comm
+[Pipeline] {
+[Pipeline] ansiColor
+[Pipeline] {
+[Pipeline] timestamps
+[Pipeline] {
+[Pipeline] timeout
+[2024-03-07T15:57:43.762Z] Timeout set to expire in 2 hr 0 min
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Run tests)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] withCredentials
+[2024-03-07T15:57:43.835Z] Masking supported pattern matches of $ESGF_AUTH_USERNAME or $ESGF_AUTH_PASSWORD or $ESGF_AUTH_TOKEN or $COMPUTE_TOKEN
+[Pipeline] {
+[Pipeline] sh
+[2024-03-07T15:57:44.122Z] + VERIFY_SSL=true SAVE_RESULTING_NOTEBOOK=true ./testall
+[2024-03-07T15:57:44.122Z] TEST_PAVICS_SDI_REPO has been set to 'true'
+[2024-03-07T15:57:44.122Z] PAVICS_SDI_BRANCH has been set to 'master'
+[2024-03-07T15:57:44.122Z] PAVICS_SDI_REPO has been set to 'Ouranosinc/pavics-sdi'
+[2024-03-07T15:57:44.122Z] TEST_FINCH_REPO has been set to 'true'
+[2024-03-07T15:57:44.122Z] FINCH_BRANCH has been set to 'master'
+[2024-03-07T15:57:44.122Z] FINCH_REPO has been set to 'bird-house/finch'
+[2024-03-07T15:57:44.122Z] TEST_PAVICS_LANDING_REPO has been set to 'true'
+[2024-03-07T15:57:44.122Z] PAVICS_LANDING_BRANCH has been set to 'master'
+[2024-03-07T15:57:44.122Z] PAVICS_LANDING_REPO has been set to 'Ouranosinc/PAVICS-landing'
+[2024-03-07T15:57:44.122Z] TEST_RAVEN_REPO has been set to 'false'
+[2024-03-07T15:57:44.122Z] RAVEN_BRANCH has been set to 'main'
+[2024-03-07T15:57:44.122Z] RAVEN_REPO has been set to 'Ouranosinc/raven'
+[2024-03-07T15:57:44.122Z] TEST_RAVENPY_REPO has been set to 'false'
+[2024-03-07T15:57:44.122Z] RAVENPY_BRANCH has been set to 'master'
+[2024-03-07T15:57:44.122Z] RAVENPY_REPO has been set to 'CSHS-CWRA/RavenPy'
+[2024-03-07T15:57:44.122Z] TEST_ESGF_COMPUTE_API_REPO has been set to 'false'
+[2024-03-07T15:57:44.122Z] ESGF_COMPUTE_API_BRANCH has been set to 'devel'
+[2024-03-07T15:57:44.122Z] ESGF_COMPUTE_API_REPO has been set to 'ESGF/esgf-compute-api'
+[2024-03-07T15:57:44.122Z] TEST_LOCAL_NOTEBOOKS has been set to 'true'
+[2024-03-07T15:57:44.122Z] + git clean -fdx
+[2024-03-07T15:57:44.383Z] Removing .pytest_cache/
+[2024-03-07T15:57:44.383Z] Removing PAVICS-landing-master/
+[2024-03-07T15:57:44.383Z] Removing RavenPy-master/
+[2024-03-07T15:57:44.383Z] Removing __pycache__/
+[2024-03-07T15:57:44.383Z] Removing buildout/
+[2024-03-07T15:57:44.383Z] Removing esgf-compute-api-devel/
+[2024-03-07T15:57:44.383Z] Removing finch-master/
+[2024-03-07T15:57:44.383Z] Removing pavics-sdi-master/
+[2024-03-07T15:57:44.383Z] Removing raven-main/
+[2024-03-07T15:57:44.383Z] + ./downloadrepos
+[2024-03-07T15:57:44.383Z] TEST_PAVICS_SDI_REPO has been set to 'true'
+[2024-03-07T15:57:44.383Z] PAVICS_SDI_BRANCH has been set to 'master'
+[2024-03-07T15:57:44.383Z] PAVICS_SDI_REPO has been set to 'Ouranosinc/pavics-sdi'
+[2024-03-07T15:57:44.383Z] TEST_FINCH_REPO has been set to 'true'
+[2024-03-07T15:57:44.383Z] FINCH_BRANCH has been set to 'master'
+[2024-03-07T15:57:44.383Z] FINCH_REPO has been set to 'bird-house/finch'
+[2024-03-07T15:57:44.383Z] TEST_PAVICS_LANDING_REPO has been set to 'true'
+[2024-03-07T15:57:44.383Z] PAVICS_LANDING_BRANCH has been set to 'master'
+[2024-03-07T15:57:44.383Z] PAVICS_LANDING_REPO has been set to 'Ouranosinc/PAVICS-landing'
+[2024-03-07T15:57:44.383Z] TEST_RAVEN_REPO has been set to 'false'
+[2024-03-07T15:57:44.383Z] RAVEN_BRANCH has been set to 'main'
+[2024-03-07T15:57:44.383Z] RAVEN_REPO has been set to 'Ouranosinc/raven'
+[2024-03-07T15:57:44.383Z] TEST_RAVENPY_REPO has been set to 'false'
+[2024-03-07T15:57:44.383Z] RAVENPY_BRANCH has been set to 'master'
+[2024-03-07T15:57:44.383Z] RAVENPY_REPO has been set to 'CSHS-CWRA/RavenPy'
+[2024-03-07T15:57:44.383Z] TEST_ESGF_COMPUTE_API_REPO has been set to 'false'
+[2024-03-07T15:57:44.383Z] ESGF_COMPUTE_API_BRANCH has been set to 'devel'
+[2024-03-07T15:57:44.383Z] ESGF_COMPUTE_API_REPO has been set to 'ESGF/esgf-compute-api'
+[2024-03-07T15:57:44.383Z] TEST_LOCAL_NOTEBOOKS has been set to 'true'
+[2024-03-07T15:57:44.643Z] + rm -rf pavics-sdi-*
+[2024-03-07T15:57:44.643Z] + ls
+[2024-03-07T15:57:44.643Z] + grep pavics-sdi
+[2024-03-07T15:57:44.643Z] + downloadrepos https://github.com/Ouranosinc/pavics-sdi master
+[2024-03-07T15:57:44.643Z] + github_repo=https://github.com/Ouranosinc/pavics-sdi
+[2024-03-07T15:57:44.643Z] + shift
+[2024-03-07T15:57:44.643Z] + branch=master
+[2024-03-07T15:57:44.643Z] + shift
+[2024-03-07T15:57:44.643Z] + wget --quiet --output-document - https://github.com/Ouranosinc/pavics-sdi/archive/master.tar.gz
+[2024-03-07T15:57:44.643Z] + tar xz
+[2024-03-07T15:57:48.803Z] + grep pavics-sdi
+[2024-03-07T15:57:48.803Z] + ls
+[2024-03-07T15:57:48.803Z] pavics-sdi-master
+[2024-03-07T15:57:48.803Z] + set +x
+[2024-03-07T15:57:48.803Z] + rm -rf finch-*
+[2024-03-07T15:57:48.803Z] + grep finch
+[2024-03-07T15:57:48.803Z] + ls
+[2024-03-07T15:57:48.803Z] + downloadrepos https://github.com/bird-house/finch master
+[2024-03-07T15:57:48.803Z] + github_repo=https://github.com/bird-house/finch
+[2024-03-07T15:57:48.803Z] + shift
+[2024-03-07T15:57:48.803Z] + branch=master
+[2024-03-07T15:57:48.803Z] + shift
+[2024-03-07T15:57:48.803Z] + tar xz
+[2024-03-07T15:57:48.803Z] + wget --quiet --output-document - https://github.com/bird-house/finch/archive/master.tar.gz
+[2024-03-07T15:57:50.172Z] + ls
+[2024-03-07T15:57:50.172Z] + grep finch
+[2024-03-07T15:57:50.172Z] finch-master
+[2024-03-07T15:57:50.172Z] + set +x
+[2024-03-07T15:57:50.172Z] + rm -rf PAVICS-landing-*
+[2024-03-07T15:57:50.172Z] + ls
+[2024-03-07T15:57:50.172Z] + grep PAVICS-landing
+[2024-03-07T15:57:50.172Z] + downloadrepos https://github.com/Ouranosinc/PAVICS-landing master
+[2024-03-07T15:57:50.172Z] + github_repo=https://github.com/Ouranosinc/PAVICS-landing
+[2024-03-07T15:57:50.172Z] + shift
+[2024-03-07T15:57:50.172Z] + branch=master
+[2024-03-07T15:57:50.172Z] + shift
+[2024-03-07T15:57:50.172Z] + wget --quiet --output-document - https://github.com/Ouranosinc/PAVICS-landing/archive/master.tar.gz
+[2024-03-07T15:57:50.172Z] + tar xz
+[2024-03-07T15:58:00.120Z] + ls
+[2024-03-07T15:58:00.120Z] + grep PAVICS-landing
+[2024-03-07T15:58:00.120Z] PAVICS-landing-master
+[2024-03-07T15:58:00.120Z] + set +x
+[2024-03-07T15:58:00.120Z] + rm -rf raven-*
+[2024-03-07T15:58:00.120Z] + ls
+[2024-03-07T15:58:00.120Z] + grep raven
+[2024-03-07T15:58:00.120Z] + downloadrepos https://github.com/Ouranosinc/raven main
+[2024-03-07T15:58:00.120Z] + github_repo=https://github.com/Ouranosinc/raven
+[2024-03-07T15:58:00.120Z] + shift
+[2024-03-07T15:58:00.120Z] + branch=main
+[2024-03-07T15:58:00.120Z] + shift
+[2024-03-07T15:58:00.120Z] + wget --quiet --output-document - https://github.com/Ouranosinc/raven/archive/main.tar.gz
+[2024-03-07T15:58:00.120Z] + tar xz
+[2024-03-07T15:58:01.493Z] + ls
+[2024-03-07T15:58:01.493Z] + grep raven
+[2024-03-07T15:58:01.493Z] raven-main
+[2024-03-07T15:58:01.493Z] + set +x
+[2024-03-07T15:58:01.493Z] + rm -rf RavenPy-*
+[2024-03-07T15:58:01.493Z] + ls
+[2024-03-07T15:58:01.493Z] + grep RavenPy
+[2024-03-07T15:58:01.493Z] + downloadrepos https://github.com/CSHS-CWRA/RavenPy master
+[2024-03-07T15:58:01.493Z] + github_repo=https://github.com/CSHS-CWRA/RavenPy
+[2024-03-07T15:58:01.493Z] + shift
+[2024-03-07T15:58:01.493Z] + branch=master
+[2024-03-07T15:58:01.493Z] + shift
+[2024-03-07T15:58:01.493Z] + wget --quiet --output-document - https://github.com/CSHS-CWRA/RavenPy/archive/master.tar.gz
+[2024-03-07T15:58:01.493Z] + tar xz
+[2024-03-07T15:58:03.387Z] + + ls
+[2024-03-07T15:58:03.387Z] grep RavenPy
+[2024-03-07T15:58:03.387Z] RavenPy-master
+[2024-03-07T15:58:03.387Z] + set +x
+[2024-03-07T15:58:03.387Z] + rm -rf esgf-compute-api-*
+[2024-03-07T15:58:03.387Z] + ls
+[2024-03-07T15:58:03.387Z] + grep esgf-compute-api
+[2024-03-07T15:58:03.387Z] + downloadrepos https://github.com/ESGF/esgf-compute-api devel
+[2024-03-07T15:58:03.387Z] + github_repo=https://github.com/ESGF/esgf-compute-api
+[2024-03-07T15:58:03.387Z] + shift
+[2024-03-07T15:58:03.387Z] + branch=devel
+[2024-03-07T15:58:03.387Z] + shift
+[2024-03-07T15:58:03.387Z] + + wget --quiet --output-document - https://github.com/ESGF/esgf-compute-api/archive/devel.tar.gztar
+[2024-03-07T15:58:03.387Z]  xz
+[2024-03-07T15:58:04.320Z] + grep esgf-compute-api+ 
+[2024-03-07T15:58:04.320Z] ls
+[2024-03-07T15:58:04.320Z] esgf-compute-api-devel
+[2024-03-07T15:58:04.320Z] + set +x
+[2024-03-07T15:58:04.320Z] + echo master
+[2024-03-07T15:58:04.320Z] + sed s@/@-@g
+[2024-03-07T15:58:04.320Z] + PAVICS_SDI_BRANCH=master
+[2024-03-07T15:58:04.320Z] + sed s@^.*/@@g
+[2024-03-07T15:58:04.320Z] + echo Ouranosinc/pavics-sdi
+[2024-03-07T15:58:04.320Z] + PAVICS_SDI_REPO_NAME=pavics-sdi
+[2024-03-07T15:58:04.320Z] + echo master
+[2024-03-07T15:58:04.320Z] + sed s@/@-@g
+[2024-03-07T15:58:04.320Z] + FINCH_BRANCH=master
+[2024-03-07T15:58:04.320Z] + echo bird-house/finch
+[2024-03-07T15:58:04.320Z] + sed s@^.*/@@g
+[2024-03-07T15:58:04.320Z] + FINCH_REPO_NAME=finch
+[2024-03-07T15:58:04.320Z] + echo master
+[2024-03-07T15:58:04.320Z] + sed s@/@-@g
+[2024-03-07T15:58:04.320Z] + PAVICS_LANDING_BRANCH=master
+[2024-03-07T15:58:04.320Z] + echo Ouranosinc/PAVICS-landing
+[2024-03-07T15:58:04.320Z] + sed s@^.*/@@g
+[2024-03-07T15:58:04.320Z] + PAVICS_LANDING_REPO_NAME=PAVICS-landing
+[2024-03-07T15:58:04.320Z] + echo main
+[2024-03-07T15:58:04.320Z] + sed s@/@-@g
+[2024-03-07T15:58:04.320Z] + RAVEN_BRANCH=main
+[2024-03-07T15:58:04.320Z] + echo Ouranosinc/raven
+[2024-03-07T15:58:04.320Z] + sed s@^.*/@@g
+[2024-03-07T15:58:04.320Z] + RAVEN_REPO_NAME=raven
+[2024-03-07T15:58:04.320Z] + echo master
+[2024-03-07T15:58:04.320Z] + sed s@/@-@g
+[2024-03-07T15:58:04.320Z] + RAVENPY_BRANCH=master
+[2024-03-07T15:58:04.320Z] + sed+  s@^.*/@@g
+[2024-03-07T15:58:04.320Z] echo CSHS-CWRA/RavenPy
+[2024-03-07T15:58:04.320Z] + RAVENPY_REPO_NAME=RavenPy
+[2024-03-07T15:58:04.320Z] + sed s@/@-@g
+[2024-03-07T15:58:04.320Z] + echo devel
+[2024-03-07T15:58:04.320Z] + ESGF_COMPUTE_API_BRANCH=devel
+[2024-03-07T15:58:04.320Z] + echo ESGF/esgf-compute-api
+[2024-03-07T15:58:04.320Z] + sed s@^.*/@@g
+[2024-03-07T15:58:04.320Z] + ESGF_COMPUTE_API_REPO_NAME=esgf-compute-api
+[2024-03-07T15:58:04.320Z] + sed+  s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-03-07T15:58:04.320Z] echo pavics-sdi-master
+[2024-03-07T15:58:04.320Z] + PAVICS_SDI_DIR=pavics-sdi-master
+[2024-03-07T15:58:04.320Z] + + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-03-07T15:58:04.320Z] echo finch-master
+[2024-03-07T15:58:04.320Z] + FINCH_DIR=finch-master
+[2024-03-07T15:58:04.320Z] + echo PAVICS-landing-master
+[2024-03-07T15:58:04.320Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-03-07T15:58:04.320Z] + PAVICS_LANDING_DIR=PAVICS-landing-master
+[2024-03-07T15:58:04.320Z] + echo raven-main
+[2024-03-07T15:58:04.320Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-03-07T15:58:04.320Z] + RAVEN_DIR=raven-main
+[2024-03-07T15:58:04.320Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-03-07T15:58:04.320Z] + echo RavenPy-master
+[2024-03-07T15:58:04.320Z] + RAVENPY_DIR=RavenPy-master
+[2024-03-07T15:58:04.320Z] + echo esgf-compute-api-devel
+[2024-03-07T15:58:04.320Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-03-07T15:58:04.320Z] + ESGF_COMPUTE_API_DIR=esgf-compute-api-devel
+[2024-03-07T15:58:04.320Z] + echo true
+[2024-03-07T15:58:04.883Z] + tr [:upper:] [:lower:]
+[2024-03-07T15:58:05.444Z] + VERIFY_SSL=true
+[2024-03-07T15:58:05.444Z] + [ xtrue = xfalse ]
+[2024-03-07T15:58:05.444Z] + rm -v finch-master/setup.cfg
+[2024-03-07T15:58:05.444Z] removed 'finch-master/setup.cfg'
+[2024-03-07T15:58:05.444Z] + rm -v raven-main/setup.cfg
+[2024-03-07T15:58:05.444Z] removed 'raven-main/setup.cfg'
+[2024-03-07T15:58:05.444Z] + rm -v raven-main/pyproject.toml
+[2024-03-07T15:58:05.444Z] removed 'raven-main/pyproject.toml'
+[2024-03-07T15:58:05.444Z] + rm -v RavenPy-master/setup.cfg
+[2024-03-07T15:58:05.444Z] removed 'RavenPy-master/setup.cfg'
+[2024-03-07T15:58:05.444Z] + rm -v RavenPy-master/tox.ini
+[2024-03-07T15:58:05.444Z] removed 'RavenPy-master/tox.ini'
+[2024-03-07T15:58:05.444Z] + rm -v RavenPy-master/pyproject.toml
+[2024-03-07T15:58:05.444Z] removed 'RavenPy-master/pyproject.toml'
+[2024-03-07T15:58:05.444Z] + rm -v esgf-compute-api-devel/setup.cfg
+[2024-03-07T15:58:05.444Z] rm: cannot remove 'esgf-compute-api-devel/setup.cfg': No such file or directory
+[2024-03-07T15:58:05.444Z] + rm -v esgf-compute-api-devel/tox.ini
+[2024-03-07T15:58:05.444Z] rm: cannot remove 'esgf-compute-api-devel/tox.ini': No such file or directory
+[2024-03-07T15:58:05.444Z] + echo false
+[2024-03-07T15:58:05.444Z] + tr [:upper:] [:lower:]
+[2024-03-07T15:58:05.444Z] + TEST_MAGPIE_AUTH=false
+[2024-03-07T15:58:05.444Z] + echo true
+[2024-03-07T15:58:05.444Z] + tr [:upper:] [:lower:]
+[2024-03-07T15:58:05.444Z] + TEST_PAVICS_SDI_REPO=true
+[2024-03-07T15:58:05.444Z] + echo false
+[2024-03-07T15:58:05.444Z] + tr [:upper:] [:lower:]
+[2024-03-07T15:58:05.444Z] + TEST_PAVICS_SDI_WEAVER=false
+[2024-03-07T15:58:05.444Z] + tr [:upper:] [:lower:]
+[2024-03-07T15:58:05.444Z] + echo true
+[2024-03-07T15:58:05.444Z] + TEST_FINCH_REPO=true
+[2024-03-07T15:58:05.444Z] + echo true
+[2024-03-07T15:58:05.445Z] + tr [:upper:] [:lower:]
+[2024-03-07T15:58:05.445Z] + TEST_PAVICS_LANDING_REPO=true
+[2024-03-07T15:58:05.445Z] + echo false
+[2024-03-07T15:58:05.445Z] + tr [:upper:] [:lower:]
+[2024-03-07T15:58:05.445Z] + TEST_RAVEN_REPO=false
+[2024-03-07T15:58:05.445Z] + echo false
+[2024-03-07T15:58:05.445Z] + tr [:upper:] [:lower:]
+[2024-03-07T15:58:05.445Z] + TEST_RAVENPY_REPO=false
+[2024-03-07T15:58:05.445Z] + echo false
+[2024-03-07T15:58:05.445Z] + tr [:upper:] [:lower:]
+[2024-03-07T15:58:05.445Z] + TEST_ESGF_COMPUTE_API_REPO=false
+[2024-03-07T15:58:05.445Z] + echo true
+[2024-03-07T15:58:05.445Z] + tr [:upper:] [:lower:]
+[2024-03-07T15:58:05.445Z] + TEST_LOCAL_NOTEBOOKS=true
+[2024-03-07T15:58:05.445Z] + NOTEBOOKS_TO_TEST=
+[2024-03-07T15:58:05.445Z] + [ xfalse = xtrue ]
+[2024-03-07T15:58:05.445Z] + [ xtrue = xtrue ]
+[2024-03-07T15:58:05.445Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb
+[2024-03-07T15:58:05.445Z] + [ xfalse = xtrue ]
+[2024-03-07T15:58:05.445Z] + [ xtrue = xtrue ]
+[2024-03-07T15:58:05.445Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb
+[2024-03-07T15:58:05.445Z] + [ xtrue = xtrue ]
+[2024-03-07T15:58:05.445Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/*.ipynb
+[2024-03-07T15:58:05.445Z] + SETUP_SCRIPT=PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh
+[2024-03-07T15:58:05.445Z] + [ -x PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh ]
+[2024-03-07T15:58:05.445Z] + PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh
+[2024-03-07T15:58:05.445Z] + realpath PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh
+[2024-03-07T15:58:05.445Z] + THIS_FILE=/home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh
+[2024-03-07T15:58:05.445Z] + dirname /home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh
+[2024-03-07T15:58:05.445Z] + THIS_DIR=/home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators
+[2024-03-07T15:58:05.445Z] + NOTEBOOK_3_OUTDIR_BASE=/notebook_dir/writable-workspace/tmp/tutorial3
+[2024-03-07T15:58:05.445Z] + mkdir -p /notebook_dir/writable-workspace/tmp/tutorial3
+[2024-03-07T15:58:05.445Z] + unzip /home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/output.zip -d /notebook_dir/writable-workspace/tmp/tutorial3/
+[2024-03-07T15:58:05.445Z] Archive:  /home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/output.zip
+[2024-03-07T15:58:05.445Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_NorESM1-M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.445Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_NorESM1-M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.701Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_MPI-ESM-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.701Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_MPI-ESM-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.701Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_IPSL-CM5B-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.701Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_IPSL-CM5B-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.701Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_IPSL-CM5A-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.701Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_IPSL-CM5A-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.701Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_INM-CM4_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.702Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_INM-CM4_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.702Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_HadGEM2-CC_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.702Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_HadGEM2-CC_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.702Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_GFDL-ESM2M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.702Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_GFDL-ESM2M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.702Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_CanESM2_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.702Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_CanESM2_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.702Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_CMCC-CMS_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.702Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_CMCC-CMS_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_BNU-ESM_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_BNU-ESM_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_ACCESS1-3_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_ACCESS1-3_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_NorESM1-M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_NorESM1-M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_MPI-ESM-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_MPI-ESM-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_IPSL-CM5B-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_IPSL-CM5B-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_IPSL-CM5A-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_IPSL-CM5A-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_INM-CM4_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_INM-CM4_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_HadGEM2-CC_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_HadGEM2-CC_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_GFDL-ESM2M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_GFDL-ESM2M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_CanESM2_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_CanESM2_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_CMCC-CMS_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_CMCC-CMS_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_BNU-ESM_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_BNU-ESM_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_ACCESS1-3_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_ACCESS1-3_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.958Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_NorESM1-M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.959Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_NorESM1-M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.959Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_MPI-ESM-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.959Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_MPI-ESM-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:05.959Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_IPSL-CM5B-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.219Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_IPSL-CM5B-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.219Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_IPSL-CM5A-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.219Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_IPSL-CM5A-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.219Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_INM-CM4_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.219Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_INM-CM4_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.219Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_HadGEM2-CC_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.219Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_HadGEM2-CC_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.219Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_GFDL-ESM2M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.219Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_GFDL-ESM2M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.219Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_CanESM2_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.219Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_CanESM2_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.219Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_CMCC-CMS_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.219Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_CMCC-CMS_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.219Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_BNU-ESM_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.219Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_BNU-ESM_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.478Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_ACCESS1-3_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.478Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_ACCESS1-3_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.478Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_NorESM1-M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.478Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_NorESM1-M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.478Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_MPI-ESM-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.478Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_MPI-ESM-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.478Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_IPSL-CM5B-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.479Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_IPSL-CM5B-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.479Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_IPSL-CM5A-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.479Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_IPSL-CM5A-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.479Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_INM-CM4_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.479Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_INM-CM4_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.479Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_HadGEM2-CC_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.479Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_HadGEM2-CC_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.479Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_GFDL-ESM2M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.479Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_GFDL-ESM2M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.479Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_CanESM2_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.479Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_CanESM2_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.479Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_CMCC-CMS_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.479Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_CMCC-CMS_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.479Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_BNU-ESM_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.479Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_BNU-ESM_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.479Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_ACCESS1-3_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.479Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_ACCESS1-3_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-03-07T15:58:06.479Z] + HOMEPAGE_ROOT_DIR=/notebook_dir/pavics-homepage
+[2024-03-07T15:58:06.479Z] + mkdir -p /notebook_dir/pavics-homepage
+[2024-03-07T15:58:06.479Z] + ln -sv /home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/tutorial_data /notebook_dir/pavics-homepage/tutorial_data
+[2024-03-07T15:58:06.479Z] '/notebook_dir/pavics-homepage/tutorial_data' -> '/home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/tutorial_data'
+[2024-03-07T15:58:06.479Z] + [ xfalse = xtrue ]
+[2024-03-07T15:58:06.479Z] + [ xfalse = xtrue ]
+[2024-03-07T15:58:06.479Z] + [ xfalse = xtrue ]
+[2024-03-07T15:58:06.479Z] + [ xtrue = xtrue ]
+[2024-03-07T15:58:06.479Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/*.ipynb notebooks/*.ipynb
+[2024-03-07T15:58:06.479Z] + ./runtest  pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/*.ipynb notebooks/*.ipynb
+[2024-03-07T15:58:06.479Z] + [ -n  ]
+[2024-03-07T15:58:06.479Z] + [ ! -z pavics.ouranos.ca ]
+[2024-03-07T15:58:06.479Z] + echo Will run notebooks against pavics.ouranos.ca
+[2024-03-07T15:58:06.479Z] Will run notebooks against pavics.ouranos.ca
+[2024-03-07T15:58:06.479Z] + [ -z  ]
+[2024-03-07T15:58:06.479Z] + sed -i /\(\.ncml\|TEST_USE_PROD_DATA\)/!s/pavics.ouranos.ca/pavics.ouranos.ca/g pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb pavics-sdi-master/docs/source/notebooks/WMS_example.ipynb pavics-sdi-master/docs/source/notebooks/climex.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb pavics-sdi-master/docs/source/notebooks/forecasts.ipynb pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb pavics-sdi-master/docs/source/notebooks/opendap.ipynb pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb pavics-sdi-master/docs/source/notebooks/regridding.ipynb pavics-sdi-master/docs/source/notebooks/rendering.ipynb pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb pavics-sdi-master/docs/source/notebooks/subsetting.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb notebooks/hummingbird.ipynb notebooks/stress-tests.ipynb
+[2024-03-07T15:58:06.740Z] + git diff
+[2024-03-07T15:58:06.740Z] + export PYTHONWARNINGS=ignore:Unverified HTTPS request
+[2024-03-07T15:58:06.741Z] + py.test --nbval pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb pavics-sdi-master/docs/source/notebooks/WMS_example.ipynb pavics-sdi-master/docs/source/notebooks/climex.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb pavics-sdi-master/docs/source/notebooks/forecasts.ipynb pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb pavics-sdi-master/docs/source/notebooks/opendap.ipynb pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb pavics-sdi-master/docs/source/notebooks/regridding.ipynb pavics-sdi-master/docs/source/notebooks/rendering.ipynb pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb pavics-sdi-master/docs/source/notebooks/subsetting.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb notebooks/hummingbird.ipynb notebooks/stress-tests.ipynb --sanitize-with notebooks/output-sanitize.cfg --dist=loadscope --numprocesses=0
+[2024-03-07T15:58:33.363Z] /opt/conda/envs/birdy/lib/python3.10/site-packages/nbval/plugin.py:122: DeprecationWarning: --sanitize-with has been renamed to --nbval-sanitize-with
+[2024-03-07T15:58:33.363Z]   warnings.warn("--sanitize-with has been renamed to --nbval-sanitize-with", DeprecationWarning)
+[2024-03-07T15:58:33.363Z] ============================= test session starts ==============================
+[2024-03-07T15:58:33.363Z] platform linux -- Python 3.10.13, pytest-7.4.3, pluggy-1.3.0
+[2024-03-07T15:58:33.364Z] rootdir: /home/jenkins/agent/workspace/_workflow-tests_new-docker-build
+[2024-03-07T15:58:33.364Z] plugins: anyio-4.0.0, dash-2.14.1, nbval-0.10.0, tornasync-0.6.0.post2, xdist-3.3.1
+[2024-03-07T15:58:33.364Z] collected 215 items
+[2024-03-07T15:58:33.364Z] 
+[2024-03-07T15:59:09.434Z] pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb .......        [  3%]
+[2024-03-07T15:59:15.907Z] pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb ......         [  6%]
+[2024-03-07T15:59:26.652Z] pavics-sdi-master/docs/source/notebooks/WMS_example.ipynb ........       [  9%]
+[2024-03-07T16:02:14.703Z] pavics-sdi-master/docs/source/notebooks/climex.ipynb ........F...        [ 15%]
+[2024-03-07T16:02:14.703Z] pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb . [ 15%]
+[2024-03-07T16:02:21.311Z] ...............                                                          [ 22%]
+[2024-03-07T16:02:29.393Z] pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb .....    [ 25%]
+[2024-03-07T16:04:25.407Z] pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb ......            [ 27%]
+[2024-03-07T16:04:38.268Z] pavics-sdi-master/docs/source/notebooks/forecasts.ipynb ..F...           [ 30%]
+[2024-03-07T16:04:42.442Z] pavics-sdi-master/docs/source/notebooks/opendap.ipynb .......            [ 33%]
+[2024-03-07T16:04:47.002Z] pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb .....       [ 36%]
+[2024-03-07T16:05:24.712Z] pavics-sdi-master/docs/source/notebooks/regridding.ipynb ....F..F....... [ 43%]
+[2024-03-07T16:06:27.811Z] .....F......F                                                            [ 49%]
+[2024-03-07T16:06:30.402Z] pavics-sdi-master/docs/source/notebooks/rendering.ipynb ....             [ 51%]
+[2024-03-07T16:06:33.494Z] pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb ...FFF.F [ 54%]
+[2024-03-07T16:06:40.528Z] FF....FFFF.FFFFFF                                                        [ 62%]
+[2024-03-07T16:06:47.563Z] pavics-sdi-master/docs/source/notebooks/subsetting.ipynb ......          [ 65%]
+[2024-03-07T16:06:57.237Z] finch-master/docs/source/notebooks/dap_subset.ipynb ...........          [ 70%]
+[2024-03-07T16:07:05.184Z] finch-master/docs/source/notebooks/finch-usage.ipynb ...F..              [ 73%]
+[2024-03-07T16:07:06.119Z] PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb . [ 73%]
+[2024-03-07T16:07:09.188Z] ......                                                                   [ 76%]
+[2024-03-07T16:07:15.786Z] PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb . [ 77%]
+[2024-03-07T16:07:26.208Z] .............                                                            [ 83%]
+[2024-03-07T16:07:41.108Z] PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb F [ 83%]
+[2024-03-07T16:07:57.384Z] ....s.                                                                   [ 86%]
+[2024-03-07T16:08:05.469Z] PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb . [ 86%]
+[2024-03-07T16:08:15.514Z] .F.                                                                      [ 88%]
+[2024-03-07T16:08:30.385Z] PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb . [ 88%]
+[2024-03-07T16:08:55.580Z] .F....                                                                   [ 91%]
+[2024-03-07T16:08:57.974Z] notebooks/hummingbird.ipynb ............                                 [ 97%]
+[2024-03-07T16:10:59.488Z] notebooks/stress-tests.ipynb ......                                      [100%]
+[2024-03-07T16:10:59.488Z] 
+[2024-03-07T16:10:59.488Z] =================================== FAILURES ===================================
+[2024-03-07T16:10:59.488Z] _________ pavics-sdi-master/docs/source/notebooks/climex.ipynb::Cell 8 _________
+[2024-03-07T16:10:59.488Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.488Z] [94mCell 8: Cell outputs differ
+[2024-03-07T16:10:59.488Z] 
+[2024-03-07T16:10:59.488Z] Input:
+[2024-03-07T16:10:59.488Z] [0m# Subset over the Montreal gridpoint
+[2024-03-07T16:10:59.488Z] ds = xr.open_dataset(url, chunks=dict(realization=1, time=365 * 50, rlon=25, rlat=25))
+[2024-03-07T16:10:59.488Z] pt = subset_gridpoint(ds, lon=-73.69, lat=45.50)
+[2024-03-07T16:10:59.488Z] print("Input dataset for Montreal :")
+[2024-03-07T16:10:59.488Z] display(pt)
+[2024-03-07T16:10:59.488Z] out = xclim.atmos.max_1day_precipitation_amount(pr=pt.pr, freq="YS")
+[2024-03-07T16:10:59.488Z] print("Maximim 1-day precipitation `lazy` output ..")
+[2024-03-07T16:10:59.488Z] out
+[2024-03-07T16:10:59.488Z] 
+[2024-03-07T16:10:59.488Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.488Z] [94m mismatch 'text/plain'[91m
+[2024-03-07T16:10:59.488Z] 
+[2024-03-07T16:10:59.488Z]  assert reference_output == test_output failed:
+[2024-03-07T16:10:59.488Z] 
+[2024-03-07T16:10:59.488Z]   '<xarray.Data...precipitation' == '<xarray.Data...precipitation'
+[2024-03-07T16:10:59.488Z]   Skipping 461 identical leading characters in diff, use -v to show
+[2024-03-07T16:10:59.488Z]   Skipping 106 identical trailing characters in diff, use -v to show
+[2024-03-07T16:10:59.488Z]     m/day
+[2024-03-07T16:10:59.488Z]   -     standard_name:  lwe_thickness_of_precipitation_amount
+[2024-03-07T16:10:59.488Z]         cell_methods:   time: mean time: maximum over days
+[2024-03-07T16:10:59.488Z]         history:        [DATE_TIME] rx1day: RX1DAY(pr=pr, freq='YS') wi...
+[2024-03-07T16:10:59.488Z]   +     standard_name:  lwe_thickness_of_precipitation_amount
+[2024-03-07T16:10:59.488Z]         long
+[2024-03-07T16:10:59.488Z] [0m
+[2024-03-07T16:10:59.488Z] 
+[2024-03-07T16:10:59.488Z] _______ pavics-sdi-master/docs/source/notebooks/forecasts.ipynb::Cell 2 ________
+[2024-03-07T16:10:59.488Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.488Z] [94mCell 2: Cell outputs differ
+[2024-03-07T16:10:59.488Z] 
+[2024-03-07T16:10:59.488Z] Input:
+[2024-03-07T16:10:59.488Z] [0mimport hvplot.xarray
+[2024-03-07T16:10:59.488Z] 
+[2024-03-07T16:10:59.488Z] mtl = ds.sel(lon=45.5, lat=360 - 73.5, method="nearest")
+[2024-03-07T16:10:59.488Z] mtl.pr.hvplot(x="time", width=300) + mtl.tas.hvplot(x="time", width=300)
+[2024-03-07T16:10:59.488Z] 
+[2024-03-07T16:10:59.488Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.488Z] [94mdissimilar number of outputs for key "application/vnd.holoviews_exec.v0+json"[91m<<<<<<<<<<<< Reference outputs from ipynb file:[0m
+[2024-03-07T16:10:59.488Z] 
+[2024-03-07T16:10:59.488Z] [91m============ disagrees with newly computed (test) output:[0m
+[2024-03-07T16:10:59.488Z] 
+[2024-03-07T16:10:59.488Z] 
+[2024-03-07T16:10:59.488Z] [91m>>>>>>>>>>>>[0m
+[2024-03-07T16:10:59.488Z] 
+[2024-03-07T16:10:59.488Z] _______ pavics-sdi-master/docs/source/notebooks/regridding.ipynb::Cell 4 _______
+[2024-03-07T16:10:59.488Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.488Z] [94mCell 4: Cell outputs differ
+[2024-03-07T16:10:59.488Z] 
+[2024-03-07T16:10:59.488Z] Input:
+[2024-03-07T16:10:59.488Z] [0mds_tgt.cf.plot.scatter(x="longitude", y="latitude", s=0.1)
+[2024-03-07T16:10:59.488Z] plt.title("Target regular grid");
+[2024-03-07T16:10:59.488Z] 
+[2024-03-07T16:10:59.488Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.488Z] [94mdissimilar number of outputs for key "text/plain"[91m<<<<<<<<<<<< Reference outputs from ipynb file:[0m
+[2024-03-07T16:10:59.488Z] <Figure size LENGTHxWIDTH with N Axes>
+[2024-03-07T16:10:59.488Z] [91m============ disagrees with newly computed (test) output:[0m
+[2024-03-07T16:10:59.488Z] Text(0.5, 1.0, 'Target regular grid')
+[2024-03-07T16:10:59.488Z] <Figure size LENGTHxWIDTH with N Axes>
+[2024-03-07T16:10:59.488Z] [91m>>>>>>>>>>>>[0m
+[2024-03-07T16:10:59.488Z] 
+[2024-03-07T16:10:59.488Z] _______ pavics-sdi-master/docs/source/notebooks/regridding.ipynb::Cell 7 _______
+[2024-03-07T16:10:59.488Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.488Z] [94mCell 7: Cell outputs differ
+[2024-03-07T16:10:59.488Z] 
+[2024-03-07T16:10:59.488Z] Input:
+[2024-03-07T16:10:59.488Z] [0m# xesmf/frontend.py:476: FutureWarning: ``output_sizes`` should be given in the ``dask_gufunc_kwargs`` parameter. It will be removed as direct parameter in a future version.
+[2024-03-07T16:10:59.488Z] warnings.filterwarnings("ignore", category=FutureWarning)
+[2024-03-07T16:10:59.488Z] 
+[2024-03-07T16:10:59.489Z] # Apply the regridding weights to the input sea ice concentration data
+[2024-03-07T16:10:59.489Z] sic_bil = reg_bil(ds_in.siconc)
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] # Plot the results
+[2024-03-07T16:10:59.489Z] sic_bil.isel(time=0).plot(cmap=cmap)
+[2024-03-07T16:10:59.489Z] plt.title("Regridded sic data (Jan 2020)");
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.489Z] [94mdissimilar number of outputs for key "text/plain"[91m<<<<<<<<<<<< Reference outputs from ipynb file:[0m
+[2024-03-07T16:10:59.489Z] <Figure size LENGTHxWIDTH with N Axes>
+[2024-03-07T16:10:59.489Z] [91m============ disagrees with newly computed (test) output:[0m
+[2024-03-07T16:10:59.489Z] Text(0.5, 1.0, 'Regridded sic data (Jan 2020)')
+[2024-03-07T16:10:59.489Z] <Figure size LENGTHxWIDTH with N Axes>
+[2024-03-07T16:10:59.489Z] [91m>>>>>>>>>>>>[0m
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] ______ pavics-sdi-master/docs/source/notebooks/regridding.ipynb::Cell 20 _______
+[2024-03-07T16:10:59.489Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.489Z] [94mCell 20: Cell outputs differ
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] Input:
+[2024-03-07T16:10:59.489Z] [0mreg_mask_cons = xe.Regridder(ds_in_mask, ds_tgt_mask, "conservative")
+[2024-03-07T16:10:59.489Z] tasmin_mask_cons = reg_mask_cons(ds_in_mask.tasmin)
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] fig, ax = plt.subplots(figsize=(6, 4))
+[2024-03-07T16:10:59.489Z] tasmin_mask_cons.plot(cmap=cmap, ax=ax)
+[2024-03-07T16:10:59.489Z] ax.set_xlim(210, 320)
+[2024-03-07T16:10:59.489Z] ax.set_ylim(38, 86)
+[2024-03-07T16:10:59.489Z] ax.set_title("Conservative regridding without normalization - zoom on Canada")
+[2024-03-07T16:10:59.489Z] ax.annotate(
+[2024-03-07T16:10:59.489Z]     "Some values are close to 0 Kelvins.\nCanada can get cold, but not that cold!",
+[2024-03-07T16:10:59.489Z]     (280, 40),
+[2024-03-07T16:10:59.489Z]     xytext=(1.3, 0.3),
+[2024-03-07T16:10:59.489Z]     xycoords="data",
+[2024-03-07T16:10:59.489Z]     textcoords="axes fraction",
+[2024-03-07T16:10:59.489Z]     fontsize="x-large",
+[2024-03-07T16:10:59.489Z]     arrowprops=dict(arrowstyle="->", connectionstyle="arc3, rad=-0.3"),
+[2024-03-07T16:10:59.489Z] );
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.489Z] [94mdissimilar number of outputs for key "text/plain"[91m<<<<<<<<<<<< Reference outputs from ipynb file:[0m
+[2024-03-07T16:10:59.489Z] <Figure size LENGTHxWIDTH with N Axes>
+[2024-03-07T16:10:59.489Z] [91m============ disagrees with newly computed (test) output:[0m
+[2024-03-07T16:10:59.489Z] Text(1.3, 0.3, 'Some values are close to 0 Kelvins.\nCanada can get cold, but not that cold!')
+[2024-03-07T16:10:59.489Z] <Figure size LENGTHxWIDTH with N Axes>
+[2024-03-07T16:10:59.489Z] [91m>>>>>>>>>>>>[0m
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] ______ pavics-sdi-master/docs/source/notebooks/regridding.ipynb::Cell 27 _______
+[2024-03-07T16:10:59.489Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.489Z] [94mCell 27: Cell outputs differ
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] Input:
+[2024-03-07T16:10:59.489Z] [0m# Now we can plot easily the results as a choropleth map!
+[2024-03-07T16:10:59.489Z] ax = shapes_data.plot(
+[2024-03-07T16:10:59.489Z]     "tasmin", legend=True, legend_kwds={"label": "Minimal temperature 1993-05-20 [K]"}
+[2024-03-07T16:10:59.489Z] )
+[2024-03-07T16:10:59.489Z] ax.set_ylabel("Latitude")
+[2024-03-07T16:10:59.489Z] ax.set_xlabel("Longitude");
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.489Z] [94mdissimilar number of outputs for key "text/plain"[91m<<<<<<<<<<<< Reference outputs from ipynb file:[0m
+[2024-03-07T16:10:59.489Z] <Figure size LENGTHxWIDTH with N Axes>
+[2024-03-07T16:10:59.489Z] [91m============ disagrees with newly computed (test) output:[0m
+[2024-03-07T16:10:59.489Z] Text(0.5, 91.20243008191655, 'Longitude')
+[2024-03-07T16:10:59.489Z] <Figure size LENGTHxWIDTH with N Axes>
+[2024-03-07T16:10:59.489Z] [91m>>>>>>>>>>>>[0m
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] ___ pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 3 ____
+[2024-03-07T16:10:59.489Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.489Z] [94mCell 3: Cell execution caused an exception
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] Input:
+[2024-03-07T16:10:59.489Z] [0mleaflet_map = ipyleaflet.Map(
+[2024-03-07T16:10:59.489Z]     center=canada_center_lat_lon,
+[2024-03-07T16:10:59.489Z]     basemap=ipyleaflet.basemaps.Stamen.Terrain,
+[2024-03-07T16:10:59.489Z]     zoom=4,
+[2024-03-07T16:10:59.489Z] )
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] initial_marker_location = canada_center_lat_lon
+[2024-03-07T16:10:59.489Z] marker = ipyleaflet.Marker(location=initial_marker_location, draggable=True)
+[2024-03-07T16:10:59.489Z] leaflet_map.add_layer(marker)
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] leaflet_map
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-03-07T16:10:59.489Z] [0;31mKeyError[0m                                  Traceback (most recent call last)
+[2024-03-07T16:10:59.489Z] File [0;32m/opt/conda/envs/birdy/lib/python3.10/site-packages/xyzservices/lib.py:44[0m, in [0;36mBunch.__getattr__[0;34m(self, key)[0m
+[2024-03-07T16:10:59.489Z] [1;32m     43[0m [38;5;28;01mtry[39;00m:
+[2024-03-07T16:10:59.489Z] [0;32m---> 44[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[38;5;21;43m__getitem__[39;49m[43m([49m[43mkey[49m[43m)[49m
+[2024-03-07T16:10:59.489Z] [1;32m     45[0m [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m [38;5;28;01mas[39;00m err:
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] [0;31mKeyError[0m: 'Stamen'
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] The above exception was the direct cause of the following exception:
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] [0;31mAttributeError[0m                            Traceback (most recent call last)
+[2024-03-07T16:10:59.489Z] Cell [0;32mIn[1], line 3[0m
+[2024-03-07T16:10:59.489Z] [1;32m      1[0m leaflet_map [38;5;241m=[39m ipyleaflet[38;5;241m.[39mMap(
+[2024-03-07T16:10:59.489Z] [1;32m      2[0m     center[38;5;241m=[39mcanada_center_lat_lon,
+[2024-03-07T16:10:59.489Z] [0;32m----> 3[0m     basemap[38;5;241m=[39m[43mipyleaflet[49m[38;5;241;43m.[39;49m[43mbasemaps[49m[38;5;241;43m.[39;49m[43mStamen[49m[38;5;241m.[39mTerrain,
+[2024-03-07T16:10:59.489Z] [1;32m      4[0m     zoom[38;5;241m=[39m[38;5;241m4[39m,
+[2024-03-07T16:10:59.489Z] [1;32m      5[0m )
+[2024-03-07T16:10:59.489Z] [1;32m      7[0m initial_marker_location [38;5;241m=[39m canada_center_lat_lon
+[2024-03-07T16:10:59.489Z] [1;32m      8[0m marker [38;5;241m=[39m ipyleaflet[38;5;241m.[39mMarker(location[38;5;241m=[39minitial_marker_location, draggable[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] File [0;32m/opt/conda/envs/birdy/lib/python3.10/site-packages/xyzservices/lib.py:46[0m, in [0;36mBunch.__getattr__[0;34m(self, key)[0m
+[2024-03-07T16:10:59.489Z] [1;32m     44[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m[38;5;21m__getitem__[39m(key)
+[2024-03-07T16:10:59.489Z] [1;32m     45[0m [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m [38;5;28;01mas[39;00m err:
+[2024-03-07T16:10:59.489Z] [0;32m---> 46[0m     [38;5;28;01mraise[39;00m [38;5;167;01mAttributeError[39;00m(key) [38;5;28;01mfrom[39;00m [38;5;21;01merr[39;00m
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] [0;31mAttributeError[0m: Stamen
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] ___ pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 4 ____
+[2024-03-07T16:10:59.489Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.489Z] [94mCell 4: Cell execution caused an exception
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] Input:
+[2024-03-07T16:10:59.489Z] [0mmarker.location = (45.55, -72.44)
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-03-07T16:10:59.489Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-03-07T16:10:59.489Z] Cell [0;32mIn[1], line 1[0m
+[2024-03-07T16:10:59.489Z] [0;32m----> 1[0m [43mmarker[49m[38;5;241m.[39mlocation [38;5;241m=[39m ([38;5;241m45.55[39m, [38;5;241m-[39m[38;5;241m72.44[39m)
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] [0;31mNameError[0m: name 'marker' is not defined
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] ___ pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 5 ____
+[2024-03-07T16:10:59.489Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.489Z] [94mCell 5: Cell execution caused an exception
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] Input:
+[2024-03-07T16:10:59.489Z] [0mprint(initial_marker_location)
+[2024-03-07T16:10:59.489Z] print(marker.location)
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-03-07T16:10:59.489Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-03-07T16:10:59.489Z] Cell [0;32mIn[1], line 1[0m
+[2024-03-07T16:10:59.489Z] [0;32m----> 1[0m [38;5;28mprint[39m([43minitial_marker_location[49m)
+[2024-03-07T16:10:59.489Z] [1;32m      2[0m [38;5;28mprint[39m(marker[38;5;241m.[39mlocation)
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] [0;31mNameError[0m: name 'initial_marker_location' is not defined
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] ___ pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 7 ____
+[2024-03-07T16:10:59.489Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.489Z] [94mCell 7: Cell execution caused an exception
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] Input:
+[2024-03-07T16:10:59.489Z] [0m# NBVAL_IGNORE_OUTPUT
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] rectangle = get_rectangle()
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.489Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.489Z] 
+[2024-03-07T16:10:59.490Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-03-07T16:10:59.490Z] [0;31mKeyError[0m                                  Traceback (most recent call last)
+[2024-03-07T16:10:59.490Z] File [0;32m/opt/conda/envs/birdy/lib/python3.10/site-packages/xyzservices/lib.py:44[0m, in [0;36mBunch.__getattr__[0;34m(self, key)[0m
+[2024-03-07T16:10:59.490Z] [1;32m     43[0m [38;5;28;01mtry[39;00m:
+[2024-03-07T16:10:59.490Z] [0;32m---> 44[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[38;5;21;43m__getitem__[39;49m[43m([49m[43mkey[49m[43m)[49m
+[2024-03-07T16:10:59.490Z] [1;32m     45[0m [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m [38;5;28;01mas[39;00m err:
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] [0;31mKeyError[0m: 'Stamen'
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] The above exception was the direct cause of the following exception:
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] [0;31mAttributeError[0m                            Traceback (most recent call last)
+[2024-03-07T16:10:59.490Z] Cell [0;32mIn[1], line 4[0m
+[2024-03-07T16:10:59.490Z] [1;32m      1[0m [38;5;66;03m# NBVAL_IGNORE_OUTPUT[39;00m
+[2024-03-07T16:10:59.490Z] [0;32m----> 4[0m rectangle [38;5;241m=[39m [43mget_rectangle[49m[43m([49m[43m)[49m
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] Cell [0;32mIn[1], line 10[0m, in [0;36mget_rectangle[0;34m()[0m
+[2024-03-07T16:10:59.490Z] [1;32m      6[0m [38;5;28;01mdef[39;00m [38;5;21mget_rectangle[39m():
+[2024-03-07T16:10:59.490Z] [1;32m      7[0m     canada_center [38;5;241m=[39m ([38;5;241m52.4292[39m, [38;5;241m-[39m[38;5;241m93.2959[39m)
+[2024-03-07T16:10:59.490Z] [1;32m      8[0m     m [38;5;241m=[39m ipyleaflet[38;5;241m.[39mMap(
+[2024-03-07T16:10:59.490Z] [1;32m      9[0m         center[38;5;241m=[39mcanada_center,
+[2024-03-07T16:10:59.490Z] [0;32m---> 10[0m         basemap[38;5;241m=[39m[43mipyleaflet[49m[38;5;241;43m.[39;49m[43mbasemaps[49m[38;5;241;43m.[39;49m[43mStamen[49m[38;5;241m.[39mTerrain,
+[2024-03-07T16:10:59.490Z] [1;32m     11[0m         zoom[38;5;241m=[39m[38;5;241m4[39m,
+[2024-03-07T16:10:59.490Z] [1;32m     12[0m     )
+[2024-03-07T16:10:59.490Z] [1;32m     14[0m     [38;5;66;03m# Create a new draw control[39;00m
+[2024-03-07T16:10:59.490Z] [1;32m     15[0m     draw_control [38;5;241m=[39m ipyleaflet[38;5;241m.[39mDrawControl()
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] File [0;32m/opt/conda/envs/birdy/lib/python3.10/site-packages/xyzservices/lib.py:46[0m, in [0;36mBunch.__getattr__[0;34m(self, key)[0m
+[2024-03-07T16:10:59.490Z] [1;32m     44[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m[38;5;21m__getitem__[39m(key)
+[2024-03-07T16:10:59.490Z] [1;32m     45[0m [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m [38;5;28;01mas[39;00m err:
+[2024-03-07T16:10:59.490Z] [0;32m---> 46[0m     [38;5;28;01mraise[39;00m [38;5;167;01mAttributeError[39;00m(key) [38;5;28;01mfrom[39;00m [38;5;21;01merr[39;00m
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] [0;31mAttributeError[0m: Stamen
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] ___ pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 8 ____
+[2024-03-07T16:10:59.490Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.490Z] [94mCell 8: Cell execution caused an exception
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] Input:
+[2024-03-07T16:10:59.490Z] [0m#  GeoJSON with custom style properties
+[2024-03-07T16:10:59.490Z] if not len(rectangle):
+[2024-03-07T16:10:59.490Z]     # Use the default region of Greater Montreal Area
+[2024-03-07T16:10:59.490Z]     rectangle = {
+[2024-03-07T16:10:59.490Z]         "type": "Feature",
+[2024-03-07T16:10:59.490Z]         "properties": {
+[2024-03-07T16:10:59.490Z]             "style": {
+[2024-03-07T16:10:59.490Z]                 "stroke": True,
+[2024-03-07T16:10:59.490Z]                 "color": "#4ae",
+[2024-03-07T16:10:59.490Z]                 "weight": 4,
+[2024-03-07T16:10:59.490Z]                 "opacity": 0.5,
+[2024-03-07T16:10:59.490Z]                 "fill": True,
+[2024-03-07T16:10:59.490Z]                 "fillColor": "#4ae",
+[2024-03-07T16:10:59.490Z]                 "fillOpacity": 0.3,
+[2024-03-07T16:10:59.490Z]                 "clickable": True,
+[2024-03-07T16:10:59.490Z]             }
+[2024-03-07T16:10:59.490Z]         },
+[2024-03-07T16:10:59.490Z]         "geometry": {
+[2024-03-07T16:10:59.490Z]             "type": "Polygon",
+[2024-03-07T16:10:59.490Z]             "coordinates": [
+[2024-03-07T16:10:59.490Z]                 [
+[2024-03-07T16:10:59.490Z]                     [-74.511948, 45.202296],
+[2024-03-07T16:10:59.490Z]                     [-74.511948, 45.934852],
+[2024-03-07T16:10:59.490Z]                     [-72.978537, 45.934852],
+[2024-03-07T16:10:59.490Z]                     [-72.978537, 45.202296],
+[2024-03-07T16:10:59.490Z]                     [-74.511948, 45.202296],
+[2024-03-07T16:10:59.490Z]                 ]
+[2024-03-07T16:10:59.490Z]             ],
+[2024-03-07T16:10:59.490Z]         },
+[2024-03-07T16:10:59.490Z]     }
+[2024-03-07T16:10:59.490Z] rectangle
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-03-07T16:10:59.490Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-03-07T16:10:59.490Z] Cell [0;32mIn[1], line 2[0m
+[2024-03-07T16:10:59.490Z] [1;32m      1[0m [38;5;66;03m#  GeoJSON with custom style properties[39;00m
+[2024-03-07T16:10:59.490Z] [0;32m----> 2[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28mlen[39m([43mrectangle[49m):
+[2024-03-07T16:10:59.490Z] [1;32m      3[0m     [38;5;66;03m# Use the default region of Greater Montreal Area[39;00m
+[2024-03-07T16:10:59.490Z] [1;32m      4[0m     rectangle [38;5;241m=[39m {
+[2024-03-07T16:10:59.490Z] [1;32m      5[0m         [38;5;124m"[39m[38;5;124mtype[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124mFeature[39m[38;5;124m"[39m,
+[2024-03-07T16:10:59.490Z] [1;32m      6[0m         [38;5;124m"[39m[38;5;124mproperties[39m[38;5;124m"[39m: {
+[2024-03-07T16:10:59.490Z] [0;32m   (...)[0m
+[2024-03-07T16:10:59.490Z] [1;32m     29[0m         },
+[2024-03-07T16:10:59.490Z] [1;32m     30[0m     }
+[2024-03-07T16:10:59.490Z] [1;32m     31[0m rectangle
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] [0;31mNameError[0m: name 'rectangle' is not defined
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] ___ pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 9 ____
+[2024-03-07T16:10:59.490Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.490Z] [94mCell 9: Cell execution caused an exception
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] Input:
+[2024-03-07T16:10:59.490Z] [0mimport geopandas as gpd
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] rect = gpd.GeoDataFrame.from_features([rectangle])
+[2024-03-07T16:10:59.490Z] bounds = rect.bounds
+[2024-03-07T16:10:59.490Z] bounds
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-03-07T16:10:59.490Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-03-07T16:10:59.490Z] Cell [0;32mIn[1], line 3[0m
+[2024-03-07T16:10:59.490Z] [1;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01mgeopandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mgpd[39;00m
+[2024-03-07T16:10:59.490Z] [0;32m----> 3[0m rect [38;5;241m=[39m gpd[38;5;241m.[39mGeoDataFrame[38;5;241m.[39mfrom_features([[43mrectangle[49m])
+[2024-03-07T16:10:59.490Z] [1;32m      4[0m bounds [38;5;241m=[39m rect[38;5;241m.[39mbounds
+[2024-03-07T16:10:59.490Z] [1;32m      5[0m bounds
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] [0;31mNameError[0m: name 'rectangle' is not defined
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] ___ pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 14 ___
+[2024-03-07T16:10:59.490Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.490Z] [94mCell 14: Cell execution caused an exception
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] Input:
+[2024-03-07T16:10:59.490Z] [0mlon0 = float(bounds.minx)
+[2024-03-07T16:10:59.490Z] lon1 = float(bounds.maxx)
+[2024-03-07T16:10:59.490Z] lat0 = float(bounds.miny)
+[2024-03-07T16:10:59.490Z] lat1 = float(bounds.maxy)
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] result_tasmin = finch.subset_bbox(
+[2024-03-07T16:10:59.490Z]     resource=data,
+[2024-03-07T16:10:59.490Z]     variable="tasmin",
+[2024-03-07T16:10:59.490Z]     lon0=lon0,
+[2024-03-07T16:10:59.490Z]     lon1=lon1,
+[2024-03-07T16:10:59.490Z]     lat0=lat0,
+[2024-03-07T16:10:59.490Z]     lat1=lat1,
+[2024-03-07T16:10:59.490Z]     start_date="1958-01-01",
+[2024-03-07T16:10:59.490Z]     end_date="1958-12-31",
+[2024-03-07T16:10:59.490Z] )
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-03-07T16:10:59.490Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-03-07T16:10:59.490Z] Cell [0;32mIn[1], line 1[0m
+[2024-03-07T16:10:59.490Z] [0;32m----> 1[0m lon0 [38;5;241m=[39m [38;5;28mfloat[39m([43mbounds[49m[38;5;241m.[39mminx)
+[2024-03-07T16:10:59.490Z] [1;32m      2[0m lon1 [38;5;241m=[39m [38;5;28mfloat[39m(bounds[38;5;241m.[39mmaxx)
+[2024-03-07T16:10:59.490Z] [1;32m      3[0m lat0 [38;5;241m=[39m [38;5;28mfloat[39m(bounds[38;5;241m.[39mminy)
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] [0;31mNameError[0m: name 'bounds' is not defined
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] ___ pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 15 ___
+[2024-03-07T16:10:59.490Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.490Z] [94mCell 15: Cell execution caused an exception
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] Input:
+[2024-03-07T16:10:59.490Z] [0m# NBVAL_IGNORE_OUTPUT
+[2024-03-07T16:10:59.490Z] 
+[2024-03-07T16:10:59.490Z] # wait for process to complete before running this cell (the process is async)
+[2024-03-07T16:10:59.490Z] tasmin_subset = result_tasmin.get().output
+[2024-03-07T16:10:59.490Z] tasmin_subset
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-03-07T16:10:59.491Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-03-07T16:10:59.491Z] Cell [0;32mIn[1], line 4[0m
+[2024-03-07T16:10:59.491Z] [1;32m      1[0m [38;5;66;03m# NBVAL_IGNORE_OUTPUT[39;00m
+[2024-03-07T16:10:59.491Z] [1;32m      2[0m 
+[2024-03-07T16:10:59.491Z] [1;32m      3[0m [38;5;66;03m# wait for process to complete before running this cell (the process is async)[39;00m
+[2024-03-07T16:10:59.491Z] [0;32m----> 4[0m tasmin_subset [38;5;241m=[39m [43mresult_tasmin[49m[38;5;241m.[39mget()[38;5;241m.[39moutput
+[2024-03-07T16:10:59.491Z] [1;32m      5[0m tasmin_subset
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [0;31mNameError[0m: name 'result_tasmin' is not defined
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] ___ pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 16 ___
+[2024-03-07T16:10:59.491Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.491Z] [94mCell 16: Cell execution caused an exception
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] Input:
+[2024-03-07T16:10:59.491Z] [0mresult_tasmax = finch.subset_bbox(
+[2024-03-07T16:10:59.491Z]     resource=data,
+[2024-03-07T16:10:59.491Z]     variable="tasmax",
+[2024-03-07T16:10:59.491Z]     lon0=lon0,
+[2024-03-07T16:10:59.491Z]     lon1=lon1,
+[2024-03-07T16:10:59.491Z]     lat0=lat0,
+[2024-03-07T16:10:59.491Z]     lat1=lat1,
+[2024-03-07T16:10:59.491Z]     start_date="1958-01-01",
+[2024-03-07T16:10:59.491Z]     end_date="1958-12-31",
+[2024-03-07T16:10:59.491Z] )
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-03-07T16:10:59.491Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-03-07T16:10:59.491Z] Cell [0;32mIn[1], line 4[0m
+[2024-03-07T16:10:59.491Z] [1;32m      1[0m result_tasmax [38;5;241m=[39m finch[38;5;241m.[39msubset_bbox(
+[2024-03-07T16:10:59.491Z] [1;32m      2[0m     resource[38;5;241m=[39mdata,
+[2024-03-07T16:10:59.491Z] [1;32m      3[0m     variable[38;5;241m=[39m[38;5;124m"[39m[38;5;124mtasmax[39m[38;5;124m"[39m,
+[2024-03-07T16:10:59.491Z] [0;32m----> 4[0m     lon0[38;5;241m=[39m[43mlon0[49m,
+[2024-03-07T16:10:59.491Z] [1;32m      5[0m     lon1[38;5;241m=[39mlon1,
+[2024-03-07T16:10:59.491Z] [1;32m      6[0m     lat0[38;5;241m=[39mlat0,
+[2024-03-07T16:10:59.491Z] [1;32m      7[0m     lat1[38;5;241m=[39mlat1,
+[2024-03-07T16:10:59.491Z] [1;32m      8[0m     start_date[38;5;241m=[39m[38;5;124m"[39m[38;5;124m1958-01-01[39m[38;5;124m"[39m,
+[2024-03-07T16:10:59.491Z] [1;32m      9[0m     end_date[38;5;241m=[39m[38;5;124m"[39m[38;5;124m1958-12-31[39m[38;5;124m"[39m,
+[2024-03-07T16:10:59.491Z] [1;32m     10[0m )
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [0;31mNameError[0m: name 'lon0' is not defined
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] ___ pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 17 ___
+[2024-03-07T16:10:59.491Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.491Z] [94mCell 17: Cell execution caused an exception
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] Input:
+[2024-03-07T16:10:59.491Z] [0m# NBVAL_IGNORE_OUTPUT
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] # wait for process to complete before running this cell (the process is async)
+[2024-03-07T16:10:59.491Z] tasmax_subset = result_tasmax.get().output
+[2024-03-07T16:10:59.491Z] tasmax_subset
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-03-07T16:10:59.491Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-03-07T16:10:59.491Z] Cell [0;32mIn[1], line 4[0m
+[2024-03-07T16:10:59.491Z] [1;32m      1[0m [38;5;66;03m# NBVAL_IGNORE_OUTPUT[39;00m
+[2024-03-07T16:10:59.491Z] [1;32m      2[0m 
+[2024-03-07T16:10:59.491Z] [1;32m      3[0m [38;5;66;03m# wait for process to complete before running this cell (the process is async)[39;00m
+[2024-03-07T16:10:59.491Z] [0;32m----> 4[0m tasmax_subset [38;5;241m=[39m [43mresult_tasmax[49m[38;5;241m.[39mget()[38;5;241m.[39moutput
+[2024-03-07T16:10:59.491Z] [1;32m      5[0m tasmax_subset
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [0;31mNameError[0m: name 'result_tasmax' is not defined
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] ___ pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 19 ___
+[2024-03-07T16:10:59.491Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.491Z] [94mCell 19: Cell execution caused an exception
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] Input:
+[2024-03-07T16:10:59.491Z] [0mresult = finch.heat_wave_frequency(
+[2024-03-07T16:10:59.491Z]     tasmin=tasmin_subset,
+[2024-03-07T16:10:59.491Z]     tasmax=tasmax_subset,
+[2024-03-07T16:10:59.491Z]     thresh_tasmin="14 degC",
+[2024-03-07T16:10:59.491Z]     thresh_tasmax="22 degC",
+[2024-03-07T16:10:59.491Z] )
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-03-07T16:10:59.491Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-03-07T16:10:59.491Z] Cell [0;32mIn[1], line 2[0m
+[2024-03-07T16:10:59.491Z] [1;32m      1[0m result [38;5;241m=[39m finch[38;5;241m.[39mheat_wave_frequency(
+[2024-03-07T16:10:59.491Z] [0;32m----> 2[0m     tasmin[38;5;241m=[39m[43mtasmin_subset[49m,
+[2024-03-07T16:10:59.491Z] [1;32m      3[0m     tasmax[38;5;241m=[39mtasmax_subset,
+[2024-03-07T16:10:59.491Z] [1;32m      4[0m     thresh_tasmin[38;5;241m=[39m[38;5;124m"[39m[38;5;124m14 degC[39m[38;5;124m"[39m,
+[2024-03-07T16:10:59.491Z] [1;32m      5[0m     thresh_tasmax[38;5;241m=[39m[38;5;124m"[39m[38;5;124m22 degC[39m[38;5;124m"[39m,
+[2024-03-07T16:10:59.491Z] [1;32m      6[0m )
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [0;31mNameError[0m: name 'tasmin_subset' is not defined
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] ___ pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 20 ___
+[2024-03-07T16:10:59.491Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.491Z] [94mCell 20: Cell execution caused an exception
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] Input:
+[2024-03-07T16:10:59.491Z] [0mresponse = result.get(asobj=True)
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-03-07T16:10:59.491Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-03-07T16:10:59.491Z] Cell [0;32mIn[1], line 1[0m
+[2024-03-07T16:10:59.491Z] [0;32m----> 1[0m response [38;5;241m=[39m [43mresult[49m[38;5;241m.[39mget(asobj[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [0;31mNameError[0m: name 'result' is not defined
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] ___ pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 21 ___
+[2024-03-07T16:10:59.491Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.491Z] [94mCell 21: Cell execution caused an exception
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] Input:
+[2024-03-07T16:10:59.491Z] [0mds = response.output
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-03-07T16:10:59.491Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-03-07T16:10:59.491Z] Cell [0;32mIn[1], line 1[0m
+[2024-03-07T16:10:59.491Z] [0;32m----> 1[0m ds [38;5;241m=[39m [43mresponse[49m[38;5;241m.[39moutput
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [0;31mNameError[0m: name 'response' is not defined
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] ___ pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 22 ___
+[2024-03-07T16:10:59.491Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.491Z] [94mCell 22: Cell execution caused an exception
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] Input:
+[2024-03-07T16:10:59.491Z] [0mds.heat_wave_frequency.plot()
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-03-07T16:10:59.491Z] [0;31mAttributeError[0m                            Traceback (most recent call last)
+[2024-03-07T16:10:59.491Z] Cell [0;32mIn[1], line 1[0m
+[2024-03-07T16:10:59.491Z] [0;32m----> 1[0m [43mds[49m[38;5;241;43m.[39;49m[43mheat_wave_frequency[49m[38;5;241m.[39mplot()
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] File [0;32m/opt/conda/envs/birdy/lib/python3.10/site-packages/xarray/core/common.py:277[0m, in [0;36mAttrAccessMixin.__getattr__[0;34m(self, name)[0m
+[2024-03-07T16:10:59.491Z] [1;32m    275[0m         [38;5;28;01mwith[39;00m suppress([38;5;167;01mKeyError[39;00m):
+[2024-03-07T16:10:59.491Z] [1;32m    276[0m             [38;5;28;01mreturn[39;00m source[name]
+[2024-03-07T16:10:59.491Z] [0;32m--> 277[0m [38;5;28;01mraise[39;00m [38;5;167;01mAttributeError[39;00m(
+[2024-03-07T16:10:59.491Z] [1;32m    278[0m     [38;5;124mf[39m[38;5;124m"[39m[38;5;132;01m{[39;00m[38;5;28mtype[39m([38;5;28mself[39m)[38;5;241m.[39m[38;5;18m__name__[39m[38;5;132;01m!r}[39;00m[38;5;124m object has no attribute [39m[38;5;132;01m{[39;00mname[38;5;132;01m!r}[39;00m[38;5;124m"[39m
+[2024-03-07T16:10:59.491Z] [1;32m    279[0m )
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.491Z] [0;31mAttributeError[0m: 'Dataset' object has no attribute 'heat_wave_frequency'
+[2024-03-07T16:10:59.491Z] 
+[2024-03-07T16:10:59.492Z] ___ pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 23 ___
+[2024-03-07T16:10:59.492Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.492Z] [94mCell 23: Cell execution caused an exception
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] Input:
+[2024-03-07T16:10:59.492Z] [0mfrom urllib.parse import urlparse
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] output_url = result.get().output
+[2024-03-07T16:10:59.492Z] print("output_url = ", output_url)
+[2024-03-07T16:10:59.492Z] parsed = urlparse(output_url)
+[2024-03-07T16:10:59.492Z] output_path = parsed.path.replace("wpsoutputs", "wps_outputs")
+[2024-03-07T16:10:59.492Z] print("output_path = ", output_path)
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] output_thredds_url = (
+[2024-03-07T16:10:59.492Z]     f"https://{parsed.hostname}/twitcher/ows/proxy/thredds/dodsC/birdhouse{output_path}"
+[2024-03-07T16:10:59.492Z] )
+[2024-03-07T16:10:59.492Z] print("output_thredds_url = ", output_thredds_url)
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-03-07T16:10:59.492Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-03-07T16:10:59.492Z] Cell [0;32mIn[1], line 3[0m
+[2024-03-07T16:10:59.492Z] [1;32m      1[0m [38;5;28;01mfrom[39;00m [38;5;21;01murllib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mparse[39;00m [38;5;28;01mimport[39;00m urlparse
+[2024-03-07T16:10:59.492Z] [0;32m----> 3[0m output_url [38;5;241m=[39m [43mresult[49m[38;5;241m.[39mget()[38;5;241m.[39moutput
+[2024-03-07T16:10:59.492Z] [1;32m      4[0m [38;5;28mprint[39m([38;5;124m"[39m[38;5;124moutput_url = [39m[38;5;124m"[39m, output_url)
+[2024-03-07T16:10:59.492Z] [1;32m      5[0m parsed [38;5;241m=[39m urlparse(output_url)
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] [0;31mNameError[0m: name 'result' is not defined
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] ___ pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 24 ___
+[2024-03-07T16:10:59.492Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.492Z] [94mCell 24: Cell execution caused an exception
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] Input:
+[2024-03-07T16:10:59.492Z] [0m# NBVAL_IGNORE_OUTPUT
+[2024-03-07T16:10:59.492Z] import hvplot.xarray
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] dsremote = xr.open_dataset(output_thredds_url)
+[2024-03-07T16:10:59.492Z] dsremote.hvplot.quadmesh(
+[2024-03-07T16:10:59.492Z]     "lon",
+[2024-03-07T16:10:59.492Z]     "lat",
+[2024-03-07T16:10:59.492Z]     "heat_wave_frequency",
+[2024-03-07T16:10:59.492Z]     geo=True,
+[2024-03-07T16:10:59.492Z]     alpha=0.8,
+[2024-03-07T16:10:59.492Z]     frame_height=540,
+[2024-03-07T16:10:59.492Z]     cmap="viridis",
+[2024-03-07T16:10:59.492Z]     tiles="CartoLight",
+[2024-03-07T16:10:59.492Z] )
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-03-07T16:10:59.492Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-03-07T16:10:59.492Z] Cell [0;32mIn[1], line 4[0m
+[2024-03-07T16:10:59.492Z] [1;32m      1[0m [38;5;66;03m# NBVAL_IGNORE_OUTPUT[39;00m
+[2024-03-07T16:10:59.492Z] [1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mhvplot[39;00m[38;5;21;01m.[39;00m[38;5;21;01mxarray[39;00m
+[2024-03-07T16:10:59.492Z] [0;32m----> 4[0m dsremote [38;5;241m=[39m xr[38;5;241m.[39mopen_dataset([43moutput_thredds_url[49m)
+[2024-03-07T16:10:59.492Z] [1;32m      5[0m dsremote[38;5;241m.[39mhvplot[38;5;241m.[39mquadmesh(
+[2024-03-07T16:10:59.492Z] [1;32m      6[0m     [38;5;124m"[39m[38;5;124mlon[39m[38;5;124m"[39m,
+[2024-03-07T16:10:59.492Z] [1;32m      7[0m     [38;5;124m"[39m[38;5;124mlat[39m[38;5;124m"[39m,
+[2024-03-07T16:10:59.492Z] [0;32m   (...)[0m
+[2024-03-07T16:10:59.492Z] [1;32m     13[0m     tiles[38;5;241m=[39m[38;5;124m"[39m[38;5;124mCartoLight[39m[38;5;124m"[39m,
+[2024-03-07T16:10:59.492Z] [1;32m     14[0m )
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] [0;31mNameError[0m: name 'output_thredds_url' is not defined
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] _________ finch-master/docs/source/notebooks/finch-usage.ipynb::Cell 3 _________
+[2024-03-07T16:10:59.492Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.492Z] [94mCell 3: Cell outputs differ
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] Input:
+[2024-03-07T16:10:59.492Z] [0mprint("Process status: ", resp.status)
+[2024-03-07T16:10:59.492Z] urls = resp.get()
+[2024-03-07T16:10:59.492Z] print("Link to process output: ", urls.output)
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.492Z] [94m mismatch 'stdout'[91m
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z]  assert reference_output == test_output failed:
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z]   'Process stat...20650101.nc\n' == 'Process stat...20650101.nc\n'
+[2024-03-07T16:10:59.492Z]   Skipping 49 identical leading characters in diff, use -v to show
+[2024-03-07T16:10:59.492Z]   -  output:  https://WPS_HOST/wpsoutputs/STATUS_FILE/frost_days_sres_a2_experiment_20460101_20650101.nc
+[2024-03-07T16:10:59.492Z]   ?           ---------------------------
+[2024-03-07T16:10:59.492Z]   +  output:  /STATUS_FILE/frost_days_sres_a2_experiment_20460101_20650101.nc
+[2024-03-07T16:10:59.492Z] [0m
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] _ PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb::Cell 0 _
+[2024-03-07T16:10:59.492Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.492Z] [94mCell 0: Cell outputs differ
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] Input:
+[2024-03-07T16:10:59.492Z] [0mimport os
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] os.environ["USE_PYGEOS"] = "0"  # force use Shapely with GeoPandas
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] import warnings
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] import numba
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] warnings.simplefilter("ignore", category=numba.core.errors.NumbaDeprecationWarning)
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] import geopandas as gpd
+[2024-03-07T16:10:59.492Z] import matplotlib.pyplot as plt
+[2024-03-07T16:10:59.492Z] import xarray as xr
+[2024-03-07T16:10:59.492Z] from clisops.core import subset
+[2024-03-07T16:10:59.492Z] from dask.diagnostics import ProgressBar
+[2024-03-07T16:10:59.492Z] from siphon.catalog import TDSCatalog
+[2024-03-07T16:10:59.492Z] from xclim import atmos
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] warnings.simplefilter("ignore")
+[2024-03-07T16:10:59.492Z] # TODO change address
+[2024-03-07T16:10:59.492Z] url = "https://pavics.ouranos.ca/twitcher/ows/proxy/thredds/catalog/datasets/simulations/bias_adjusted/cmip5/ouranos/cb-oura-1.0/catalog.xml"  # TEST_USE_PROD_DATA
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] # Create Catalog
+[2024-03-07T16:10:59.492Z] cat = TDSCatalog(url)
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] # Subset over the Gasp�� peninsula in eastern Quebec
+[2024-03-07T16:10:59.492Z] gaspe = gpd.GeoDataFrame.from_file(
+[2024-03-07T16:10:59.492Z]     "/notebook_dir/pavics-homepage/tutorial_data/gaspesie_mrc.geojson"
+[2024-03-07T16:10:59.492Z] )
+[2024-03-07T16:10:59.492Z] ds = subset.subset_shape(
+[2024-03-07T16:10:59.492Z]     xr.open_dataset(cat.datasets[0].access_urls["OPENDAP"], chunks=dict(time=256)),
+[2024-03-07T16:10:59.492Z]     shape=gpd.GeoDataFrame(geometry=gaspe.buffer(0.05)),
+[2024-03-07T16:10:59.492Z] )
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] # What we see here is only a representation of the full content, the entire data set hasn't been loaded.
+[2024-03-07T16:10:59.492Z] display(ds)
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] # plot of single day tasmin
+[2024-03-07T16:10:59.492Z] a = ds.tasmin.isel(time=0).plot(figsize=(10, 4))
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.492Z] [91mMissing output fields from running code: {'stderr'}[0m
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] _ PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb::Cell 2 _
+[2024-03-07T16:10:59.492Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.492Z] [94mCell 2: Cell execution caused an exception
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] Input:
+[2024-03-07T16:10:59.492Z] [0mfut = ds_ens.sel(time=slice("2071", "2100")).chunk(dict(realization=-1))
+[2024-03-07T16:10:59.492Z] ref = ds_ens.sel(time=slice("1981", "2010")).chunk(dict(realization=-1))
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] chng_f, pos_f = xens.change_significance(
+[2024-03-07T16:10:59.492Z]     fut.sel(time=fut["time.season"] == "JJA"),
+[2024-03-07T16:10:59.492Z]     ref.sel(time=ref["time.season"] == "JJA"),
+[2024-03-07T16:10:59.492Z]     test="ttest",
+[2024-03-07T16:10:59.492Z] )
+[2024-03-07T16:10:59.492Z] plt.figure(
+[2024-03-07T16:10:59.492Z]     figsize=(15, 6),
+[2024-03-07T16:10:59.492Z] )
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] plt.subplot(1, 2, 1)
+[2024-03-07T16:10:59.492Z] chng_f.tx_days_above.plot(cmap="RdBu_r", vmin=0, vmax=1)
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] plt.title(chng_f.description.split(".")[0])
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] plt.subplot(1, 2, 2)
+[2024-03-07T16:10:59.492Z] pos_f.tx_days_above.plot(cmap="RdBu_r", vmin=0, vmax=1)
+[2024-03-07T16:10:59.492Z] plt.title(pos_f.description.split(".")[0])
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] display()
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.492Z] 
+[2024-03-07T16:10:59.492Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-03-07T16:10:59.492Z] [0;31mAttributeError[0m                            Traceback (most recent call last)
+[2024-03-07T16:10:59.492Z] Cell [0;32mIn[1], line 20[0m
+[2024-03-07T16:10:59.492Z] [1;32m     18[0m plt[38;5;241m.[39msubplot([38;5;241m1[39m, [38;5;241m2[39m, [38;5;241m2[39m)
+[2024-03-07T16:10:59.492Z] [1;32m     19[0m pos_f[38;5;241m.[39mtx_days_above[38;5;241m.[39mplot(cmap[38;5;241m=[39m[38;5;124m"[39m[38;5;124mRdBu_r[39m[38;5;124m"[39m, vmin[38;5;241m=[39m[38;5;241m0[39m, vmax[38;5;241m=[39m[38;5;241m1[39m)
+[2024-03-07T16:10:59.493Z] [0;32m---> 20[0m plt[38;5;241m.[39mtitle([43mpos_f[49m[38;5;241;43m.[39;49m[43mdescription[49m[38;5;241m.[39msplit([38;5;124m"[39m[38;5;124m.[39m[38;5;124m"[39m)[[38;5;241m0[39m])
+[2024-03-07T16:10:59.493Z] [1;32m     22[0m display()
+[2024-03-07T16:10:59.493Z] 
+[2024-03-07T16:10:59.493Z] File [0;32m/opt/conda/envs/birdy/lib/python3.10/site-packages/xarray/core/common.py:277[0m, in [0;36mAttrAccessMixin.__getattr__[0;34m(self, name)[0m
+[2024-03-07T16:10:59.493Z] [1;32m    275[0m         [38;5;28;01mwith[39;00m suppress([38;5;167;01mKeyError[39;00m):
+[2024-03-07T16:10:59.493Z] [1;32m    276[0m             [38;5;28;01mreturn[39;00m source[name]
+[2024-03-07T16:10:59.493Z] [0;32m--> 277[0m [38;5;28;01mraise[39;00m [38;5;167;01mAttributeError[39;00m(
+[2024-03-07T16:10:59.493Z] [1;32m    278[0m     [38;5;124mf[39m[38;5;124m"[39m[38;5;132;01m{[39;00m[38;5;28mtype[39m([38;5;28mself[39m)[38;5;241m.[39m[38;5;18m__name__[39m[38;5;132;01m!r}[39;00m[38;5;124m object has no attribute [39m[38;5;132;01m{[39;00mname[38;5;132;01m!r}[39;00m[38;5;124m"[39m
+[2024-03-07T16:10:59.493Z] [1;32m    279[0m )
+[2024-03-07T16:10:59.493Z] 
+[2024-03-07T16:10:59.493Z] [0;31mAttributeError[0m: 'Dataset' object has no attribute 'description'
+[2024-03-07T16:10:59.493Z] 
+[2024-03-07T16:10:59.493Z] _ PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb::Cell 2 _
+[2024-03-07T16:10:59.493Z] [91mNotebook cell execution failed[0m
+[2024-03-07T16:10:59.493Z] [94mCell 2: Cell outputs differ
+[2024-03-07T16:10:59.493Z] 
+[2024-03-07T16:10:59.493Z] Input:
+[2024-03-07T16:10:59.493Z] [0mimport geopandas as gpd
+[2024-03-07T16:10:59.493Z] import hvplot.pandas
+[2024-03-07T16:10:59.493Z] 
+[2024-03-07T16:10:59.493Z] gdf = gpd.GeoDataFrame.from_file(
+[2024-03-07T16:10:59.493Z]     "/notebook_dir/pavics-homepage/tutorial_data/gaspesie_mrc.geojson"
+[2024-03-07T16:10:59.493Z] )
+[2024-03-07T16:10:59.493Z] gdf = gdf.dissolve(by="MUS_NM_MRC")
+[2024-03-07T16:10:59.493Z] gdf["region_name"] = gdf.index
+[2024-03-07T16:10:59.493Z] 
+[2024-03-07T16:10:59.493Z] # TODO replace with clisops average.average_shape() once it can do a 'skipna'
+[2024-03-07T16:10:59.493Z] # mask of valid (non-nan) data cells
+[2024-03-07T16:10:59.493Z] data_mask = (
+[2024-03-07T16:10:59.493Z]     ds_ens.tx_mean.isel(rcp=0, realization=0).mean(dim=["year", "season"]).notnull()
+[2024-03-07T16:10:59.493Z] )
+[2024-03-07T16:10:59.493Z] # spatial weights of gridcells interesecting each polygon
+[2024-03-07T16:10:59.493Z] weight_masks = subset.create_weight_masks(ds_ens, poly=gdf)
+[2024-03-07T16:10:59.493Z] 
+[2024-03-07T16:10:59.493Z] 
+[2024-03-07T16:10:59.493Z] def clean_masks(data_mask, masks):
+[2024-03-07T16:10:59.493Z]     # remove weight values of gridcells that are nan in the actual data. Rescale so total == 1
+[2024-03-07T16:10:59.493Z]     return (masks * data_mask) / (masks * data_mask).sum(dim=["lat", "lon"])
+[2024-03-07T16:10:59.493Z] 
+[2024-03-07T16:10:59.493Z] 
+[2024-03-07T16:10:59.493Z] weight_masks = clean_masks(data_mask, weight_masks)
+[2024-03-07T16:10:59.493Z] 
+[2024-03-07T16:10:59.493Z] # Calculate weighted average for each region
+[2024-03-07T16:10:59.493Z] with xr.set_options(keep_attrs=True):
+[2024-03-07T16:10:59.493Z]     reg_ts_sims = (ds_ens * weight_masks).sum(dim=["lat", "lon"])
+[2024-03-07T16:10:59.493Z]     reg_ts = xens.ensemble_percentiles(reg_ts_sims)
+[2024-03-07T16:10:59.493Z] reg_ts.load()
+[2024-03-07T16:10:59.493Z] 
+[2024-03-07T16:10:59.493Z] # get only tx_mean percentile variables for this plot
+[2024-03-07T16:10:59.493Z] vars1 = [v for v in reg_ts if "tx_mean" in v]
+[2024-03-07T16:10:59.493Z] clear_output()
+[2024-03-07T16:10:59.493Z] # plot a simple map of the sub-regions
+[2024-03-07T16:10:59.493Z] display(
+[2024-03-07T16:10:59.493Z]     gdf.hvplot(
+[2024-03-07T16:10:59.493Z]         geo=True,
+[2024-03-07T16:10:59.493Z]         color="region_name",
+[2024-03-07T16:10:59.493Z]         tiles="EsriImagery",
+[2024-03-07T16:10:59.493Z]         legend=False,
+[2024-03-07T16:10:59.493Z]         frame_width=400,
+[2024-03-07T16:10:59.493Z]     )
+[2024-03-07T16:10:59.493Z] )
+[2024-03-07T16:10:59.493Z] 
+[2024-03-07T16:10:59.493Z] # Interative time-series plot of regional means
+[2024-03-07T16:10:59.493Z] reg_ts[vars1].hvplot.line(
+[2024-03-07T16:10:59.493Z]     x="year", title="time series of regional mean conditions"
+[2024-03-07T16:10:59.493Z] ).opts(legend_position="top_left", frame_width=500)
+[2024-03-07T16:10:59.493Z] 
+[2024-03-07T16:10:59.493Z] [94mTraceback:[0m
+[2024-03-07T16:10:59.493Z] [94m mismatch 'text/plain'[91m
+[2024-03-07T16:10:59.493Z] 
+[2024-03-07T16:10:59.493Z]  assert reference_output == test_output failed:
+[2024-03-07T16:10:59.493Z] 
+[2024-03-07T16:10:59.493Z]   ':Overlay\n  ...(region_name)' == ':Overlay\n  ...(region_name)'
+[2024-03-07T16:10:59.493Z]     :Overlay
+[2024-03-07T16:10:59.493Z]   -    .WMTS.I     :WMTS   [Longitude,Latitude]
+[2024-03-07T16:10:59.493Z]   +    .Tiles.I    :Tiles   [x,y]
+[2024-03-07T16:10:59.493Z]        .Polygons.I :Polygons   [Longitude,Latitude]   (region_name)
+[2024-03-07T16:10:59.493Z] [0m
+[2024-03-07T16:10:59.493Z] 
+[2024-03-07T16:10:59.493Z] ----------------------------- Captured stdout call -----------------------------
+[2024-03-07T16:10:59.493Z] unhandled iopub msg: clear_output
+[2024-03-07T16:10:59.493Z] =========================== short test summary info ============================
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/climex.ipynb::Cell 8
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/forecasts.ipynb::Cell 2
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/regridding.ipynb::Cell 4
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/regridding.ipynb::Cell 7
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/regridding.ipynb::Cell 20
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/regridding.ipynb::Cell 27
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 3
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 4
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 5
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 7
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 8
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 9
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 14
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 15
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 16
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 17
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 19
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 20
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 21
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 22
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 23
+[2024-03-07T16:10:59.493Z] FAILED pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb::Cell 24
+[2024-03-07T16:10:59.493Z] FAILED finch-master/docs/source/notebooks/finch-usage.ipynb::Cell 3
+[2024-03-07T16:10:59.493Z] FAILED PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb::Cell 0
+[2024-03-07T16:10:59.494Z] FAILED PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb::Cell 2
+[2024-03-07T16:10:59.494Z] FAILED PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb::Cell 2
+[2024-03-07T16:10:59.494Z] ============ 26 failed, 188 passed, 1 skipped in 748.36s (0:12:28) =============
+[2024-03-07T16:10:59.752Z] + EXIT_CODE=1
+[2024-03-07T16:10:59.752Z] + echo true
+[2024-03-07T16:10:59.752Z] + tr [:upper:] [:lower:]
+[2024-03-07T16:10:59.752Z] + SAVE_RESULTING_NOTEBOOK=true
+[2024-03-07T16:10:59.752Z] + [ xtrue = xtrue ]
+[2024-03-07T16:10:59.752Z] + mkdir -p buildout
+[2024-03-07T16:10:59.752Z] + basename pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb
+[2024-03-07T16:10:59.752Z] + filename=WCS_example.ipynb
+[2024-03-07T16:10:59.752Z] + echo WCS_example.ipynb
+[2024-03-07T16:10:59.752Z] + sed s/.ipynb$//
+[2024-03-07T16:10:59.752Z] + filename=WCS_example
+[2024-03-07T16:10:59.752Z] + [ -e buildout/WCS_example.output.ipynb ]
+[2024-03-07T16:10:59.752Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output WCS_example.output.ipynb pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb
+[2024-03-07T16:11:01.661Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb to notebook
+[2024-03-07T16:11:11.663Z] [NbConvertApp] Writing 144455 bytes to buildout/WCS_example.output.ipynb
+[2024-03-07T16:11:11.663Z] + basename pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb
+[2024-03-07T16:11:11.663Z] + filename=WFS_example.ipynb
+[2024-03-07T16:11:11.663Z] + echo WFS_example.ipynb
+[2024-03-07T16:11:11.663Z] + sed s/.ipynb$//
+[2024-03-07T16:11:11.663Z] + filename=WFS_example
+[2024-03-07T16:11:11.663Z] + [ -e buildout/WFS_example.output.ipynb ]
+[2024-03-07T16:11:11.663Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output WFS_example.output.ipynb pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb
+[2024-03-07T16:11:12.602Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb to notebook
+[2024-03-07T16:11:22.574Z] [NbConvertApp] Writing 44573 bytes to buildout/WFS_example.output.ipynb
+[2024-03-07T16:11:22.574Z] + basename pavics-sdi-master/docs/source/notebooks/WMS_example.ipynb
+[2024-03-07T16:11:22.574Z] + filename=WMS_example.ipynb
+[2024-03-07T16:11:22.574Z] + echo WMS_example.ipynb
+[2024-03-07T16:11:22.574Z] + sed s/.ipynb$//
+[2024-03-07T16:11:22.574Z] + filename=WMS_example
+[2024-03-07T16:11:22.574Z] + [ -e buildout/WMS_example.output.ipynb ]
+[2024-03-07T16:11:22.574Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output WMS_example.output.ipynb pavics-sdi-master/docs/source/notebooks/WMS_example.ipynb
+[2024-03-07T16:11:23.144Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/WMS_example.ipynb to notebook
+[2024-03-07T16:11:29.800Z] [NbConvertApp] Writing 2048327 bytes to buildout/WMS_example.output.ipynb
+[2024-03-07T16:11:29.800Z] + basename pavics-sdi-master/docs/source/notebooks/climex.ipynb
+[2024-03-07T16:11:29.800Z] + filename=climex.ipynb
+[2024-03-07T16:11:29.800Z] + echo climex.ipynb
+[2024-03-07T16:11:29.800Z] + sed s/.ipynb$//
+[2024-03-07T16:11:29.800Z] + filename=climex
+[2024-03-07T16:11:29.800Z] + [ -e buildout/climex.output.ipynb ]
+[2024-03-07T16:11:29.800Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output climex.output.ipynb pavics-sdi-master/docs/source/notebooks/climex.ipynb
+[2024-03-07T16:11:31.183Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/climex.ipynb to notebook
+[2024-03-07T16:14:07.690Z] [NbConvertApp] Writing 1778863 bytes to buildout/climex.output.ipynb
+[2024-03-07T16:14:07.690Z] + basename pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb
+[2024-03-07T16:14:07.690Z] + filename=eccc-geoapi-climate-stations.ipynb
+[2024-03-07T16:14:07.690Z] + echo eccc-geoapi-climate-stations.ipynb
+[2024-03-07T16:14:07.690Z] + sed s/.ipynb$//
+[2024-03-07T16:14:07.690Z] + filename=eccc-geoapi-climate-stations
+[2024-03-07T16:14:07.690Z] + [ -e buildout/eccc-geoapi-climate-stations.output.ipynb ]
+[2024-03-07T16:14:07.690Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output eccc-geoapi-climate-stations.output.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb
+[2024-03-07T16:14:07.690Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb to notebook
+[2024-03-07T16:14:14.273Z] [NbConvertApp] Writing 280015 bytes to buildout/eccc-geoapi-climate-stations.output.ipynb
+[2024-03-07T16:14:14.273Z] + basename pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb
+[2024-03-07T16:14:14.273Z] + filename=eccc-geoapi-xclim.ipynb
+[2024-03-07T16:14:14.273Z] + + echo eccc-geoapi-xclim.ipynb
+[2024-03-07T16:14:14.273Z] sed s/.ipynb$//
+[2024-03-07T16:14:14.273Z] + filename=eccc-geoapi-xclim
+[2024-03-07T16:14:14.273Z] + [ -e buildout/eccc-geoapi-xclim.output.ipynb ]
+[2024-03-07T16:14:14.273Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output eccc-geoapi-xclim.output.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb
+[2024-03-07T16:14:14.847Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb to notebook
+[2024-03-07T16:14:24.894Z] [NbConvertApp] Writing 108373 bytes to buildout/eccc-geoapi-xclim.output.ipynb
+[2024-03-07T16:14:24.894Z] + basename pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb
+[2024-03-07T16:14:24.894Z] + filename=esgf-dap.ipynb
+[2024-03-07T16:14:24.894Z] + echo esgf-dap.ipynb
+[2024-03-07T16:14:24.894Z] + sed s/.ipynb$//
+[2024-03-07T16:14:24.894Z] + filename=esgf-dap
+[2024-03-07T16:14:24.894Z] + [ -e buildout/esgf-dap.output.ipynb ]
+[2024-03-07T16:14:24.894Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output esgf-dap.output.ipynb pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb
+[2024-03-07T16:14:25.837Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb to notebook
+[2024-03-07T16:15:22.081Z] [NbConvertApp] Writing 63545 bytes to buildout/esgf-dap.output.ipynb
+[2024-03-07T16:15:22.081Z] + basename pavics-sdi-master/docs/source/notebooks/forecasts.ipynb
+[2024-03-07T16:15:22.081Z] + filename=forecasts.ipynb
+[2024-03-07T16:15:22.081Z] + + sed s/.ipynb$//
+[2024-03-07T16:15:22.081Z] echo forecasts.ipynb
+[2024-03-07T16:15:22.081Z] + filename=forecasts
+[2024-03-07T16:15:22.081Z] + [ -e buildout/forecasts.output.ipynb ]
+[2024-03-07T16:15:22.081Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output forecasts.output.ipynb pavics-sdi-master/docs/source/notebooks/forecasts.ipynb
+[2024-03-07T16:15:22.081Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/forecasts.ipynb to notebook
+[2024-03-07T16:15:34.403Z] [NbConvertApp] Writing 179289 bytes to buildout/forecasts.output.ipynb
+[2024-03-07T16:15:34.403Z] + basename pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb
+[2024-03-07T16:15:34.403Z] + filename=jupyter_extensions.ipynb
+[2024-03-07T16:15:34.403Z] + + sed s/.ipynb$//
+[2024-03-07T16:15:34.403Z] echo jupyter_extensions.ipynb
+[2024-03-07T16:15:34.403Z] + filename=jupyter_extensions
+[2024-03-07T16:15:34.403Z] + [ -e buildout/jupyter_extensions.output.ipynb ]
+[2024-03-07T16:15:34.403Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output jupyter_extensions.output.ipynb pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb
+[2024-03-07T16:15:34.664Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb to notebook
+[2024-03-07T16:15:36.579Z] [NbConvertApp] Writing 7997 bytes to buildout/jupyter_extensions.output.ipynb
+[2024-03-07T16:15:36.579Z] + basename pavics-sdi-master/docs/source/notebooks/opendap.ipynb
+[2024-03-07T16:15:36.579Z] + filename=opendap.ipynb
+[2024-03-07T16:15:36.579Z] + echo opendap.ipynb
+[2024-03-07T16:15:36.579Z] + sed s/.ipynb$//
+[2024-03-07T16:15:36.579Z] + filename=opendap
+[2024-03-07T16:15:36.579Z] + [ -e buildout/opendap.output.ipynb ]
+[2024-03-07T16:15:36.580Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output opendap.output.ipynb pavics-sdi-master/docs/source/notebooks/opendap.ipynb
+[2024-03-07T16:15:38.493Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/opendap.ipynb to notebook
+[2024-03-07T16:15:43.767Z] [NbConvertApp] Writing 95160 bytes to buildout/opendap.output.ipynb
+[2024-03-07T16:15:43.767Z] + basename pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb
+[2024-03-07T16:15:43.767Z] + filename=pavics_thredds.ipynb
+[2024-03-07T16:15:43.767Z] + echo pavics_thredds.ipynb
+[2024-03-07T16:15:43.767Z] + sed s/.ipynb$//
+[2024-03-07T16:15:43.767Z] + filename=pavics_thredds
+[2024-03-07T16:15:43.767Z] + [ -e buildout/pavics_thredds.output.ipynb ]
+[2024-03-07T16:15:43.767Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output pavics_thredds.output.ipynb pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb
+[2024-03-07T16:15:45.131Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb to notebook
+[2024-03-07T16:15:48.427Z] syntax error, unexpected WORD_WORD, expecting SCAN_ATTR or SCAN_DATASET or SCAN_ERROR
+[2024-03-07T16:15:48.428Z] context: <?xml^ version="1.0" encoding="utf-8"?><ExceptionReport version="1.0.0" xmlns="http://www.opengis.net/ows/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/ows/1.1 http://schemas.opengis.net/ows/1.1.0/owsExceptionReport.xsd"> <Exception exceptionCode="NoApplicableCode" locator="AccessForbidden"> <ExceptionText>Access to service is forbidden.</ExceptionText> </Exception></ExceptionReport>
+[2024-03-07T16:15:48.428Z] syntax error, unexpected WORD_WORD, expecting SCAN_ATTR or SCAN_DATASET or SCAN_ERROR
+[2024-03-07T16:15:48.428Z] context: <?xml^ version="1.0" encoding="utf-8"?><ExceptionReport version="1.0.0" xmlns="http://www.opengis.net/ows/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/ows/1.1 http://schemas.opengis.net/ows/1.1.0/owsExceptionReport.xsd"> <Exception exceptionCode="NoApplicableCode" locator="AccessForbidden"> <ExceptionText>Access to service is forbidden.</ExceptionText> </Exception></ExceptionReport>
+[2024-03-07T16:15:50.345Z] [NbConvertApp] Writing 90750 bytes to buildout/pavics_thredds.output.ipynb
+[2024-03-07T16:15:50.345Z] + basename pavics-sdi-master/docs/source/notebooks/regridding.ipynb
+[2024-03-07T16:15:50.345Z] + filename=regridding.ipynb
+[2024-03-07T16:15:50.346Z] + + sed s/.ipynb$//
+[2024-03-07T16:15:50.346Z] echo regridding.ipynb
+[2024-03-07T16:15:50.346Z] + filename=regridding
+[2024-03-07T16:15:50.346Z] + [ -e buildout/regridding.output.ipynb ]
+[2024-03-07T16:15:50.346Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output regridding.output.ipynb pavics-sdi-master/docs/source/notebooks/regridding.ipynb
+[2024-03-07T16:15:52.241Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/regridding.ipynb to notebook
+[2024-03-07T16:17:28.790Z] [NbConvertApp] Writing 1239686 bytes to buildout/regridding.output.ipynb
+[2024-03-07T16:17:28.790Z] + basename pavics-sdi-master/docs/source/notebooks/rendering.ipynb
+[2024-03-07T16:17:28.790Z] + filename=rendering.ipynb
+[2024-03-07T16:17:28.790Z] + sed s/.ipynb$//
+[2024-03-07T16:17:28.790Z] + echo rendering.ipynb
+[2024-03-07T16:17:28.790Z] + filename=rendering
+[2024-03-07T16:17:28.790Z] + [ -e buildout/rendering.output.ipynb ]
+[2024-03-07T16:17:28.790Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output rendering.output.ipynb pavics-sdi-master/docs/source/notebooks/rendering.ipynb
+[2024-03-07T16:17:28.790Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/rendering.ipynb to notebook
+[2024-03-07T16:17:28.790Z] [NbConvertApp] Writing 11801 bytes to buildout/rendering.output.ipynb
+[2024-03-07T16:17:28.790Z] + basename pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb
+[2024-03-07T16:17:28.790Z] + filename=subset-user-input.ipynb
+[2024-03-07T16:17:28.790Z] + echo subset-user-input.ipynb
+[2024-03-07T16:17:28.790Z] + sed s/.ipynb$//
+[2024-03-07T16:17:28.790Z] + filename=subset-user-input
+[2024-03-07T16:17:28.790Z] + [ -e buildout/subset-user-input.output.ipynb ]
+[2024-03-07T16:17:28.791Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output subset-user-input.output.ipynb pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb
+[2024-03-07T16:17:30.176Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb to notebook
+[2024-03-07T16:17:42.393Z] [NbConvertApp] Writing 156075 bytes to buildout/subset-user-input.output.ipynb
+[2024-03-07T16:17:42.393Z] + basename pavics-sdi-master/docs/source/notebooks/subsetting.ipynb
+[2024-03-07T16:17:42.393Z] + filename=subsetting.ipynb
+[2024-03-07T16:17:42.393Z] + + sed s/.ipynb$//
+[2024-03-07T16:17:42.393Z] echo subsetting.ipynb
+[2024-03-07T16:17:42.393Z] + filename=subsetting
+[2024-03-07T16:17:42.393Z] + [ -e buildout/subsetting.output.ipynb ]
+[2024-03-07T16:17:42.393Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output subsetting.output.ipynb pavics-sdi-master/docs/source/notebooks/subsetting.ipynb
+[2024-03-07T16:17:43.325Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/subsetting.ipynb to notebook
+[2024-03-07T16:17:53.327Z] [NbConvertApp] Writing 93314 bytes to buildout/subsetting.output.ipynb
+[2024-03-07T16:17:53.595Z] + basename finch-master/docs/source/notebooks/dap_subset.ipynb
+[2024-03-07T16:17:53.595Z] + filename=dap_subset.ipynb
+[2024-03-07T16:17:53.595Z] + + sed s/.ipynb$//
+[2024-03-07T16:17:53.595Z] echo dap_subset.ipynb
+[2024-03-07T16:17:53.595Z] + filename=dap_subset
+[2024-03-07T16:17:53.595Z] + [ -e buildout/dap_subset.output.ipynb ]
+[2024-03-07T16:17:53.595Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output dap_subset.output.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb
+[2024-03-07T16:17:54.983Z] [NbConvertApp] Converting notebook finch-master/docs/source/notebooks/dap_subset.ipynb to notebook
+[2024-03-07T16:18:04.982Z] [NbConvertApp] Writing 162914 bytes to buildout/dap_subset.output.ipynb
+[2024-03-07T16:18:04.982Z] + basename finch-master/docs/source/notebooks/finch-usage.ipynb
+[2024-03-07T16:18:04.982Z] + filename=finch-usage.ipynb
+[2024-03-07T16:18:04.982Z] + echo finch-usage.ipynb
+[2024-03-07T16:18:04.982Z] + sed s/.ipynb$//
+[2024-03-07T16:18:04.982Z] + filename=finch-usage
+[2024-03-07T16:18:04.982Z] + [ -e buildout/finch-usage.output.ipynb ]
+[2024-03-07T16:18:04.982Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output finch-usage.output.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb
+[2024-03-07T16:18:06.397Z] [NbConvertApp] Converting notebook finch-master/docs/source/notebooks/finch-usage.ipynb to notebook
+[2024-03-07T16:18:16.373Z] [NbConvertApp] Writing 65073 bytes to buildout/finch-usage.output.ipynb
+[2024-03-07T16:18:16.373Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
+[2024-03-07T16:18:16.373Z] + filename=PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
+[2024-03-07T16:18:16.373Z] + sed s/.ipynb$//
+[2024-03-07T16:18:16.373Z] + echo PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
+[2024-03-07T16:18:16.373Z] + filename=PAVICStutorial_ClimateDataAnalysis-1DataAccess
+[2024-03-07T16:18:16.373Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-1DataAccess.output.ipynb ]
+[2024-03-07T16:18:16.374Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-1DataAccess.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
+[2024-03-07T16:18:17.308Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb to notebook
+[2024-03-07T16:18:22.578Z] [NbConvertApp] Writing 173043 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-1DataAccess.output.ipynb
+[2024-03-07T16:18:22.578Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
+[2024-03-07T16:18:22.578Z] + filename=PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
+[2024-03-07T16:18:22.578Z] + echo PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
+[2024-03-07T16:18:22.578Z] + sed s/.ipynb$//
+[2024-03-07T16:18:22.578Z] + filename=PAVICStutorial_ClimateDataAnalysis-2Subsetting
+[2024-03-07T16:18:22.578Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-2Subsetting.output.ipynb ]
+[2024-03-07T16:18:22.579Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-2Subsetting.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
+[2024-03-07T16:18:23.952Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb to notebook
+[2024-03-07T16:18:42.036Z] [NbConvertApp] Writing 1481206 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-2Subsetting.output.ipynb
+[2024-03-07T16:18:42.295Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
+[2024-03-07T16:18:42.295Z] + filename=PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
+[2024-03-07T16:18:42.295Z] + echo PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
+[2024-03-07T16:18:42.295Z] + sed s/.ipynb$//
+[2024-03-07T16:18:42.295Z] + filename=PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators
+[2024-03-07T16:18:42.295Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.output.ipynb ]
+[2024-03-07T16:18:42.295Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
+[2024-03-07T16:18:43.702Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb to notebook
+[2024-03-07T16:23:20.481Z] [NbConvertApp] ERROR | Timeout waiting for execute reply (240s).
+[2024-03-07T16:23:20.481Z] Exception ignored in: <bound method GCDiagnosis._gc_callback of <distributed.utils_perf.GCDiagnosis object at 0x7f5f9a52cca0>>
+[2024-03-07T16:23:20.481Z] Traceback (most recent call last):
+[2024-03-07T16:23:20.481Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/distributed/utils_perf.py", line 176, in _gc_callback
+[2024-03-07T16:23:20.481Z]     def _gc_callback(self, phase, info):
+[2024-03-07T16:23:20.481Z] KeyboardInterrupt: 
+[2024-03-07T16:23:20.481Z] 2024-03-07 16:23:11,471 - distributed.worker.state_machine - WARNING - Async instruction for <Task cancelled name="execute(('open_dataset-tasmax-getitem-606151f62ef7e91460a06bcac18b858a', 9, 0, 0))" coro=<Worker.execute() done, defined at /opt/conda/envs/birdy/lib/python3.10/site-packages/distributed/worker_state_machine.py:3610>> ended with CancelledError
+[2024-03-07T16:23:20.481Z] 2024-03-07 16:23:11,471 - distributed.worker.state_machine - WARNING - Async instruction for <Task cancelled name="execute(('open_dataset-tasmax-getitem-606151f62ef7e91460a06bcac18b858a', 8, 0, 0))" coro=<Worker.execute() done, defined at /opt/conda/envs/birdy/lib/python3.10/site-packages/distributed/worker_state_machine.py:3610>> ended with CancelledError
+[2024-03-07T16:23:20.481Z] 2024-03-07 16:23:11,471 - distributed.worker.state_machine - WARNING - Async instruction for <Task cancelled name="execute(('open_dataset-tasmax-getitem-606151f62ef7e91460a06bcac18b858a', 7, 0, 0))" coro=<Worker.execute() done, defined at /opt/conda/envs/birdy/lib/python3.10/site-packages/distributed/worker_state_machine.py:3610>> ended with CancelledError
+[2024-03-07T16:23:20.481Z] 2024-03-07 16:23:11,471 - distributed.worker.state_machine - WARNING - Async instruction for <Task cancelled name="execute(('open_dataset-tasmax-getitem-606151f62ef7e91460a06bcac18b858a', 10, 0, 0))" coro=<Worker.execute() done, defined at /opt/conda/envs/birdy/lib/python3.10/site-packages/distributed/worker_state_machine.py:3610>> ended with CancelledError
+[2024-03-07T16:23:20.481Z] 2024-03-07 16:23:11,472 - distributed.worker.state_machine - WARNING - Async instruction for <Task cancelled name="execute(('open_dataset-tasmax-getitem-606151f62ef7e91460a06bcac18b858a', 6, 0, 0))" coro=<Worker.execute() done, defined at /opt/conda/envs/birdy/lib/python3.10/site-packages/distributed/worker_state_machine.py:3610>> ended with CancelledError
+[2024-03-07T16:23:20.481Z] 2024-03-07 16:23:11,472 - distributed.worker.state_machine - WARNING - Async instruction for <Task cancelled name="execute(('store-map-76ce11185e91172a13f0fa997b6a9b43', 8, 0, 0))" coro=<Worker.execute() done, defined at /opt/conda/envs/birdy/lib/python3.10/site-packages/distributed/worker_state_machine.py:3610>> ended with CancelledError
+[2024-03-07T16:23:20.481Z] Traceback (most recent call last):
+[2024-03-07T16:23:20.481Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/nbclient/client.py", line 778, in _async_poll_for_reply
+[2024-03-07T16:23:20.481Z]     msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+[2024-03-07T16:23:20.481Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 189, in ensure_async
+[2024-03-07T16:23:20.481Z]     result = await obj
+[2024-03-07T16:23:20.481Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/jupyter_client/channels.py", line 230, in get_msg
+[2024-03-07T16:23:20.481Z]     raise Empty
+[2024-03-07T16:23:20.481Z] _queue.Empty
+[2024-03-07T16:23:20.481Z] 
+[2024-03-07T16:23:20.481Z] During handling of the above exception, another exception occurred:
+[2024-03-07T16:23:20.481Z] 
+[2024-03-07T16:23:20.481Z] Traceback (most recent call last):
+[2024-03-07T16:23:20.481Z]   File "/opt/conda/envs/birdy/bin/jupyter-nbconvert", line 10, in <module>
+[2024-03-07T16:23:20.481Z]     sys.exit(main())
+[2024-03-07T16:23:20.481Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/jupyter_core/application.py", line 280, in launch_instance
+[2024-03-07T16:23:20.481Z]     super().launch_instance(argv=argv, **kwargs)
+[2024-03-07T16:23:20.481Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/traitlets/config/application.py", line 1053, in launch_instance
+[2024-03-07T16:23:20.481Z]     app.start()
+[2024-03-07T16:23:20.481Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 412, in start
+[2024-03-07T16:23:20.481Z]     self.convert_notebooks()
+[2024-03-07T16:23:20.481Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 590, in convert_notebooks
+[2024-03-07T16:23:20.481Z]     self.convert_single_notebook(notebook_filename)
+[2024-03-07T16:23:20.481Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 556, in convert_single_notebook
+[2024-03-07T16:23:20.481Z]     output, resources = self.export_single_notebook(
+[2024-03-07T16:23:20.481Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 479, in export_single_notebook
+[2024-03-07T16:23:20.481Z]     output, resources = self.exporter.from_filename(
+[2024-03-07T16:23:20.481Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+[2024-03-07T16:23:20.482Z]     return self.from_file(f, resources=resources, **kw)
+[2024-03-07T16:23:20.482Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+[2024-03-07T16:23:20.482Z]     return self.from_notebook_node(
+[2024-03-07T16:23:20.482Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/nbconvert/exporters/notebook.py", line 36, in from_notebook_node
+[2024-03-07T16:23:20.482Z]     nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+[2024-03-07T16:23:20.482Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+[2024-03-07T16:23:20.482Z]     nb_copy, resources = self._preprocess(nb_copy, resources)
+[2024-03-07T16:23:20.482Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 352, in _preprocess
+[2024-03-07T16:23:20.482Z]     nbc, resc = preprocessor(nbc, resc)
+[2024-03-07T16:23:20.482Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+[2024-03-07T16:23:20.482Z]     return self.preprocess(nb, resources)
+[2024-03-07T16:23:20.482Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 102, in preprocess
+[2024-03-07T16:23:20.482Z]     self.preprocess_cell(cell, resources, index)
+[2024-03-07T16:23:20.482Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 123, in preprocess_cell
+[2024-03-07T16:23:20.482Z]     cell = self.execute_cell(cell, index, store_history=True)
+[2024-03-07T16:23:20.482Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 173, in wrapped
+[2024-03-07T16:23:20.482Z]     return loop.run_until_complete(inner)
+[2024-03-07T16:23:20.482Z]   File "/opt/conda/envs/birdy/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+[2024-03-07T16:23:20.482Z]     return future.result()
+[2024-03-07T16:23:20.482Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/nbclient/client.py", line 1001, in async_execute_cell
+[2024-03-07T16:23:20.482Z]     exec_reply = await self.task_poll_for_reply
+[2024-03-07T16:23:20.482Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/nbclient/client.py", line 802, in _async_poll_for_reply
+[2024-03-07T16:23:20.482Z]     error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
+[2024-03-07T16:23:20.482Z]   File "/opt/conda/envs/birdy/lib/python3.10/site-packages/nbclient/client.py", line 852, in _async_handle_timeout
+[2024-03-07T16:23:20.482Z]     raise CellTimeoutError.error_from_timeout_and_cell(
+[2024-03-07T16:23:20.482Z] nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 240 seconds.
+[2024-03-07T16:23:20.482Z] The message was: Cell execution timed out.
+[2024-03-07T16:23:20.482Z] Here is a preview of the cell contents:
+[2024-03-07T16:23:20.482Z] -------------------
+[2024-03-07T16:23:20.482Z] ['# NBVAL_SKIP', '', '', '# We define a small sub-function for xclim.atmos indicator calculation and export to netcdf.', '# compute=False results in returning a dask.delayed object : computation is not immediately executed.']
+[2024-03-07T16:23:20.482Z] ...
+[2024-03-07T16:23:20.482Z] ['        print("computing with dask client ...")', '        compute(jobs)', '        print("finished")', '        # optionally restart the client when finished (can help ensure good memory management)', '        client.restart()']
+[2024-03-07T16:23:20.482Z] -------------------
+[2024-03-07T16:23:20.482Z] 
+[2024-03-07T16:23:20.482Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
+[2024-03-07T16:23:20.482Z] + filename=PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
+[2024-03-07T16:23:20.482Z] + + sed s/.ipynb$//
+[2024-03-07T16:23:20.482Z] echo PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
+[2024-03-07T16:23:20.482Z] + filename=PAVICStutorial_ClimateDataAnalysis-4Ensembles
+[2024-03-07T16:23:20.482Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-4Ensembles.output.ipynb ]
+[2024-03-07T16:23:20.482Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-4Ensembles.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
+[2024-03-07T16:23:20.482Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb to notebook
+[2024-03-07T16:23:38.689Z] [NbConvertApp] Writing 782792 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-4Ensembles.output.ipynb
+[2024-03-07T16:23:38.689Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
+[2024-03-07T16:23:38.689Z] + filename=PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
+[2024-03-07T16:23:38.689Z] + echo PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
+[2024-03-07T16:23:38.689Z] + sed s/.ipynb$//
+[2024-03-07T16:23:38.689Z] + filename=PAVICStutorial_ClimateDataAnalysis-5Visualization
+[2024-03-07T16:23:38.689Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-5Visualization.output.ipynb ]
+[2024-03-07T16:23:38.689Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-5Visualization.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
+[2024-03-07T16:23:38.689Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb to notebook
+[2024-03-07T16:24:17.438Z] [NbConvertApp] Writing 1093308 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-5Visualization.output.ipynb
+[2024-03-07T16:24:17.438Z] + basename notebooks/hummingbird.ipynb
+[2024-03-07T16:24:17.438Z] + filename=hummingbird.ipynb
+[2024-03-07T16:24:17.438Z] + echo hummingbird.ipynb
+[2024-03-07T16:24:17.438Z] + sed s/.ipynb$//
+[2024-03-07T16:24:17.439Z] + filename=hummingbird
+[2024-03-07T16:24:17.439Z] + [ -e buildout/hummingbird.output.ipynb ]
+[2024-03-07T16:24:17.439Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output hummingbird.output.ipynb notebooks/hummingbird.ipynb
+[2024-03-07T16:24:18.382Z] [NbConvertApp] Converting notebook notebooks/hummingbird.ipynb to notebook
+[2024-03-07T16:24:23.633Z] [NbConvertApp] Writing 15864 bytes to buildout/hummingbird.output.ipynb
+[2024-03-07T16:24:23.633Z] + basename notebooks/stress-tests.ipynb
+[2024-03-07T16:24:23.633Z] + filename=stress-tests.ipynb
+[2024-03-07T16:24:23.633Z] + echo stress-tests.ipynb
+[2024-03-07T16:24:23.633Z] + sed s/.ipynb$//
+[2024-03-07T16:24:23.633Z] + filename=stress-tests
+[2024-03-07T16:24:23.633Z] + [ -e buildout/stress-tests.output.ipynb ]
+[2024-03-07T16:24:23.633Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output stress-tests.output.ipynb notebooks/stress-tests.ipynb
+[2024-03-07T16:24:25.008Z] [NbConvertApp] Converting notebook notebooks/stress-tests.ipynb to notebook
+[2024-03-07T16:26:31.458Z] [NbConvertApp] Writing 442955 bytes to buildout/stress-tests.output.ipynb
+[2024-03-07T16:26:31.458Z] + exit 1
+[2024-03-07T16:26:31.458Z] + EXIT_CODE=1
+[2024-03-07T16:26:31.458Z] + ENV_DUMP_DIR=buildout/env-dump
+[2024-03-07T16:26:31.458Z] + mkdir -p buildout/env-dump
+[2024-03-07T16:26:31.458Z] + ENV_EXPORT_FILE=buildout/env-dump/environment-export-birdy.yml
+[2024-03-07T16:26:31.458Z] + rm -fv buildout/env-dump/environment-export-birdy.yml
+[2024-03-07T16:26:31.458Z] + conda env export -n birdy
+[2024-03-07T16:26:49.586Z] + LIST_EXPLICIT_FILE=buildout/env-dump/conda-list-explicit-birdy.txt
+[2024-03-07T16:26:49.586Z] + rm -fv buildout/env-dump/conda-list-explicit-birdy.txt
+[2024-03-07T16:26:49.586Z] + conda list -n birdy --explicit
+[2024-03-07T16:26:56.171Z] + PIP_FREEZE_FILE=buildout/env-dump/pip-freeze-birdy-requirements.txt
+[2024-03-07T16:26:56.171Z] + rm -fv buildout/env-dump/pip-freeze-birdy-requirements.txt
+[2024-03-07T16:26:56.171Z] + pip freeze
+[2024-03-07T16:27:04.285Z] + exit 1
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] archiveArtifacts
+[2024-03-07T16:27:05.872Z] Archiving artifacts
+[2024-03-07T16:27:05.908Z] Recording fingerprints
+[Pipeline] archiveArtifacts
+[2024-03-07T16:27:05.959Z] Archiving artifacts
+[2024-03-07T16:27:08.035Z] Recording fingerprints
+[Pipeline] archiveArtifacts
+[2024-03-07T16:27:08.256Z] Archiving artifacts
+[2024-03-07T16:27:08.275Z] Recording fingerprints
+[Pipeline] archiveArtifacts
+[2024-03-07T16:27:08.308Z] Archiving artifacts
+[2024-03-07T16:27:08.365Z] Recording fingerprints
+[Pipeline] archiveArtifacts
+[2024-03-07T16:27:08.429Z] Archiving artifacts
+[2024-03-07T16:27:08.449Z] Recording fingerprints
+[Pipeline] archiveArtifacts
+[2024-03-07T16:27:08.484Z] Archiving artifacts
+[2024-03-07T16:27:08.546Z] Recording fingerprints
+[Pipeline] archiveArtifacts
+[2024-03-07T16:27:08.948Z] Archiving artifacts
+[2024-03-07T16:27:08.967Z] Recording fingerprints
+[Pipeline] archiveArtifacts
+[2024-03-07T16:27:08.994Z] Archiving artifacts
+[2024-03-07T16:27:09.029Z] Recording fingerprints
+[Pipeline] archiveArtifacts
+[2024-03-07T16:27:09.093Z] Archiving artifacts
+[2024-03-07T16:27:09.453Z] Recording fingerprints
+[Pipeline] archiveArtifacts
+[2024-03-07T16:27:09.542Z] Archiving artifacts
+[2024-03-07T16:27:10.517Z] Recording fingerprints
+[Pipeline] archiveArtifacts
+[2024-03-07T16:27:11.079Z] Archiving artifacts
+[2024-03-07T16:27:11.106Z] Recording fingerprints
+[Pipeline] emailextrecipients
+[Pipeline] step
+[2024-03-07T16:27:11.238Z] Sending e-mails to: vu.long@ouranos.ca
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] // timestamps
+[Pipeline] }
+[Pipeline] // ansiColor
+[Pipeline] }
+$ docker stop --time=1 ebc4e7303a12c810c96a8434d5c76564d1e50dadf347acfd670d3521f77f648b
+$ docker rm -f ebc4e7303a12c810c96a8434d5c76564d1e50dadf347acfd670d3521f77f648b
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 1
+Finished: FAILURE
