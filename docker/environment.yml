@@ -4,7 +4,7 @@ channels:
   - conda-forge
   - cdat
   - bokeh
-  - plotly  # for jupyter-dash
+    # - plotly  # for jupyter-dash
     #  - pyston
   - pyviz/label/dev  # for jupyter-panel-proxy, panel
   - defaults
@@ -84,6 +84,8 @@ dependencies:
   # https://github.com/bird-house/birdhouse-deploy/pull/63#issuecomment-668270608
   # pinning hvplot did not solve the problem with violin plot.
   - hvplot
+  # https://anaconda.org/conda-forge/dash
+  - dash >= 2.16.1
   # https://streamlit.io/
   # https://anaconda.org/conda-forge/streamlit
   - streamlit
@@ -181,7 +183,6 @@ dependencies:
   - nbresuse  # needed by jupyterlab-system-monitor
   # xeus-python: back-end kernel implementing the Jupyter Debug Protocol
   - xeus-python
-  - jupyter-dash
   # https:://github.com/jupyterhub/jupyter-server-proxy
   - jupyter-server-proxy
   # https://github.com/dask/dask-labextension
