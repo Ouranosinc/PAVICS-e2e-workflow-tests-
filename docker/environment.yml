@@ -190,11 +190,6 @@ dependencies:
   # https://github.com/holoviz/jupyter-panel-proxy
   # DISABLE: seems to interfere with 'panel serve' command
   #- jupyter-panel-proxy >= 0.2.0a2
-  # Force newer nodejs for 'jupyter lab build' issue
-  # https://github.com/jupyterlab/jupyterlab/issues/11726#issuecomment-998901247
-  # TODO: remove nodejs once all extensions move to prebuilt extensions, see comment
-  # https://github.com/jupyterlab/jupyterlab/issues/11726#issuecomment-998917305
-  - nodejs >= 16.0
   # utilities
   - curl
   - wget
