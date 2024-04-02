@@ -3,7 +3,7 @@ FROM continuumio/miniconda3
 # Use mamba for much improved performance over conda.
 # The 'channel_priority strict' did help conda but it was not enough.
 RUN conda update conda -n base && \
-    conda install mamba -n base -c conda-forge -c defaults && \
+    conda install mamba conda-pack -n base -c conda-forge -c defaults && \
     conda clean --all --yes && \
     conda config --set channel_priority strict && \
     wget -qO- https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -C /usr/local -xvj bin/micromamba
