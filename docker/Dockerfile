@@ -61,6 +61,15 @@ RUN python -m ipykernel install --name birdy
 # environment.yml above
 # RUN mamba install -c conda-forge -c cdat -c bokeh -c plotly -c defaults -n birdy nbdime
 
+# build jupyterlab extensions installed by conda, see `jupyter labextension list`
+# Supposedly not needed with jupyterlab v3 anymore but see
+# https://github.com/jupyterlab/jupyterlab/issues/11726#issuecomment-998901247
+# TODO: remove 'jupyter lab build' step once all extensions move to prebuilt extensions,
+# see comment https://github.com/jupyterlab/jupyterlab/issues/11726#issuecomment-998917305
+# Currently jupyter-dash is holding back this step, see
+# https://github.com/plotly/jupyter-dash/issues/49
+RUN jupyter lab build
+
 RUN jupyter serverextension enable voila --sys-prefix \
     && jupyter serverextension enable panel.io.jupyter_server_extension --sys-prefix \
     && jupyter serverextension list
