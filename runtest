@@ -38,6 +38,24 @@ fi
 # so tests still pass when user want to disable ssl cert verification
 export PYTHONWARNINGS="ignore:Unverified HTTPS request"
 
+# Allow full override of ALL configs before running test suite.
+if [ -n "$CONFIG_OVERRIDE_SCRIPT_URL" ]; then
+    TMP_CONF_OVERRIDE="/tmp/conf_override"
+    rm -vf "$TMP_CONF_OVERRIDE"
+
+    # Log URL for traceability.
+    echo "CONFIG_OVERRIDE_SCRIPT_URL=$CONFIG_OVERRIDE_SCRIPT_URL"
+    curl "$CONFIG_OVERRIDE_SCRIPT_URL" --output "$TMP_CONF_OVERRIDE"
+
+    # Log content of override script for traceability.
+    echo "=== START config override script ========================
+$TMP_CONF_OVERRIDE
+===END config override script ========================
+"
+    # Source script so it can alter ALL existing variables in the current context.
+    . "$TMP_CONF_OVERRIDE"
+fi
+
 py.test --nbval $NOTEBOOKS --sanitize-with notebooks/output-sanitize.cfg $PYTEST_EXTRA_OPTS
 EXIT_CODE="$?"
 
