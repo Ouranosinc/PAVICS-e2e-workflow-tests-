@@ -1,3 +1,4 @@
+#!/bin/sh
 # Sample config override script to only run notebooks that hits GeoServer.
 
 # Have to be used together with TEST_NO_USE_PROD_DATA=1.
