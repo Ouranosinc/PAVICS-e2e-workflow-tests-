@@ -49,7 +49,7 @@ if [ -n "$CONFIG_OVERRIDE_SCRIPT_URL" ]; then
 
     # Log content of override script for traceability.
     echo "=== START config override script ========================
-$TMP_CONF_OVERRIDE
+$(cat $TMP_CONF_OVERRIDE)
 ===END config override script ========================
 "
     # Source script so it can alter ALL existing variables in the current context.
