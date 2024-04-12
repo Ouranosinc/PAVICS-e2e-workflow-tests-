@@ -92,7 +92,7 @@ Requires 'weaver' component to be active on the target 'PAVICS_HOST' server
         string(name: 'EXTRA_TEST_ENV_VAR', defaultValue: '',
                description: 'Extra environment variables for the various tests, ex: "TEST_RUNS=50 TEST_WPS_BIRDS=finch,raven,flyingpigeon TEST_NO_USE_PROD_DATA=1"', trim: true)
         string(name: 'CONFIG_OVERRIDE_SCRIPT_URL', defaultValue: '',
-               description: 'Url to a script that will be sourced, allowing to programmatically override ALL configs.', trim: true)
+               description: 'Url to a script that will be sourced, allowing to programmatically override ALL configs. Ex: https://raw.githubusercontent.com/Ouranosinc/PAVICS-e2e-workflow-tests/master/test-override/geoserver-nb-only.include.sh', trim: true)
         booleanParam(name: 'TEST_LOCAL_NOTEBOOKS', defaultValue: true,
                      description: 'Check the box to test notebooks in this repo (./notebooks/*.ipynb).')
         booleanParam(name: 'VERIFY_SSL', defaultValue: true,

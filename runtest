@@ -43,17 +43,6 @@ if [ -n "$CONFIG_OVERRIDE_SCRIPT_URL" ]; then
     TMP_CONF_OVERRIDE="/tmp/conf_override"
     rm -vf "$TMP_CONF_OVERRIDE"
 
-    # Sample config override script to only run notebooks that hits GeoServer.
-    # ===============
-    # NEW_NB_LIST=""
-    # for nb in $NOTEBOOKS; do
-    #     if grep -i geoserver $nb; then
-    #         NEW_NB_LIST="$NEW_NB_LIST $nb"
-    #     fi
-    # done
-    # NOTEBOOKS="$NEW_NB_LIST"
-    # ===============
-
     # Log URL for traceability.
     echo "CONFIG_OVERRIDE_SCRIPT_URL=$CONFIG_OVERRIDE_SCRIPT_URL"
     curl "$CONFIG_OVERRIDE_SCRIPT_URL" --output "$TMP_CONF_OVERRIDE"
