@@ -43,15 +43,9 @@ if [ -n "$CONFIG_OVERRIDE_SCRIPT_URL" ]; then
     TMP_CONF_OVERRIDE="/tmp/conf_override"
     rm -vf "$TMP_CONF_OVERRIDE"
 
-    # Log URL for traceability.
-    echo "CONFIG_OVERRIDE_SCRIPT_URL=$CONFIG_OVERRIDE_SCRIPT_URL"
-    curl "$CONFIG_OVERRIDE_SCRIPT_URL" --output "$TMP_CONF_OVERRIDE"
+    # Use tee to log content of override script for traceability.
+    curl --silent "$CONFIG_OVERRIDE_SCRIPT_URL" | tee "$TMP_CONF_OVERRIDE"
 
-    # Log content of override script for traceability.
-    echo "=== START config override script ========================
-$(cat $TMP_CONF_OVERRIDE)
-===END config override script ========================
-"
     # Source script so it can alter ALL existing variables in the current context.
     . "$TMP_CONF_OVERRIDE"
 fi
