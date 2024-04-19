@@ -174,7 +174,9 @@ dependencies:
   - jupyterlab-git
   # Voilà turns Jupyter notebooks into standalone web applications
   - voila
-  - jupyter-archive
+  # PIN jupyter-archive due to
+  # https://github.com/jupyterlab-contrib/jupyter-archive/issues/132
+  - jupyter-archive <= 3.3.4
   # https://github.com/jtpio/jupyterlab-topbar
   - jupyterlab-topbar
   # https://github.com/jtpio/jupyterlab-system-monitor (was from jupyterlab-topbar)
