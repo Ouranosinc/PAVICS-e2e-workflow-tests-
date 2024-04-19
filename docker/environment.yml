@@ -96,6 +96,9 @@ dependencies:
   # https://python-pptx.readthedocs.io/en/latest/
   # https://anaconda.org/conda-forge/python-pptx
   - python-pptx
+  # openpyxl: library to read/write Excel 2010 xlsx/xlsm files
+  # https://anaconda.org/conda-forge/openpyxl
+  - openpyxl
   - nc-time-axis
     # - cftime  # from xclim and ravenpy
     # - statsmodels  # for ravenpy
