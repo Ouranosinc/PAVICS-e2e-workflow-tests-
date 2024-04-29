@@ -146,7 +146,7 @@ dependencies:
   - esgf-compute-api
   # https://anaconda.org/conda-forge/esgf-pyclient (for pavics-sdi esgf-dap.ipynb)
   - esgf-pyclient
-  - cdms2
+  #- cdms2
   # Disable vcs because it was forcing python downgrade to below 3.9.
   # See https://github.com/CDAT/vcs/issues/457
   #   package vcs-8.1-py_0 requires vtk-cdat >8.1, but none of the providers can be installed
