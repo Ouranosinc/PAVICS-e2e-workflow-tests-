@@ -146,6 +146,7 @@ dependencies:
   - esgf-compute-api
   # https://anaconda.org/conda-forge/esgf-pyclient (for pavics-sdi esgf-dap.ipynb)
   - esgf-pyclient
+  # Disable cdms2 because it was forcing python downgrade to 3.10 and below.
   #- cdms2
   # Disable vcs because it was forcing python downgrade to below 3.9.
   # See https://github.com/CDAT/vcs/issues/457
