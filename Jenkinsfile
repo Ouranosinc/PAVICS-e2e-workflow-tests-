@@ -82,7 +82,7 @@ Requires 'weaver' component to be active on the target 'PAVICS_HOST' server
         string(name: 'RAVENPY_REPO', defaultValue: 'CSHS-CWRA/RavenPy',
                description: 'https://github.com/CSHS-CWRA/RavenPy repo or fork to test against.', trim: true)
         booleanParam(name: 'TEST_ESGF_COMPUTE_API_REPO', defaultValue: false,
-                     description: 'Check the box to test esgf-compute-api repo.')
+                     description: 'Check the box to test esgf-compute-api repo.  Kept here for historical reasons only, not working anymore.')
         string(name: 'ESGF_COMPUTE_API_BRANCH', defaultValue: 'devel',
                description: 'ESGF_COMPUTE_API_REPO branch to test against.', trim: true)
         string(name: 'ESGF_COMPUTE_API_REPO', defaultValue: 'ESGF/esgf-compute-api',
