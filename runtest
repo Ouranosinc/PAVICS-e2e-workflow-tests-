@@ -50,7 +50,7 @@ if [ -n "$CONFIG_OVERRIDE_SCRIPT_URL" ]; then
     . "$TMP_CONF_OVERRIDE"
 fi
 
-py.test --nbval $NOTEBOOKS --sanitize-with notebooks/output-sanitize.cfg $PYTEST_EXTRA_OPTS
+py.test --nbval $NOTEBOOKS --nbval-sanitize-with notebooks/output-sanitize.cfg $PYTEST_EXTRA_OPTS
 EXIT_CODE="$?"
 
 # lowercase SAVE_RESULTING_NOTEBOOK string
