@@ -175,7 +175,7 @@ dependencies:
   # extension to produce .py files from notebook .ipynb files
   - jupytext
   # jupyterlab extension for git
-  - jupyterlab-git
+  - jupyterlab-git >= 0.50.0
   # Voilà turns Jupyter notebooks into standalone web applications
   - voila
   # PIN jupyter-archive due to
