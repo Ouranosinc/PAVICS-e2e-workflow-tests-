@@ -11,7 +11,7 @@ USER root
 # Use 'update' for existing and 'install' for new package.
 # Keep same channel ordering to not revert anything.
 RUN umask 0000 \
-    && pip install --no-cache-dir git+https://github.com/CSHS-CWRA/RavenPy.git@8f7fb441f1ff11d0992d46d35ba85150667803c5
+    && pip install --no-cache-dir git+https://github.com/CSHS-CWRA/RavenPy.git@1977732c8dbf39ea7d563e7e30052707ba8fb2ec
 #    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c pyviz/label/dev -c defaults -n birdy xscen==0.8.2 ravenpy==0.13.0 pydantic==2.6.3 \
 #    && mamba clean --all --yes \
 #    && pip install --no-cache-dir --upgrade figanos
