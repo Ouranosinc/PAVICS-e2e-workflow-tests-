@@ -13,7 +13,7 @@ USER root
 RUN umask 0000 \
     && pip uninstall -y ravenpy \
     && pip install --no-cache-dir git+https://github.com/CSHS-CWRA/RavenPy.git@1977732c8dbf39ea7d563e7e30052707ba8fb2ec \
-    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c pyviz/label/dev -c defaults -n birdy jupyterlab-git==0.50.0 \
+    && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c pyviz/label/dev -c defaults -n birdy jupyterlab-git==0.44.0 \
     && mamba clean --all --yes
 #    && pip install --no-cache-dir --upgrade figanos
 #    && pip uninstall -y ravenpy \
