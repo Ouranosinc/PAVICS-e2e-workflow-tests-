@@ -40,7 +40,7 @@ dependencies:
   - numpy
   # TODO: unpin cf_xarray due to https://github.com/xarray-contrib/cf-xarray/issues/442
   - cf_xarray != 0.8.1
-  - birdy >= 0.8.5
+  - birdy >= 0.8.7
     # - owslib>=0.23.0  # from ravenpy
     # - netcdf4  # from ravenpy
   # TODO: remove libnetcdf PIN because https://github.com/Ouranosinc/PAVICS-landing/issues/66
