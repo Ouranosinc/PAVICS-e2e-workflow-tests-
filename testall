@@ -4,6 +4,30 @@
 
 set -x
 
+# Allow full override of ALL Jenkins params before running test suite.
+# Intended to overrride all params in Jenkinsfile.
+#
+# This `JENKINS_CONFIG_OVERRIDE_SCRIPT_URL` is different than the
+# `CONFIG_OVERRIDE_SCRIPT_URL` in that it overrides all the
+# Jenkins params much sooner so all regular processing can take place.
+#
+# When the regular processing are not enough and we need additional
+# customizations, then we use the other `CONFIG_OVERRIDE_SCRIPT_URL`.
+#
+# The two override scripts complement each other by hooking into the
+# process at different moment in time, and together they allow full
+# complete override of the various options for the test run.
+if [ -n "$JENKINS_CONFIG_OVERRIDE_SCRIPT_URL" ]; then
+    TMP_CONF_OVERRIDE="/tmp/jenkins_conf_override"
+    rm -vf "$TMP_CONF_OVERRIDE"
+
+    # Use tee to log content of override script for traceability.
+    curl --silent "$JENKINS_CONFIG_OVERRIDE_SCRIPT_URL" | tee "$TMP_CONF_OVERRIDE"
+
+    # Source script so it can alter ALL existing variables in the current context.
+    . "$TMP_CONF_OVERRIDE"
+fi
+
 # emulate "clean after checkout" of single branch pipeline
 git clean -fdx
 
