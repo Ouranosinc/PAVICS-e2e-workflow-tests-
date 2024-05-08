@@ -12,7 +12,7 @@ USER root
 # Keep same channel ordering to not revert anything.
 RUN umask 0000 \
     && pip uninstall -y ravenpy birdhouse-birdy \
-    && pip install --no-cache-dir --no-deps ravenpy==0.13.1 git+https://github.com/bird-house/birdy.git@v0.8.7 \
+    && pip install --no-cache-dir --no-deps ravenpy==0.13.1 birdhouse-birdy==0.8.7 \
     && mamba install -c conda-forge -c cdat -c bokeh -c plotly -c pyviz/label/dev -c defaults -n birdy jupyterlab-git==0.44.0 \
     && mamba clean --all --yes
 #    && pip install --no-cache-dir --upgrade figanos
