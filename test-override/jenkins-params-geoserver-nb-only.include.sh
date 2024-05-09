@@ -11,7 +11,10 @@ TEST_RAVENPY_REPO="true"
 
 # Force use the local GeoServer, to test the local GeoServer.  Otherwise the
 # production GeoServer will be used, which defeat the purpose of the test.
-TEST_NO_USE_PROD_DATA=1
+# Need to 'export' because TEST_NO_USE_PROD_DATA was meant to be used in
+# EXTRA_TEST_ENV_VAR Jenkins build param.  TEST_NO_USE_PROD_DATA is not
+# directly one of Jenkins build param.  Build params do not need 'export'.
+export TEST_NO_USE_PROD_DATA=1
 
 # Chain with the other override script to filter the notebooks that hit
 # GeoServer only.
