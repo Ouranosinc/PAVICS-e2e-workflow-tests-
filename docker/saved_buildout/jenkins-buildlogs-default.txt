@@ -1,4 +1,5 @@
 Started by user Long Vu
+Replayed #4
  > git rev-parse --is-inside-work-tree # timeout=10
 Setting origin to https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git
  > git config remote.origin.url https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git # timeout=10
@@ -14,14 +15,16 @@ Seen branch in repository origin/master
 Seen branch in repository origin/new-build-no-jupyter-dash
 Seen branch in repository origin/new-build-no-ravenpy
 Seen branch in repository origin/new-docker-build
+Seen branch in repository origin/new-docker-build-with-jenkins-override
+Seen branch in repository origin/override-jenkins-config
 Seen branch in repository origin/test-dockerhub-build
 Seen branch in repository origin/twitcher_perf_test_notebook
-Seen 9 remote branches
-Obtained Jenkinsfile from b81376901a3df4e786fb234eb1c50f96b084ab18
+Seen 11 remote branches
+Obtained Jenkinsfile from ca65e709adbfc074ee946c260be793fdca08d1b9
 Running in Durability level: MAX_SURVIVABILITY
 [Pipeline] Start of Pipeline
 [Pipeline] node
-Running on linux1 in /home/jenkins/agent/workspace/_workflow-tests_new-docker-build@2
+Running on linux1 in /home/jenkins/agent/workspace/cker-build-with-jenkins-override
 [Pipeline] {
 [Pipeline] stage
 [Pipeline] { (Declarative: Checkout SCM)
@@ -29,790 +32,940 @@ Running on linux1 in /home/jenkins/agent/workspace/_workflow-tests_new-docker-bu
 No credentials specified
 Fetching changes from the remote Git repository
 Fetching without tags
+Checking out Revision ca65e709adbfc074ee946c260be793fdca08d1b9 (new-docker-build-with-jenkins-override)
+Commit message: "Merge remote-tracking branch 'origin/new-docker-build' into new-docker-build-with-jenkins-override"
  > git rev-parse --is-inside-work-tree # timeout=10
  > git config remote.origin.url https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git # timeout=10
 Fetching upstream changes from https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git
  > git --version # timeout=10
  > git fetch --no-tags --progress -- https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git +refs/heads/*:refs/remotes/origin/* # timeout=10
-Checking out Revision b81376901a3df4e786fb234eb1c50f96b084ab18 (new-docker-build)
-Commit message: "docker: py311-240506: dockerhub build log"
  > git config core.sparsecheckout # timeout=10
- > git checkout -f b81376901a3df4e786fb234eb1c50f96b084ab18 # timeout=10
- > git rev-list --no-walk f12f9179b392341ac1a0a3f496ccae0bea00797f # timeout=10
+ > git checkout -f ca65e709adbfc074ee946c260be793fdca08d1b9 # timeout=10
+ > git rev-list --no-walk ca65e709adbfc074ee946c260be793fdca08d1b9 # timeout=10
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] withEnv
 [Pipeline] {
 [Pipeline] isUnix
 [Pipeline] sh
-+ docker inspect -f . pavics/workflow-tests:py311-240506
++ docker inspect -f . pavics/workflow-tests:py311-240506-update240508
 .
 [Pipeline] withDockerContainer
 linux1 seems to be running inside container c7b47b12d037a55684325ed6aba8c5cdbf14095a9ef2302738499cdd57ccd08b
-$ docker run -t -d -u 1000:1000 -w /home/jenkins/agent/workspace/_workflow-tests_new-docker-build@2 --volumes-from c7b47b12d037a55684325ed6aba8c5cdbf14095a9ef2302738499cdd57ccd08b -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** pavics/workflow-tests:py311-240506 cat
-$ docker top 3e373716f2b2bbbf0530ef594f7112c08b675b075d030f3a0aafce0c30376af0 -eo pid,comm
+$ docker run -t -d -u 1000:1000 -w /home/jenkins/agent/workspace/cker-build-with-jenkins-override --volumes-from c7b47b12d037a55684325ed6aba8c5cdbf14095a9ef2302738499cdd57ccd08b -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** pavics/workflow-tests:py311-240506-update240508 cat
+$ docker top 4c7fe1c70b0ab1d443f74e257e09736c874f7f9c390f6f4b0bd645fe301d5c96 -eo pid,comm
 [Pipeline] {
 [Pipeline] ansiColor
 [Pipeline] {
 [Pipeline] timestamps
 [Pipeline] {
 [Pipeline] timeout
-[2024-05-06T18:38:34.472Z] Timeout set to expire in 2 hr 0 min
+[2024-05-09T01:35:57.220Z] Timeout set to expire in 2 hr 0 min
 [Pipeline] {
 [Pipeline] stage
 [Pipeline] { (Run tests)
 [Pipeline] script
 [Pipeline] {
 [Pipeline] withCredentials
-[2024-05-06T18:38:34.703Z] Masking supported pattern matches of $ESGF_AUTH_USERNAME or $ESGF_AUTH_PASSWORD or $ESGF_AUTH_TOKEN or $COMPUTE_TOKEN
+[2024-05-09T01:35:57.990Z] Masking supported pattern matches of $ESGF_AUTH_USERNAME or $ESGF_AUTH_PASSWORD or $ESGF_AUTH_TOKEN or $COMPUTE_TOKEN
 [Pipeline] {
 [Pipeline] sh
-[2024-05-06T18:38:35.177Z] + VERIFY_SSL=true SAVE_RESULTING_NOTEBOOK=true ./testall
-[2024-05-06T18:38:35.177Z] TEST_PAVICS_SDI_REPO has been set to 'true'
-[2024-05-06T18:38:35.177Z] PAVICS_SDI_BRANCH has been set to 'fix_nbs_jupyter_alpha_refresh_output'
-[2024-05-06T18:38:35.177Z] PAVICS_SDI_REPO has been set to 'Ouranosinc/pavics-sdi'
-[2024-05-06T18:38:35.177Z] TEST_FINCH_REPO has been set to 'true'
-[2024-05-06T18:38:35.177Z] FINCH_BRANCH has been set to 'master'
-[2024-05-06T18:38:35.177Z] FINCH_REPO has been set to 'bird-house/finch'
-[2024-05-06T18:38:35.177Z] TEST_PAVICS_LANDING_REPO has been set to 'true'
-[2024-05-06T18:38:35.177Z] PAVICS_LANDING_BRANCH has been set to 'fix_nbs_jupyter_alpha_refresh_output'
-[2024-05-06T18:38:35.177Z] PAVICS_LANDING_REPO has been set to 'Ouranosinc/PAVICS-landing'
-[2024-05-06T18:38:35.177Z] TEST_RAVEN_REPO has been set to 'false'
-[2024-05-06T18:38:35.177Z] RAVEN_BRANCH has been set to 'main'
-[2024-05-06T18:38:35.177Z] RAVEN_REPO has been set to 'Ouranosinc/raven'
-[2024-05-06T18:38:35.177Z] TEST_RAVENPY_REPO has been set to 'false'
-[2024-05-06T18:38:35.177Z] RAVENPY_BRANCH has been set to 'master'
-[2024-05-06T18:38:35.177Z] RAVENPY_REPO has been set to 'CSHS-CWRA/RavenPy'
-[2024-05-06T18:38:35.177Z] TEST_ESGF_COMPUTE_API_REPO has been set to 'false'
-[2024-05-06T18:38:35.177Z] ESGF_COMPUTE_API_BRANCH has been set to 'devel'
-[2024-05-06T18:38:35.177Z] ESGF_COMPUTE_API_REPO has been set to 'ESGF/esgf-compute-api'
-[2024-05-06T18:38:35.177Z] TEST_LOCAL_NOTEBOOKS has been set to 'true'
-[2024-05-06T18:38:35.177Z] + git clean -fdx
-[2024-05-06T18:38:35.745Z] Removing .pytest_cache/
-[2024-05-06T18:38:35.745Z] Removing PAVICS-landing-master/
-[2024-05-06T18:38:35.745Z] Removing RavenPy-master/
-[2024-05-06T18:38:35.745Z] Removing __pycache__/
-[2024-05-06T18:38:35.745Z] Removing buildout/
-[2024-05-06T18:38:35.745Z] Removing esgf-compute-api-devel/
-[2024-05-06T18:38:35.745Z] Removing finch-master/
-[2024-05-06T18:38:35.745Z] Removing pavics-sdi-master/
-[2024-05-06T18:38:35.745Z] Removing raven-main/
-[2024-05-06T18:38:35.745Z] + ./downloadrepos
-[2024-05-06T18:38:35.745Z] TEST_PAVICS_SDI_REPO has been set to 'true'
-[2024-05-06T18:38:35.745Z] PAVICS_SDI_BRANCH has been set to 'fix_nbs_jupyter_alpha_refresh_output'
-[2024-05-06T18:38:35.745Z] PAVICS_SDI_REPO has been set to 'Ouranosinc/pavics-sdi'
-[2024-05-06T18:38:35.745Z] TEST_FINCH_REPO has been set to 'true'
-[2024-05-06T18:38:35.745Z] FINCH_BRANCH has been set to 'master'
-[2024-05-06T18:38:35.745Z] FINCH_REPO has been set to 'bird-house/finch'
-[2024-05-06T18:38:35.745Z] TEST_PAVICS_LANDING_REPO has been set to 'true'
-[2024-05-06T18:38:35.745Z] PAVICS_LANDING_BRANCH has been set to 'fix_nbs_jupyter_alpha_refresh_output'
-[2024-05-06T18:38:35.745Z] PAVICS_LANDING_REPO has been set to 'Ouranosinc/PAVICS-landing'
-[2024-05-06T18:38:35.745Z] TEST_RAVEN_REPO has been set to 'false'
-[2024-05-06T18:38:35.745Z] RAVEN_BRANCH has been set to 'main'
-[2024-05-06T18:38:35.745Z] RAVEN_REPO has been set to 'Ouranosinc/raven'
-[2024-05-06T18:38:35.745Z] TEST_RAVENPY_REPO has been set to 'false'
-[2024-05-06T18:38:35.745Z] RAVENPY_BRANCH has been set to 'master'
-[2024-05-06T18:38:35.745Z] RAVENPY_REPO has been set to 'CSHS-CWRA/RavenPy'
-[2024-05-06T18:38:35.745Z] TEST_ESGF_COMPUTE_API_REPO has been set to 'false'
-[2024-05-06T18:38:35.745Z] ESGF_COMPUTE_API_BRANCH has been set to 'devel'
-[2024-05-06T18:38:35.745Z] ESGF_COMPUTE_API_REPO has been set to 'ESGF/esgf-compute-api'
-[2024-05-06T18:38:35.745Z] TEST_LOCAL_NOTEBOOKS has been set to 'true'
-[2024-05-06T18:38:35.745Z] + rm -rf pavics-sdi-*
-[2024-05-06T18:38:35.745Z] + ls
-[2024-05-06T18:38:35.745Z] + grep pavics-sdi
-[2024-05-06T18:38:35.745Z] + downloadrepos https://github.com/Ouranosinc/pavics-sdi fix_nbs_jupyter_alpha_refresh_output
-[2024-05-06T18:38:35.745Z] + github_repo=https://github.com/Ouranosinc/pavics-sdi
-[2024-05-06T18:38:35.745Z] + shift
-[2024-05-06T18:38:35.745Z] + branch=fix_nbs_jupyter_alpha_refresh_output
-[2024-05-06T18:38:35.745Z] + shift
-[2024-05-06T18:38:35.745Z] + wget --quiet --output-document - https://github.com/Ouranosinc/pavics-sdi/archive/fix_nbs_jupyter_alpha_refresh_output.tar.gz
-[2024-05-06T18:38:35.745Z] + tar xz
-[2024-05-06T18:38:38.264Z] + ls
-[2024-05-06T18:38:38.264Z] + grep pavics-sdi
-[2024-05-06T18:38:38.264Z] pavics-sdi-fix_nbs_jupyter_alpha_refresh_output
-[2024-05-06T18:38:38.264Z] + set +x
-[2024-05-06T18:38:38.264Z] + rm -rf finch-*
-[2024-05-06T18:38:38.264Z] + ls
-[2024-05-06T18:38:38.264Z] + grep finch
-[2024-05-06T18:38:38.264Z] + downloadrepos https://github.com/bird-house/finch master
-[2024-05-06T18:38:38.264Z] + github_repo=https://github.com/bird-house/finch
-[2024-05-06T18:38:38.264Z] + shift
-[2024-05-06T18:38:38.264Z] + branch=master
-[2024-05-06T18:38:38.264Z] + shift
-[2024-05-06T18:38:38.264Z] + wget --quiet --output-document - https://github.com/bird-house/finch/archive/master.tar.gz
-[2024-05-06T18:38:38.264Z] + tar xz
-[2024-05-06T18:38:39.632Z] + ls
-[2024-05-06T18:38:39.632Z] + grep finch
-[2024-05-06T18:38:39.632Z] finch-master
-[2024-05-06T18:38:39.632Z] + set +x
-[2024-05-06T18:38:39.632Z] + rm -rf PAVICS-landing-*
-[2024-05-06T18:38:39.632Z] + ls
-[2024-05-06T18:38:39.632Z] + grep PAVICS-landing
-[2024-05-06T18:38:39.632Z] + downloadrepos https://github.com/Ouranosinc/PAVICS-landing fix_nbs_jupyter_alpha_refresh_output
-[2024-05-06T18:38:39.632Z] + github_repo=https://github.com/Ouranosinc/PAVICS-landing
-[2024-05-06T18:38:39.632Z] + shift
-[2024-05-06T18:38:39.632Z] + branch=fix_nbs_jupyter_alpha_refresh_output
-[2024-05-06T18:38:39.632Z] + shift
-[2024-05-06T18:38:39.632Z] + wget+  --quiet --output-document - https://github.com/Ouranosinc/PAVICS-landing/archive/fix_nbs_jupyter_alpha_refresh_output.tar.gz
-[2024-05-06T18:38:39.632Z] tar xz
-[2024-05-06T18:38:49.573Z] + ls
-[2024-05-06T18:38:49.573Z] + grep PAVICS-landing
-[2024-05-06T18:38:49.573Z] PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output
-[2024-05-06T18:38:49.573Z] + set +x
-[2024-05-06T18:38:49.573Z] + rm -rf raven-*
-[2024-05-06T18:38:49.573Z] + ls
-[2024-05-06T18:38:49.573Z] + grep raven
-[2024-05-06T18:38:49.573Z] + downloadrepos https://github.com/Ouranosinc/raven main
-[2024-05-06T18:38:49.573Z] + github_repo=https://github.com/Ouranosinc/raven
-[2024-05-06T18:38:49.573Z] + shift
-[2024-05-06T18:38:49.573Z] + branch=main
-[2024-05-06T18:38:49.573Z] + shift
-[2024-05-06T18:38:49.573Z] + wget --quiet --output-document - https://github.com/Ouranosinc/raven/archive/main.tar.gz
-[2024-05-06T18:38:49.573Z] + tar xz
-[2024-05-06T18:38:50.938Z] + ls
-[2024-05-06T18:38:50.938Z] + grep raven
-[2024-05-06T18:38:50.938Z] raven-main
-[2024-05-06T18:38:50.938Z] + set +x
-[2024-05-06T18:38:50.938Z] + rm -rf RavenPy-*
-[2024-05-06T18:38:50.938Z] + ls
-[2024-05-06T18:38:50.938Z] + grep RavenPy
-[2024-05-06T18:38:50.938Z] + downloadrepos https://github.com/CSHS-CWRA/RavenPy master
-[2024-05-06T18:38:50.938Z] + github_repo=https://github.com/CSHS-CWRA/RavenPy
-[2024-05-06T18:38:50.938Z] + shift
-[2024-05-06T18:38:50.938Z] + branch=master
-[2024-05-06T18:38:50.938Z] + shift
-[2024-05-06T18:38:50.938Z] + wget --quiet --output-document - https://github.com/CSHS-CWRA/RavenPy/archive/master.tar.gz
-[2024-05-06T18:38:50.938Z] + tar xz
-[2024-05-06T18:38:52.827Z] + ls
-[2024-05-06T18:38:52.827Z] + grep RavenPy
-[2024-05-06T18:38:52.827Z] RavenPy-master
-[2024-05-06T18:38:52.827Z] + set +x
-[2024-05-06T18:38:52.827Z] + rm -rf esgf-compute-api-*
-[2024-05-06T18:38:52.827Z] + ls
-[2024-05-06T18:38:52.827Z] + grep esgf-compute-api
-[2024-05-06T18:38:52.827Z] + downloadrepos https://github.com/ESGF/esgf-compute-api devel
-[2024-05-06T18:38:52.827Z] + github_repo=https://github.com/ESGF/esgf-compute-api
-[2024-05-06T18:38:52.827Z] + shift
-[2024-05-06T18:38:52.827Z] + branch=devel
-[2024-05-06T18:38:52.827Z] + shift
-[2024-05-06T18:38:52.827Z] + wget --quiet --output-document - https://github.com/ESGF/esgf-compute-api/archive/devel.tar.gz
-[2024-05-06T18:38:52.827Z] + tar xz
-[2024-05-06T18:38:53.757Z] + ls
-[2024-05-06T18:38:53.757Z] + grep esgf-compute-api
-[2024-05-06T18:38:53.757Z] esgf-compute-api-devel
-[2024-05-06T18:38:53.757Z] + set +x
-[2024-05-06T18:38:53.757Z] + echo fix_nbs_jupyter_alpha_refresh_output
-[2024-05-06T18:38:53.757Z] + sed s@/@-@g
-[2024-05-06T18:38:53.757Z] + PAVICS_SDI_BRANCH=fix_nbs_jupyter_alpha_refresh_output
-[2024-05-06T18:38:53.757Z] + echo Ouranosinc/pavics-sdi
-[2024-05-06T18:38:53.757Z] + sed s@^.*/@@g
-[2024-05-06T18:38:53.757Z] + PAVICS_SDI_REPO_NAME=pavics-sdi
-[2024-05-06T18:38:53.757Z] + echo master
-[2024-05-06T18:38:53.757Z] + sed s@/@-@g
-[2024-05-06T18:38:53.757Z] + FINCH_BRANCH=master
-[2024-05-06T18:38:53.757Z] + echo bird-house/finch
-[2024-05-06T18:38:53.757Z] + sed s@^.*/@@g
-[2024-05-06T18:38:53.757Z] + FINCH_REPO_NAME=finch
-[2024-05-06T18:38:53.757Z] + echo fix_nbs_jupyter_alpha_refresh_output
-[2024-05-06T18:38:53.757Z] + sed s@/@-@g
-[2024-05-06T18:38:53.757Z] + PAVICS_LANDING_BRANCH=fix_nbs_jupyter_alpha_refresh_output
-[2024-05-06T18:38:53.757Z] + echo Ouranosinc/PAVICS-landing
-[2024-05-06T18:38:53.757Z] + sed s@^.*/@@g
-[2024-05-06T18:38:53.757Z] + PAVICS_LANDING_REPO_NAME=PAVICS-landing
-[2024-05-06T18:38:53.757Z] + echo main
-[2024-05-06T18:38:53.757Z] + sed s@/@-@g
-[2024-05-06T18:38:53.757Z] + RAVEN_BRANCH=main
-[2024-05-06T18:38:53.757Z] + echo Ouranosinc/raven
-[2024-05-06T18:38:53.757Z] + sed s@^.*/@@g
-[2024-05-06T18:38:53.757Z] + RAVEN_REPO_NAME=raven
-[2024-05-06T18:38:53.757Z] + echo master
-[2024-05-06T18:38:53.757Z] + sed s@/@-@g
-[2024-05-06T18:38:53.757Z] + RAVENPY_BRANCH=master
-[2024-05-06T18:38:53.757Z] + echo CSHS-CWRA/RavenPy
-[2024-05-06T18:38:53.757Z] + sed s@^.*/@@g
-[2024-05-06T18:38:53.757Z] + RAVENPY_REPO_NAME=RavenPy
-[2024-05-06T18:38:53.757Z] + echo devel
-[2024-05-06T18:38:53.757Z] + sed s@/@-@g
-[2024-05-06T18:38:53.757Z] + ESGF_COMPUTE_API_BRANCH=devel
-[2024-05-06T18:38:53.757Z] + echo ESGF/esgf-compute-api
-[2024-05-06T18:38:53.757Z] + sed s@^.*/@@g
-[2024-05-06T18:38:53.757Z] + ESGF_COMPUTE_API_REPO_NAME=esgf-compute-api
-[2024-05-06T18:38:53.757Z] + echo pavics-sdi-fix_nbs_jupyter_alpha_refresh_output
-[2024-05-06T18:38:53.757Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-05-06T18:38:53.757Z] + PAVICS_SDI_DIR=pavics-sdi-fix_nbs_jupyter_alpha_refresh_output
-[2024-05-06T18:38:53.757Z] + echo finch-master
-[2024-05-06T18:38:53.757Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-05-06T18:38:53.757Z] + FINCH_DIR=finch-master
-[2024-05-06T18:38:53.757Z] + echo PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output
-[2024-05-06T18:38:53.757Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-05-06T18:38:54.017Z] + PAVICS_LANDING_DIR=PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output
-[2024-05-06T18:38:54.017Z] + echo raven-main
-[2024-05-06T18:38:54.017Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-05-06T18:38:54.017Z] + RAVEN_DIR=raven-main
-[2024-05-06T18:38:54.017Z] + echo RavenPy-master
-[2024-05-06T18:38:54.017Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-05-06T18:38:54.017Z] + RAVENPY_DIR=RavenPy-master
-[2024-05-06T18:38:54.017Z] + echo esgf-compute-api-devel
-[2024-05-06T18:38:54.017Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-05-06T18:38:54.017Z] + ESGF_COMPUTE_API_DIR=esgf-compute-api-devel
-[2024-05-06T18:38:54.017Z] + echo true
-[2024-05-06T18:38:54.017Z] + tr [:upper:] [:lower:]
-[2024-05-06T18:38:54.017Z] + VERIFY_SSL=true
-[2024-05-06T18:38:54.017Z] + [ xtrue = xfalse ]
-[2024-05-06T18:38:54.017Z] + rm -v finch-master/setup.cfg
-[2024-05-06T18:38:54.017Z] removed 'finch-master/setup.cfg'
-[2024-05-06T18:38:54.017Z] + rm -v raven-main/setup.cfg
-[2024-05-06T18:38:54.017Z] removed 'raven-main/setup.cfg'
-[2024-05-06T18:38:54.017Z] + rm -v raven-main/pyproject.toml
-[2024-05-06T18:38:54.017Z] removed 'raven-main/pyproject.toml'
-[2024-05-06T18:38:54.017Z] + rm -v RavenPy-master/setup.cfg
-[2024-05-06T18:38:54.017Z] removed 'RavenPy-master/setup.cfg'
-[2024-05-06T18:38:54.017Z] + rm -v RavenPy-master/tox.ini
-[2024-05-06T18:38:54.017Z] removed 'RavenPy-master/tox.ini'
-[2024-05-06T18:38:54.017Z] + rm -v RavenPy-master/pyproject.toml
-[2024-05-06T18:38:54.017Z] removed 'RavenPy-master/pyproject.toml'
-[2024-05-06T18:38:54.017Z] + rm -v esgf-compute-api-devel/setup.cfg
-[2024-05-06T18:38:54.017Z] rm: cannot remove 'esgf-compute-api-devel/setup.cfg': No such file or directory
-[2024-05-06T18:38:54.017Z] + rm -v esgf-compute-api-devel/tox.ini
-[2024-05-06T18:38:54.017Z] rm: cannot remove 'esgf-compute-api-devel/tox.ini': No such file or directory
-[2024-05-06T18:38:54.017Z] + echo false
-[2024-05-06T18:38:54.017Z] + tr [:upper:] [:lower:]
-[2024-05-06T18:38:54.017Z] + TEST_MAGPIE_AUTH=false
-[2024-05-06T18:38:54.017Z] + echo true
-[2024-05-06T18:38:54.017Z] + tr [:upper:] [:lower:]
-[2024-05-06T18:38:54.017Z] + TEST_PAVICS_SDI_REPO=true
-[2024-05-06T18:38:54.017Z] + echo false
-[2024-05-06T18:38:54.017Z] + tr [:upper:] [:lower:]
-[2024-05-06T18:38:54.017Z] + TEST_PAVICS_SDI_WEAVER=false
-[2024-05-06T18:38:54.017Z] + echo true
-[2024-05-06T18:38:54.017Z] + tr [:upper:] [:lower:]
-[2024-05-06T18:38:54.017Z] + TEST_FINCH_REPO=true
-[2024-05-06T18:38:54.017Z] + echo true
-[2024-05-06T18:38:54.017Z] + tr [:upper:] [:lower:]
-[2024-05-06T18:38:54.017Z] + TEST_PAVICS_LANDING_REPO=true
-[2024-05-06T18:38:54.017Z] + echo false
-[2024-05-06T18:38:54.017Z] + tr [:upper:] [:lower:]
-[2024-05-06T18:38:54.017Z] + TEST_RAVEN_REPO=false
-[2024-05-06T18:38:54.017Z] + echo false
-[2024-05-06T18:38:54.017Z] + tr [:upper:] [:lower:]
-[2024-05-06T18:38:54.017Z] + TEST_RAVENPY_REPO=false
-[2024-05-06T18:38:54.017Z] + echo false
-[2024-05-06T18:38:54.017Z] + tr [:upper:] [:lower:]
-[2024-05-06T18:38:54.017Z] + TEST_ESGF_COMPUTE_API_REPO=false
-[2024-05-06T18:38:54.017Z] + echo true
-[2024-05-06T18:38:54.017Z] + tr [:upper:] [:lower:]
-[2024-05-06T18:38:54.017Z] + TEST_LOCAL_NOTEBOOKS=true
-[2024-05-06T18:38:54.017Z] + NOTEBOOKS_TO_TEST=
-[2024-05-06T18:38:54.017Z] + [ xfalse = xtrue ]
-[2024-05-06T18:38:54.017Z] + [ xtrue = xtrue ]
-[2024-05-06T18:38:54.017Z] + NOTEBOOKS_TO_TEST= pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/*.ipynb
-[2024-05-06T18:38:54.017Z] + [ xfalse = xtrue ]
-[2024-05-06T18:38:54.017Z] + [ xtrue = xtrue ]
-[2024-05-06T18:38:54.017Z] + NOTEBOOKS_TO_TEST= pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb
-[2024-05-06T18:38:54.017Z] + [ xtrue = xtrue ]
-[2024-05-06T18:38:54.017Z] + NOTEBOOKS_TO_TEST= pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/*.ipynb
-[2024-05-06T18:38:54.017Z] + SETUP_SCRIPT=PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/setup_dirlayout.sh
-[2024-05-06T18:38:54.017Z] + [ -x PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/setup_dirlayout.sh ]
-[2024-05-06T18:38:54.017Z] + PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/setup_dirlayout.sh
-[2024-05-06T18:38:54.017Z] + realpath PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/setup_dirlayout.sh
-[2024-05-06T18:38:54.017Z] + THIS_FILE=/home/jenkins/agent/workspace/_workflow-tests_new-docker-build@2/PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/setup_dirlayout.sh
-[2024-05-06T18:38:54.017Z] + dirname /home/jenkins/agent/workspace/_workflow-tests_new-docker-build@2/PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/setup_dirlayout.sh
-[2024-05-06T18:38:54.017Z] + THIS_DIR=/home/jenkins/agent/workspace/_workflow-tests_new-docker-build@2/PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators
-[2024-05-06T18:38:54.017Z] + NOTEBOOK_3_OUTDIR_BASE=/notebook_dir/writable-workspace/tmp/tutorial3
-[2024-05-06T18:38:54.017Z] + mkdir -p /notebook_dir/writable-workspace/tmp/tutorial3
-[2024-05-06T18:38:54.017Z] + unzip /home/jenkins/agent/workspace/_workflow-tests_new-docker-build@2/PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/output.zip -d /notebook_dir/writable-workspace/tmp/tutorial3/
-[2024-05-06T18:38:54.017Z] Archive:  /home/jenkins/agent/workspace/_workflow-tests_new-docker-build@2/PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/output.zip
-[2024-05-06T18:38:54.017Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_IPSL-CM5A-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.017Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_NorESM1-M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.017Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_NorESM1-M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.017Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_MPI-ESM-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.018Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_MPI-ESM-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.018Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_IPSL-CM5B-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.018Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_IPSL-CM5B-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.018Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_IPSL-CM5A-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.018Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_IPSL-CM5A-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.018Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_INM-CM4_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.018Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_INM-CM4_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.018Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_HadGEM2-CC_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.018Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_HadGEM2-CC_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.282Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_GFDL-ESM2M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.282Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_GFDL-ESM2M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.282Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_CanESM2_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.282Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_CanESM2_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.282Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_CMCC-CMS_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.282Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_CMCC-CMS_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.282Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_BNU-ESM_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.282Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_BNU-ESM_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.282Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_ACCESS1-3_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.282Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_ACCESS1-3_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.282Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_NorESM1-M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.282Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_NorESM1-M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.283Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_MPI-ESM-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.283Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_MPI-ESM-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.283Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_IPSL-CM5B-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.283Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_IPSL-CM5B-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.283Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_IPSL-CM5A-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.283Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_INM-CM4_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.283Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_INM-CM4_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.283Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_HadGEM2-CC_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.283Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_HadGEM2-CC_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.283Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_GFDL-ESM2M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.283Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_GFDL-ESM2M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.283Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_CanESM2_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.283Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_CanESM2_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.283Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_CMCC-CMS_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.283Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_CMCC-CMS_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.283Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_BNU-ESM_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.283Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_BNU-ESM_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.283Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_ACCESS1-3_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.283Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_ACCESS1-3_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.544Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_NorESM1-M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.544Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_NorESM1-M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.544Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_MPI-ESM-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.544Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_MPI-ESM-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.544Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_IPSL-CM5B-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.544Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_IPSL-CM5B-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.544Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_IPSL-CM5A-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.544Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_IPSL-CM5A-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.544Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_INM-CM4_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.544Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_INM-CM4_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.544Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_HadGEM2-CC_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.544Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_HadGEM2-CC_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.544Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_GFDL-ESM2M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.544Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_GFDL-ESM2M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.544Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_CanESM2_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_CanESM2_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_CMCC-CMS_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_CMCC-CMS_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_BNU-ESM_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_BNU-ESM_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_ACCESS1-3_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_ACCESS1-3_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_NorESM1-M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_NorESM1-M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_MPI-ESM-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_MPI-ESM-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_IPSL-CM5B-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_IPSL-CM5B-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_IPSL-CM5A-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_IPSL-CM5A-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_INM-CM4_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_INM-CM4_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_HadGEM2-CC_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_HadGEM2-CC_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_GFDL-ESM2M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_GFDL-ESM2M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_CanESM2_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_CanESM2_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_CMCC-CMS_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_CMCC-CMS_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_BNU-ESM_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_BNU-ESM_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_ACCESS1-3_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_ACCESS1-3_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
-[2024-05-06T18:38:54.805Z] + HOMEPAGE_ROOT_DIR=/notebook_dir/pavics-homepage
-[2024-05-06T18:38:54.805Z] + mkdir -p /notebook_dir/pavics-homepage
-[2024-05-06T18:38:54.805Z] + ln -sv /home/jenkins/agent/workspace/_workflow-tests_new-docker-build@2/PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/tutorial_data /notebook_dir/pavics-homepage/tutorial_data
-[2024-05-06T18:38:54.805Z] '/notebook_dir/pavics-homepage/tutorial_data' -> '/home/jenkins/agent/workspace/_workflow-tests_new-docker-build@2/PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/tutorial_data'
-[2024-05-06T18:38:54.805Z] + [ xfalse = xtrue ]
-[2024-05-06T18:38:54.805Z] + [ xfalse = xtrue ]
-[2024-05-06T18:38:54.805Z] + [ xfalse = xtrue ]
-[2024-05-06T18:38:54.805Z] + [ xtrue = xtrue ]
-[2024-05-06T18:38:54.805Z] + NOTEBOOKS_TO_TEST= pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/*.ipynb notebooks/*.ipynb
-[2024-05-06T18:38:54.805Z] + ./runtest  pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/*.ipynb notebooks/*.ipynb
-[2024-05-06T18:38:54.805Z] + [ -n  ]
-[2024-05-06T18:38:54.805Z] + [ ! -z pavics.ouranos.ca ]
-[2024-05-06T18:38:54.805Z] + echo Will run notebooks against pavics.ouranos.ca
-[2024-05-06T18:38:54.805Z] Will run notebooks against pavics.ouranos.ca
-[2024-05-06T18:38:54.805Z] + [ -z  ]
-[2024-05-06T18:38:54.806Z] + sed -i /\(\.ncml\|TEST_USE_PROD_DATA\)/!s/pavics.ouranos.ca/pavics.ouranos.ca/g pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/CaSR_basic.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/WCS_example.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/WFS_example.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/WMS_example.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/climex.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/eccc-geoapi-xclim.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/esgf-dap.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/forecasts.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/jupyter_extensions.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/opendap.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/pavics_thredds.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/regridding.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/rendering.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/subset-user-input.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/subsetting.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb notebooks/hummingbird.ipynb notebooks/stress-tests.ipynb
-[2024-05-06T18:38:55.068Z] + git diff
-[2024-05-06T18:38:55.068Z] + export PYTHONWARNINGS=ignore:Unverified HTTPS request
-[2024-05-06T18:38:55.068Z] + [ -n  ]
-[2024-05-06T18:38:55.069Z] + py.test --nbval pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/CaSR_basic.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/WCS_example.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/WFS_example.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/WMS_example.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/climex.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/eccc-geoapi-xclim.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/esgf-dap.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/forecasts.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/jupyter_extensions.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/opendap.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/pavics_thredds.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/regridding.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/rendering.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/subset-user-input.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/subsetting.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb notebooks/hummingbird.ipynb notebooks/stress-tests.ipynb --sanitize-with notebooks/output-sanitize.cfg --dist=loadscope --numprocesses=0
-[2024-05-06T18:38:56.974Z] /opt/conda/envs/birdy/lib/python3.11/site-packages/nbval/plugin.py:122: DeprecationWarning: --sanitize-with has been renamed to --nbval-sanitize-with
-[2024-05-06T18:38:56.974Z]   warnings.warn("--sanitize-with has been renamed to --nbval-sanitize-with", DeprecationWarning)
-[2024-05-06T18:38:57.554Z] ============================= test session starts ==============================
-[2024-05-06T18:38:57.554Z] platform linux -- Python 3.11.6, pytest-8.2.0, pluggy-1.5.0
-[2024-05-06T18:38:57.554Z] rootdir: /home/jenkins/agent/workspace/_workflow-tests_new-docker-build@2
-[2024-05-06T18:38:57.554Z] plugins: anyio-4.3.0, dash-2.17.0, nbval-0.11.0, tornasync-0.6.0.post2, xdist-3.5.0
-[2024-05-06T18:38:57.554Z] collected 219 items
-[2024-05-06T18:38:57.554Z] 
-[2024-05-06T18:39:00.228Z] pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/CaSR_basic.ipynb . [  0%]
-[2024-05-06T18:39:28.363Z] .....                                                                    [  2%]
-[2024-05-06T18:39:30.250Z] pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/WCS_example.ipynb . [  3%]
-[2024-05-06T18:39:36.300Z] ......                                                                   [  5%]
-[2024-05-06T18:39:38.209Z] pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/WFS_example.ipynb . [  6%]
-[2024-05-06T18:39:44.679Z] .....                                                                    [  8%]
-[2024-05-06T18:39:45.251Z] pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/WMS_example.ipynb . [  9%]
-[2024-05-06T18:39:50.660Z] .......                                                                  [ 12%]
-[2024-05-06T18:40:00.636Z] pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/climex.ipynb . [ 12%]
-[2024-05-06T18:43:09.441Z] ...........                                                              [ 17%]
-[2024-05-06T18:43:09.441Z] pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb . [ 18%]
-[2024-05-06T18:43:09.441Z] ...............                                                          [ 25%]
-[2024-05-06T18:43:11.360Z] pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/eccc-geoapi-xclim.ipynb . [ 25%]
-[2024-05-06T18:43:16.973Z] ....                                                                     [ 27%]
-[2024-05-06T18:43:18.885Z] pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/esgf-dap.ipynb . [ 27%]
-[2024-05-06T18:43:23.608Z] .....                                                                    [ 30%]
-[2024-05-06T18:43:31.726Z] pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/forecasts.ipynb . [ 30%]
-[2024-05-06T18:43:39.852Z] .....                                                                    [ 32%]
-[2024-05-06T18:43:41.225Z] pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/opendap.ipynb . [ 33%]
-[2024-05-06T18:43:45.525Z] ......                                                                   [ 36%]
-[2024-05-06T18:43:46.891Z] pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/pavics_thredds.ipynb . [ 36%]
-[2024-05-06T18:43:51.352Z] ....                                                                     [ 38%]
-[2024-05-06T18:44:09.462Z] pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/regridding.ipynb . [ 38%]
-[2024-05-06T18:45:46.875Z] ...........................                                              [ 51%]
-[2024-05-06T18:45:46.875Z] pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/rendering.ipynb . [ 51%]
-[2024-05-06T18:45:47.137Z] ...                                                                      [ 52%]
-[2024-05-06T18:45:48.085Z] pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/subset-user-input.ipynb . [ 53%]
-[2024-05-06T18:46:07.688Z] ........................                                                 [ 64%]
-[2024-05-06T18:46:10.978Z] pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/subsetting.ipynb . [ 64%]
-[2024-05-06T18:46:16.397Z] .....                                                                    [ 67%]
-[2024-05-06T18:46:26.135Z] finch-master/docs/source/notebooks/dap_subset.ipynb ...........          [ 72%]
-[2024-05-06T18:46:35.394Z] finch-master/docs/source/notebooks/finch-usage.ipynb ......              [ 74%]
-[2024-05-06T18:46:36.760Z] PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb . [ 75%]
-[2024-05-06T18:46:39.814Z] ......                                                                   [ 78%]
-[2024-05-06T18:46:47.946Z] PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb . [ 78%]
-[2024-05-06T18:47:03.149Z] .............                                                            [ 84%]
-[2024-05-06T18:47:11.240Z] PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb . [ 84%]
-[2024-05-06T18:47:45.481Z] ....s                                                                    [ 87%]
-[2024-05-06T18:47:53.613Z] PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb . [ 87%]
-[2024-05-06T18:48:05.555Z] ..                                                                       [ 88%]
-[2024-05-06T18:48:17.772Z] PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb . [ 89%]
-[2024-05-06T18:49:05.831Z] ......                                                                   [ 91%]
-[2024-05-06T18:49:05.831Z] notebooks/hummingbird.ipynb ............                                 [ 97%]
-[2024-05-06T18:51:38.530Z] notebooks/stress-tests.ipynb ......                                      [100%]
-[2024-05-06T18:51:38.530Z] 
-[2024-05-06T18:51:38.530Z] ================== 218 passed, 1 skipped in 753.79s (0:12:33) ==================
-[2024-05-06T18:51:38.530Z] + EXIT_CODE=0
-[2024-05-06T18:51:38.530Z] + echo true
-[2024-05-06T18:51:38.530Z] + tr [:upper:] [:lower:]
-[2024-05-06T18:51:38.530Z] + SAVE_RESULTING_NOTEBOOK=true
-[2024-05-06T18:51:38.530Z] + [ xtrue = xtrue ]
-[2024-05-06T18:51:38.530Z] + mkdir -p buildout
-[2024-05-06T18:51:38.530Z] + basename pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/CaSR_basic.ipynb
-[2024-05-06T18:51:38.530Z] + filename=CaSR_basic.ipynb
-[2024-05-06T18:51:38.530Z] + sed+  s/.ipynb$//
-[2024-05-06T18:51:38.530Z] echo CaSR_basic.ipynb
-[2024-05-06T18:51:38.530Z] + filename=CaSR_basic
-[2024-05-06T18:51:38.530Z] + [ -e buildout/CaSR_basic.output.ipynb ]
-[2024-05-06T18:51:38.530Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output CaSR_basic.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/CaSR_basic.ipynb
-[2024-05-06T18:51:38.530Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/CaSR_basic.ipynb to notebook
-[2024-05-06T18:52:17.299Z] [NbConvertApp] Writing 732952 bytes to buildout/CaSR_basic.output.ipynb
-[2024-05-06T18:52:17.299Z] + basename pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/WCS_example.ipynb
-[2024-05-06T18:52:17.299Z] + filename=WCS_example.ipynb
-[2024-05-06T18:52:17.299Z] + sed s/.ipynb$//
-[2024-05-06T18:52:17.299Z] + echo WCS_example.ipynb
-[2024-05-06T18:52:17.299Z] + filename=WCS_example
-[2024-05-06T18:52:17.299Z] + [ -e buildout/WCS_example.output.ipynb ]
-[2024-05-06T18:52:17.299Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output WCS_example.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/WCS_example.ipynb
-[2024-05-06T18:52:17.299Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/WCS_example.ipynb to notebook
-[2024-05-06T18:52:17.299Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-06T18:52:17.299Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-06T18:52:17.299Z] 0.00s - to python to disable frozen modules.
-[2024-05-06T18:52:17.300Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-06T18:52:27.323Z] [NbConvertApp] Writing 145025 bytes to buildout/WCS_example.output.ipynb
-[2024-05-06T18:52:27.323Z] + basename pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/WFS_example.ipynb
-[2024-05-06T18:52:27.323Z] + filename=WFS_example.ipynb
-[2024-05-06T18:52:27.323Z] + + sed s/.ipynb$//
-[2024-05-06T18:52:27.323Z] echo WFS_example.ipynb
-[2024-05-06T18:52:27.323Z] + filename=WFS_example
-[2024-05-06T18:52:27.323Z] + [ -e buildout/WFS_example.output.ipynb ]
-[2024-05-06T18:52:27.323Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output WFS_example.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/WFS_example.ipynb
-[2024-05-06T18:52:28.261Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/WFS_example.ipynb to notebook
-[2024-05-06T18:52:29.205Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-06T18:52:29.205Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-06T18:52:29.205Z] 0.00s - to python to disable frozen modules.
-[2024-05-06T18:52:29.205Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-06T18:52:37.334Z] [NbConvertApp] Writing 44572 bytes to buildout/WFS_example.output.ipynb
-[2024-05-06T18:52:37.599Z] + basename pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/WMS_example.ipynb
-[2024-05-06T18:52:37.599Z] + filename=WMS_example.ipynb
-[2024-05-06T18:52:37.599Z] + echo WMS_example.ipynb
-[2024-05-06T18:52:37.599Z] + sed s/.ipynb$//
-[2024-05-06T18:52:37.599Z] + filename=WMS_example
-[2024-05-06T18:52:37.599Z] + [ -e buildout/WMS_example.output.ipynb ]
-[2024-05-06T18:52:37.599Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output WMS_example.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/WMS_example.ipynb
-[2024-05-06T18:52:39.512Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/WMS_example.ipynb to notebook
-[2024-05-06T18:52:40.082Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-06T18:52:40.082Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-06T18:52:40.082Z] 0.00s - to python to disable frozen modules.
-[2024-05-06T18:52:40.082Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-06T18:52:46.668Z] [NbConvertApp] Writing 2048326 bytes to buildout/WMS_example.output.ipynb
-[2024-05-06T18:52:46.668Z] + basename pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/climex.ipynb
-[2024-05-06T18:52:46.668Z] + filename=climex.ipynb
-[2024-05-06T18:52:46.668Z] + sed s/.ipynb$//
-[2024-05-06T18:52:46.668Z] + echo climex.ipynb
-[2024-05-06T18:52:46.668Z] + filename=climex
-[2024-05-06T18:52:46.668Z] + [ -e buildout/climex.output.ipynb ]
-[2024-05-06T18:52:46.668Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output climex.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/climex.ipynb
-[2024-05-06T18:52:48.050Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/climex.ipynb to notebook
-[2024-05-06T18:52:48.985Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-06T18:52:48.985Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-06T18:52:48.985Z] 0.00s - to python to disable frozen modules.
-[2024-05-06T18:52:48.985Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-06T18:55:55.650Z] [NbConvertApp] Writing 1781814 bytes to buildout/climex.output.ipynb
-[2024-05-06T18:55:55.650Z] + basename pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb
-[2024-05-06T18:55:55.650Z] + filename=eccc-geoapi-climate-stations.ipynb
-[2024-05-06T18:55:55.650Z] + sed s/.ipynb$//
-[2024-05-06T18:55:55.650Z] + echo eccc-geoapi-climate-stations.ipynb
-[2024-05-06T18:55:55.650Z] + filename=eccc-geoapi-climate-stations
-[2024-05-06T18:55:55.650Z] + [ -e buildout/eccc-geoapi-climate-stations.output.ipynb ]
-[2024-05-06T18:55:55.650Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output eccc-geoapi-climate-stations.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb
-[2024-05-06T18:55:55.650Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb to notebook
-[2024-05-06T18:55:55.650Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-06T18:55:55.650Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-06T18:55:55.650Z] 0.00s - to python to disable frozen modules.
-[2024-05-06T18:55:55.650Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-06T18:56:00.933Z] [NbConvertApp] Writing 278703 bytes to buildout/eccc-geoapi-climate-stations.output.ipynb
-[2024-05-06T18:56:00.933Z] + basename pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/eccc-geoapi-xclim.ipynb
-[2024-05-06T18:56:00.933Z] + filename=eccc-geoapi-xclim.ipynb
-[2024-05-06T18:56:00.933Z] + echo eccc-geoapi-xclim.ipynb
-[2024-05-06T18:56:00.933Z] + sed s/.ipynb$//
-[2024-05-06T18:56:00.933Z] + filename=eccc-geoapi-xclim
-[2024-05-06T18:56:00.933Z] + [ -e buildout/eccc-geoapi-xclim.output.ipynb ]
-[2024-05-06T18:56:00.933Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output eccc-geoapi-xclim.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/eccc-geoapi-xclim.ipynb
-[2024-05-06T18:56:02.323Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/eccc-geoapi-xclim.ipynb to notebook
-[2024-05-06T18:56:03.269Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-06T18:56:03.270Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-06T18:56:03.270Z] 0.00s - to python to disable frozen modules.
-[2024-05-06T18:56:03.270Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-06T18:56:13.252Z] [NbConvertApp] Writing 108041 bytes to buildout/eccc-geoapi-xclim.output.ipynb
-[2024-05-06T18:56:13.252Z] + basename pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/esgf-dap.ipynb
-[2024-05-06T18:56:13.252Z] + filename=esgf-dap.ipynb
-[2024-05-06T18:56:13.252Z] + sed s/.ipynb$//
-[2024-05-06T18:56:13.252Z] + echo esgf-dap.ipynb
-[2024-05-06T18:56:13.252Z] + filename=esgf-dap
-[2024-05-06T18:56:13.252Z] + [ -e buildout/esgf-dap.output.ipynb ]
-[2024-05-06T18:56:13.252Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output esgf-dap.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/esgf-dap.ipynb
-[2024-05-06T18:56:13.517Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/esgf-dap.ipynb to notebook
-[2024-05-06T18:56:14.465Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-06T18:56:14.465Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-06T18:56:14.465Z] 0.00s - to python to disable frozen modules.
-[2024-05-06T18:56:14.465Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-06T18:56:22.631Z] [NbConvertApp] Writing 63631 bytes to buildout/esgf-dap.output.ipynb
-[2024-05-06T18:56:22.631Z] + basename pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/forecasts.ipynb
-[2024-05-06T18:56:22.631Z] + filename=forecasts.ipynb
-[2024-05-06T18:56:22.631Z] + sed s/.ipynb$//
-[2024-05-06T18:56:22.631Z] + echo forecasts.ipynb
-[2024-05-06T18:56:22.631Z] + filename=forecasts
-[2024-05-06T18:56:22.631Z] + [ -e buildout/forecasts.output.ipynb ]
-[2024-05-06T18:56:22.631Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output forecasts.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/forecasts.ipynb
-[2024-05-06T18:56:23.201Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/forecasts.ipynb to notebook
-[2024-05-06T18:56:24.137Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-06T18:56:24.137Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-06T18:56:24.137Z] 0.00s - to python to disable frozen modules.
-[2024-05-06T18:56:24.137Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-06T18:56:42.244Z] [NbConvertApp] Writing 164984 bytes to buildout/forecasts.output.ipynb
-[2024-05-06T18:56:42.244Z] + basename pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/jupyter_extensions.ipynb
-[2024-05-06T18:56:42.244Z] + filename=jupyter_extensions.ipynb
-[2024-05-06T18:56:42.244Z] + echo jupyter_extensions.ipynb
-[2024-05-06T18:56:42.245Z] + sed s/.ipynb$//
-[2024-05-06T18:56:42.245Z] + filename=jupyter_extensions
-[2024-05-06T18:56:42.245Z] + [ -e buildout/jupyter_extensions.output.ipynb ]
-[2024-05-06T18:56:42.245Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output jupyter_extensions.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/jupyter_extensions.ipynb
-[2024-05-06T18:56:42.511Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/jupyter_extensions.ipynb to notebook
-[2024-05-06T18:56:43.456Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-06T18:56:43.456Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-06T18:56:43.456Z] 0.00s - to python to disable frozen modules.
-[2024-05-06T18:56:43.456Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-06T18:56:47.694Z] [NbConvertApp] Writing 7996 bytes to buildout/jupyter_extensions.output.ipynb
-[2024-05-06T18:56:47.694Z] + basename pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/opendap.ipynb
-[2024-05-06T18:56:47.694Z] + filename=opendap.ipynb
-[2024-05-06T18:56:47.694Z] + sed s/.ipynb$//
-[2024-05-06T18:56:47.694Z] + echo opendap.ipynb
-[2024-05-06T18:56:47.694Z] + filename=opendap
-[2024-05-06T18:56:47.694Z] + [ -e buildout/opendap.output.ipynb ]
-[2024-05-06T18:56:47.694Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output opendap.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/opendap.ipynb
-[2024-05-06T18:56:49.081Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/opendap.ipynb to notebook
-[2024-05-06T18:56:51.635Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-06T18:56:51.635Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-06T18:56:51.635Z] 0.00s - to python to disable frozen modules.
-[2024-05-06T18:56:51.635Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-06T18:56:58.220Z] [NbConvertApp] Writing 95159 bytes to buildout/opendap.output.ipynb
-[2024-05-06T18:56:58.220Z] + basename pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/pavics_thredds.ipynb
-[2024-05-06T18:56:58.220Z] + filename=pavics_thredds.ipynb
-[2024-05-06T18:56:58.220Z] + echo pavics_thredds.ipynb
-[2024-05-06T18:56:58.220Z] + sed s/.ipynb$//
-[2024-05-06T18:56:58.220Z] + filename=pavics_thredds
-[2024-05-06T18:56:58.220Z] + [ -e buildout/pavics_thredds.output.ipynb ]
-[2024-05-06T18:56:58.220Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output pavics_thredds.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/pavics_thredds.ipynb
-[2024-05-06T18:56:59.168Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/pavics_thredds.ipynb to notebook
-[2024-05-06T18:57:00.104Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-06T18:57:00.104Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-06T18:57:00.104Z] 0.00s - to python to disable frozen modules.
-[2024-05-06T18:57:00.104Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-06T18:57:02.637Z] syntax error, unexpected WORD_WORD, expecting SCAN_ATTR or SCAN_DATASET or SCAN_ERROR
-[2024-05-06T18:57:02.637Z] context: <?xml^ version="1.0" encoding="utf-8"?><ExceptionReport version="1.0.0" xmlns="http://www.opengis.net/ows/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/ows/1.1 http://schemas.opengis.net/ows/1.1.0/owsExceptionReport.xsd"> <Exception exceptionCode="NoApplicableCode" locator="AccessForbidden"> <ExceptionText>Access to service is forbidden.</ExceptionText> </Exception></ExceptionReport>
-[2024-05-06T18:57:02.637Z] syntax error, unexpected WORD_WORD, expecting SCAN_ATTR or SCAN_DATASET or SCAN_ERROR
-[2024-05-06T18:57:02.638Z] context: <?xml^ version="1.0" encoding="utf-8"?><ExceptionReport version="1.0.0" xmlns="http://www.opengis.net/ows/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/ows/1.1 http://schemas.opengis.net/ows/1.1.0/owsExceptionReport.xsd"> <Exception exceptionCode="NoApplicableCode" locator="AccessForbidden"> <ExceptionText>Access to service is forbidden.</ExceptionText> </Exception></ExceptionReport>
-[2024-05-06T18:57:05.165Z] [NbConvertApp] Writing 90749 bytes to buildout/pavics_thredds.output.ipynb
-[2024-05-06T18:57:05.165Z] + basename pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/regridding.ipynb
-[2024-05-06T18:57:05.165Z] + filename=regridding.ipynb
-[2024-05-06T18:57:05.165Z] + sed s/.ipynb$//
-[2024-05-06T18:57:05.165Z] + echo regridding.ipynb
-[2024-05-06T18:57:05.165Z] + filename=regridding
-[2024-05-06T18:57:05.165Z] + [ -e buildout/regridding.output.ipynb ]
-[2024-05-06T18:57:05.165Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output regridding.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/regridding.ipynb
-[2024-05-06T18:57:07.068Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/regridding.ipynb to notebook
-[2024-05-06T18:57:07.999Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-06T18:57:07.999Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-06T18:57:07.999Z] 0.00s - to python to disable frozen modules.
-[2024-05-06T18:57:07.999Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-06T18:58:44.519Z] [NbConvertApp] Writing 1239616 bytes to buildout/regridding.output.ipynb
-[2024-05-06T18:58:44.519Z] + basename pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/rendering.ipynb
-[2024-05-06T18:58:44.519Z] + filename=rendering.ipynb
-[2024-05-06T18:58:44.519Z] + sed s/.ipynb$//
-[2024-05-06T18:58:44.519Z] + echo rendering.ipynb
-[2024-05-06T18:58:44.519Z] + filename=rendering
-[2024-05-06T18:58:44.519Z] + [ -e buildout/rendering.output.ipynb ]
-[2024-05-06T18:58:44.519Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output rendering.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/rendering.ipynb
-[2024-05-06T18:58:44.519Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/rendering.ipynb to notebook
-[2024-05-06T18:58:44.519Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-06T18:58:44.519Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-06T18:58:44.519Z] 0.00s - to python to disable frozen modules.
-[2024-05-06T18:58:44.519Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-06T18:58:45.905Z] [NbConvertApp] Writing 11800 bytes to buildout/rendering.output.ipynb
-[2024-05-06T18:58:46.170Z] + basename pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/subset-user-input.ipynb
-[2024-05-06T18:58:46.170Z] + filename=subset-user-input.ipynb
-[2024-05-06T18:58:46.170Z] + echo subset-user-input.ipynb
-[2024-05-06T18:58:46.171Z] + sed s/.ipynb$//
-[2024-05-06T18:58:46.171Z] + filename=subset-user-input
-[2024-05-06T18:58:46.171Z] + [ -e buildout/subset-user-input.output.ipynb ]
-[2024-05-06T18:58:46.171Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output subset-user-input.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/subset-user-input.ipynb
-[2024-05-06T18:58:48.087Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/subset-user-input.ipynb to notebook
-[2024-05-06T18:58:49.501Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-06T18:58:49.501Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-06T18:58:49.501Z] 0.00s - to python to disable frozen modules.
-[2024-05-06T18:58:49.501Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-06T18:59:11.438Z] [NbConvertApp] Writing 255278 bytes to buildout/subset-user-input.output.ipynb
-[2024-05-06T18:59:11.438Z] + basename pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/subsetting.ipynb
-[2024-05-06T18:59:11.438Z] + filename=subsetting.ipynb
-[2024-05-06T18:59:11.438Z] + echo subsetting.ipynb
-[2024-05-06T18:59:11.438Z] + sed s/.ipynb$//
-[2024-05-06T18:59:11.438Z] + filename=subsetting
-[2024-05-06T18:59:11.438Z] + [ -e buildout/subsetting.output.ipynb ]
-[2024-05-06T18:59:11.438Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output subsetting.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/subsetting.ipynb
-[2024-05-06T18:59:11.439Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha_refresh_output/docs/source/notebooks/subsetting.ipynb to notebook
-[2024-05-06T18:59:11.700Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-06T18:59:11.700Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-06T18:59:11.700Z] 0.00s - to python to disable frozen modules.
-[2024-05-06T18:59:11.700Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-06T18:59:21.682Z] [NbConvertApp] Writing 93311 bytes to buildout/subsetting.output.ipynb
-[2024-05-06T18:59:21.682Z] + basename finch-master/docs/source/notebooks/dap_subset.ipynb
-[2024-05-06T18:59:21.682Z] + filename=dap_subset.ipynb
-[2024-05-06T18:59:21.682Z] + echo dap_subset.ipynb
-[2024-05-06T18:59:21.682Z] + sed s/.ipynb$//
-[2024-05-06T18:59:21.682Z] + filename=dap_subset
-[2024-05-06T18:59:21.682Z] + [ -e buildout/dap_subset.output.ipynb ]
-[2024-05-06T18:59:21.682Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output dap_subset.output.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb
-[2024-05-06T18:59:22.252Z] [NbConvertApp] Converting notebook finch-master/docs/source/notebooks/dap_subset.ipynb to notebook
-[2024-05-06T18:59:23.192Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-06T18:59:23.192Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-06T18:59:23.192Z] 0.00s - to python to disable frozen modules.
-[2024-05-06T18:59:23.192Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-06T18:59:33.252Z] [NbConvertApp] Writing 162913 bytes to buildout/dap_subset.output.ipynb
-[2024-05-06T18:59:33.252Z] + basename finch-master/docs/source/notebooks/finch-usage.ipynb
-[2024-05-06T18:59:33.252Z] + filename=finch-usage.ipynb
-[2024-05-06T18:59:33.252Z] + echo finch-usage.ipynb
-[2024-05-06T18:59:33.252Z] + sed s/.ipynb$//
-[2024-05-06T18:59:33.252Z] + filename=finch-usage
-[2024-05-06T18:59:33.252Z] + [ -e buildout/finch-usage.output.ipynb ]
-[2024-05-06T18:59:33.252Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output finch-usage.output.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb
-[2024-05-06T18:59:34.183Z] [NbConvertApp] Converting notebook finch-master/docs/source/notebooks/finch-usage.ipynb to notebook
-[2024-05-06T18:59:35.122Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-06T18:59:35.122Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-06T18:59:35.122Z] 0.00s - to python to disable frozen modules.
-[2024-05-06T18:59:35.122Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-06T18:59:45.118Z] [NbConvertApp] Writing 65072 bytes to buildout/finch-usage.output.ipynb
-[2024-05-06T18:59:45.118Z] + basename PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
-[2024-05-06T18:59:45.118Z] + filename=PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
-[2024-05-06T18:59:45.118Z] + echo PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
-[2024-05-06T18:59:45.118Z] + sed s/.ipynb$//
-[2024-05-06T18:59:45.118Z] + filename=PAVICStutorial_ClimateDataAnalysis-1DataAccess
-[2024-05-06T18:59:45.118Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-1DataAccess.output.ipynb ]
-[2024-05-06T18:59:45.118Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-1DataAccess.output.ipynb PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
-[2024-05-06T18:59:46.061Z] [NbConvertApp] Converting notebook PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb to notebook
-[2024-05-06T18:59:47.005Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-06T18:59:47.005Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-06T18:59:47.005Z] 0.00s - to python to disable frozen modules.
-[2024-05-06T18:59:47.005Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-06T18:59:52.275Z] [NbConvertApp] Writing 173052 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-1DataAccess.output.ipynb
-[2024-05-06T18:59:52.275Z] + basename PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
-[2024-05-06T18:59:52.275Z] + filename=PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
-[2024-05-06T18:59:52.275Z] + echo PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
-[2024-05-06T18:59:52.275Z] + sed s/.ipynb$//
-[2024-05-06T18:59:52.275Z] + filename=PAVICStutorial_ClimateDataAnalysis-2Subsetting
-[2024-05-06T18:59:52.275Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-2Subsetting.output.ipynb ]
-[2024-05-06T18:59:52.275Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-2Subsetting.output.ipynb PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
-[2024-05-06T18:59:53.653Z] [NbConvertApp] Converting notebook PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb to notebook
-[2024-05-06T18:59:54.592Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-06T18:59:54.592Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-06T18:59:54.592Z] 0.00s - to python to disable frozen modules.
-[2024-05-06T18:59:54.592Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-06T19:00:16.552Z] [NbConvertApp] Writing 1481203 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-2Subsetting.output.ipynb
-[2024-05-06T19:00:16.552Z] + basename PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
-[2024-05-06T19:00:16.552Z] + filename=PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
-[2024-05-06T19:00:16.552Z] + echo PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
-[2024-05-06T19:00:16.552Z] + sed s/.ipynb$//
-[2024-05-06T19:00:16.552Z] + filename=PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators
-[2024-05-06T19:00:16.552Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.output.ipynb ]
-[2024-05-06T19:00:16.552Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.output.ipynb PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
-[2024-05-06T19:00:16.552Z] [NbConvertApp] Converting notebook PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb to notebook
-[2024-05-06T19:10:38.495Z] [NbConvertApp] Writing 576745 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.output.ipynb
-[2024-05-06T19:10:38.495Z] + basename PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
-[2024-05-06T19:10:38.495Z] + filename=PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
-[2024-05-06T19:10:38.495Z] + echo PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
-[2024-05-06T19:10:38.495Z] + sed s/.ipynb$//
-[2024-05-06T19:10:38.495Z] + filename=PAVICStutorial_ClimateDataAnalysis-4Ensembles
-[2024-05-06T19:10:38.495Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-4Ensembles.output.ipynb ]
-[2024-05-06T19:10:38.495Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-4Ensembles.output.ipynb PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
-[2024-05-06T19:10:38.495Z] [NbConvertApp] Converting notebook PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb to notebook
-[2024-05-06T19:11:00.437Z] [NbConvertApp] Writing 785209 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-4Ensembles.output.ipynb
-[2024-05-06T19:11:00.437Z] + basename PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
-[2024-05-06T19:11:00.437Z] + filename=PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
-[2024-05-06T19:11:00.437Z] + echo PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
-[2024-05-06T19:11:00.437Z] + sed s/.ipynb$//
-[2024-05-06T19:11:00.437Z] + filename=PAVICStutorial_ClimateDataAnalysis-5Visualization
-[2024-05-06T19:11:00.437Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-5Visualization.output.ipynb ]
-[2024-05-06T19:11:00.437Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-5Visualization.output.ipynb PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
-[2024-05-06T19:11:00.437Z] [NbConvertApp] Converting notebook PAVICS-landing-fix_nbs_jupyter_alpha_refresh_output/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb to notebook
-[2024-05-06T19:12:08.146Z] [NbConvertApp] Writing 1051936 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-5Visualization.output.ipynb
-[2024-05-06T19:12:08.146Z] + basename notebooks/hummingbird.ipynb
-[2024-05-06T19:12:08.146Z] + filename=hummingbird.ipynb
-[2024-05-06T19:12:08.146Z] + + sed s/.ipynb$//
-[2024-05-06T19:12:08.146Z] echo hummingbird.ipynb
-[2024-05-06T19:12:08.146Z] + filename=hummingbird
-[2024-05-06T19:12:08.146Z] + [ -e buildout/hummingbird.output.ipynb ]
-[2024-05-06T19:12:08.147Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output hummingbird.output.ipynb notebooks/hummingbird.ipynb
-[2024-05-06T19:12:08.147Z] [NbConvertApp] Converting notebook notebooks/hummingbird.ipynb to notebook
-[2024-05-06T19:12:08.147Z] [NbConvertApp] Writing 15960 bytes to buildout/hummingbird.output.ipynb
-[2024-05-06T19:12:08.407Z] + basename notebooks/stress-tests.ipynb
-[2024-05-06T19:12:08.407Z] + filename=stress-tests.ipynb
-[2024-05-06T19:12:08.407Z] + echo stress-tests.ipynb
-[2024-05-06T19:12:08.407Z] + sed s/.ipynb$//
-[2024-05-06T19:12:08.407Z] + filename=stress-tests
-[2024-05-06T19:12:08.407Z] + [ -e buildout/stress-tests.output.ipynb ]
-[2024-05-06T19:12:08.407Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output stress-tests.output.ipynb notebooks/stress-tests.ipynb
-[2024-05-06T19:12:10.318Z] [NbConvertApp] Converting notebook notebooks/stress-tests.ipynb to notebook
-[2024-05-06T19:12:10.887Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-06T19:12:10.887Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-06T19:12:10.887Z] 0.00s - to python to disable frozen modules.
-[2024-05-06T19:12:10.887Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-06T19:14:32.404Z] [NbConvertApp] Writing 428562 bytes to buildout/stress-tests.output.ipynb
-[2024-05-06T19:14:32.404Z] + exit 0
-[2024-05-06T19:14:32.404Z] + EXIT_CODE=0
-[2024-05-06T19:14:32.404Z] + ENV_DUMP_DIR=buildout/env-dump
-[2024-05-06T19:14:32.404Z] + mkdir -p buildout/env-dump
-[2024-05-06T19:14:32.404Z] + ENV_EXPORT_FILE=buildout/env-dump/environment-export-birdy.yml
-[2024-05-06T19:14:32.404Z] + rm -fv buildout/env-dump/environment-export-birdy.yml
-[2024-05-06T19:14:32.404Z] + conda env export -n birdy
-[2024-05-06T19:14:47.312Z] + LIST_EXPLICIT_FILE=buildout/env-dump/conda-list-explicit-birdy.txt
-[2024-05-06T19:14:47.312Z] + rm -fv buildout/env-dump/conda-list-explicit-birdy.txt
-[2024-05-06T19:14:47.312Z] + conda list -n birdy --explicit
-[2024-05-06T19:14:57.315Z] + PIP_FREEZE_FILE=buildout/env-dump/pip-freeze-birdy-requirements.txt
-[2024-05-06T19:14:57.315Z] + rm -fv buildout/env-dump/pip-freeze-birdy-requirements.txt
-[2024-05-06T19:14:57.315Z] + pip freeze
-[2024-05-06T19:14:57.315Z] + exit 0
+[2024-05-09T01:35:58.506Z] + VERIFY_SSL=true SAVE_RESULTING_NOTEBOOK=true ./testall
+[2024-05-09T01:35:58.506Z] TEST_PAVICS_SDI_REPO has been set to 'true'
+[2024-05-09T01:35:58.506Z] PAVICS_SDI_BRANCH has been set to 'master'
+[2024-05-09T01:35:58.506Z] PAVICS_SDI_REPO has been set to 'Ouranosinc/pavics-sdi'
+[2024-05-09T01:35:58.506Z] TEST_FINCH_REPO has been set to 'true'
+[2024-05-09T01:35:58.506Z] FINCH_BRANCH has been set to 'master'
+[2024-05-09T01:35:58.506Z] FINCH_REPO has been set to 'bird-house/finch'
+[2024-05-09T01:35:58.506Z] TEST_PAVICS_LANDING_REPO has been set to 'true'
+[2024-05-09T01:35:58.506Z] PAVICS_LANDING_BRANCH has been set to 'master'
+[2024-05-09T01:35:58.506Z] PAVICS_LANDING_REPO has been set to 'Ouranosinc/PAVICS-landing'
+[2024-05-09T01:35:58.506Z] TEST_RAVEN_REPO has been set to 'false'
+[2024-05-09T01:35:58.506Z] RAVEN_BRANCH has been set to 'main'
+[2024-05-09T01:35:58.506Z] RAVEN_REPO has been set to 'Ouranosinc/raven'
+[2024-05-09T01:35:58.506Z] TEST_RAVENPY_REPO has been set to 'false'
+[2024-05-09T01:35:58.506Z] RAVENPY_BRANCH has been set to 'master'
+[2024-05-09T01:35:58.506Z] RAVENPY_REPO has been set to 'CSHS-CWRA/RavenPy'
+[2024-05-09T01:35:58.506Z] TEST_ESGF_COMPUTE_API_REPO has been set to 'false'
+[2024-05-09T01:35:58.506Z] ESGF_COMPUTE_API_BRANCH has been set to 'devel'
+[2024-05-09T01:35:58.506Z] ESGF_COMPUTE_API_REPO has been set to 'ESGF/esgf-compute-api'
+[2024-05-09T01:35:58.506Z] TEST_LOCAL_NOTEBOOKS has been set to 'true'
+[2024-05-09T01:35:58.506Z] + [ -n https://gist.githubusercontent.com/tlvu/89115c6586e9d7b91262a68e9c4bc00b/raw/89707c3cbc983dac79e673943bb87e3de1579f22/jenkins-params-custom-branch.include.sh ]
+[2024-05-09T01:35:58.506Z] + TMP_CONF_OVERRIDE=/tmp/jenkins_conf_override
+[2024-05-09T01:35:58.506Z] + rm -vf /tmp/jenkins_conf_override
+[2024-05-09T01:35:58.506Z] removed '/tmp/jenkins_conf_override'
+[2024-05-09T01:35:58.506Z] + curl --silent https://gist.githubusercontent.com/tlvu/89115c6586e9d7b91262a68e9c4bc00b/raw/89707c3cbc983dac79e673943bb87e3de1579f22/jenkins-params-custom-branch.include.sh
+[2024-05-09T01:35:58.506Z] + tee /tmp/jenkins_conf_override
+[2024-05-09T01:35:58.776Z] #!/bin/sh
+[2024-05-09T01:35:58.776Z] # Jenkins params override script to test custom branch,
+[2024-05-09T01:35:58.776Z] # good for testing notebook fixes for new Jupyter env build.
+[2024-05-09T01:35:58.776Z] 
+[2024-05-09T01:35:58.776Z] PAVICS_SDI_BRANCH="fix_nbs_jupyter_alpha"
+[2024-05-09T01:35:58.776Z] #FINCH_BRANCH=""
+[2024-05-09T01:35:58.776Z] PAVICS_LANDING_BRANCH="fix_nbs_jupyter_alpha"
+[2024-05-09T01:35:58.776Z] 
+[2024-05-09T01:35:58.776Z] # Good for refreshing notebook output.
+[2024-05-09T01:35:58.776Z] SAVE_RESULTING_NOTEBOOK_TIMEOUT="600"+ . /tmp/jenkins_conf_override
+[2024-05-09T01:35:58.776Z] + PAVICS_SDI_BRANCH=fix_nbs_jupyter_alpha
+[2024-05-09T01:35:58.776Z] + PAVICS_LANDING_BRANCH=fix_nbs_jupyter_alpha
+[2024-05-09T01:35:58.776Z] + SAVE_RESULTING_NOTEBOOK_TIMEOUT=600
+[2024-05-09T01:35:58.776Z] + git clean -fdx
+[2024-05-09T01:35:58.776Z] Removing .pytest_cache/
+[2024-05-09T01:35:58.776Z] Removing PAVICS-landing-master/
+[2024-05-09T01:35:58.776Z] Removing RavenPy-fixnbs_pavics_betaimage/
+[2024-05-09T01:35:58.776Z] Removing __pycache__/
+[2024-05-09T01:35:58.776Z] Removing buildout/
+[2024-05-09T01:35:58.776Z] Removing esgf-compute-api-devel/
+[2024-05-09T01:35:58.776Z] Removing finch-master/
+[2024-05-09T01:35:58.776Z] Removing pavics-sdi-master/
+[2024-05-09T01:35:58.776Z] Removing raven-main/
+[2024-05-09T01:35:58.776Z] + ./downloadrepos
+[2024-05-09T01:35:58.776Z] TEST_PAVICS_SDI_REPO has been set to 'true'
+[2024-05-09T01:35:58.776Z] PAVICS_SDI_BRANCH has been set to 'fix_nbs_jupyter_alpha'
+[2024-05-09T01:35:58.776Z] PAVICS_SDI_REPO has been set to 'Ouranosinc/pavics-sdi'
+[2024-05-09T01:35:58.776Z] TEST_FINCH_REPO has been set to 'true'
+[2024-05-09T01:35:58.776Z] FINCH_BRANCH has been set to 'master'
+[2024-05-09T01:35:58.776Z] FINCH_REPO has been set to 'bird-house/finch'
+[2024-05-09T01:35:58.776Z] TEST_PAVICS_LANDING_REPO has been set to 'true'
+[2024-05-09T01:35:58.776Z] PAVICS_LANDING_BRANCH has been set to 'fix_nbs_jupyter_alpha'
+[2024-05-09T01:35:58.776Z] PAVICS_LANDING_REPO has been set to 'Ouranosinc/PAVICS-landing'
+[2024-05-09T01:35:58.776Z] TEST_RAVEN_REPO has been set to 'false'
+[2024-05-09T01:35:58.776Z] RAVEN_BRANCH has been set to 'main'
+[2024-05-09T01:35:58.776Z] RAVEN_REPO has been set to 'Ouranosinc/raven'
+[2024-05-09T01:35:58.776Z] TEST_RAVENPY_REPO has been set to 'false'
+[2024-05-09T01:35:58.776Z] RAVENPY_BRANCH has been set to 'master'
+[2024-05-09T01:35:58.776Z] RAVENPY_REPO has been set to 'CSHS-CWRA/RavenPy'
+[2024-05-09T01:35:58.776Z] TEST_ESGF_COMPUTE_API_REPO has been set to 'false'
+[2024-05-09T01:35:58.776Z] ESGF_COMPUTE_API_BRANCH has been set to 'devel'
+[2024-05-09T01:35:58.776Z] ESGF_COMPUTE_API_REPO has been set to 'ESGF/esgf-compute-api'
+[2024-05-09T01:35:58.776Z] TEST_LOCAL_NOTEBOOKS has been set to 'true'
+[2024-05-09T01:35:58.776Z] + rm -rf pavics-sdi-*
+[2024-05-09T01:35:58.776Z] + + grep pavics-sdi
+[2024-05-09T01:35:58.776Z] ls
+[2024-05-09T01:35:58.776Z] + downloadrepos https://github.com/Ouranosinc/pavics-sdi fix_nbs_jupyter_alpha
+[2024-05-09T01:35:58.776Z] + github_repo=https://github.com/Ouranosinc/pavics-sdi
+[2024-05-09T01:35:58.776Z] + shift
+[2024-05-09T01:35:58.776Z] + branch=fix_nbs_jupyter_alpha
+[2024-05-09T01:35:58.776Z] + shift
+[2024-05-09T01:35:58.776Z] + + tar xz
+[2024-05-09T01:35:58.776Z] wget --quiet --output-document - https://github.com/Ouranosinc/pavics-sdi/archive/fix_nbs_jupyter_alpha.tar.gz
+[2024-05-09T01:36:08.751Z] + ls
+[2024-05-09T01:36:08.751Z] + grep pavics-sdi
+[2024-05-09T01:36:08.751Z] pavics-sdi-fix_nbs_jupyter_alpha
+[2024-05-09T01:36:08.751Z] + set +x
+[2024-05-09T01:36:08.751Z] + rm -rf finch-*
+[2024-05-09T01:36:08.751Z] + ls
+[2024-05-09T01:36:08.751Z] + grep finch
+[2024-05-09T01:36:08.751Z] + downloadrepos https://github.com/bird-house/finch master
+[2024-05-09T01:36:08.751Z] + github_repo=https://github.com/bird-house/finch
+[2024-05-09T01:36:08.751Z] + shift
+[2024-05-09T01:36:08.751Z] + branch=master
+[2024-05-09T01:36:08.752Z] + shift
+[2024-05-09T01:36:08.752Z] + wget --quiet --output-document - https://github.com/bird-house/finch/archive/master.tar.gz
+[2024-05-09T01:36:08.752Z] + tar xz
+[2024-05-09T01:36:09.678Z] + ls
+[2024-05-09T01:36:09.678Z] + grep finch
+[2024-05-09T01:36:09.678Z] finch-master
+[2024-05-09T01:36:09.678Z] + set +x
+[2024-05-09T01:36:09.678Z] + rm -rf PAVICS-landing-*
+[2024-05-09T01:36:09.678Z] + ls
+[2024-05-09T01:36:09.678Z] + grep PAVICS-landing
+[2024-05-09T01:36:09.678Z] + downloadrepos https://github.com/Ouranosinc/PAVICS-landing fix_nbs_jupyter_alpha
+[2024-05-09T01:36:09.678Z] + github_repo=https://github.com/Ouranosinc/PAVICS-landing
+[2024-05-09T01:36:09.678Z] + shift
+[2024-05-09T01:36:09.678Z] + branch=fix_nbs_jupyter_alpha
+[2024-05-09T01:36:09.678Z] + shift
+[2024-05-09T01:36:09.678Z] + wget --quiet --output-document - https://github.com/Ouranosinc/PAVICS-landing/archive/fix_nbs_jupyter_alpha.tar.gz
+[2024-05-09T01:36:09.678Z] + tar xz
+[2024-05-09T01:37:17.320Z] + ls
+[2024-05-09T01:37:17.320Z] + grep PAVICS-landing
+[2024-05-09T01:37:17.320Z] PAVICS-landing-fix_nbs_jupyter_alpha
+[2024-05-09T01:37:17.320Z] + set +x
+[2024-05-09T01:37:17.320Z] + rm -rf raven-*
+[2024-05-09T01:37:17.320Z] + ls
+[2024-05-09T01:37:17.320Z] + grep raven
+[2024-05-09T01:37:17.320Z] + downloadrepos https://github.com/Ouranosinc/raven main
+[2024-05-09T01:37:17.320Z] + github_repo=https://github.com/Ouranosinc/raven
+[2024-05-09T01:37:17.320Z] + shift
+[2024-05-09T01:37:17.320Z] + branch=main
+[2024-05-09T01:37:17.320Z] + shift
+[2024-05-09T01:37:17.320Z] + wget --quiet --output-document - https://github.com/Ouranosinc/raven/archive/main.tar.gz
+[2024-05-09T01:37:17.320Z] + tar xz
+[2024-05-09T01:37:17.320Z] + ls
+[2024-05-09T01:37:17.320Z] + grep raven
+[2024-05-09T01:37:17.320Z] raven-main
+[2024-05-09T01:37:17.320Z] + set +x
+[2024-05-09T01:37:17.320Z] + rm -rf RavenPy-*
+[2024-05-09T01:37:17.320Z] + ls
+[2024-05-09T01:37:17.320Z] + grep RavenPy
+[2024-05-09T01:37:17.320Z] + downloadrepos https://github.com/CSHS-CWRA/RavenPy master
+[2024-05-09T01:37:17.320Z] + github_repo=https://github.com/CSHS-CWRA/RavenPy
+[2024-05-09T01:37:17.320Z] + shift
+[2024-05-09T01:37:17.320Z] + branch=master
+[2024-05-09T01:37:17.320Z] + shift
+[2024-05-09T01:37:17.320Z] + wget --quiet --output-document - https://github.com/CSHS-CWRA/RavenPy/archive/master.tar.gz
+[2024-05-09T01:37:17.320Z] + tar xz
+[2024-05-09T01:37:17.320Z] + ls
+[2024-05-09T01:37:17.320Z] + grep RavenPy
+[2024-05-09T01:37:17.320Z] RavenPy-master
+[2024-05-09T01:37:17.320Z] + set +x
+[2024-05-09T01:37:17.320Z] + rm -rf esgf-compute-api-*
+[2024-05-09T01:37:17.320Z] + ls
+[2024-05-09T01:37:17.320Z] + grep esgf-compute-api
+[2024-05-09T01:37:17.320Z] + downloadrepos https://github.com/ESGF/esgf-compute-api devel
+[2024-05-09T01:37:17.320Z] + github_repo=https://github.com/ESGF/esgf-compute-api
+[2024-05-09T01:37:17.320Z] + shift
+[2024-05-09T01:37:17.320Z] + branch=devel
+[2024-05-09T01:37:17.320Z] + shift
+[2024-05-09T01:37:17.320Z] + wget --quiet --output-document - https://github.com/ESGF/esgf-compute-api/archive/devel.tar.gz
+[2024-05-09T01:37:17.320Z] + tar xz
+[2024-05-09T01:37:17.320Z] + ls
+[2024-05-09T01:37:17.320Z] + grep esgf-compute-api
+[2024-05-09T01:37:17.320Z] esgf-compute-api-devel
+[2024-05-09T01:37:17.320Z] + set +x
+[2024-05-09T01:37:17.320Z] + echo fix_nbs_jupyter_alpha
+[2024-05-09T01:37:17.320Z] + sed s@/@-@g
+[2024-05-09T01:37:17.320Z] + PAVICS_SDI_BRANCH=fix_nbs_jupyter_alpha
+[2024-05-09T01:37:17.320Z] + echo Ouranosinc/pavics-sdi
+[2024-05-09T01:37:17.320Z] + sed s@^.*/@@g
+[2024-05-09T01:37:17.320Z] + PAVICS_SDI_REPO_NAME=pavics-sdi
+[2024-05-09T01:37:17.320Z] + echo master
+[2024-05-09T01:37:17.320Z] + sed s@/@-@g
+[2024-05-09T01:37:17.320Z] + FINCH_BRANCH=master
+[2024-05-09T01:37:17.320Z] + echo bird-house/finch
+[2024-05-09T01:37:17.320Z] + sed s@^.*/@@g
+[2024-05-09T01:37:17.320Z] + FINCH_REPO_NAME=finch
+[2024-05-09T01:37:17.320Z] + echo fix_nbs_jupyter_alpha
+[2024-05-09T01:37:17.320Z] + sed s@/@-@g
+[2024-05-09T01:37:17.320Z] + PAVICS_LANDING_BRANCH=fix_nbs_jupyter_alpha
+[2024-05-09T01:37:17.320Z] + echo Ouranosinc/PAVICS-landing
+[2024-05-09T01:37:17.320Z] + sed s@^.*/@@g
+[2024-05-09T01:37:17.320Z] + PAVICS_LANDING_REPO_NAME=PAVICS-landing
+[2024-05-09T01:37:17.320Z] + echo main
+[2024-05-09T01:37:17.320Z] + sed s@/@-@g
+[2024-05-09T01:37:17.320Z] + RAVEN_BRANCH=main
+[2024-05-09T01:37:17.320Z] + echo Ouranosinc/raven
+[2024-05-09T01:37:17.320Z] + sed s@^.*/@@g
+[2024-05-09T01:37:17.320Z] + RAVEN_REPO_NAME=raven
+[2024-05-09T01:37:17.320Z] + echo master
+[2024-05-09T01:37:17.320Z] + sed s@/@-@g
+[2024-05-09T01:37:17.320Z] + RAVENPY_BRANCH=master
+[2024-05-09T01:37:17.320Z] + echo CSHS-CWRA/RavenPy
+[2024-05-09T01:37:17.320Z] + sed s@^.*/@@g
+[2024-05-09T01:37:17.320Z] + RAVENPY_REPO_NAME=RavenPy
+[2024-05-09T01:37:17.320Z] + echo devel
+[2024-05-09T01:37:17.320Z] + sed s@/@-@g
+[2024-05-09T01:37:17.320Z] + ESGF_COMPUTE_API_BRANCH=devel
+[2024-05-09T01:37:17.320Z] + echo ESGF/esgf-compute-api
+[2024-05-09T01:37:17.320Z] + sed s@^.*/@@g
+[2024-05-09T01:37:17.320Z] + ESGF_COMPUTE_API_REPO_NAME=esgf-compute-api
+[2024-05-09T01:37:17.320Z] + echo pavics-sdi-fix_nbs_jupyter_alpha
+[2024-05-09T01:37:17.320Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-05-09T01:37:17.320Z] + PAVICS_SDI_DIR=pavics-sdi-fix_nbs_jupyter_alpha
+[2024-05-09T01:37:17.320Z] + echo finch-master
+[2024-05-09T01:37:17.320Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-05-09T01:37:17.320Z] + FINCH_DIR=finch-master
+[2024-05-09T01:37:17.320Z] + echo PAVICS-landing-fix_nbs_jupyter_alpha
+[2024-05-09T01:37:17.320Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-05-09T01:37:17.320Z] + PAVICS_LANDING_DIR=PAVICS-landing-fix_nbs_jupyter_alpha
+[2024-05-09T01:37:17.320Z] + echo raven-main
+[2024-05-09T01:37:17.320Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-05-09T01:37:17.320Z] + RAVEN_DIR=raven-main
+[2024-05-09T01:37:17.320Z] + echo RavenPy-master
+[2024-05-09T01:37:17.320Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-05-09T01:37:17.320Z] + RAVENPY_DIR=RavenPy-master
+[2024-05-09T01:37:17.320Z] + echo esgf-compute-api-devel
+[2024-05-09T01:37:17.320Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-05-09T01:37:17.320Z] + ESGF_COMPUTE_API_DIR=esgf-compute-api-devel
+[2024-05-09T01:37:17.320Z] + echo true
+[2024-05-09T01:37:17.320Z] + tr [:upper:] [:lower:]
+[2024-05-09T01:37:17.320Z] + VERIFY_SSL=true
+[2024-05-09T01:37:17.320Z] + [ xtrue = xfalse ]
+[2024-05-09T01:37:17.320Z] + rm -v finch-master/setup.cfg
+[2024-05-09T01:37:17.320Z] removed 'finch-master/setup.cfg'
+[2024-05-09T01:37:17.320Z] + rm -v raven-main/setup.cfg
+[2024-05-09T01:37:17.320Z] removed 'raven-main/setup.cfg'
+[2024-05-09T01:37:17.320Z] + rm -v raven-main/pyproject.toml
+[2024-05-09T01:37:17.320Z] removed 'raven-main/pyproject.toml'
+[2024-05-09T01:37:17.320Z] + rm -v RavenPy-master/setup.cfg
+[2024-05-09T01:37:17.320Z] removed 'RavenPy-master/setup.cfg'
+[2024-05-09T01:37:17.320Z] + rm -v RavenPy-master/tox.ini
+[2024-05-09T01:37:17.320Z] removed 'RavenPy-master/tox.ini'
+[2024-05-09T01:37:17.320Z] + rm -v RavenPy-master/pyproject.toml
+[2024-05-09T01:37:17.320Z] removed 'RavenPy-master/pyproject.toml'
+[2024-05-09T01:37:17.320Z] + rm -v esgf-compute-api-devel/setup.cfg
+[2024-05-09T01:37:17.320Z] rm: cannot remove 'esgf-compute-api-devel/setup.cfg': No such file or directory
+[2024-05-09T01:37:17.320Z] + rm -v esgf-compute-api-devel/tox.ini
+[2024-05-09T01:37:17.320Z] rm: cannot remove 'esgf-compute-api-devel/tox.ini': No such file or directory
+[2024-05-09T01:37:17.320Z] + echo false
+[2024-05-09T01:37:17.320Z] + tr [:upper:] [:lower:]
+[2024-05-09T01:37:17.320Z] + TEST_MAGPIE_AUTH=false
+[2024-05-09T01:37:17.320Z] + echo true
+[2024-05-09T01:37:17.320Z] + tr [:upper:] [:lower:]
+[2024-05-09T01:37:17.320Z] + TEST_PAVICS_SDI_REPO=true
+[2024-05-09T01:37:17.320Z] + echo false
+[2024-05-09T01:37:17.320Z] + tr [:upper:] [:lower:]
+[2024-05-09T01:37:17.320Z] + TEST_PAVICS_SDI_WEAVER=false
+[2024-05-09T01:37:17.320Z] + echo true
+[2024-05-09T01:37:17.320Z] + tr [:upper:] [:lower:]
+[2024-05-09T01:37:17.320Z] + TEST_FINCH_REPO=true
+[2024-05-09T01:37:17.320Z] + echo true
+[2024-05-09T01:37:17.320Z] + tr [:upper:] [:lower:]
+[2024-05-09T01:37:17.320Z] + TEST_PAVICS_LANDING_REPO=true
+[2024-05-09T01:37:17.320Z] + echo false
+[2024-05-09T01:37:17.320Z] + tr [:upper:] [:lower:]
+[2024-05-09T01:37:17.320Z] + TEST_RAVEN_REPO=false
+[2024-05-09T01:37:17.320Z] + echo false
+[2024-05-09T01:37:17.320Z] + tr [:upper:] [:lower:]
+[2024-05-09T01:37:17.320Z] + TEST_RAVENPY_REPO=false
+[2024-05-09T01:37:17.320Z] + echo false
+[2024-05-09T01:37:17.320Z] + tr [:upper:] [:lower:]
+[2024-05-09T01:37:17.320Z] + TEST_ESGF_COMPUTE_API_REPO=false
+[2024-05-09T01:37:17.320Z] + echo true
+[2024-05-09T01:37:17.320Z] + tr [:upper:] [:lower:]
+[2024-05-09T01:37:17.320Z] + TEST_LOCAL_NOTEBOOKS=true
+[2024-05-09T01:37:17.320Z] + NOTEBOOKS_TO_TEST=
+[2024-05-09T01:37:17.320Z] + [ xfalse = xtrue ]
+[2024-05-09T01:37:17.320Z] + [ xtrue = xtrue ]
+[2024-05-09T01:37:17.320Z] + NOTEBOOKS_TO_TEST= pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/*.ipynb
+[2024-05-09T01:37:17.320Z] + [ xfalse = xtrue ]
+[2024-05-09T01:37:17.320Z] + [ xtrue = xtrue ]
+[2024-05-09T01:37:17.320Z] + NOTEBOOKS_TO_TEST= pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb
+[2024-05-09T01:37:17.320Z] + [ xtrue = xtrue ]
+[2024-05-09T01:37:17.320Z] + NOTEBOOKS_TO_TEST= pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/*.ipynb
+[2024-05-09T01:37:17.320Z] + SETUP_SCRIPT=PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/setup_dirlayout.sh
+[2024-05-09T01:37:17.320Z] + [ -x PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/setup_dirlayout.sh ]
+[2024-05-09T01:37:17.320Z] + PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/setup_dirlayout.sh
+[2024-05-09T01:37:17.320Z] + realpath PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/setup_dirlayout.sh
+[2024-05-09T01:37:17.320Z] + THIS_FILE=/home/jenkins/agent/workspace/cker-build-with-jenkins-override/PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/setup_dirlayout.sh
+[2024-05-09T01:37:17.320Z] + dirname /home/jenkins/agent/workspace/cker-build-with-jenkins-override/PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/setup_dirlayout.sh
+[2024-05-09T01:37:17.320Z] + THIS_DIR=/home/jenkins/agent/workspace/cker-build-with-jenkins-override/PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators
+[2024-05-09T01:37:17.320Z] + NOTEBOOK_3_OUTDIR_BASE=/notebook_dir/writable-workspace/tmp/tutorial3
+[2024-05-09T01:37:17.321Z] + mkdir -p /notebook_dir/writable-workspace/tmp/tutorial3
+[2024-05-09T01:37:17.321Z] + unzip /home/jenkins/agent/workspace/cker-build-with-jenkins-override/PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/output.zip -d /notebook_dir/writable-workspace/tmp/tutorial3/
+[2024-05-09T01:37:17.321Z] Archive:  /home/jenkins/agent/workspace/cker-build-with-jenkins-override/PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/output.zip
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_IPSL-CM5A-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_NorESM1-M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_NorESM1-M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_MPI-ESM-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_MPI-ESM-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_IPSL-CM5B-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_IPSL-CM5B-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_IPSL-CM5A-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_IPSL-CM5A-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_INM-CM4_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_INM-CM4_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_HadGEM2-CC_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_HadGEM2-CC_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_GFDL-ESM2M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_GFDL-ESM2M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_CanESM2_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_CanESM2_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_CMCC-CMS_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_CMCC-CMS_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_BNU-ESM_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_BNU-ESM_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_ACCESS1-3_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-QS-DEC_ACCESS1-3_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_NorESM1-M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_NorESM1-M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_MPI-ESM-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_MPI-ESM-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_IPSL-CM5B-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_IPSL-CM5B-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_IPSL-CM5A-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_INM-CM4_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_INM-CM4_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_HadGEM2-CC_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_HadGEM2-CC_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_GFDL-ESM2M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.321Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_GFDL-ESM2M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_CanESM2_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_CanESM2_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_CMCC-CMS_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_CMCC-CMS_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_BNU-ESM_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_BNU-ESM_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_ACCESS1-3_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_degC-YS_ACCESS1-3_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_NorESM1-M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_NorESM1-M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_MPI-ESM-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_MPI-ESM-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_IPSL-CM5B-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_IPSL-CM5B-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_IPSL-CM5A-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_IPSL-CM5A-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_INM-CM4_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_INM-CM4_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_HadGEM2-CC_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_HadGEM2-CC_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_GFDL-ESM2M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_GFDL-ESM2M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_CanESM2_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_CanESM2_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_CMCC-CMS_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_CMCC-CMS_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_BNU-ESM_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_BNU-ESM_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_ACCESS1-3_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_QS-DEC_ACCESS1-3_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_NorESM1-M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_NorESM1-M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_MPI-ESM-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_MPI-ESM-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_IPSL-CM5B-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_IPSL-CM5B-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_IPSL-CM5A-LR_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_IPSL-CM5A-LR_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_INM-CM4_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.322Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_INM-CM4_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.323Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_HadGEM2-CC_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.323Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_HadGEM2-CC_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.323Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_GFDL-ESM2M_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.323Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_GFDL-ESM2M_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.323Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_CanESM2_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.323Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_CanESM2_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.323Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_CMCC-CMS_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.323Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_CMCC-CMS_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.323Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_BNU-ESM_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.323Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_BNU-ESM_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.323Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_ACCESS1-3_historical+rcp85_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.323Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_YS_ACCESS1-3_historical+rcp45_r1i1p1_na10kgrid_qm-moving-50bins-detrend_1970-2100.nc  
+[2024-05-09T01:37:17.323Z] + HOMEPAGE_ROOT_DIR=/notebook_dir/pavics-homepage
+[2024-05-09T01:37:17.323Z] + mkdir -p /notebook_dir/pavics-homepage
+[2024-05-09T01:37:17.323Z] + ln -sv /home/jenkins/agent/workspace/cker-build-with-jenkins-override/PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/tutorial_data /notebook_dir/pavics-homepage/tutorial_data
+[2024-05-09T01:37:17.323Z] '/notebook_dir/pavics-homepage/tutorial_data' -> '/home/jenkins/agent/workspace/cker-build-with-jenkins-override/PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/tutorial_data'
+[2024-05-09T01:37:17.323Z] + [ xfalse = xtrue ]
+[2024-05-09T01:37:17.323Z] + [ xfalse = xtrue ]
+[2024-05-09T01:37:17.323Z] + [ xfalse = xtrue ]
+[2024-05-09T01:37:17.323Z] + [ xtrue = xtrue ]
+[2024-05-09T01:37:17.323Z] + NOTEBOOKS_TO_TEST= pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/*.ipynb notebooks/*.ipynb
+[2024-05-09T01:37:17.323Z] + ./runtest  pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/*.ipynb notebooks/*.ipynb
+[2024-05-09T01:37:17.323Z] + [ -n  ]
+[2024-05-09T01:37:17.323Z] + [ ! -z pavics.ouranos.ca ]
+[2024-05-09T01:37:17.323Z] + echo Will run notebooks against pavics.ouranos.ca
+[2024-05-09T01:37:17.323Z] Will run notebooks against pavics.ouranos.ca
+[2024-05-09T01:37:17.323Z] + [ -z  ]
+[2024-05-09T01:37:17.323Z] + sed -i /\(\.ncml\|TEST_USE_PROD_DATA\)/!s/pavics.ouranos.ca/pavics.ouranos.ca/g pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/CaSR_basic.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/WCS_example.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/WFS_example.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/WMS_example.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/climex.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/eccc-geoapi-xclim.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/esgf-dap.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/forecasts.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/jupyter_extensions.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/opendap.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/pavics_thredds.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/regridding.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/rendering.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/subset-user-input.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/subsetting.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb notebooks/hummingbird.ipynb notebooks/stress-tests.ipynb
+[2024-05-09T01:37:17.323Z] + git diff
+[2024-05-09T01:37:17.323Z] + export PYTHONWARNINGS=ignore:Unverified HTTPS request
+[2024-05-09T01:37:17.323Z] + [ -n  ]
+[2024-05-09T01:37:17.324Z] + py.test --nbval pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/CaSR_basic.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/WCS_example.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/WFS_example.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/WMS_example.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/climex.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/eccc-geoapi-xclim.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/esgf-dap.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/forecasts.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/jupyter_extensions.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/opendap.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/pavics_thredds.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/regridding.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/rendering.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/subset-user-input.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/subsetting.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb notebooks/hummingbird.ipynb notebooks/stress-tests.ipynb --nbval-sanitize-with notebooks/output-sanitize.cfg --dist=loadscope --numprocesses=0
+[2024-05-09T01:37:18.249Z] ============================= test session starts ==============================
+[2024-05-09T01:37:18.249Z] platform linux -- Python 3.11.6, pytest-8.2.0, pluggy-1.5.0
+[2024-05-09T01:37:18.249Z] rootdir: /home/jenkins/agent/workspace/cker-build-with-jenkins-override
+[2024-05-09T01:37:18.249Z] plugins: anyio-4.3.0, dash-2.17.0, nbval-0.11.0, tornasync-0.6.0.post2, xdist-3.5.0
+[2024-05-09T01:37:18.249Z] collected 219 items
+[2024-05-09T01:37:18.249Z] 
+[2024-05-09T01:37:21.525Z] pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/CaSR_basic.ipynb . [  0%]
+[2024-05-09T01:37:50.167Z] .....                                                                    [  2%]
+[2024-05-09T01:37:52.069Z] pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/WCS_example.ipynb . [  3%]
+[2024-05-09T01:37:58.467Z] ......                                                                   [  5%]
+[2024-05-09T01:38:00.998Z] pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/WFS_example.ipynb . [  6%]
+[2024-05-09T01:38:06.826Z] .....                                                                    [  8%]
+[2024-05-09T01:38:07.395Z] pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/WMS_example.ipynb . [  9%]
+[2024-05-09T01:38:13.427Z] .......                                                                  [ 12%]
+[2024-05-09T01:38:25.095Z] pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/climex.ipynb .... [ 14%]
+[2024-05-09T01:41:30.970Z] ........                                                                 [ 17%]
+[2024-05-09T01:41:30.970Z] pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb . [ 18%]
+[2024-05-09T01:41:33.701Z] ...............                                                          [ 25%]
+[2024-05-09T01:41:36.256Z] pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/eccc-geoapi-xclim.ipynb . [ 25%]
+[2024-05-09T01:41:41.386Z] ....                                                                     [ 27%]
+[2024-05-09T01:41:43.291Z] pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/esgf-dap.ipynb .. [ 28%]
+[2024-05-09T01:41:49.063Z] ....                                                                     [ 30%]
+[2024-05-09T01:41:57.227Z] pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/forecasts.ipynb . [ 30%]
+[2024-05-09T01:42:03.556Z] .....                                                                    [ 32%]
+[2024-05-09T01:47:12.126Z] pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/opendap.ipynb .FF [ 34%]
+[2024-05-09T01:47:12.126Z] FFFF                                                                     [ 36%]
+[2024-05-09T01:47:12.126Z] pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/pavics_thredds.ipynb . [ 36%]
+[2024-05-09T01:47:12.126Z] ....                                                                     [ 38%]
+[2024-05-09T01:47:27.020Z] pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/regridding.ipynb . [ 38%]
+[2024-05-09T01:48:57.189Z] ...........................                                              [ 51%]
+[2024-05-09T01:48:58.565Z] pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/rendering.ipynb . [ 51%]
+[2024-05-09T01:49:00.207Z] ...                                                                      [ 52%]
+[2024-05-09T01:49:01.160Z] pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/subset-user-input.ipynb . [ 53%]
+[2024-05-09T01:49:18.544Z] ........................                                                 [ 64%]
+[2024-05-09T01:49:21.884Z] pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/subsetting.ipynb . [ 64%]
+[2024-05-09T01:49:26.365Z] .....                                                                    [ 67%]
+[2024-05-09T01:49:35.696Z] finch-master/docs/source/notebooks/dap_subset.ipynb ...........          [ 72%]
+[2024-05-09T01:49:43.888Z] finch-master/docs/source/notebooks/finch-usage.ipynb ......              [ 74%]
+[2024-05-09T01:49:44.847Z] PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb . [ 75%]
+[2024-05-09T01:49:47.982Z] ......                                                                   [ 78%]
+[2024-05-09T01:49:54.559Z] PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb . [ 78%]
+[2024-05-09T01:50:06.527Z] .............                                                            [ 84%]
+[2024-05-09T01:50:14.635Z] PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb . [ 84%]
+[2024-05-09T01:50:36.711Z] ....s                                                                    [ 87%]
+[2024-05-09T01:50:43.268Z] PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb . [ 87%]
+[2024-05-09T01:50:53.917Z] ..                                                                       [ 88%]
+[2024-05-09T01:51:06.129Z] PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb . [ 89%]
+[2024-05-09T01:51:49.315Z] ......                                                                   [ 91%]
+[2024-05-09T01:51:51.726Z] notebooks/hummingbird.ipynb ............                                 [ 97%]
+[2024-05-09T01:53:47.480Z] notebooks/stress-tests.ipynb ......                                      [100%]
+[2024-05-09T01:53:47.480Z] 
+[2024-05-09T01:53:47.480Z] =================================== FAILURES ===================================
+[2024-05-09T01:53:47.480Z] _ pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/opendap.ipynb::Cell 1 _
+[2024-05-09T01:53:47.480Z] [91mNotebook cell execution failed[0m
+[2024-05-09T01:53:47.480Z] [94mCell 1: Cell execution caused an exception
+[2024-05-09T01:53:47.480Z] 
+[2024-05-09T01:53:47.480Z] Input:
+[2024-05-09T01:53:47.480Z] [0murl = "http://test.opendap.org:80/opendap/data/nc/20070917-MODIS_A-JPL-L2P-A2007260000000.L2_LAC_GHRSST-v01.nc"
+[2024-05-09T01:53:47.480Z] D = nc.Dataset(url)
+[2024-05-09T01:53:47.480Z] print(D.ncattrs())
+[2024-05-09T01:53:47.480Z] D.variables.keys()
+[2024-05-09T01:53:47.480Z] 
+[2024-05-09T01:53:47.480Z] [94mTraceback:[0m
+[2024-05-09T01:53:47.480Z] 
+[2024-05-09T01:53:47.480Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-05-09T01:53:47.480Z] [0;31mOSError[0m                                   Traceback (most recent call last)
+[2024-05-09T01:53:47.480Z] Cell [0;32mIn[1], line 2[0m
+[2024-05-09T01:53:47.480Z] [1;32m      1[0m url [38;5;241m=[39m [38;5;124m"[39m[38;5;124mhttp://test.opendap.org:80/opendap/data/nc/20070917-MODIS_A-JPL-L2P-A2007260000000.L2_LAC_GHRSST-v01.nc[39m[38;5;124m"[39m
+[2024-05-09T01:53:47.480Z] [0;32m----> 2[0m D [38;5;241m=[39m [43mnc[49m[38;5;241;43m.[39;49m[43mDataset[49m[43m([49m[43murl[49m[43m)[49m
+[2024-05-09T01:53:47.480Z] [1;32m      3[0m [38;5;28mprint[39m(D[38;5;241m.[39mncattrs())
+[2024-05-09T01:53:47.480Z] [1;32m      4[0m D[38;5;241m.[39mvariables[38;5;241m.[39mkeys()
+[2024-05-09T01:53:47.480Z] 
+[2024-05-09T01:53:47.480Z] File [0;32msrc/netCDF4/_netCDF4.pyx:2463[0m, in [0;36mnetCDF4._netCDF4.Dataset.__init__[0;34m()[0m
+[2024-05-09T01:53:47.480Z] 
+[2024-05-09T01:53:47.480Z] File [0;32msrc/netCDF4/_netCDF4.pyx:2026[0m, in [0;36mnetCDF4._netCDF4._ensure_nc_success[0;34m()[0m
+[2024-05-09T01:53:47.480Z] 
+[2024-05-09T01:53:47.480Z] [0;31mOSError[0m: [Errno -70] NetCDF: DAP server error: b'http://test.opendap.org:80/opendap/data/nc/20070917-MODIS_A-JPL-L2P-A2007260000000.L2_LAC_GHRSST-v01.nc'
+[2024-05-09T01:53:47.480Z] 
+[2024-05-09T01:53:47.480Z] _ pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/opendap.ipynb::Cell 2 _
+[2024-05-09T01:53:47.480Z] [91mNotebook cell execution failed[0m
+[2024-05-09T01:53:47.480Z] [94mCell 2: Cell execution caused an exception
+[2024-05-09T01:53:47.480Z] 
+[2024-05-09T01:53:47.480Z] Input:
+[2024-05-09T01:53:47.480Z] [0mlat = D.variables["lat"][:]
+[2024-05-09T01:53:47.480Z] lon = D.variables["lon"][:]
+[2024-05-09T01:53:47.480Z] time = D.variables["time"]
+[2024-05-09T01:53:47.480Z] print(time.units, time[0], nc.num2date(time[0], time.units))
+[2024-05-09T01:53:47.480Z] 
+[2024-05-09T01:53:47.480Z] [94mTraceback:[0m
+[2024-05-09T01:53:47.480Z] 
+[2024-05-09T01:53:47.480Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-05-09T01:53:47.480Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-05-09T01:53:47.480Z] Cell [0;32mIn[1], line 1[0m
+[2024-05-09T01:53:47.481Z] [0;32m----> 1[0m lat [38;5;241m=[39m [43mD[49m[38;5;241m.[39mvariables[[38;5;124m"[39m[38;5;124mlat[39m[38;5;124m"[39m][:]
+[2024-05-09T01:53:47.481Z] [1;32m      2[0m lon [38;5;241m=[39m D[38;5;241m.[39mvariables[[38;5;124m"[39m[38;5;124mlon[39m[38;5;124m"[39m][:]
+[2024-05-09T01:53:47.481Z] [1;32m      3[0m time [38;5;241m=[39m D[38;5;241m.[39mvariables[[38;5;124m"[39m[38;5;124mtime[39m[38;5;124m"[39m]
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] [0;31mNameError[0m: name 'D' is not defined
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] _ pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/opendap.ipynb::Cell 3 _
+[2024-05-09T01:53:47.481Z] [91mNotebook cell execution failed[0m
+[2024-05-09T01:53:47.481Z] [94mCell 3: Cell execution caused an exception
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] Input:
+[2024-05-09T01:53:47.481Z] [0msst = D.variables["sea_surface_temperature"]
+[2024-05-09T01:53:47.481Z] print(sst.long_name)
+[2024-05-09T01:53:47.481Z] print(sst.units)
+[2024-05-09T01:53:47.481Z] print(sst.dimensions, sst.shape)
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] [94mTraceback:[0m
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-05-09T01:53:47.481Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-05-09T01:53:47.481Z] Cell [0;32mIn[1], line 1[0m
+[2024-05-09T01:53:47.481Z] [0;32m----> 1[0m sst [38;5;241m=[39m [43mD[49m[38;5;241m.[39mvariables[[38;5;124m"[39m[38;5;124msea_surface_temperature[39m[38;5;124m"[39m]
+[2024-05-09T01:53:47.481Z] [1;32m      2[0m [38;5;28mprint[39m(sst[38;5;241m.[39mlong_name)
+[2024-05-09T01:53:47.481Z] [1;32m      3[0m [38;5;28mprint[39m(sst[38;5;241m.[39munits)
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] [0;31mNameError[0m: name 'D' is not defined
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] _ pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/opendap.ipynb::Cell 4 _
+[2024-05-09T01:53:47.481Z] [91mNotebook cell execution failed[0m
+[2024-05-09T01:53:47.481Z] [94mCell 4: Cell execution caused an exception
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] Input:
+[2024-05-09T01:53:47.481Z] [0ma = sst[:]
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] [94mTraceback:[0m
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-05-09T01:53:47.481Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-05-09T01:53:47.481Z] Cell [0;32mIn[1], line 1[0m
+[2024-05-09T01:53:47.481Z] [0;32m----> 1[0m a [38;5;241m=[39m [43msst[49m[:]
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] [0;31mNameError[0m: name 'sst' is not defined
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] _ pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/opendap.ipynb::Cell 5 _
+[2024-05-09T01:53:47.481Z] [91mNotebook cell execution failed[0m
+[2024-05-09T01:53:47.481Z] [94mCell 5: Cell execution caused an exception
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] Input:
+[2024-05-09T01:53:47.481Z] [0ma.data
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] [94mTraceback:[0m
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-05-09T01:53:47.481Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-05-09T01:53:47.481Z] Cell [0;32mIn[1], line 1[0m
+[2024-05-09T01:53:47.481Z] [0;32m----> 1[0m [43ma[49m[38;5;241m.[39mdata
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] [0;31mNameError[0m: name 'a' is not defined
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] _ pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/opendap.ipynb::Cell 6 _
+[2024-05-09T01:53:47.481Z] [91mNotebook cell execution failed[0m
+[2024-05-09T01:53:47.481Z] [94mCell 6: Cell execution caused an exception
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] Input:
+[2024-05-09T01:53:47.481Z] [0mfrom matplotlib import pyplot as plt
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] plt.imshow(a.data[0])
+[2024-05-09T01:53:47.481Z] plt.show()
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] [94mTraceback:[0m
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-05-09T01:53:47.481Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-05-09T01:53:47.481Z] Cell [0;32mIn[1], line 3[0m
+[2024-05-09T01:53:47.481Z] [1;32m      1[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmatplotlib[39;00m [38;5;28;01mimport[39;00m pyplot [38;5;28;01mas[39;00m plt
+[2024-05-09T01:53:47.481Z] [0;32m----> 3[0m plt[38;5;241m.[39mimshow([43ma[49m[38;5;241m.[39mdata[[38;5;241m0[39m])
+[2024-05-09T01:53:47.481Z] [1;32m      4[0m plt[38;5;241m.[39mshow()
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] [0;31mNameError[0m: name 'a' is not defined
+[2024-05-09T01:53:47.481Z] 
+[2024-05-09T01:53:47.481Z] =========================== short test summary info ============================
+[2024-05-09T01:53:47.481Z] FAILED pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/opendap.ipynb::Cell 1
+[2024-05-09T01:53:47.481Z] FAILED pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/opendap.ipynb::Cell 2
+[2024-05-09T01:53:47.481Z] FAILED pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/opendap.ipynb::Cell 3
+[2024-05-09T01:53:47.481Z] FAILED pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/opendap.ipynb::Cell 4
+[2024-05-09T01:53:47.481Z] FAILED pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/opendap.ipynb::Cell 5
+[2024-05-09T01:53:47.481Z] FAILED pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/opendap.ipynb::Cell 6
+[2024-05-09T01:53:47.481Z] ============= 6 failed, 212 passed, 1 skipped in 986.41s (0:16:26) =============
+[2024-05-09T01:53:47.481Z] + EXIT_CODE=1
+[2024-05-09T01:53:47.481Z] + echo true
+[2024-05-09T01:53:47.481Z] + tr [:upper:] [:lower:]
+[2024-05-09T01:53:47.481Z] + SAVE_RESULTING_NOTEBOOK=true
+[2024-05-09T01:53:47.481Z] + [ xtrue = xtrue ]
+[2024-05-09T01:53:47.481Z] + mkdir -p buildout
+[2024-05-09T01:53:47.481Z] + basename pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/CaSR_basic.ipynb
+[2024-05-09T01:53:47.481Z] + filename=CaSR_basic.ipynb
+[2024-05-09T01:53:47.481Z] + echo CaSR_basic.ipynb
+[2024-05-09T01:53:47.481Z] + sed s/.ipynb$//
+[2024-05-09T01:53:47.481Z] + filename=CaSR_basic
+[2024-05-09T01:53:47.481Z] + [ -e buildout/CaSR_basic.output.ipynb ]
+[2024-05-09T01:53:47.481Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output CaSR_basic.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/CaSR_basic.ipynb
+[2024-05-09T01:53:47.481Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/CaSR_basic.ipynb to notebook
+[2024-05-09T01:54:19.553Z] [NbConvertApp] Writing 732952 bytes to buildout/CaSR_basic.output.ipynb
+[2024-05-09T01:54:19.553Z] + basename pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/WCS_example.ipynb
+[2024-05-09T01:54:19.553Z] + filename=WCS_example.ipynb
+[2024-05-09T01:54:19.553Z] + echo WCS_example.ipynb
+[2024-05-09T01:54:19.553Z] + sed s/.ipynb$//
+[2024-05-09T01:54:19.553Z] + filename=WCS_example
+[2024-05-09T01:54:19.553Z] + [ -e buildout/WCS_example.output.ipynb ]
+[2024-05-09T01:54:19.553Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output WCS_example.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/WCS_example.ipynb
+[2024-05-09T01:54:20.924Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/WCS_example.ipynb to notebook
+[2024-05-09T01:54:21.852Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+[2024-05-09T01:54:21.852Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+[2024-05-09T01:54:21.852Z] 0.00s - to python to disable frozen modules.
+[2024-05-09T01:54:21.852Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+[2024-05-09T01:54:31.799Z] [NbConvertApp] Writing 145337 bytes to buildout/WCS_example.output.ipynb
+[2024-05-09T01:54:31.799Z] + basename pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/WFS_example.ipynb
+[2024-05-09T01:54:31.799Z] + filename=WFS_example.ipynb
+[2024-05-09T01:54:31.799Z] + echo WFS_example.ipynb
+[2024-05-09T01:54:31.799Z] + sed s/.ipynb$//
+[2024-05-09T01:54:31.799Z] + filename=WFS_example
+[2024-05-09T01:54:31.799Z] + [ -e buildout/WFS_example.output.ipynb ]
+[2024-05-09T01:54:31.799Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output WFS_example.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/WFS_example.ipynb
+[2024-05-09T01:54:32.054Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/WFS_example.ipynb to notebook
+[2024-05-09T01:54:33.427Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+[2024-05-09T01:54:33.427Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+[2024-05-09T01:54:33.427Z] 0.00s - to python to disable frozen modules.
+[2024-05-09T01:54:33.427Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+[2024-05-09T01:54:41.621Z] [NbConvertApp] Writing 44572 bytes to buildout/WFS_example.output.ipynb
+[2024-05-09T01:54:41.621Z] + basename pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/WMS_example.ipynb
+[2024-05-09T01:54:41.621Z] + filename=WMS_example.ipynb
+[2024-05-09T01:54:41.622Z] + echo WMS_example.ipynb
+[2024-05-09T01:54:41.622Z] + sed s/.ipynb$//
+[2024-05-09T01:54:41.622Z] + filename=WMS_example
+[2024-05-09T01:54:41.622Z] + [ -e buildout/WMS_example.output.ipynb ]
+[2024-05-09T01:54:41.622Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output WMS_example.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/WMS_example.ipynb
+[2024-05-09T01:54:42.986Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/WMS_example.ipynb to notebook
+[2024-05-09T01:54:44.359Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+[2024-05-09T01:54:44.359Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+[2024-05-09T01:54:44.359Z] 0.00s - to python to disable frozen modules.
+[2024-05-09T01:54:44.359Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+[2024-05-09T01:54:50.904Z] [NbConvertApp] Writing 2048326 bytes to buildout/WMS_example.output.ipynb
+[2024-05-09T01:54:50.904Z] + basename pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/climex.ipynb
+[2024-05-09T01:54:50.904Z] + filename=climex.ipynb
+[2024-05-09T01:54:50.904Z] + echo climex.ipynb
+[2024-05-09T01:54:50.904Z] + sed s/.ipynb$//
+[2024-05-09T01:54:50.904Z] + filename=climex
+[2024-05-09T01:54:50.904Z] + [ -e buildout/climex.output.ipynb ]
+[2024-05-09T01:54:50.904Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output climex.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/climex.ipynb
+[2024-05-09T01:54:52.805Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/climex.ipynb to notebook
+[2024-05-09T01:54:53.373Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+[2024-05-09T01:54:53.373Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+[2024-05-09T01:54:53.373Z] 0.00s - to python to disable frozen modules.
+[2024-05-09T01:54:53.373Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+[2024-05-09T01:57:29.858Z] [NbConvertApp] Writing 1781112 bytes to buildout/climex.output.ipynb
+[2024-05-09T01:57:29.858Z] + basename pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb
+[2024-05-09T01:57:29.858Z] + filename=eccc-geoapi-climate-stations.ipynb
+[2024-05-09T01:57:29.858Z] + echo eccc-geoapi-climate-stations.ipynb
+[2024-05-09T01:57:29.858Z] + sed s/.ipynb$//
+[2024-05-09T01:57:29.858Z] + filename=eccc-geoapi-climate-stations
+[2024-05-09T01:57:29.858Z] + [ -e buildout/eccc-geoapi-climate-stations.output.ipynb ]
+[2024-05-09T01:57:29.858Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output eccc-geoapi-climate-stations.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb
+[2024-05-09T01:57:29.858Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb to notebook
+[2024-05-09T01:57:29.858Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+[2024-05-09T01:57:29.858Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+[2024-05-09T01:57:29.858Z] 0.00s - to python to disable frozen modules.
+[2024-05-09T01:57:29.858Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+[2024-05-09T01:57:33.170Z] [NbConvertApp] Writing 278952 bytes to buildout/eccc-geoapi-climate-stations.output.ipynb
+[2024-05-09T01:57:33.170Z] + basename pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/eccc-geoapi-xclim.ipynb
+[2024-05-09T01:57:33.170Z] + filename=eccc-geoapi-xclim.ipynb
+[2024-05-09T01:57:33.170Z] + echo eccc-geoapi-xclim.ipynb
+[2024-05-09T01:57:33.170Z] + sed s/.ipynb$//
+[2024-05-09T01:57:33.170Z] + filename=eccc-geoapi-xclim
+[2024-05-09T01:57:33.170Z] + [ -e buildout/eccc-geoapi-xclim.output.ipynb ]
+[2024-05-09T01:57:33.170Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output eccc-geoapi-xclim.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/eccc-geoapi-xclim.ipynb
+[2024-05-09T01:57:34.542Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/eccc-geoapi-xclim.ipynb to notebook
+[2024-05-09T01:57:35.479Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+[2024-05-09T01:57:35.479Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+[2024-05-09T01:57:35.479Z] 0.00s - to python to disable frozen modules.
+[2024-05-09T01:57:35.479Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+[2024-05-09T01:57:45.433Z] [NbConvertApp] Writing 108112 bytes to buildout/eccc-geoapi-xclim.output.ipynb
+[2024-05-09T01:57:45.433Z] + basename pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/esgf-dap.ipynb
+[2024-05-09T01:57:45.433Z] + filename=esgf-dap.ipynb
+[2024-05-09T01:57:45.433Z] + sed s/.ipynb$//
+[2024-05-09T01:57:45.433Z] + echo esgf-dap.ipynb
+[2024-05-09T01:57:45.433Z] + filename=esgf-dap
+[2024-05-09T01:57:45.433Z] + [ -e buildout/esgf-dap.output.ipynb ]
+[2024-05-09T01:57:45.433Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output esgf-dap.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/esgf-dap.ipynb
+[2024-05-09T01:57:45.693Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/esgf-dap.ipynb to notebook
+[2024-05-09T01:57:46.621Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+[2024-05-09T01:57:46.621Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+[2024-05-09T01:57:46.621Z] 0.00s - to python to disable frozen modules.
+[2024-05-09T01:57:46.621Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+[2024-05-09T01:57:54.721Z] [NbConvertApp] Writing 63631 bytes to buildout/esgf-dap.output.ipynb
+[2024-05-09T01:57:54.721Z] + basename pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/forecasts.ipynb
+[2024-05-09T01:57:54.721Z] + filename=forecasts.ipynb
+[2024-05-09T01:57:54.721Z] + echo forecasts.ipynb+ 
+[2024-05-09T01:57:54.721Z] sed s/.ipynb$//
+[2024-05-09T01:57:54.721Z] + filename=forecasts
+[2024-05-09T01:57:54.721Z] + [ -e buildout/forecasts.output.ipynb ]
+[2024-05-09T01:57:54.721Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output forecasts.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/forecasts.ipynb
+[2024-05-09T01:57:55.651Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/forecasts.ipynb to notebook
+[2024-05-09T01:57:57.024Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+[2024-05-09T01:57:57.024Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+[2024-05-09T01:57:57.024Z] 0.00s - to python to disable frozen modules.
+[2024-05-09T01:57:57.024Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+[2024-05-09T01:58:15.094Z] [NbConvertApp] Writing 164988 bytes to buildout/forecasts.output.ipynb
+[2024-05-09T01:58:15.094Z] + basename pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/jupyter_extensions.ipynb
+[2024-05-09T01:58:15.094Z] + filename=jupyter_extensions.ipynb
+[2024-05-09T01:58:15.094Z] + echo jupyter_extensions.ipynb
+[2024-05-09T01:58:15.094Z] + sed s/.ipynb$//
+[2024-05-09T01:58:15.094Z] + filename=jupyter_extensions
+[2024-05-09T01:58:15.094Z] + [ -e buildout/jupyter_extensions.output.ipynb ]
+[2024-05-09T01:58:15.094Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output jupyter_extensions.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/jupyter_extensions.ipynb
+[2024-05-09T01:58:15.094Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/jupyter_extensions.ipynb to notebook
+[2024-05-09T01:58:15.094Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+[2024-05-09T01:58:15.094Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+[2024-05-09T01:58:15.094Z] 0.00s - to python to disable frozen modules.
+[2024-05-09T01:58:15.094Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+[2024-05-09T01:58:19.310Z] [NbConvertApp] Writing 7996 bytes to buildout/jupyter_extensions.output.ipynb
+[2024-05-09T01:58:19.310Z] + basename pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/opendap.ipynb
+[2024-05-09T01:58:19.310Z] + filename=opendap.ipynb
+[2024-05-09T01:58:19.310Z] + echo opendap.ipynb
+[2024-05-09T01:58:19.310Z] + sed s/.ipynb$//
+[2024-05-09T01:58:19.310Z] + filename=opendap
+[2024-05-09T01:58:19.310Z] + [ -e buildout/opendap.output.ipynb ]
+[2024-05-09T01:58:19.310Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output opendap.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/opendap.ipynb
+[2024-05-09T01:58:20.685Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/opendap.ipynb to notebook
+[2024-05-09T01:58:21.616Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+[2024-05-09T01:58:21.616Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+[2024-05-09T01:58:21.616Z] 0.00s - to python to disable frozen modules.
+[2024-05-09T01:58:21.616Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+[2024-05-09T02:03:28.100Z] syntax error, unexpected WORD_WORD, expecting SCAN_ATTR or SCAN_DATASET or SCAN_ERROR
+[2024-05-09T02:03:28.100Z] context: <!DOCTYPE^ HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head><title>503 Service Unavailable</title></head><body><h1>Service Unavailable</h1><p>The server is temporarily unable to service yourrequest due to maintenance downtime or capacityproblems. Please try again later.</p></body></html>
+[2024-05-09T02:03:28.100Z] [NbConvertApp] Writing 11727 bytes to buildout/opendap.output.ipynb
+[2024-05-09T02:03:28.100Z] + basename pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/pavics_thredds.ipynb
+[2024-05-09T02:03:28.100Z] + filename=pavics_thredds.ipynb
+[2024-05-09T02:03:28.100Z] + echo pavics_thredds.ipynb
+[2024-05-09T02:03:28.100Z] + sed s/.ipynb$//
+[2024-05-09T02:03:28.100Z] + filename=pavics_thredds
+[2024-05-09T02:03:28.100Z] + [ -e buildout/pavics_thredds.output.ipynb ]
+[2024-05-09T02:03:28.100Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output pavics_thredds.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/pavics_thredds.ipynb
+[2024-05-09T02:03:28.100Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/pavics_thredds.ipynb to notebook
+[2024-05-09T02:03:28.100Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+[2024-05-09T02:03:28.100Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+[2024-05-09T02:03:28.100Z] 0.00s - to python to disable frozen modules.
+[2024-05-09T02:03:28.100Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+[2024-05-09T02:03:28.672Z] syntax error, unexpected WORD_WORD, expecting SCAN_ATTR or SCAN_DATASET or SCAN_ERROR
+[2024-05-09T02:03:28.672Z] context: <?xml^ version="1.0" encoding="utf-8"?><ExceptionReport version="1.0.0" xmlns="http://www.opengis.net/ows/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/ows/1.1 http://schemas.opengis.net/ows/1.1.0/owsExceptionReport.xsd"> <Exception exceptionCode="NoApplicableCode" locator="AccessForbidden"> <ExceptionText>Access to service is forbidden.</ExceptionText> </Exception></ExceptionReport>
+[2024-05-09T02:03:28.672Z] syntax error, unexpected WORD_WORD, expecting SCAN_ATTR or SCAN_DATASET or SCAN_ERROR
+[2024-05-09T02:03:28.672Z] context: <?xml^ version="1.0" encoding="utf-8"?><ExceptionReport version="1.0.0" xmlns="http://www.opengis.net/ows/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/ows/1.1 http://schemas.opengis.net/ows/1.1.0/owsExceptionReport.xsd"> <Exception exceptionCode="NoApplicableCode" locator="AccessForbidden"> <ExceptionText>Access to service is forbidden.</ExceptionText> </Exception></ExceptionReport>
+[2024-05-09T02:03:30.574Z] [NbConvertApp] Writing 90749 bytes to buildout/pavics_thredds.output.ipynb
+[2024-05-09T02:03:30.574Z] + basename pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/regridding.ipynb
+[2024-05-09T02:03:30.574Z] + filename=regridding.ipynb
+[2024-05-09T02:03:30.574Z] + sed s/.ipynb$//
+[2024-05-09T02:03:30.574Z] + echo regridding.ipynb
+[2024-05-09T02:03:30.574Z] + filename=regridding
+[2024-05-09T02:03:30.574Z] + [ -e buildout/regridding.output.ipynb ]
+[2024-05-09T02:03:30.574Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output regridding.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/regridding.ipynb
+[2024-05-09T02:03:32.460Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/regridding.ipynb to notebook
+[2024-05-09T02:03:33.390Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+[2024-05-09T02:03:33.390Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+[2024-05-09T02:03:33.390Z] 0.00s - to python to disable frozen modules.
+[2024-05-09T02:03:33.390Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+[2024-05-09T02:05:09.835Z] [NbConvertApp] Writing 1239616 bytes to buildout/regridding.output.ipynb
+[2024-05-09T02:05:09.835Z] + basename pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/rendering.ipynb
+[2024-05-09T02:05:09.835Z] + filename=rendering.ipynb
+[2024-05-09T02:05:09.835Z] + echo rendering.ipynb
+[2024-05-09T02:05:09.835Z] + sed s/.ipynb$//
+[2024-05-09T02:05:09.835Z] + filename=rendering
+[2024-05-09T02:05:09.835Z] + [ -e buildout/rendering.output.ipynb ]
+[2024-05-09T02:05:09.835Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output rendering.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/rendering.ipynb
+[2024-05-09T02:05:09.835Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/rendering.ipynb to notebook
+[2024-05-09T02:05:09.835Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+[2024-05-09T02:05:09.835Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+[2024-05-09T02:05:09.835Z] 0.00s - to python to disable frozen modules.
+[2024-05-09T02:05:09.835Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+[2024-05-09T02:05:11.203Z] [NbConvertApp] Writing 11800 bytes to buildout/rendering.output.ipynb
+[2024-05-09T02:05:11.203Z] + basename pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/subset-user-input.ipynb
+[2024-05-09T02:05:11.203Z] + filename=subset-user-input.ipynb
+[2024-05-09T02:05:11.203Z] + sed s/.ipynb$//
+[2024-05-09T02:05:11.203Z] + echo subset-user-input.ipynb
+[2024-05-09T02:05:11.203Z] + filename=subset-user-input
+[2024-05-09T02:05:11.203Z] + [ -e buildout/subset-user-input.output.ipynb ]
+[2024-05-09T02:05:11.203Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output subset-user-input.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/subset-user-input.ipynb
+[2024-05-09T02:05:13.091Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/subset-user-input.ipynb to notebook
+[2024-05-09T02:05:13.656Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+[2024-05-09T02:05:13.656Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+[2024-05-09T02:05:13.656Z] 0.00s - to python to disable frozen modules.
+[2024-05-09T02:05:13.656Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+[2024-05-09T02:05:35.555Z] [NbConvertApp] Writing 255278 bytes to buildout/subset-user-input.output.ipynb
+[2024-05-09T02:05:35.555Z] + basename pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/subsetting.ipynb
+[2024-05-09T02:05:35.555Z] + filename=subsetting.ipynb
+[2024-05-09T02:05:35.555Z] + echo subsetting.ipynb
+[2024-05-09T02:05:35.555Z] + sed s/.ipynb$//
+[2024-05-09T02:05:35.555Z] + filename=subsetting
+[2024-05-09T02:05:35.555Z] + [ -e buildout/subsetting.output.ipynb ]
+[2024-05-09T02:05:35.555Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output subsetting.output.ipynb pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/subsetting.ipynb
+[2024-05-09T02:05:35.555Z] [NbConvertApp] Converting notebook pavics-sdi-fix_nbs_jupyter_alpha/docs/source/notebooks/subsetting.ipynb to notebook
+[2024-05-09T02:05:35.811Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+[2024-05-09T02:05:35.811Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+[2024-05-09T02:05:35.811Z] 0.00s - to python to disable frozen modules.
+[2024-05-09T02:05:35.811Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+[2024-05-09T02:05:45.855Z] [NbConvertApp] Writing 93311 bytes to buildout/subsetting.output.ipynb
+[2024-05-09T02:05:45.855Z] + basename finch-master/docs/source/notebooks/dap_subset.ipynb
+[2024-05-09T02:05:45.855Z] + filename=dap_subset.ipynb
+[2024-05-09T02:05:45.855Z] + echo dap_subset.ipynb
+[2024-05-09T02:05:45.855Z] + sed s/.ipynb$//
+[2024-05-09T02:05:45.855Z] + filename=dap_subset
+[2024-05-09T02:05:45.855Z] + [ -e buildout/dap_subset.output.ipynb ]
+[2024-05-09T02:05:45.855Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output dap_subset.output.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb
+[2024-05-09T02:05:46.115Z] [NbConvertApp] Converting notebook finch-master/docs/source/notebooks/dap_subset.ipynb to notebook
+[2024-05-09T02:05:47.046Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+[2024-05-09T02:05:47.046Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+[2024-05-09T02:05:47.046Z] 0.00s - to python to disable frozen modules.
+[2024-05-09T02:05:47.046Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+[2024-05-09T02:06:01.902Z] [NbConvertApp] Writing 162913 bytes to buildout/dap_subset.output.ipynb
+[2024-05-09T02:06:01.902Z] + basename finch-master/docs/source/notebooks/finch-usage.ipynb
+[2024-05-09T02:06:01.902Z] + filename=finch-usage.ipynb
+[2024-05-09T02:06:01.902Z] + echo finch-usage.ipynb
+[2024-05-09T02:06:01.902Z] + sed s/.ipynb$//
+[2024-05-09T02:06:01.902Z] + filename=finch-usage
+[2024-05-09T02:06:01.902Z] + [ -e buildout/finch-usage.output.ipynb ]
+[2024-05-09T02:06:01.902Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output finch-usage.output.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb
+[2024-05-09T02:06:01.902Z] [NbConvertApp] Converting notebook finch-master/docs/source/notebooks/finch-usage.ipynb to notebook
+[2024-05-09T02:06:03.274Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+[2024-05-09T02:06:03.274Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+[2024-05-09T02:06:03.274Z] 0.00s - to python to disable frozen modules.
+[2024-05-09T02:06:03.274Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+[2024-05-09T02:06:13.215Z] [NbConvertApp] Writing 65072 bytes to buildout/finch-usage.output.ipynb
+[2024-05-09T02:06:13.215Z] + basename PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
+[2024-05-09T02:06:13.215Z] + filename=PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
+[2024-05-09T02:06:13.215Z] + sed s/.ipynb$//
+[2024-05-09T02:06:13.215Z] + echo PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
+[2024-05-09T02:06:13.215Z] + filename=PAVICStutorial_ClimateDataAnalysis-1DataAccess
+[2024-05-09T02:06:13.215Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-1DataAccess.output.ipynb ]
+[2024-05-09T02:06:13.215Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-1DataAccess.output.ipynb PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
+[2024-05-09T02:06:14.145Z] [NbConvertApp] Converting notebook PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb to notebook
+[2024-05-09T02:06:15.080Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+[2024-05-09T02:06:15.080Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+[2024-05-09T02:06:15.080Z] 0.00s - to python to disable frozen modules.
+[2024-05-09T02:06:15.080Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+[2024-05-09T02:06:19.266Z] [NbConvertApp] Writing 173042 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-1DataAccess.output.ipynb
+[2024-05-09T02:06:19.522Z] + basename PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
+[2024-05-09T02:06:19.522Z] + filename=PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
+[2024-05-09T02:06:19.522Z] + echo PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
+[2024-05-09T02:06:19.522Z] + sed s/.ipynb$//
+[2024-05-09T02:06:19.522Z] + filename=PAVICStutorial_ClimateDataAnalysis-2Subsetting
+[2024-05-09T02:06:19.523Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-2Subsetting.output.ipynb ]
+[2024-05-09T02:06:19.523Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-2Subsetting.output.ipynb PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
+[2024-05-09T02:06:21.410Z] [NbConvertApp] Converting notebook PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb to notebook
+[2024-05-09T02:06:22.339Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+[2024-05-09T02:06:22.339Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+[2024-05-09T02:06:22.339Z] 0.00s - to python to disable frozen modules.
+[2024-05-09T02:06:22.339Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+[2024-05-09T02:06:40.400Z] [NbConvertApp] Writing 1481193 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-2Subsetting.output.ipynb
+[2024-05-09T02:06:40.401Z] + basename PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
+[2024-05-09T02:06:40.401Z] + filename=PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
+[2024-05-09T02:06:40.401Z] + sed s/.ipynb$//
+[2024-05-09T02:06:40.401Z] + echo PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
+[2024-05-09T02:06:40.401Z] + filename=PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators
+[2024-05-09T02:06:40.401Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.output.ipynb ]
+[2024-05-09T02:06:40.401Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.output.ipynb PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
+[2024-05-09T02:06:42.287Z] [NbConvertApp] Converting notebook PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb to notebook
+[2024-05-09T02:10:03.747Z] /opt/conda/envs/birdy/lib/python3.11/contextlib.py:144: UserWarning: Creating scratch directories is taking a surprisingly long time. (1.76s) This is often due to running workers on a network file system. Consider specifying a local-directory to point workers to write scratch data to a local disk.
+[2024-05-09T02:10:03.747Z]   next(self.gen)
+[2024-05-09T02:17:10.488Z] [NbConvertApp] Writing 557860 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.output.ipynb
+[2024-05-09T02:17:10.488Z] + basename PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
+[2024-05-09T02:17:10.488Z] + filename=PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
+[2024-05-09T02:17:10.488Z] + echo PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
+[2024-05-09T02:17:10.488Z] + sed s/.ipynb$//
+[2024-05-09T02:17:10.488Z] + filename=PAVICStutorial_ClimateDataAnalysis-4Ensembles
+[2024-05-09T02:17:10.488Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-4Ensembles.output.ipynb ]
+[2024-05-09T02:17:10.488Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-4Ensembles.output.ipynb PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
+[2024-05-09T02:17:10.488Z] [NbConvertApp] Converting notebook PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb to notebook
+[2024-05-09T02:17:25.356Z] [NbConvertApp] Writing 785214 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-4Ensembles.output.ipynb
+[2024-05-09T02:17:25.356Z] + basename PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
+[2024-05-09T02:17:25.356Z] + filename=PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
+[2024-05-09T02:17:25.356Z] + echo PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
+[2024-05-09T02:17:25.356Z] + sed s/.ipynb$//
+[2024-05-09T02:17:25.356Z] + filename=PAVICStutorial_ClimateDataAnalysis-5Visualization
+[2024-05-09T02:17:25.356Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-5Visualization.output.ipynb ]
+[2024-05-09T02:17:25.356Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-5Visualization.output.ipynb PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
+[2024-05-09T02:17:26.286Z] [NbConvertApp] Converting notebook PAVICS-landing-fix_nbs_jupyter_alpha/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb to notebook
+[2024-05-09T02:18:33.933Z] [NbConvertApp] Writing 1051936 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-5Visualization.output.ipynb
+[2024-05-09T02:18:33.933Z] + basename notebooks/hummingbird.ipynb
+[2024-05-09T02:18:33.933Z] + filename=hummingbird.ipynb
+[2024-05-09T02:18:33.933Z] + echo hummingbird.ipynb
+[2024-05-09T02:18:33.933Z] + sed s/.ipynb$//
+[2024-05-09T02:18:33.933Z] + filename=hummingbird
+[2024-05-09T02:18:33.933Z] + [ -e buildout/hummingbird.output.ipynb ]
+[2024-05-09T02:18:33.933Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output hummingbird.output.ipynb notebooks/hummingbird.ipynb
+[2024-05-09T02:18:33.933Z] [NbConvertApp] Converting notebook notebooks/hummingbird.ipynb to notebook
+[2024-05-09T02:18:33.933Z] [NbConvertApp] Writing 15863 bytes to buildout/hummingbird.output.ipynb
+[2024-05-09T02:18:33.933Z] + basename notebooks/stress-tests.ipynb
+[2024-05-09T02:18:33.933Z] + filename=stress-tests.ipynb
+[2024-05-09T02:18:33.933Z] + echo stress-tests.ipynb
+[2024-05-09T02:18:33.933Z] + sed s/.ipynb$//
+[2024-05-09T02:18:33.933Z] + filename=stress-tests
+[2024-05-09T02:18:33.933Z] + [ -e buildout/stress-tests.output.ipynb ]
+[2024-05-09T02:18:33.933Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output stress-tests.output.ipynb notebooks/stress-tests.ipynb
+[2024-05-09T02:18:34.864Z] [NbConvertApp] Converting notebook notebooks/stress-tests.ipynb to notebook
+[2024-05-09T02:18:35.794Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+[2024-05-09T02:18:35.794Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+[2024-05-09T02:18:35.794Z] 0.00s - to python to disable frozen modules.
+[2024-05-09T02:18:35.794Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+[2024-05-09T02:20:42.209Z] [NbConvertApp] Writing 428127 bytes to buildout/stress-tests.output.ipynb
+[2024-05-09T02:20:42.209Z] + exit 1
+[2024-05-09T02:20:42.209Z] + EXIT_CODE=1
+[2024-05-09T02:20:42.209Z] + ENV_DUMP_DIR=buildout/env-dump
+[2024-05-09T02:20:42.209Z] + mkdir -p buildout/env-dump
+[2024-05-09T02:20:42.209Z] + ENV_EXPORT_FILE=buildout/env-dump/environment-export-birdy.yml
+[2024-05-09T02:20:42.209Z] + rm -fv buildout/env-dump/environment-export-birdy.yml
+[2024-05-09T02:20:42.209Z] + conda env export -n birdy
+[2024-05-09T02:20:50.319Z] + LIST_EXPLICIT_FILE=buildout/env-dump/conda-list-explicit-birdy.txt
+[2024-05-09T02:20:50.319Z] + rm -fv buildout/env-dump/conda-list-explicit-birdy.txt
+[2024-05-09T02:20:50.319Z] + conda list -n birdy --explicit
+[2024-05-09T02:21:00.283Z] + PIP_FREEZE_FILE=buildout/env-dump/pip-freeze-birdy-requirements.txt
+[2024-05-09T02:21:00.283Z] + rm -fv buildout/env-dump/pip-freeze-birdy-requirements.txt
+[2024-05-09T02:21:00.283Z] + pip freeze
+[2024-05-09T02:21:00.903Z] + exit 1
 [Pipeline] }
 [Pipeline] // withCredentials
 [Pipeline] }
@@ -822,38 +975,41 @@ $ docker top 3e373716f2b2bbbf0530ef594f7112c08b675b075d030f3a0aafce0c30376af0 -e
 [Pipeline] stage
 [Pipeline] { (Declarative: Post Actions)
 [Pipeline] archiveArtifacts
-[2024-05-06T19:14:58.089Z] Archiving artifacts
-[2024-05-06T19:14:58.119Z] Recording fingerprints
+[2024-05-09T02:21:03.086Z] Archiving artifacts
+[2024-05-09T02:21:03.299Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-05-06T19:14:58.441Z] Archiving artifacts
-[2024-05-06T19:14:59.270Z] Recording fingerprints
+[2024-05-09T02:21:03.397Z] Archiving artifacts
+[2024-05-09T02:21:04.069Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-05-06T19:15:00.226Z] Archiving artifacts
-[2024-05-06T19:15:00.463Z] Recording fingerprints
+[2024-05-09T02:21:05.703Z] Archiving artifacts
+[2024-05-09T02:21:05.913Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-05-06T19:15:00.569Z] Archiving artifacts
-[2024-05-06T19:15:00.621Z] Recording fingerprints
+[2024-05-09T02:21:06.457Z] Archiving artifacts
+[2024-05-09T02:21:06.473Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-05-06T19:15:00.644Z] Archiving artifacts
-[2024-05-06T19:15:00.911Z] Recording fingerprints
+[2024-05-09T02:21:06.709Z] Archiving artifacts
+[2024-05-09T02:21:06.729Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-05-06T19:15:00.952Z] Archiving artifacts
-[2024-05-06T19:15:00.994Z] Recording fingerprints
+[2024-05-09T02:21:06.976Z] Archiving artifacts
+[2024-05-09T02:21:07.006Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-05-06T19:15:02.107Z] Archiving artifacts
-[2024-05-06T19:15:02.122Z] Recording fingerprints
+[2024-05-09T02:21:08.560Z] Archiving artifacts
+[2024-05-09T02:21:08.572Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-05-06T19:15:02.141Z] Archiving artifacts
-[2024-05-06T19:15:02.181Z] Recording fingerprints
+[2024-05-09T02:21:08.718Z] Archiving artifacts
+[2024-05-09T02:21:09.040Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-05-06T19:15:02.443Z] Archiving artifacts
-[2024-05-06T19:15:02.891Z] Recording fingerprints
+[2024-05-09T02:21:09.445Z] Archiving artifacts
+[2024-05-09T02:21:09.849Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-05-06T19:15:02.982Z] Archiving artifacts
-[2024-05-06T19:15:04.240Z] Recording fingerprints
+[2024-05-09T02:21:09.960Z] Archiving artifacts
+[2024-05-09T02:21:11.076Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-05-06T19:15:04.455Z] Archiving artifacts
-[2024-05-06T19:15:04.475Z] Recording fingerprints
+[2024-05-09T02:21:13.476Z] Archiving artifacts
+[2024-05-09T02:21:13.493Z] Recording fingerprints
+[Pipeline] emailextrecipients
+[Pipeline] step
+[2024-05-09T02:21:13.801Z] Sending e-mails to: vu.long@ouranos.ca
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] }
@@ -863,12 +1019,13 @@ $ docker top 3e373716f2b2bbbf0530ef594f7112c08b675b075d030f3a0aafce0c30376af0 -e
 [Pipeline] }
 [Pipeline] // ansiColor
 [Pipeline] }
-$ docker stop --time=1 3e373716f2b2bbbf0530ef594f7112c08b675b075d030f3a0aafce0c30376af0
-$ docker rm -f 3e373716f2b2bbbf0530ef594f7112c08b675b075d030f3a0aafce0c30376af0
+$ docker stop --time=1 4c7fe1c70b0ab1d443f74e257e09736c874f7f9c390f6f4b0bd645fe301d5c96
+$ docker rm -f 4c7fe1c70b0ab1d443f74e257e09736c874f7f9c390f6f4b0bd645fe301d5c96
 [Pipeline] // withDockerContainer
 [Pipeline] }
 [Pipeline] // withEnv
 [Pipeline] }
 [Pipeline] // node
 [Pipeline] End of Pipeline
-Finished: SUCCESS
+ERROR: script returned exit code 1
+Finished: FAILURE
