@@ -50,7 +50,7 @@ if [ -n "$CONFIG_OVERRIDE_SCRIPT_URL" ]; then
     . "$TMP_CONF_OVERRIDE"
 fi
 
-py.test --nbval $NOTEBOOKS --sanitize-with notebooks/output-sanitize.cfg $PYTEST_EXTRA_OPTS
+py.test --nbval $NOTEBOOKS --nbval-sanitize-with notebooks/output-sanitize.cfg $PYTEST_EXTRA_OPTS
 EXIT_CODE="$?"
 
 # lowercase SAVE_RESULTING_NOTEBOOK string
@@ -75,12 +75,12 @@ if [ x"$SAVE_RESULTING_NOTEBOOK" = xtrue ]; then
             # prevent name clash
             filename="${filename}_`date '+%s'`"
         fi
-        # Timeout must not be more than 240s (4 mins).
+        # Timeout must not be more than 240s (4 mins). Default in Jenkinsfile.
         # Tutorial notebooks should be fast so user do not lose patience waiting
         # for them to run.  If more than 4 mins, in addition to simplifying the
         # notebook, should also check machine performance.
         jupyter nbconvert --to notebook --execute \
-            --ExecutePreprocessor.timeout=240 --allow-errors \
+            --ExecutePreprocessor.timeout=${SAVE_RESULTING_NOTEBOOK_TIMEOUT} --allow-errors \
             --output-dir buildout --output "${filename}.output.ipynb" "$nb"
     done
 fi
