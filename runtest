@@ -80,7 +80,7 @@ if [ x"$SAVE_RESULTING_NOTEBOOK" = xtrue ]; then
         # for them to run.  If more than 4 mins, in addition to simplifying the
         # notebook, should also check machine performance.
         jupyter nbconvert --to notebook --execute \
-            --ExecutePreprocessor.timeout=${SAVE_RESULTING_NOTEBOOK_TIMEOUT} --allow-errors \
+            --ExecutePreprocessor.timeout=${SAVE_RESULTING_NOTEBOOK_TIMEOUT:=240} --allow-errors \
             --output-dir buildout --output "${filename}.output.ipynb" "$nb"
     done
 fi
