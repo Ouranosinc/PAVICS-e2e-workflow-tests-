@@ -18,14 +18,14 @@ set -x
 # process at different moment in time, and together they allow full
 # complete override of the various options for the test run.
 if [ -n "$CONFIG_PARAMETERS_SCRIPT_URL" ]; then
-    TMP_CONF_OVERRIDE="/tmp/jenkins_conf_override"
-    rm -vf "$TMP_CONF_OVERRIDE"
+    TMP_PARAMS_OVERRIDE="/tmp/jenkins_params_override"
+    rm -vf "$TMP_PARAMS_OVERRIDE"
 
     # Use tee to log content of override script for traceability.
-    curl --silent "$CONFIG_PARAMETERS_SCRIPT_URL" | tee "$TMP_CONF_OVERRIDE"
+    curl --silent "$CONFIG_PARAMETERS_SCRIPT_URL" | tee "$TMP_PARAMS_OVERRIDE"
 
     # Source script so it can alter ALL existing variables in the current context.
-    . "$TMP_CONF_OVERRIDE"
+    . "$TMP_PARAMS_OVERRIDE"
 fi
 
 # emulate "clean after checkout" of single branch pipeline
