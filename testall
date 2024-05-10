@@ -34,29 +34,31 @@ git clean -fdx
 # download all additional repos containing extra notebooks to test
 ./downloadrepos
 
+# 'export' useful vars so they can be used by the CONFIG_OVERRIDE_SCRIPT_URL in runtest.
+
 # replace all slash (/) by dash (-) because (/) is illegal in folder name
 # for branch name of the format "feature/my_wizbang-feature"
 # github does the same when downloading repo archive by downloadrepos above
-PAVICS_SDI_BRANCH="`echo "$PAVICS_SDI_BRANCH" | sed "s@/@-@g"`"
-PAVICS_SDI_REPO_NAME="`echo "$PAVICS_SDI_REPO" | sed "s@^.*/@@g"`"
-FINCH_BRANCH="`echo "$FINCH_BRANCH" | sed "s@/@-@g"`"
-FINCH_REPO_NAME="`echo "$FINCH_REPO" | sed "s@^.*/@@g"`"
-PAVICS_LANDING_BRANCH="`echo "$PAVICS_LANDING_BRANCH" | sed "s@/@-@g"`"
-PAVICS_LANDING_REPO_NAME="`echo "$PAVICS_LANDING_REPO" | sed "s@^.*/@@g"`"
-RAVEN_BRANCH="`echo "$RAVEN_BRANCH" | sed "s@/@-@g"`"
-RAVEN_REPO_NAME="`echo "$RAVEN_REPO" | sed "s@^.*/@@g"`"
-RAVENPY_BRANCH="`echo "$RAVENPY_BRANCH" | sed "s@/@-@g"`"
-RAVENPY_REPO_NAME="`echo "$RAVENPY_REPO" | sed "s@^.*/@@g"`"
-ESGF_COMPUTE_API_BRANCH="`echo "$ESGF_COMPUTE_API_BRANCH" | sed "s@/@-@g"`"
-ESGF_COMPUTE_API_REPO_NAME="`echo "$ESGF_COMPUTE_API_REPO" | sed "s@^.*/@@g"`"
+export PAVICS_SDI_BRANCH="`echo "$PAVICS_SDI_BRANCH" | sed "s@/@-@g"`"
+export PAVICS_SDI_REPO_NAME="`echo "$PAVICS_SDI_REPO" | sed "s@^.*/@@g"`"
+export FINCH_BRANCH="`echo "$FINCH_BRANCH" | sed "s@/@-@g"`"
+export FINCH_REPO_NAME="`echo "$FINCH_REPO" | sed "s@^.*/@@g"`"
+export PAVICS_LANDING_BRANCH="`echo "$PAVICS_LANDING_BRANCH" | sed "s@/@-@g"`"
+export PAVICS_LANDING_REPO_NAME="`echo "$PAVICS_LANDING_REPO" | sed "s@^.*/@@g"`"
+export RAVEN_BRANCH="`echo "$RAVEN_BRANCH" | sed "s@/@-@g"`"
+export RAVEN_REPO_NAME="`echo "$RAVEN_REPO" | sed "s@^.*/@@g"`"
+export RAVENPY_BRANCH="`echo "$RAVENPY_BRANCH" | sed "s@/@-@g"`"
+export RAVENPY_REPO_NAME="`echo "$RAVENPY_REPO" | sed "s@^.*/@@g"`"
+export ESGF_COMPUTE_API_BRANCH="`echo "$ESGF_COMPUTE_API_BRANCH" | sed "s@/@-@g"`"
+export ESGF_COMPUTE_API_REPO_NAME="`echo "$ESGF_COMPUTE_API_REPO" | sed "s@^.*/@@g"`"
 
 # branches that have allowed characters such as '+' other than alphanum, '-' and '_' are converted to '-' in archives
-PAVICS_SDI_DIR=`echo "${PAVICS_SDI_REPO_NAME}-${PAVICS_SDI_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
-FINCH_DIR=`echo "${FINCH_REPO_NAME}-${FINCH_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
-PAVICS_LANDING_DIR=`echo "${PAVICS_LANDING_REPO_NAME}-${PAVICS_LANDING_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
-RAVEN_DIR=`echo "${RAVEN_REPO_NAME}-${RAVEN_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
-RAVENPY_DIR=`echo "${RAVENPY_REPO_NAME}-${RAVENPY_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
-ESGF_COMPUTE_API_DIR=`echo "${ESGF_COMPUTE_API_REPO_NAME}-${ESGF_COMPUTE_API_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
+export PAVICS_SDI_DIR=`echo "${PAVICS_SDI_REPO_NAME}-${PAVICS_SDI_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
+export FINCH_DIR=`echo "${FINCH_REPO_NAME}-${FINCH_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
+export PAVICS_LANDING_DIR=`echo "${PAVICS_LANDING_REPO_NAME}-${PAVICS_LANDING_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
+export RAVEN_DIR=`echo "${RAVEN_REPO_NAME}-${RAVEN_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
+export RAVENPY_DIR=`echo "${RAVENPY_REPO_NAME}-${RAVENPY_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
+export ESGF_COMPUTE_API_DIR=`echo "${ESGF_COMPUTE_API_REPO_NAME}-${ESGF_COMPUTE_API_BRANCH}" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"`
 
 # lowercase VERIFY_SSL string
 VERIFY_SSL="`echo "$VERIFY_SSL" | tr '[:upper:]' '[:lower:]'`"
