@@ -1,7 +1,8 @@
 #!/bin/sh
 # Sample config override script to only run notebooks that hits GeoServer.
+# Intended for param CONFIG_OVERRIDE_SCRIPT_URL.
 
-# Have to be used together with TEST_NO_USE_PROD_DATA=1.
+# Have to be used together with TEST_NO_USE_PROD_DATA=1 (via EXTRA_TEST_ENV_VAR).
 
 NEW_NB_LIST=""
 for nb in $NOTEBOOKS; do
