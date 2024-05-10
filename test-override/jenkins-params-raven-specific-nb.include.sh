@@ -4,7 +4,7 @@
 
 # Scenario: we only want to run 2 specific Raven notebooks:
 # * 10_Data_assimilation.ipynb
-# * 11_Climatological_ESP_forecasting
+# * 11_Climatological_ESP_forecasting.ipynb
 
 # The beginning is same as jenkins-params-raven-nb-only.include.sh so just
 # re-use it.

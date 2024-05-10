@@ -50,6 +50,7 @@ if [ -n "$CONFIG_OVERRIDE_SCRIPT_URL" ]; then
     else
         # Not starting with http, it's a local file.
         # Local file can be previously created by CONFIG_PARAMETERS_SCRIPT_URL.
+        # See example in test-override/jenkins-params-raven-specific-nb.include.sh.
         TMP_CONF_OVERRIDE="$CONFIG_OVERRIDE_SCRIPT_URL"
 
         # Log content of override script for traceability.
