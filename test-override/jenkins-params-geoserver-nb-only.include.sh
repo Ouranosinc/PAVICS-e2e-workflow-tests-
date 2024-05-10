@@ -1,5 +1,6 @@
 #!/bin/sh
 # Sample Jenkins params override script to only run notebooks that hit GeoServer.
+# Intended for param CONFIG_PARAMETERS_SCRIPT_URL.
 
 # Enable all repos so we can filter all for them for notebooks that hit GeoServer.
 TEST_PAVICS_SDI_REPO="true"

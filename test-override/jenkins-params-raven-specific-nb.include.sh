@@ -1,6 +1,7 @@
 #!/bin/sh
 # Sample Jenkins params override script to demonstrate on-the-fly
 # CONFIG_OVERRIDE_SCRIPT_URL file creation.
+# This script is intended for param CONFIG_PARAMETERS_SCRIPT_URL.
 
 # Scenario: we only want to run 2 specific Raven notebooks:
 # * 10_Data_assimilation.ipynb

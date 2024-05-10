@@ -1,6 +1,7 @@
 #!/bin/sh
 # Sample Jenkins params override script to only run Raven notebooks
 # with the proper --nbval-lax switch.
+# Intended for param CONFIG_PARAMETERS_SCRIPT_URL.
 
 # Disable default repos.
 TEST_PAVICS_SDI_REPO="false"
