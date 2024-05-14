@@ -1,4 +1,6 @@
 #!/bin/sh
+# This file can be used both as executable script or library to be sourced.
+# To use as library to be sourced, set DOWNLOADREPOS_AS_LIB=1 env var.
 
 downloadrepos() {
     github_repo="$1"; shift
@@ -22,16 +24,21 @@ downloadgithubrepos() {
     set +x
 }
 
-. ./default_build_params
+if [ -z "$DOWNLOADREPOS_AS_LIB" ]; then
+    # Script mode, otherwise, library mode.
 
-if [ -z "$1" ]; then
-    downloadgithubrepos $PAVICS_SDI_REPO $PAVICS_SDI_BRANCH
-    downloadgithubrepos $FINCH_REPO $FINCH_BRANCH
-    downloadgithubrepos $PAVICS_LANDING_REPO $PAVICS_LANDING_BRANCH
-    downloadgithubrepos $RAVEN_REPO $RAVEN_BRANCH
-    downloadgithubrepos $RAVENPY_REPO $RAVENPY_BRANCH
-    downloadgithubrepos $ESGF_COMPUTE_API_REPO $ESGF_COMPUTE_API_BRANCH
-else
-    set -x
-    downloadrepos "$@"
+    . ./default_build_params
+
+    if [ -z "$1" ]; then
+        downloadgithubrepos $PAVICS_SDI_REPO $PAVICS_SDI_BRANCH
+        downloadgithubrepos $FINCH_REPO $FINCH_BRANCH
+        downloadgithubrepos $PAVICS_LANDING_REPO $PAVICS_LANDING_BRANCH
+        downloadgithubrepos $RAVEN_REPO $RAVEN_BRANCH
+        downloadgithubrepos $RAVENPY_REPO $RAVENPY_BRANCH
+        downloadgithubrepos $ESGF_COMPUTE_API_REPO $ESGF_COMPUTE_API_BRANCH
+    else
+        set -x
+        downloadrepos "$@"
+    fi
+
 fi
