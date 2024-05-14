@@ -15,13 +15,11 @@ downloadgithubrepos() {
     repo_owner="`echo "$owner_and_repo_name" | sed "s@/.*\\$@@g"`"
     repo_name="`echo "$owner_and_repo_name" | sed "s@^.*/@@g"`"
     repo_branch="$1"; shift
-    set -x
     # clean up other previously downloaded branches of the same repo as well
     rm -rf ${repo_name}-*
     ls | grep $repo_name
     downloadrepos https://github.com/$repo_owner/$repo_name "$repo_branch"
     ls | grep $repo_name
-    set +x
 }
 
 # USAGE: VAR_TO_LOWER="$(lowercase "$VAR_TO_LOWER")"
