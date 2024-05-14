@@ -2,6 +2,7 @@
 
 . ./default_build_params
 
+# Load shared functions, make available to CONFIG_PARAMETERS_SCRIPT_URL.
 DOWNLOADREPOS_AS_LIB=1
 . ./downloadrepos
 
