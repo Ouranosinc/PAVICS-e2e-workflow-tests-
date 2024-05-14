@@ -8,6 +8,9 @@ DOWNLOADREPOS_AS_LIB=1
 
 set -x
 
+# emulate "clean after checkout" of single branch pipeline
+git clean -fdx
+
 # Allow full override of ALL Jenkins params before running test suite.
 # Intended to overrride all params in Jenkinsfile.
 #
@@ -36,9 +39,6 @@ if [ -n "$CONFIG_PARAMETERS_SCRIPT_URL" ]; then
     # Source script so it can alter ALL existing variables in the current context.
     . "$TMP_PARAMS_OVERRIDE"
 fi
-
-# emulate "clean after checkout" of single branch pipeline
-git clean -fdx
 
 # download all additional repos containing extra notebooks to test
 DOWNLOAD_ALL_DEFAULT_REPOS=false
