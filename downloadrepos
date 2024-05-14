@@ -24,21 +24,56 @@ downloadgithubrepos() {
     set +x
 }
 
-if [ -z "$DOWNLOADREPOS_AS_LIB" ]; then
-    # Script mode, otherwise, library mode.
+lowercase_boolean_build_params() {
+    TEST_MAGPIE_AUTH="`echo "$TEST_MAGPIE_AUTH" | tr '[:upper:]' '[:lower:]'`"
+    TEST_PAVICS_SDI_REPO="`echo "$TEST_PAVICS_SDI_REPO" | tr '[:upper:]' '[:lower:]'`"
+    TEST_PAVICS_SDI_WEAVER="`echo "$TEST_PAVICS_SDI_WEAVER" | tr '[:upper:]' '[:lower:]'`"
+    TEST_FINCH_REPO="`echo "$TEST_FINCH_REPO" | tr '[:upper:]' '[:lower:]'`"
+    TEST_PAVICS_LANDING_REPO="`echo "$TEST_PAVICS_LANDING_REPO" | tr '[:upper:]' '[:lower:]'`"
+    TEST_RAVEN_REPO="`echo "$TEST_RAVEN_REPO" | tr '[:upper:]' '[:lower:]'`"
+    TEST_RAVENPY_REPO="`echo "$TEST_RAVENPY_REPO" | tr '[:upper:]' '[:lower:]'`"
+    TEST_ESGF_COMPUTE_API_REPO="`echo "$TEST_ESGF_COMPUTE_API_REPO" | tr '[:upper:]' '[:lower:]'`"
+    TEST_LOCAL_NOTEBOOKS="`echo "$TEST_LOCAL_NOTEBOOKS" | tr '[:upper:]' '[:lower:]'`"
+}
 
+downloadrepos_main() {
     . ./default_build_params
 
+    lowercase_boolean_build_params
+
+    if [ -z "$DOWNLOAD_ALL_DEFAULT_REPOS" ]; then
+        # Back-compat with old default behavior, used in binder/reorg-notebook
+        # and other external scripts that autodeploy tutorial notebooks (see
+        # https://github.com/bird-house/birdhouse-deploy/blob/444a7c35a31aa8ad351e47f659383ba5c2919705/birdhouse/deployment/trigger-deploy-notebook#L64-L75)
+        DOWNLOAD_ALL_DEFAULT_REPOS=true
+    fi
+
     if [ -z "$1" ]; then
-        downloadgithubrepos $PAVICS_SDI_REPO $PAVICS_SDI_BRANCH
-        downloadgithubrepos $FINCH_REPO $FINCH_BRANCH
-        downloadgithubrepos $PAVICS_LANDING_REPO $PAVICS_LANDING_BRANCH
-        downloadgithubrepos $RAVEN_REPO $RAVEN_BRANCH
-        downloadgithubrepos $RAVENPY_REPO $RAVENPY_BRANCH
-        downloadgithubrepos $ESGF_COMPUTE_API_REPO $ESGF_COMPUTE_API_BRANCH
+        if [ x"$DOWNLOAD_ALL_DEFAULT_REPOS" = xtrue -o x"$TEST_PAVICS_SDI_REPO" = xtrue ]; then
+            downloadgithubrepos $PAVICS_SDI_REPO $PAVICS_SDI_BRANCH
+        fi
+        if [ x"$DOWNLOAD_ALL_DEFAULT_REPOS" = xtrue -o x"$TEST_FINCH_REPO" = xtrue ]; then
+            downloadgithubrepos $FINCH_REPO $FINCH_BRANCH
+        fi
+        if [ x"$DOWNLOAD_ALL_DEFAULT_REPOS" = xtrue -o x"$TEST_PAVICS_LANDING_REPO" = xtrue ]; then
+            downloadgithubrepos $PAVICS_LANDING_REPO $PAVICS_LANDING_BRANCH
+        fi
+        if [ x"$DOWNLOAD_ALL_DEFAULT_REPOS" = xtrue -o x"$TEST_RAVEN_REPO" = xtrue ]; then
+            downloadgithubrepos $RAVEN_REPO $RAVEN_BRANCH
+        fi
+        if [ x"$DOWNLOAD_ALL_DEFAULT_REPOS" = xtrue -o x"$TEST_RAVENPY_REPO" = xtrue ]; then
+            downloadgithubrepos $RAVENPY_REPO $RAVENPY_BRANCH
+        fi
+        if [ x"$DOWNLOAD_ALL_DEFAULT_REPOS" = xtrue -o x"$TEST_ESGF_COMPUTE_API_REPO" = xtrue ]; then
+            downloadgithubrepos $ESGF_COMPUTE_API_REPO $ESGF_COMPUTE_API_BRANCH
+        fi
     else
         set -x
         downloadrepos "$@"
     fi
+}
 
+if [ -z "$DOWNLOADREPOS_AS_LIB" ]; then
+    # Script mode, not library mode.
+    downloadrepos_main "$@"
 fi

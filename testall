@@ -37,7 +37,10 @@ fi
 git clean -fdx
 
 # download all additional repos containing extra notebooks to test
-./downloadrepos
+DOWNLOADREPOS_AS_LIB=1
+. ./downloadrepos
+DOWNLOAD_ALL_DEFAULT_REPOS=false
+downloadrepos_main
 
 # 'export' useful vars so they can be used by the CONFIG_OVERRIDE_SCRIPT_URL in runtest.
 
@@ -85,17 +88,6 @@ rm -v $RAVENPY_REPO_NAME-$RAVENPY_BRANCH/tox.ini
 rm -v $RAVENPY_REPO_NAME-$RAVENPY_BRANCH/pyproject.toml
 rm -v $ESGF_COMPUTE_API_REPO_NAME-$ESGF_COMPUTE_API_BRANCH/setup.cfg
 rm -v $ESGF_COMPUTE_API_REPO_NAME-$ESGF_COMPUTE_API_BRANCH/tox.ini
-
-# lowercase
-TEST_MAGPIE_AUTH="`echo "$TEST_MAGPIE_AUTH" | tr '[:upper:]' '[:lower:]'`"
-TEST_PAVICS_SDI_REPO="`echo "$TEST_PAVICS_SDI_REPO" | tr '[:upper:]' '[:lower:]'`"
-TEST_PAVICS_SDI_WEAVER="`echo "$TEST_PAVICS_SDI_WEAVER" | tr '[:upper:]' '[:lower:]'`"
-TEST_FINCH_REPO="`echo "$TEST_FINCH_REPO" | tr '[:upper:]' '[:lower:]'`"
-TEST_PAVICS_LANDING_REPO="`echo "$TEST_PAVICS_LANDING_REPO" | tr '[:upper:]' '[:lower:]'`"
-TEST_RAVEN_REPO="`echo "$TEST_RAVEN_REPO" | tr '[:upper:]' '[:lower:]'`"
-TEST_RAVENPY_REPO="`echo "$TEST_RAVENPY_REPO" | tr '[:upper:]' '[:lower:]'`"
-TEST_ESGF_COMPUTE_API_REPO="`echo "$TEST_ESGF_COMPUTE_API_REPO" | tr '[:upper:]' '[:lower:]'`"
-TEST_LOCAL_NOTEBOOKS="`echo "$TEST_LOCAL_NOTEBOOKS" | tr '[:upper:]' '[:lower:]'`"
 
 NOTEBOOKS_TO_TEST=""
 if [ x"$TEST_MAGPIE_AUTH" = xtrue ]; then
