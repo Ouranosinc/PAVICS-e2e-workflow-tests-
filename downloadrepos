@@ -24,16 +24,51 @@ downloadgithubrepos() {
     set +x
 }
 
+# USAGE: VAR_TO_LOWER="$(lowercase "$VAR_TO_LOWER")"
+lowercase() {
+    echo "$1" | tr '[:upper:]' '[:lower:]'
+}
+
 lowercase_boolean_build_params() {
-    TEST_MAGPIE_AUTH="`echo "$TEST_MAGPIE_AUTH" | tr '[:upper:]' '[:lower:]'`"
-    TEST_PAVICS_SDI_REPO="`echo "$TEST_PAVICS_SDI_REPO" | tr '[:upper:]' '[:lower:]'`"
-    TEST_PAVICS_SDI_WEAVER="`echo "$TEST_PAVICS_SDI_WEAVER" | tr '[:upper:]' '[:lower:]'`"
-    TEST_FINCH_REPO="`echo "$TEST_FINCH_REPO" | tr '[:upper:]' '[:lower:]'`"
-    TEST_PAVICS_LANDING_REPO="`echo "$TEST_PAVICS_LANDING_REPO" | tr '[:upper:]' '[:lower:]'`"
-    TEST_RAVEN_REPO="`echo "$TEST_RAVEN_REPO" | tr '[:upper:]' '[:lower:]'`"
-    TEST_RAVENPY_REPO="`echo "$TEST_RAVENPY_REPO" | tr '[:upper:]' '[:lower:]'`"
-    TEST_ESGF_COMPUTE_API_REPO="`echo "$TEST_ESGF_COMPUTE_API_REPO" | tr '[:upper:]' '[:lower:]'`"
-    TEST_LOCAL_NOTEBOOKS="`echo "$TEST_LOCAL_NOTEBOOKS" | tr '[:upper:]' '[:lower:]'`"
+    TEST_MAGPIE_AUTH="$(lowercase "$TEST_MAGPIE_AUTH")"
+    TEST_PAVICS_SDI_REPO="$(lowercase "$TEST_PAVICS_SDI_REPO")"
+    TEST_PAVICS_SDI_WEAVER="$(lowercase "$TEST_PAVICS_SDI_WEAVER")"
+    TEST_FINCH_REPO="$(lowercase "$TEST_FINCH_REPO")"
+    TEST_PAVICS_LANDING_REPO="$(lowercase "$TEST_PAVICS_LANDING_REPO")"
+    TEST_RAVEN_REPO="$(lowercase "$TEST_RAVEN_REPO")"
+    TEST_RAVENPY_REPO="$(lowercase "$TEST_RAVENPY_REPO")"
+    TEST_ESGF_COMPUTE_API_REPO="$(lowercase "$TEST_ESGF_COMPUTE_API_REPO")"
+    TEST_LOCAL_NOTEBOOKS="$(lowercase "$TEST_LOCAL_NOTEBOOKS")"
+}
+
+# Replace all slash (/) by dash (-) because (/) is illegal in folder name
+# for branch name of the format "feature/my_wizbang-feature".
+# Github does the same when downloading repo archive by downloadrepos above.
+# USAGE: export BRANCH_NAME="$(sanitize_branch_name "$BRANCH_NAME")"
+sanitize_branch_name() {
+    echo "$1" | sed "s@/@-@g"
+}
+
+# Ex: extract 'pavics-sdi' from 'Ouranosinc/pavics-sdi'.
+# USAGE: REPO_NAME_ONLY="$(extract_repo_name "$REPO_NAME")"
+extract_repo_name() {
+    echo "$1" | sed "s@^.*/@@g"
+}
+
+# Branches that have allowed characters such as '+' other than alphanum, '-', '_' and '.' are converted to '-' in archives.
+# USAGE: FOLDER_NAME="$(sanitize_extracted_folder_name "$FOLDER_NAME")"
+sanitize_extracted_folder_name() {
+    echo "$1" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"
+}
+
+# Presence of setup.cfg, tox.ini, pyproject.toml files confuse py.test execution rootdir discovery.
+# USAGE: delete_files_confusing_pytest "$CHECKOUT_DIR"
+delete_files_confusing_pytest() {
+    for afile in setup.cfg tox.ini pyproject.toml; do
+        if [ -f "$1/$afile" ]; then
+            rm -v "$1/$afile"
+        fi
+    done
 }
 
 downloadrepos_main() {
@@ -49,22 +84,22 @@ downloadrepos_main() {
     fi
 
     if [ -z "$1" ]; then
-        if [ x"$DOWNLOAD_ALL_DEFAULT_REPOS" = xtrue -o x"$TEST_PAVICS_SDI_REPO" = xtrue ]; then
+        if [ x"$DOWNLOAD_ALL_DEFAULT_REPOS" = xtrue ] || [ x"$TEST_PAVICS_SDI_REPO" = xtrue ]; then
             downloadgithubrepos $PAVICS_SDI_REPO $PAVICS_SDI_BRANCH
         fi
-        if [ x"$DOWNLOAD_ALL_DEFAULT_REPOS" = xtrue -o x"$TEST_FINCH_REPO" = xtrue ]; then
+        if [ x"$DOWNLOAD_ALL_DEFAULT_REPOS" = xtrue ] || [ x"$TEST_FINCH_REPO" = xtrue ]; then
             downloadgithubrepos $FINCH_REPO $FINCH_BRANCH
         fi
-        if [ x"$DOWNLOAD_ALL_DEFAULT_REPOS" = xtrue -o x"$TEST_PAVICS_LANDING_REPO" = xtrue ]; then
+        if [ x"$DOWNLOAD_ALL_DEFAULT_REPOS" = xtrue ] || [ x"$TEST_PAVICS_LANDING_REPO" = xtrue ]; then
             downloadgithubrepos $PAVICS_LANDING_REPO $PAVICS_LANDING_BRANCH
         fi
-        if [ x"$DOWNLOAD_ALL_DEFAULT_REPOS" = xtrue -o x"$TEST_RAVEN_REPO" = xtrue ]; then
+        if [ x"$DOWNLOAD_ALL_DEFAULT_REPOS" = xtrue ] || [ x"$TEST_RAVEN_REPO" = xtrue ]; then
             downloadgithubrepos $RAVEN_REPO $RAVEN_BRANCH
         fi
-        if [ x"$DOWNLOAD_ALL_DEFAULT_REPOS" = xtrue -o x"$TEST_RAVENPY_REPO" = xtrue ]; then
+        if [ x"$DOWNLOAD_ALL_DEFAULT_REPOS" = xtrue ] || [ x"$TEST_RAVENPY_REPO" = xtrue ]; then
             downloadgithubrepos $RAVENPY_REPO $RAVENPY_BRANCH
         fi
-        if [ x"$DOWNLOAD_ALL_DEFAULT_REPOS" = xtrue -o x"$TEST_ESGF_COMPUTE_API_REPO" = xtrue ]; then
+        if [ x"$DOWNLOAD_ALL_DEFAULT_REPOS" = xtrue ] || [ x"$TEST_ESGF_COMPUTE_API_REPO" = xtrue ]; then
             downloadgithubrepos $ESGF_COMPUTE_API_REPO $ESGF_COMPUTE_API_BRANCH
         fi
     else
