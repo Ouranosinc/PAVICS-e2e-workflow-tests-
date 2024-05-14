@@ -2,6 +2,9 @@
 
 . ./default_build_params
 
+DOWNLOADREPOS_AS_LIB=1
+. ./downloadrepos
+
 set -x
 
 # Allow full override of ALL Jenkins params before running test suite.
@@ -37,8 +40,6 @@ fi
 git clean -fdx
 
 # download all additional repos containing extra notebooks to test
-DOWNLOADREPOS_AS_LIB=1
-. ./downloadrepos
 DOWNLOAD_ALL_DEFAULT_REPOS=false
 downloadrepos_main
 
