@@ -87,7 +87,8 @@ SAVE_RESULTING_NOTEBOOK="$(lowercase "$SAVE_RESULTING_NOTEBOOK")"
 
 mkdir -p buildout/
 for nb in $NOTEBOOKS; do
-    filename="$(basename "$nb")"
+    repo_branch_name="$(extract_repo_name "$nb")"
+    filename="${repo_branch_name}--$(basename "$nb")"
     filename="$(echo "$filename" | sed "s/.ipynb$//")"  # remove .ipynb ext
     if [ -e "buildout/${filename}.ipynb" ]; then
         # prevent name clash
