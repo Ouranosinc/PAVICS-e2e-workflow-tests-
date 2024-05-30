@@ -113,6 +113,7 @@ fi
 
 if [ x"$TEST_PAVICS_LANDING_REPO" = xtrue ]; then
     NOTEBOOKS_TO_TEST="$NOTEBOOKS_TO_TEST ${PAVICS_LANDING_DIR}/content/notebooks/climate_indicators/*.ipynb"
+    NOTEBOOKS_TO_TEST="$NOTEBOOKS_TO_TEST ${PAVICS_LANDING_DIR}/content/notebooks/hydrology/*.ipynb"
 
     SETUP_SCRIPT="${PAVICS_LANDING_DIR}/content/notebooks/climate_indicators/setup_dirlayout.sh"
     if [ -x "$SETUP_SCRIPT" ]; then
