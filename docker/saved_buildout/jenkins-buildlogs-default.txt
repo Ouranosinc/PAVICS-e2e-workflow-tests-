@@ -7,7 +7,6 @@ Fetching upstream changes from origin
  > git --version # timeout=10
  > git config --get remote.origin.url # timeout=10
  > git fetch --tags --progress -- origin +refs/heads/*:refs/remotes/origin/* # timeout=10
-Seen branch in repository origin/add-PAVICS-landing-hydro-nbs
 Seen branch in repository origin/current-production-version
 Seen branch in repository origin/devel-new-extensions
 Seen branch in repository origin/extended_tests
@@ -16,8 +15,8 @@ Seen branch in repository origin/master
 Seen branch in repository origin/new-docker-build
 Seen branch in repository origin/test-dockerhub-build
 Seen branch in repository origin/twitcher_perf_test_notebook
-Seen 9 remote branches
-Obtained Jenkinsfile from e54e10b64e2e09d0d3fd9185f273fc00828cb376
+Seen 8 remote branches
+Obtained Jenkinsfile from 98177b0da6ead3ce7ebe4dbf996d8c05ac624602
 Running in Durability level: MAX_SURVIVABILITY
 [Pipeline] Start of Pipeline
 [Pipeline] node
@@ -29,816 +28,754 @@ Running on linux1 in /home/jenkins/agent/workspace/_workflow-tests_new-docker-bu
 No credentials specified
 Fetching changes from the remote Git repository
 Fetching without tags
+Checking out Revision 98177b0da6ead3ce7ebe4dbf996d8c05ac624602 (new-docker-build)
+Commit message: "release: update to use image pavics/workflow-tests:py311-240610"
  > git rev-parse --is-inside-work-tree # timeout=10
  > git config remote.origin.url https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git # timeout=10
 Fetching upstream changes from https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git
  > git --version # timeout=10
  > git fetch --no-tags --progress -- https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git +refs/heads/*:refs/remotes/origin/* # timeout=10
-Checking out Revision e54e10b64e2e09d0d3fd9185f273fc00828cb376 (new-docker-build)
  > git config core.sparsecheckout # timeout=10
- > git checkout -f e54e10b64e2e09d0d3fd9185f273fc00828cb376 # timeout=10
-Commit message: "release: update to use image pavics/workflow-tests:py311-240531"
- > git rev-list --no-walk fa84089331fe4334e3f2dc44a0c254a5e2a25504 # timeout=10
+ > git checkout -f 98177b0da6ead3ce7ebe4dbf996d8c05ac624602 # timeout=10
+ > git rev-list --no-walk 98177b0da6ead3ce7ebe4dbf996d8c05ac624602 # timeout=10
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] withEnv
 [Pipeline] {
 [Pipeline] isUnix
 [Pipeline] sh
-+ docker inspect -f . pavics/workflow-tests:py311-240531
-
-Error: No such object: pavics/workflow-tests:py311-240531
-[Pipeline] isUnix
-[Pipeline] sh
-+ docker pull pavics/workflow-tests:py311-240531
-py311-240531: Pulling from pavics/workflow-tests
-09f376ebb190: Pulling fs layer
-c64c78aeeb13: Pulling fs layer
-a7feac11e817: Pulling fs layer
-6042cfea9408: Pulling fs layer
-3a693d02403a: Pulling fs layer
-08f68c7ea84b: Pulling fs layer
-4fd49a6d733c: Pulling fs layer
-fdc2d5b1cc25: Pulling fs layer
-1f504a1fd47d: Pulling fs layer
-cb400020f3b2: Pulling fs layer
-a66171906436: Pulling fs layer
-d5ab01dd17ae: Pulling fs layer
-6042cfea9408: Waiting
-3a693d02403a: Waiting
-08f68c7ea84b: Waiting
-4fd49a6d733c: Waiting
-fdc2d5b1cc25: Waiting
-1f504a1fd47d: Waiting
-cb400020f3b2: Waiting
-a66171906436: Waiting
-d5ab01dd17ae: Waiting
-09f376ebb190: Download complete
-c64c78aeeb13: Verifying Checksum
-c64c78aeeb13: Download complete
-09f376ebb190: Pull complete
-a7feac11e817: Verifying Checksum
-a7feac11e817: Download complete
-6042cfea9408: Verifying Checksum
-6042cfea9408: Download complete
-4fd49a6d733c: Verifying Checksum
-4fd49a6d733c: Download complete
-c64c78aeeb13: Pull complete
-08f68c7ea84b: Verifying Checksum
-08f68c7ea84b: Download complete
-3a693d02403a: Verifying Checksum
-3a693d02403a: Download complete
-1f504a1fd47d: Verifying Checksum
-1f504a1fd47d: Download complete
-a66171906436: Verifying Checksum
-a66171906436: Download complete
-d5ab01dd17ae: Verifying Checksum
-d5ab01dd17ae: Download complete
-cb400020f3b2: Verifying Checksum
-cb400020f3b2: Download complete
-a7feac11e817: Pull complete
-fdc2d5b1cc25: Verifying Checksum
-fdc2d5b1cc25: Download complete
-6042cfea9408: Pull complete
-3a693d02403a: Pull complete
-08f68c7ea84b: Pull complete
-4fd49a6d733c: Pull complete
-fdc2d5b1cc25: Pull complete
-1f504a1fd47d: Pull complete
-cb400020f3b2: Pull complete
-a66171906436: Pull complete
-d5ab01dd17ae: Pull complete
-Digest: sha256:a8f3af5882241ebe37734b537a3b8f32d514742871b9e38dcbd2d1d904c76890
-Status: Downloaded newer image for pavics/workflow-tests:py311-240531
++ docker inspect -f . pavics/workflow-tests:py311-240610
+.
 [Pipeline] withDockerContainer
 linux1 seems to be running inside container c7b47b12d037a55684325ed6aba8c5cdbf14095a9ef2302738499cdd57ccd08b
-$ docker run -t -d -u 1000:1000 -w /home/jenkins/agent/workspace/_workflow-tests_new-docker-build --volumes-from c7b47b12d037a55684325ed6aba8c5cdbf14095a9ef2302738499cdd57ccd08b -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** pavics/workflow-tests:py311-240531 cat
-$ docker top 58efa5416657361d8f1874e39e667a4fc4547a270969cfc916595caa599b0348 -eo pid,comm
+$ docker run -t -d -u 1000:1000 -w /home/jenkins/agent/workspace/_workflow-tests_new-docker-build --volumes-from c7b47b12d037a55684325ed6aba8c5cdbf14095a9ef2302738499cdd57ccd08b -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** pavics/workflow-tests:py311-240610 cat
+$ docker top 0239946f61b0ae9a30891a004d0c327a128ad5d11361c962ec0831ef86ec97de -eo pid,comm
 [Pipeline] {
 [Pipeline] ansiColor
 [Pipeline] {
 [Pipeline] timestamps
 [Pipeline] {
 [Pipeline] timeout
-[2024-06-01T03:47:08.026Z] Timeout set to expire in 2 hr 0 min
+[2024-06-12T20:01:25.650Z] Timeout set to expire in 2 hr 0 min
 [Pipeline] {
 [Pipeline] stage
 [Pipeline] { (Run tests)
 [Pipeline] script
 [Pipeline] {
 [Pipeline] withCredentials
-[2024-06-01T03:47:09.568Z] Masking supported pattern matches of $ESGF_AUTH_USERNAME or $ESGF_AUTH_PASSWORD or $ESGF_AUTH_TOKEN or $COMPUTE_TOKEN
+[2024-06-12T20:01:25.882Z] Masking supported pattern matches of $ESGF_AUTH_USERNAME or $ESGF_AUTH_PASSWORD or $ESGF_AUTH_TOKEN or $COMPUTE_TOKEN
 [Pipeline] {
 [Pipeline] sh
-[2024-06-01T03:47:10.518Z] + VERIFY_SSL=true SAVE_RESULTING_NOTEBOOK=true ./testall
-[2024-06-01T03:47:10.518Z] TEST_PAVICS_SDI_REPO has been set to 'true'
-[2024-06-01T03:47:10.518Z] PAVICS_SDI_BRANCH has been set to 'master'
-[2024-06-01T03:47:10.518Z] PAVICS_SDI_REPO has been set to 'Ouranosinc/pavics-sdi'
-[2024-06-01T03:47:10.518Z] TEST_FINCH_REPO has been set to 'true'
-[2024-06-01T03:47:10.518Z] FINCH_BRANCH has been set to 'master'
-[2024-06-01T03:47:10.518Z] FINCH_REPO has been set to 'bird-house/finch'
-[2024-06-01T03:47:10.518Z] TEST_PAVICS_LANDING_REPO has been set to 'true'
-[2024-06-01T03:47:10.519Z] PAVICS_LANDING_BRANCH has been set to 'master'
-[2024-06-01T03:47:10.519Z] PAVICS_LANDING_REPO has been set to 'Ouranosinc/PAVICS-landing'
-[2024-06-01T03:47:10.519Z] TEST_RAVEN_REPO has been set to 'false'
-[2024-06-01T03:47:10.519Z] RAVEN_BRANCH has been set to 'main'
-[2024-06-01T03:47:10.519Z] RAVEN_REPO has been set to 'Ouranosinc/raven'
-[2024-06-01T03:47:10.519Z] TEST_RAVENPY_REPO has been set to 'false'
-[2024-06-01T03:47:10.519Z] RAVENPY_BRANCH has been set to 'master'
-[2024-06-01T03:47:10.519Z] RAVENPY_REPO has been set to 'CSHS-CWRA/RavenPy'
-[2024-06-01T03:47:10.519Z] TEST_ESGF_COMPUTE_API_REPO has been set to 'false'
-[2024-06-01T03:47:10.519Z] ESGF_COMPUTE_API_BRANCH has been set to 'devel'
-[2024-06-01T03:47:10.519Z] ESGF_COMPUTE_API_REPO has been set to 'ESGF/esgf-compute-api'
-[2024-06-01T03:47:10.519Z] TEST_LOCAL_NOTEBOOKS has been set to 'true'
-[2024-06-01T03:47:10.519Z] + [ -n https://gist.githubusercontent.com/tlvu/89115c6586e9d7b91262a68e9c4bc00b/raw/8f230c4fd4b40700a6e18dd755c30a7037db9925/jenkins-params-custom-branch.include.sh ]
-[2024-06-01T03:47:10.519Z] + TMP_PARAMS_OVERRIDE=/tmp/jenkins_params_override
-[2024-06-01T03:47:10.519Z] + rm -vf /tmp/jenkins_params_override
-[2024-06-01T03:47:10.519Z] removed '/tmp/jenkins_params_override'
-[2024-06-01T03:47:10.519Z] + curl --silent https://gist.githubusercontent.com/tlvu/89115c6586e9d7b91262a68e9c4bc00b/raw/8f230c4fd4b40700a6e18dd755c30a7037db9925/jenkins-params-custom-branch.include.sh
-[2024-06-01T03:47:10.519Z] + tee /tmp/jenkins_params_override
-[2024-06-01T03:47:10.776Z] + . /tmp/jenkins_params_override
-[2024-06-01T03:47:10.776Z] + git clean -fdx
-[2024-06-01T03:47:16.016Z] Removing .pytest_cache/
-[2024-06-01T03:47:16.016Z] Removing PAVICS-landing-hydro/
-[2024-06-01T03:47:16.016Z] Removing RavenPy-master/
-[2024-06-01T03:47:16.016Z] Removing __pycache__/
-[2024-06-01T03:47:16.016Z] Removing buildout/
-[2024-06-01T03:47:16.016Z] Removing esgf-compute-api-devel/
-[2024-06-01T03:47:16.016Z] Removing finch-master/
-[2024-06-01T03:47:16.016Z] Removing pavics-sdi-master/
-[2024-06-01T03:47:16.016Z] Removing raven-main/
-[2024-06-01T03:47:16.016Z] + ./downloadrepos
-[2024-06-01T03:47:16.016Z] TEST_PAVICS_SDI_REPO has been set to 'true'
-[2024-06-01T03:47:16.016Z] PAVICS_SDI_BRANCH has been set to 'master'
-[2024-06-01T03:47:16.016Z] PAVICS_SDI_REPO has been set to 'Ouranosinc/pavics-sdi'
-[2024-06-01T03:47:16.016Z] TEST_FINCH_REPO has been set to 'true'
-[2024-06-01T03:47:16.016Z] FINCH_BRANCH has been set to 'master'
-[2024-06-01T03:47:16.016Z] FINCH_REPO has been set to 'bird-house/finch'
-[2024-06-01T03:47:16.016Z] TEST_PAVICS_LANDING_REPO has been set to 'true'
-[2024-06-01T03:47:16.016Z] PAVICS_LANDING_BRANCH has been set to 'master'
-[2024-06-01T03:47:16.016Z] PAVICS_LANDING_REPO has been set to 'Ouranosinc/PAVICS-landing'
-[2024-06-01T03:47:16.016Z] TEST_RAVEN_REPO has been set to 'false'
-[2024-06-01T03:47:16.016Z] RAVEN_BRANCH has been set to 'main'
-[2024-06-01T03:47:16.016Z] RAVEN_REPO has been set to 'Ouranosinc/raven'
-[2024-06-01T03:47:16.016Z] TEST_RAVENPY_REPO has been set to 'false'
-[2024-06-01T03:47:16.016Z] RAVENPY_BRANCH has been set to 'master'
-[2024-06-01T03:47:16.016Z] RAVENPY_REPO has been set to 'CSHS-CWRA/RavenPy'
-[2024-06-01T03:47:16.016Z] TEST_ESGF_COMPUTE_API_REPO has been set to 'false'
-[2024-06-01T03:47:16.016Z] ESGF_COMPUTE_API_BRANCH has been set to 'devel'
-[2024-06-01T03:47:16.016Z] ESGF_COMPUTE_API_REPO has been set to 'ESGF/esgf-compute-api'
-[2024-06-01T03:47:16.016Z] TEST_LOCAL_NOTEBOOKS has been set to 'true'
-[2024-06-01T03:47:16.016Z] + rm -rf pavics-sdi-*
-[2024-06-01T03:47:16.016Z] + ls
-[2024-06-01T03:47:16.016Z] + grep pavics-sdi
-[2024-06-01T03:47:16.016Z] + downloadrepos https://github.com/Ouranosinc/pavics-sdi master
-[2024-06-01T03:47:16.016Z] + github_repo=https://github.com/Ouranosinc/pavics-sdi
-[2024-06-01T03:47:16.016Z] + shift
-[2024-06-01T03:47:16.016Z] + branch=master
-[2024-06-01T03:47:16.016Z] + shift
-[2024-06-01T03:47:16.016Z] + wget --quiet --output-document - https://github.com/Ouranosinc/pavics-sdi/archive/master.tar.gz
-[2024-06-01T03:47:16.016Z] + tar xz
-[2024-06-01T03:47:20.182Z] + ls
-[2024-06-01T03:47:20.182Z] + grep pavics-sdi
-[2024-06-01T03:47:20.182Z] pavics-sdi-master
-[2024-06-01T03:47:20.182Z] + set +x
-[2024-06-01T03:47:20.182Z] + rm -rf finch-*
-[2024-06-01T03:47:20.182Z] + ls
-[2024-06-01T03:47:20.182Z] + grep finch
-[2024-06-01T03:47:20.182Z] + downloadrepos https://github.com/bird-house/finch master
-[2024-06-01T03:47:20.182Z] + github_repo=https://github.com/bird-house/finch
-[2024-06-01T03:47:20.182Z] + shift
-[2024-06-01T03:47:20.182Z] + branch=master
-[2024-06-01T03:47:20.182Z] + shift
-[2024-06-01T03:47:20.182Z] + wget --quiet --output-document - https://github.com/bird-house/finch/archive/master.tar.gz
-[2024-06-01T03:47:20.182Z] + tar xz
-[2024-06-01T03:47:21.112Z] + ls
-[2024-06-01T03:47:21.112Z] + grep finch
-[2024-06-01T03:47:21.112Z] finch-master
-[2024-06-01T03:47:21.112Z] + set +x
-[2024-06-01T03:47:21.112Z] + rm -rf PAVICS-landing-*
-[2024-06-01T03:47:21.112Z] + ls
-[2024-06-01T03:47:21.112Z] + grep PAVICS-landing
-[2024-06-01T03:47:21.112Z] + downloadrepos https://github.com/Ouranosinc/PAVICS-landing master
-[2024-06-01T03:47:21.112Z] + github_repo=https://github.com/Ouranosinc/PAVICS-landing
-[2024-06-01T03:47:21.112Z] + shift
-[2024-06-01T03:47:21.112Z] + branch=master
-[2024-06-01T03:47:21.112Z] + shift
-[2024-06-01T03:47:21.112Z] + wget --quiet --output-document - https://github.com/Ouranosinc/PAVICS-landing/archive/master.tar.gz
-[2024-06-01T03:47:21.112Z] + tar xz
-[2024-06-01T03:47:35.948Z] + ls
-[2024-06-01T03:47:35.948Z] + grep PAVICS-landing
-[2024-06-01T03:47:35.948Z] PAVICS-landing-master
-[2024-06-01T03:47:35.948Z] + set +x
-[2024-06-01T03:47:35.948Z] + rm -rf raven-*
-[2024-06-01T03:47:35.948Z] + ls
-[2024-06-01T03:47:35.948Z] + grep raven
-[2024-06-01T03:47:35.948Z] + downloadrepos https://github.com/Ouranosinc/raven main
-[2024-06-01T03:47:35.948Z] + github_repo=https://github.com/Ouranosinc/raven
-[2024-06-01T03:47:35.948Z] + shift
-[2024-06-01T03:47:35.948Z] + branch=main
-[2024-06-01T03:47:35.948Z] + shift
-[2024-06-01T03:47:35.948Z] + wget --quiet+  --output-document - https://github.com/Ouranosinc/raven/archive/main.tar.gz
-[2024-06-01T03:47:35.948Z] tar xz
-[2024-06-01T03:47:36.886Z] + ls
-[2024-06-01T03:47:36.886Z] + grep raven
-[2024-06-01T03:47:36.886Z] raven-main
-[2024-06-01T03:47:36.886Z] + set +x
-[2024-06-01T03:47:36.886Z] + rm -rf RavenPy-*
-[2024-06-01T03:47:36.886Z] + ls
-[2024-06-01T03:47:36.886Z] + grep RavenPy
-[2024-06-01T03:47:36.886Z] + downloadrepos https://github.com/CSHS-CWRA/RavenPy master
-[2024-06-01T03:47:36.886Z] + github_repo=https://github.com/CSHS-CWRA/RavenPy
-[2024-06-01T03:47:36.886Z] + shift
-[2024-06-01T03:47:36.886Z] + branch=master
-[2024-06-01T03:47:36.886Z] + shift
-[2024-06-01T03:47:36.886Z] + wget --quiet --output-document - https://github.com/CSHS-CWRA/RavenPy/archive/master.tar.gz
-[2024-06-01T03:47:36.886Z] + tar xz
-[2024-06-01T03:47:38.774Z] + ls
-[2024-06-01T03:47:38.774Z] + grep RavenPy
-[2024-06-01T03:47:38.774Z] RavenPy-master
-[2024-06-01T03:47:38.774Z] + set +x
-[2024-06-01T03:47:38.774Z] + rm -rf esgf-compute-api-*
-[2024-06-01T03:47:38.774Z] + ls
-[2024-06-01T03:47:38.774Z] + grep esgf-compute-api
-[2024-06-01T03:47:38.774Z] + downloadrepos https://github.com/ESGF/esgf-compute-api devel
-[2024-06-01T03:47:38.774Z] + github_repo=https://github.com/ESGF/esgf-compute-api
-[2024-06-01T03:47:38.774Z] + shift
-[2024-06-01T03:47:38.774Z] + branch=devel
-[2024-06-01T03:47:38.774Z] + shift
-[2024-06-01T03:47:38.774Z] + wget --quiet --output-document - https://github.com/ESGF/esgf-compute-api/archive/devel.tar.gz
-[2024-06-01T03:47:38.774Z] + tar xz
-[2024-06-01T03:47:40.144Z] + ls
-[2024-06-01T03:47:40.144Z] + grep esgf-compute-api
-[2024-06-01T03:47:40.144Z] esgf-compute-api-devel
-[2024-06-01T03:47:40.144Z] + set +x
-[2024-06-01T03:47:40.144Z] + echo master
-[2024-06-01T03:47:40.144Z] + sed s@/@-@g
-[2024-06-01T03:47:40.144Z] + export PAVICS_SDI_BRANCH=master
-[2024-06-01T03:47:40.144Z] + echo Ouranosinc/pavics-sdi
-[2024-06-01T03:47:40.144Z] + sed s@^.*/@@g
-[2024-06-01T03:47:40.144Z] + export PAVICS_SDI_REPO_NAME=pavics-sdi
-[2024-06-01T03:47:40.144Z] + echo master
-[2024-06-01T03:47:40.144Z] + sed s@/@-@g
-[2024-06-01T03:47:40.144Z] + export FINCH_BRANCH=master
-[2024-06-01T03:47:40.144Z] + echo bird-house/finch
-[2024-06-01T03:47:40.144Z] + sed s@^.*/@@g
-[2024-06-01T03:47:40.144Z] + export FINCH_REPO_NAME=finch
-[2024-06-01T03:47:40.144Z] + echo master
-[2024-06-01T03:47:40.144Z] + sed s@/@-@g
-[2024-06-01T03:47:40.144Z] + export PAVICS_LANDING_BRANCH=master
-[2024-06-01T03:47:40.144Z] + echo Ouranosinc/PAVICS-landing
-[2024-06-01T03:47:40.144Z] + sed s@^.*/@@g
-[2024-06-01T03:47:40.144Z] + export PAVICS_LANDING_REPO_NAME=PAVICS-landing
-[2024-06-01T03:47:40.144Z] + echo main
-[2024-06-01T03:47:40.144Z] + sed s@/@-@g
-[2024-06-01T03:47:40.144Z] + export RAVEN_BRANCH=main
-[2024-06-01T03:47:40.144Z] + echo Ouranosinc/raven
-[2024-06-01T03:47:40.144Z] + sed s@^.*/@@g
-[2024-06-01T03:47:40.144Z] + export RAVEN_REPO_NAME=raven
-[2024-06-01T03:47:40.144Z] + echo master
-[2024-06-01T03:47:40.144Z] + sed s@/@-@g
-[2024-06-01T03:47:40.144Z] + export RAVENPY_BRANCH=master
-[2024-06-01T03:47:40.144Z] + echo CSHS-CWRA/RavenPy
-[2024-06-01T03:47:40.144Z] + sed s@^.*/@@g
-[2024-06-01T03:47:40.144Z] + export RAVENPY_REPO_NAME=RavenPy
-[2024-06-01T03:47:40.144Z] + echo devel
-[2024-06-01T03:47:40.144Z] + sed s@/@-@g
-[2024-06-01T03:47:40.144Z] + export ESGF_COMPUTE_API_BRANCH=devel
-[2024-06-01T03:47:40.144Z] + echo ESGF/esgf-compute-api
-[2024-06-01T03:47:40.144Z] + sed s@^.*/@@g
-[2024-06-01T03:47:40.144Z] + export ESGF_COMPUTE_API_REPO_NAME=esgf-compute-api
-[2024-06-01T03:47:40.144Z] + echo pavics-sdi-master
-[2024-06-01T03:47:40.144Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-06-01T03:47:40.144Z] + export PAVICS_SDI_DIR=pavics-sdi-master
-[2024-06-01T03:47:40.144Z] + echo finch-master
-[2024-06-01T03:47:40.144Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-06-01T03:47:40.144Z] + export FINCH_DIR=finch-master
-[2024-06-01T03:47:40.144Z] + echo PAVICS-landing-master
-[2024-06-01T03:47:40.144Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-06-01T03:47:40.144Z] + export PAVICS_LANDING_DIR=PAVICS-landing-master
-[2024-06-01T03:47:40.144Z] + echo raven-main
-[2024-06-01T03:47:40.144Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-06-01T03:47:40.144Z] + export RAVEN_DIR=raven-main
-[2024-06-01T03:47:40.144Z] + echo RavenPy-master
-[2024-06-01T03:47:40.144Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-06-01T03:47:40.144Z] + export RAVENPY_DIR=RavenPy-master
-[2024-06-01T03:47:40.144Z] + echo esgf-compute-api-devel
-[2024-06-01T03:47:40.144Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-06-01T03:47:40.144Z] + export ESGF_COMPUTE_API_DIR=esgf-compute-api-devel
-[2024-06-01T03:47:40.144Z] + echo true
-[2024-06-01T03:47:40.144Z] + tr [:upper:] [:lower:]
-[2024-06-01T03:47:40.144Z] + VERIFY_SSL=true
-[2024-06-01T03:47:40.144Z] + [ xtrue = xfalse ]
-[2024-06-01T03:47:40.144Z] + rm -v finch-master/setup.cfg
-[2024-06-01T03:47:40.144Z] removed 'finch-master/setup.cfg'
-[2024-06-01T03:47:40.144Z] + rm -v raven-main/setup.cfg
-[2024-06-01T03:47:40.144Z] removed 'raven-main/setup.cfg'
-[2024-06-01T03:47:40.144Z] + rm -v raven-main/pyproject.toml
-[2024-06-01T03:47:40.144Z] removed 'raven-main/pyproject.toml'
-[2024-06-01T03:47:40.144Z] + rm -v RavenPy-master/setup.cfg
-[2024-06-01T03:47:40.144Z] removed 'RavenPy-master/setup.cfg'
-[2024-06-01T03:47:40.144Z] + rm -v RavenPy-master/tox.ini
-[2024-06-01T03:47:40.144Z] removed 'RavenPy-master/tox.ini'
-[2024-06-01T03:47:40.144Z] + rm -v RavenPy-master/pyproject.toml
-[2024-06-01T03:47:40.144Z] removed 'RavenPy-master/pyproject.toml'
-[2024-06-01T03:47:40.144Z] + rm -v esgf-compute-api-devel/setup.cfg
-[2024-06-01T03:47:40.144Z] rm: cannot remove 'esgf-compute-api-devel/setup.cfg': No such file or directory
-[2024-06-01T03:47:40.144Z] + rm -v esgf-compute-api-devel/tox.ini
-[2024-06-01T03:47:40.144Z] rm: cannot remove 'esgf-compute-api-devel/tox.ini': No such file or directory
-[2024-06-01T03:47:40.144Z] + echo false
-[2024-06-01T03:47:40.144Z] + tr [:upper:] [:lower:]
-[2024-06-01T03:47:40.144Z] + TEST_MAGPIE_AUTH=false
-[2024-06-01T03:47:40.144Z] + echo true
-[2024-06-01T03:47:40.144Z] + tr [:upper:] [:lower:]
-[2024-06-01T03:47:40.144Z] + TEST_PAVICS_SDI_REPO=true
-[2024-06-01T03:47:40.144Z] + tr+  [:upper:] [:lower:]
-[2024-06-01T03:47:40.144Z] echo false
-[2024-06-01T03:47:40.144Z] + TEST_PAVICS_SDI_WEAVER=false
-[2024-06-01T03:47:40.144Z] + echo true
-[2024-06-01T03:47:40.144Z] + tr [:upper:] [:lower:]
-[2024-06-01T03:47:40.144Z] + TEST_FINCH_REPO=true
-[2024-06-01T03:47:40.144Z] + echo true
-[2024-06-01T03:47:40.144Z] + tr [:upper:] [:lower:]
-[2024-06-01T03:47:40.144Z] + TEST_PAVICS_LANDING_REPO=true
-[2024-06-01T03:47:40.144Z] + echo false
-[2024-06-01T03:47:40.144Z] + tr [:upper:] [:lower:]
-[2024-06-01T03:47:40.144Z] + TEST_RAVEN_REPO=false
-[2024-06-01T03:47:40.144Z] + echo false
-[2024-06-01T03:47:40.144Z] + tr [:upper:] [:lower:]
-[2024-06-01T03:47:40.144Z] + TEST_RAVENPY_REPO=false
-[2024-06-01T03:47:40.144Z] + echo false
-[2024-06-01T03:47:40.144Z] + tr [:upper:] [:lower:]
-[2024-06-01T03:47:40.144Z] + TEST_ESGF_COMPUTE_API_REPO=false
-[2024-06-01T03:47:40.144Z] + echo true
-[2024-06-01T03:47:40.144Z] + tr [:upper:] [:lower:]
-[2024-06-01T03:47:40.144Z] + TEST_LOCAL_NOTEBOOKS=true
-[2024-06-01T03:47:40.144Z] + NOTEBOOKS_TO_TEST=
-[2024-06-01T03:47:40.144Z] + [ xfalse = xtrue ]
-[2024-06-01T03:47:40.144Z] + [ xtrue = xtrue ]
-[2024-06-01T03:47:40.144Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb
-[2024-06-01T03:47:40.144Z] + [ xfalse = xtrue ]
-[2024-06-01T03:47:40.144Z] + [ xtrue = xtrue ]
-[2024-06-01T03:47:40.144Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb
-[2024-06-01T03:47:40.144Z] + [ xtrue = xtrue ]
-[2024-06-01T03:47:40.144Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/*.ipynb
-[2024-06-01T03:47:40.144Z] + SETUP_SCRIPT=PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh
-[2024-06-01T03:47:40.144Z] + [ -x PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh ]
-[2024-06-01T03:47:40.144Z] + [ xfalse = xtrue ]
-[2024-06-01T03:47:40.144Z] + [ xfalse = xtrue ]
-[2024-06-01T03:47:40.144Z] + [ xfalse = xtrue ]
-[2024-06-01T03:47:40.144Z] + [ xtrue = xtrue ]
-[2024-06-01T03:47:40.144Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/*.ipynb notebooks/*.ipynb
-[2024-06-01T03:47:40.144Z] + ./runtest  pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/*.ipynb notebooks/*.ipynb
-[2024-06-01T03:47:40.144Z] + [ -n  ]
-[2024-06-01T03:47:40.144Z] + [ ! -z pavics.ouranos.ca ]
-[2024-06-01T03:47:40.144Z] + echo Will run notebooks against pavics.ouranos.ca
-[2024-06-01T03:47:40.144Z] Will run notebooks against pavics.ouranos.ca
-[2024-06-01T03:47:40.144Z] + [ -z  ]
-[2024-06-01T03:47:40.145Z] + sed -i /\(\.ncml\|TEST_USE_PROD_DATA\)/!s/pavics.ouranos.ca/pavics.ouranos.ca/g pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb pavics-sdi-master/docs/source/notebooks/WMS_example.ipynb pavics-sdi-master/docs/source/notebooks/climex.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb pavics-sdi-master/docs/source/notebooks/forecasts.ipynb pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb pavics-sdi-master/docs/source/notebooks/opendap.ipynb pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb pavics-sdi-master/docs/source/notebooks/regridding.ipynb pavics-sdi-master/docs/source/notebooks/rendering.ipynb pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb pavics-sdi-master/docs/source/notebooks/subsetting.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb notebooks/hummingbird.ipynb notebooks/stress-tests.ipynb
-[2024-06-01T03:47:40.145Z] + git diff
-[2024-06-01T03:47:40.145Z] + export PYTHONWARNINGS=ignore:Unverified HTTPS request
-[2024-06-01T03:47:40.145Z] + [ -n  ]
-[2024-06-01T03:47:40.145Z] + py.test --nbval pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb pavics-sdi-master/docs/source/notebooks/WMS_example.ipynb pavics-sdi-master/docs/source/notebooks/climex.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb pavics-sdi-master/docs/source/notebooks/forecasts.ipynb pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb pavics-sdi-master/docs/source/notebooks/opendap.ipynb pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb pavics-sdi-master/docs/source/notebooks/regridding.ipynb pavics-sdi-master/docs/source/notebooks/rendering.ipynb pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb pavics-sdi-master/docs/source/notebooks/subsetting.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb notebooks/hummingbird.ipynb notebooks/stress-tests.ipynb --nbval-sanitize-with notebooks/output-sanitize.cfg --dist=loadscope --numprocesses=0
-[2024-06-01T03:47:42.664Z] ============================= test session starts ==============================
-[2024-06-01T03:47:42.664Z] platform linux -- Python 3.11.6, pytest-8.2.1, pluggy-1.5.0
-[2024-06-01T03:47:42.664Z] rootdir: /home/jenkins/agent/workspace/_workflow-tests_new-docker-build
-[2024-06-01T03:47:42.664Z] plugins: anyio-4.3.0, dash-2.17.0, nbval-0.11.0, tornasync-0.6.0.post2, xdist-3.5.0
-[2024-06-01T03:47:42.664Z] collected 227 items
-[2024-06-01T03:47:42.664Z] 
-[2024-06-01T03:47:43.599Z] pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb Fatal Python error: Aborted
-[2024-06-01T03:47:43.599Z] 
-[2024-06-01T03:47:43.599Z] Current thread 0x00007f1d632ee740 (most recent call first):
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/zmq/sugar/socket.py", line 156 in __init__
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/zmq/sugar/context.py", line 354 in socket
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_client/connect.py", line 658 in _create_connected_socket
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_client/manager.py", line 323 in _connect_control_socket
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_client/manager.py", line 371 in _async_post_start_kernel
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/asyncio/tasks.py", line 277 in __step
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/asyncio/events.py", line 80 in _run
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nest_asyncio.py", line 133 in _run_once
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nest_asyncio.py", line 92 in run_until_complete
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_client/utils.py", line 27 in wrapped
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_client/manager.py", line 396 in _async_start_kernel
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_client/manager.py", line 82 in wrapper
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/asyncio/tasks.py", line 277 in __step
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/asyncio/events.py", line 80 in _run
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nest_asyncio.py", line 133 in _run_once
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nest_asyncio.py", line 92 in run_until_complete
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_client/utils.py", line 27 in wrapped
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbval/kernel.py", line 53 in start_new_kernel
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbval/kernel.py", line 85 in __init__
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbval/plugin.py", line 264 in setup
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/runner.py", line 514 in setup
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/runner.py", line 159 in pytest_runtest_setup
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_callers.py", line 103 in _multicall
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_manager.py", line 120 in _hookexec
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_hooks.py", line 513 in __call__
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/runner.py", line 241 in <lambda>
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/runner.py", line 341 in from_call
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/runner.py", line 240 in call_and_report
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/runner.py", line 129 in runtestprotocol
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/runner.py", line 116 in pytest_runtest_protocol
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_callers.py", line 103 in _multicall
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_manager.py", line 120 in _hookexec
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_hooks.py", line 513 in __call__
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/main.py", line 364 in pytest_runtestloop
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_callers.py", line 103 in _multicall
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_manager.py", line 120 in _hookexec
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_hooks.py", line 513 in __call__
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/main.py", line 339 in _main
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/main.py", line 285 in wrap_session
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/main.py", line 332 in pytest_cmdline_main
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_callers.py", line 103 in _multicall
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_manager.py", line 120 in _hookexec
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_hooks.py", line 513 in __call__
-[2024-06-01T03:47:43.599Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/config/__init__.py", line 178 in main
-[2024-06-01T03:47:43.600Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/config/__init__.py", line 206 in console_main
-[2024-06-01T03:47:43.600Z]   File "/opt/conda/envs/birdy/bin/py.test", line 10 in <module>
-[2024-06-01T03:47:43.600Z] 
-[2024-06-01T03:47:43.600Z] Extension modules: markupsafe._speedups, zmq.backend.cython._zmq, tornado.speedups, psutil._psutil_linux, psutil._psutil_posix, _brotli, zstandard.backend_c (total: 7)
-[2024-06-01T03:47:48.856Z] Aborted (core dumped)
-[2024-06-01T03:47:48.856Z] + EXIT_CODE=134
-[2024-06-01T03:47:48.856Z] + echo true
-[2024-06-01T03:47:48.856Z] + tr [:upper:] [:lower:]
-[2024-06-01T03:47:48.856Z] + SAVE_RESULTING_NOTEBOOK=true
-[2024-06-01T03:47:48.856Z] + [ xtrue = xtrue ]
-[2024-06-01T03:47:48.856Z] + mkdir -p buildout
-[2024-06-01T03:47:48.856Z] + basename pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb
-[2024-06-01T03:47:48.856Z] + filename=CaSR_basic.ipynb
-[2024-06-01T03:47:48.856Z] + echo CaSR_basic.ipynb
-[2024-06-01T03:47:48.856Z] + sed s/.ipynb$//
-[2024-06-01T03:47:48.856Z] + filename=CaSR_basic
-[2024-06-01T03:47:48.856Z] + [ -e buildout/CaSR_basic.output.ipynb ]
-[2024-06-01T03:47:48.856Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output CaSR_basic.output.ipynb pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb
-[2024-06-01T03:47:50.745Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb to notebook
-[2024-06-01T03:47:51.001Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:47:51.564Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:47:52.131Z] Aborted (core dumped)
-[2024-06-01T03:47:52.131Z] + basename pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb
-[2024-06-01T03:47:52.131Z] + filename=WCS_example.ipynb
-[2024-06-01T03:47:52.131Z] + echo WCS_example.ipynb
-[2024-06-01T03:47:52.131Z] + sed s/.ipynb$//
-[2024-06-01T03:47:52.131Z] + filename=WCS_example
-[2024-06-01T03:47:52.131Z] + [ -e buildout/WCS_example.output.ipynb ]
-[2024-06-01T03:47:52.131Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output WCS_example.output.ipynb pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb
-[2024-06-01T03:47:54.019Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb to notebook
-[2024-06-01T03:47:54.276Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:47:54.840Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-06-01T03:47:54.840Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-06-01T03:47:54.840Z] 0.00s - to python to disable frozen modules.
-[2024-06-01T03:47:54.840Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-06-01T03:47:54.840Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:47:56.205Z] Aborted (core dumped)
-[2024-06-01T03:47:56.205Z] + basename pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb
-[2024-06-01T03:47:56.205Z] + filename=WFS_example.ipynb
-[2024-06-01T03:47:56.205Z] + echo WFS_example.ipynb
-[2024-06-01T03:47:56.205Z] + sed s/.ipynb$//
-[2024-06-01T03:47:56.205Z] + filename=WFS_example
-[2024-06-01T03:47:56.205Z] + [ -e buildout/WFS_example.output.ipynb ]
-[2024-06-01T03:47:56.205Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output WFS_example.output.ipynb pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb
-[2024-06-01T03:47:58.108Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb to notebook
-[2024-06-01T03:47:58.108Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:47:58.674Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-06-01T03:47:58.674Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-06-01T03:47:58.674Z] 0.00s - to python to disable frozen modules.
-[2024-06-01T03:47:58.674Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-06-01T03:47:58.674Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:47:58.939Z] Aborted (core dumped)
-[2024-06-01T03:47:58.939Z] + basename pavics-sdi-master/docs/source/notebooks/WMS_example.ipynb
-[2024-06-01T03:47:58.939Z] + filename=WMS_example.ipynb
-[2024-06-01T03:47:58.939Z] + echo WMS_example.ipynb
-[2024-06-01T03:47:58.939Z] + sed s/.ipynb$//
-[2024-06-01T03:47:58.939Z] + filename=WMS_example
-[2024-06-01T03:47:58.939Z] + [ -e buildout/WMS_example.output.ipynb ]
-[2024-06-01T03:47:58.939Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output WMS_example.output.ipynb pavics-sdi-master/docs/source/notebooks/WMS_example.ipynb
-[2024-06-01T03:48:00.831Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/WMS_example.ipynb to notebook
-[2024-06-01T03:48:01.393Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:01.959Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-06-01T03:48:01.959Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-06-01T03:48:01.959Z] 0.00s - to python to disable frozen modules.
-[2024-06-01T03:48:01.959Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-06-01T03:48:01.959Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:02.216Z] Aborted (core dumped)
-[2024-06-01T03:48:02.216Z] + basename pavics-sdi-master/docs/source/notebooks/climex.ipynb
-[2024-06-01T03:48:02.216Z] + filename=climex.ipynb
-[2024-06-01T03:48:02.216Z] + sed s/.ipynb$//
-[2024-06-01T03:48:02.216Z] + echo climex.ipynb
-[2024-06-01T03:48:02.216Z] + filename=climex
-[2024-06-01T03:48:02.216Z] + [ -e buildout/climex.output.ipynb ]
-[2024-06-01T03:48:02.216Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output climex.output.ipynb pavics-sdi-master/docs/source/notebooks/climex.ipynb
-[2024-06-01T03:48:04.192Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/climex.ipynb to notebook
-[2024-06-01T03:48:04.464Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:05.030Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-06-01T03:48:05.030Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-06-01T03:48:05.030Z] 0.00s - to python to disable frozen modules.
-[2024-06-01T03:48:05.030Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-06-01T03:48:05.030Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:07.546Z] Aborted (core dumped)
-[2024-06-01T03:48:07.546Z] + basename pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb
-[2024-06-01T03:48:07.546Z] + filename=eccc-geoapi-climate-stations.ipynb
-[2024-06-01T03:48:07.546Z] + echo eccc-geoapi-climate-stations.ipynb
-[2024-06-01T03:48:07.546Z] + sed s/.ipynb$//
-[2024-06-01T03:48:07.546Z] + filename=eccc-geoapi-climate-stations
-[2024-06-01T03:48:07.546Z] + [ -e buildout/eccc-geoapi-climate-stations.output.ipynb ]
-[2024-06-01T03:48:07.546Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output eccc-geoapi-climate-stations.output.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb
-[2024-06-01T03:48:09.443Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb to notebook
-[2024-06-01T03:48:09.703Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:10.266Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-06-01T03:48:10.266Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-06-01T03:48:10.266Z] 0.00s - to python to disable frozen modules.
-[2024-06-01T03:48:10.266Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-06-01T03:48:10.266Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:11.194Z] Aborted (core dumped)
-[2024-06-01T03:48:11.194Z] + basename pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb
-[2024-06-01T03:48:11.194Z] + filename=eccc-geoapi-xclim.ipynb
-[2024-06-01T03:48:11.194Z] + echo eccc-geoapi-xclim.ipynb
-[2024-06-01T03:48:11.194Z] + sed s/.ipynb$//
-[2024-06-01T03:48:11.194Z] + filename=eccc-geoapi-xclim
-[2024-06-01T03:48:11.194Z] + [ -e buildout/eccc-geoapi-xclim.output.ipynb ]
-[2024-06-01T03:48:11.194Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output eccc-geoapi-xclim.output.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb
-[2024-06-01T03:48:12.558Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb to notebook
-[2024-06-01T03:48:13.128Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:13.695Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-06-01T03:48:13.695Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-06-01T03:48:13.695Z] 0.00s - to python to disable frozen modules.
-[2024-06-01T03:48:13.695Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-06-01T03:48:13.695Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:14.261Z] Aborted (core dumped)
-[2024-06-01T03:48:14.261Z] + basename pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb
-[2024-06-01T03:48:14.262Z] + filename=esgf-dap.ipynb
-[2024-06-01T03:48:14.262Z] + echo esgf-dap.ipynb
-[2024-06-01T03:48:14.262Z] + sed s/.ipynb$//
-[2024-06-01T03:48:14.262Z] + filename=esgf-dap
-[2024-06-01T03:48:14.262Z] + [ -e buildout/esgf-dap.output.ipynb ]
-[2024-06-01T03:48:14.262Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output esgf-dap.output.ipynb pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb
-[2024-06-01T03:48:16.157Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb to notebook
-[2024-06-01T03:48:16.415Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:16.978Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-06-01T03:48:16.978Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-06-01T03:48:16.978Z] 0.00s - to python to disable frozen modules.
-[2024-06-01T03:48:16.978Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-06-01T03:48:17.235Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:17.491Z] Aborted (core dumped)
-[2024-06-01T03:48:17.491Z] + basename pavics-sdi-master/docs/source/notebooks/forecasts.ipynb
-[2024-06-01T03:48:17.491Z] + filename=forecasts.ipynb
-[2024-06-01T03:48:17.491Z] + echo forecasts.ipynb
-[2024-06-01T03:48:17.491Z] + sed s/.ipynb$//
-[2024-06-01T03:48:17.491Z] + filename=forecasts
-[2024-06-01T03:48:17.491Z] + [ -e buildout/forecasts.output.ipynb ]
-[2024-06-01T03:48:17.491Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output forecasts.output.ipynb pavics-sdi-master/docs/source/notebooks/forecasts.ipynb
-[2024-06-01T03:48:19.384Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/forecasts.ipynb to notebook
-[2024-06-01T03:48:19.640Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:20.202Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-06-01T03:48:20.202Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-06-01T03:48:20.202Z] 0.00s - to python to disable frozen modules.
-[2024-06-01T03:48:20.202Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-06-01T03:48:20.202Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:20.461Z] Aborted (core dumped)
-[2024-06-01T03:48:20.461Z] + basename pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb
-[2024-06-01T03:48:20.461Z] + filename=jupyter_extensions.ipynb
-[2024-06-01T03:48:20.461Z] + + echo jupyter_extensions.ipynb
-[2024-06-01T03:48:20.461Z] sed s/.ipynb$//
-[2024-06-01T03:48:20.461Z] + filename=jupyter_extensions
-[2024-06-01T03:48:20.461Z] + [ -e buildout/jupyter_extensions.output.ipynb ]
-[2024-06-01T03:48:20.462Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output jupyter_extensions.output.ipynb pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb
-[2024-06-01T03:48:22.351Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb to notebook
-[2024-06-01T03:48:22.628Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:23.196Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-06-01T03:48:23.196Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-06-01T03:48:23.196Z] 0.00s - to python to disable frozen modules.
-[2024-06-01T03:48:23.196Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-06-01T03:48:23.196Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:23.454Z] Aborted (core dumped)
-[2024-06-01T03:48:23.454Z] + basename pavics-sdi-master/docs/source/notebooks/opendap.ipynb
-[2024-06-01T03:48:23.454Z] + filename=opendap.ipynb
-[2024-06-01T03:48:23.454Z] + sed s/.ipynb$//
-[2024-06-01T03:48:23.454Z] + echo opendap.ipynb
-[2024-06-01T03:48:23.454Z] + filename=opendap
-[2024-06-01T03:48:23.454Z] + [ -e buildout/opendap.output.ipynb ]
-[2024-06-01T03:48:23.454Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output opendap.output.ipynb pavics-sdi-master/docs/source/notebooks/opendap.ipynb
-[2024-06-01T03:48:25.388Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/opendap.ipynb to notebook
-[2024-06-01T03:48:25.646Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:26.212Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-06-01T03:48:26.212Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-06-01T03:48:26.212Z] 0.00s - to python to disable frozen modules.
-[2024-06-01T03:48:26.212Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-06-01T03:48:26.212Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:28.103Z] Aborted (core dumped)
-[2024-06-01T03:48:28.103Z] + basename pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb
-[2024-06-01T03:48:28.103Z] + filename=pavics_thredds.ipynb
-[2024-06-01T03:48:28.103Z] + echo pavics_thredds.ipynb
-[2024-06-01T03:48:28.103Z] + sed s/.ipynb$//
-[2024-06-01T03:48:28.103Z] + filename=pavics_thredds
-[2024-06-01T03:48:28.103Z] + [ -e buildout/pavics_thredds.output.ipynb ]
-[2024-06-01T03:48:28.103Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output pavics_thredds.output.ipynb pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb
-[2024-06-01T03:48:29.467Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb to notebook
-[2024-06-01T03:48:30.032Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:30.593Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-06-01T03:48:30.593Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-06-01T03:48:30.593Z] 0.00s - to python to disable frozen modules.
-[2024-06-01T03:48:30.593Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-06-01T03:48:30.593Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:31.523Z] Aborted (core dumped)
-[2024-06-01T03:48:31.523Z] + basename pavics-sdi-master/docs/source/notebooks/regridding.ipynb
-[2024-06-01T03:48:31.523Z] + filename=regridding.ipynb
-[2024-06-01T03:48:31.523Z] + echo regridding.ipynb
-[2024-06-01T03:48:31.523Z] + sed s/.ipynb$//
-[2024-06-01T03:48:31.523Z] + filename=regridding
-[2024-06-01T03:48:31.523Z] + [ -e buildout/regridding.output.ipynb ]
-[2024-06-01T03:48:31.523Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output regridding.output.ipynb pavics-sdi-master/docs/source/notebooks/regridding.ipynb
-[2024-06-01T03:48:32.891Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/regridding.ipynb to notebook
-[2024-06-01T03:48:33.460Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:34.026Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-06-01T03:48:34.026Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-06-01T03:48:34.026Z] 0.00s - to python to disable frozen modules.
-[2024-06-01T03:48:34.026Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-06-01T03:48:34.026Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:34.284Z] Aborted (core dumped)
-[2024-06-01T03:48:34.284Z] + basename pavics-sdi-master/docs/source/notebooks/rendering.ipynb
-[2024-06-01T03:48:34.284Z] + filename=rendering.ipynb
-[2024-06-01T03:48:34.284Z] + echo rendering.ipynb
-[2024-06-01T03:48:34.284Z] + sed s/.ipynb$//
-[2024-06-01T03:48:34.284Z] + filename=rendering
-[2024-06-01T03:48:34.284Z] + [ -e buildout/rendering.output.ipynb ]
-[2024-06-01T03:48:34.284Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output rendering.output.ipynb pavics-sdi-master/docs/source/notebooks/rendering.ipynb
-[2024-06-01T03:48:36.182Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/rendering.ipynb to notebook
-[2024-06-01T03:48:36.440Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:37.005Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-06-01T03:48:37.005Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-06-01T03:48:37.005Z] 0.00s - to python to disable frozen modules.
-[2024-06-01T03:48:37.005Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-06-01T03:48:37.005Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:37.260Z] Aborted (core dumped)
-[2024-06-01T03:48:37.260Z] + basename pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb
-[2024-06-01T03:48:37.260Z] + filename=subset-user-input.ipynb
-[2024-06-01T03:48:37.260Z] + echo subset-user-input.ipynb
-[2024-06-01T03:48:37.260Z] + sed s/.ipynb$//
-[2024-06-01T03:48:37.260Z] + filename=subset-user-input
-[2024-06-01T03:48:37.260Z] + [ -e buildout/subset-user-input.output.ipynb ]
-[2024-06-01T03:48:37.260Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output subset-user-input.output.ipynb pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb
-[2024-06-01T03:48:39.155Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb to notebook
-[2024-06-01T03:48:39.411Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:39.979Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-06-01T03:48:39.979Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-06-01T03:48:39.979Z] 0.00s - to python to disable frozen modules.
-[2024-06-01T03:48:39.979Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-06-01T03:48:40.240Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:40.240Z] Aborted (core dumped)
-[2024-06-01T03:48:40.240Z] + basename pavics-sdi-master/docs/source/notebooks/subsetting.ipynb
-[2024-06-01T03:48:40.240Z] + filename=subsetting.ipynb
-[2024-06-01T03:48:40.240Z] + echo subsetting.ipynb
-[2024-06-01T03:48:40.240Z] + sed s/.ipynb$//
-[2024-06-01T03:48:40.240Z] + filename=subsetting
-[2024-06-01T03:48:40.240Z] + [ -e buildout/subsetting.output.ipynb ]
-[2024-06-01T03:48:40.240Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output subsetting.output.ipynb pavics-sdi-master/docs/source/notebooks/subsetting.ipynb
-[2024-06-01T03:48:42.135Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/subsetting.ipynb to notebook
-[2024-06-01T03:48:42.696Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:42.954Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-06-01T03:48:42.954Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-06-01T03:48:42.954Z] 0.00s - to python to disable frozen modules.
-[2024-06-01T03:48:42.954Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-06-01T03:48:43.213Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:44.150Z] Aborted (core dumped)
-[2024-06-01T03:48:44.150Z] + basename finch-master/docs/source/notebooks/dap_subset.ipynb
-[2024-06-01T03:48:44.150Z] + filename=dap_subset.ipynb
-[2024-06-01T03:48:44.150Z] + echo dap_subset.ipynb
-[2024-06-01T03:48:44.150Z] + sed s/.ipynb$//
-[2024-06-01T03:48:44.150Z] + filename=dap_subset
-[2024-06-01T03:48:44.150Z] + [ -e buildout/dap_subset.output.ipynb ]
-[2024-06-01T03:48:44.150Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output dap_subset.output.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb
-[2024-06-01T03:48:46.050Z] [NbConvertApp] Converting notebook finch-master/docs/source/notebooks/dap_subset.ipynb to notebook
-[2024-06-01T03:48:46.324Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:47.012Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-06-01T03:48:47.012Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-06-01T03:48:47.012Z] 0.00s - to python to disable frozen modules.
-[2024-06-01T03:48:47.012Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-06-01T03:48:47.012Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:48.384Z] Aborted (core dumped)
-[2024-06-01T03:48:48.384Z] + basename finch-master/docs/source/notebooks/finch-usage.ipynb
-[2024-06-01T03:48:48.384Z] + filename=finch-usage.ipynb
-[2024-06-01T03:48:48.384Z] + echo finch-usage.ipynb
-[2024-06-01T03:48:48.384Z] + sed s/.ipynb$//
-[2024-06-01T03:48:48.384Z] + filename=finch-usage
-[2024-06-01T03:48:48.384Z] + [ -e buildout/finch-usage.output.ipynb ]
-[2024-06-01T03:48:48.384Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output finch-usage.output.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb
-[2024-06-01T03:48:50.274Z] [NbConvertApp] Converting notebook finch-master/docs/source/notebooks/finch-usage.ipynb to notebook
-[2024-06-01T03:48:50.533Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:51.095Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-06-01T03:48:51.095Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-06-01T03:48:51.095Z] 0.00s - to python to disable frozen modules.
-[2024-06-01T03:48:51.095Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-06-01T03:48:51.095Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:52.027Z] Aborted (core dumped)
-[2024-06-01T03:48:52.027Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
-[2024-06-01T03:48:52.027Z] + filename=PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
-[2024-06-01T03:48:52.027Z] + echo PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
-[2024-06-01T03:48:52.027Z] + sed s/.ipynb$//
-[2024-06-01T03:48:52.027Z] + filename=PAVICStutorial_ClimateDataAnalysis-1DataAccess
-[2024-06-01T03:48:52.027Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-1DataAccess.output.ipynb ]
-[2024-06-01T03:48:52.027Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-1DataAccess.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
-[2024-06-01T03:48:53.921Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb to notebook
-[2024-06-01T03:48:54.181Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:54.744Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:55.317Z] Aborted (core dumped)
-[2024-06-01T03:48:55.317Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
-[2024-06-01T03:48:55.317Z] + filename=PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
-[2024-06-01T03:48:55.317Z] + echo PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
-[2024-06-01T03:48:55.317Z] + sed s/.ipynb$//
-[2024-06-01T03:48:55.317Z] + filename=PAVICStutorial_ClimateDataAnalysis-2Subsetting
-[2024-06-01T03:48:55.317Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-2Subsetting.output.ipynb ]
-[2024-06-01T03:48:55.317Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-2Subsetting.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
-[2024-06-01T03:48:57.207Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb to notebook
-[2024-06-01T03:48:57.467Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:58.033Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-06-01T03:48:58.033Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-06-01T03:48:58.033Z] 0.00s - to python to disable frozen modules.
-[2024-06-01T03:48:58.033Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-06-01T03:48:58.033Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:48:58.960Z] Aborted (core dumped)
-[2024-06-01T03:48:58.961Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
-[2024-06-01T03:48:58.961Z] + filename=PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
-[2024-06-01T03:48:58.961Z] + echo PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
-[2024-06-01T03:48:58.961Z] + sed s/.ipynb$//
-[2024-06-01T03:48:58.961Z] + filename=PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators
-[2024-06-01T03:48:58.961Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.output.ipynb ]
-[2024-06-01T03:48:58.961Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
-[2024-06-01T03:49:00.849Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb to notebook
-[2024-06-01T03:49:01.108Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:49:01.679Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:49:02.614Z] Aborted (core dumped)
-[2024-06-01T03:49:02.615Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
-[2024-06-01T03:49:02.615Z] + filename=PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
-[2024-06-01T03:49:02.615Z] + sed s/.ipynb$//
-[2024-06-01T03:49:02.615Z] + echo PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
-[2024-06-01T03:49:02.615Z] + filename=PAVICStutorial_ClimateDataAnalysis-4Ensembles
-[2024-06-01T03:49:02.615Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-4Ensembles.output.ipynb ]
-[2024-06-01T03:49:02.615Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-4Ensembles.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
-[2024-06-01T03:49:03.981Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb to notebook
-[2024-06-01T03:49:04.550Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:49:05.114Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:49:06.042Z] Aborted (core dumped)
-[2024-06-01T03:49:06.042Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
-[2024-06-01T03:49:06.042Z] + filename=PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
-[2024-06-01T03:49:06.042Z] + echo PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
-[2024-06-01T03:49:06.042Z] + sed s/.ipynb$//
-[2024-06-01T03:49:06.042Z] + filename=PAVICStutorial_ClimateDataAnalysis-5Visualization
-[2024-06-01T03:49:06.042Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-5Visualization.output.ipynb ]
-[2024-06-01T03:49:06.042Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-5Visualization.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
-[2024-06-01T03:49:07.416Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb to notebook
-[2024-06-01T03:49:08.027Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:49:08.589Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:49:10.480Z] Aborted (core dumped)
-[2024-06-01T03:49:10.480Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb
-[2024-06-01T03:49:10.480Z] + filename=PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb
-[2024-06-01T03:49:10.480Z] + echo+  PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb
-[2024-06-01T03:49:10.480Z] sed s/.ipynb$//
-[2024-06-01T03:49:10.480Z] + filename=PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion
-[2024-06-01T03:49:10.480Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.output.ipynb ]
-[2024-06-01T03:49:10.480Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb
-[2024-06-01T03:49:12.374Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb to notebook
-[2024-06-01T03:49:13.317Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:49:13.886Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:49:14.455Z] Aborted (core dumped)
-[2024-06-01T03:49:14.455Z] + basename notebooks/hummingbird.ipynb
-[2024-06-01T03:49:14.455Z] + filename=hummingbird.ipynb
-[2024-06-01T03:49:14.455Z] + echo hummingbird.ipynb
-[2024-06-01T03:49:14.455Z] + sed s/.ipynb$//
-[2024-06-01T03:49:14.455Z] + filename=hummingbird
-[2024-06-01T03:49:14.455Z] + [ -e buildout/hummingbird.output.ipynb ]
-[2024-06-01T03:49:14.455Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output hummingbird.output.ipynb notebooks/hummingbird.ipynb
-[2024-06-01T03:49:16.344Z] [NbConvertApp] Converting notebook notebooks/hummingbird.ipynb to notebook
-[2024-06-01T03:49:16.605Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:49:17.175Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:49:18.105Z] Aborted (core dumped)
-[2024-06-01T03:49:18.105Z] + basename notebooks/stress-tests.ipynb
-[2024-06-01T03:49:18.105Z] + filename=stress-tests.ipynb
-[2024-06-01T03:49:18.105Z] + echo stress-tests.ipynb
-[2024-06-01T03:49:18.105Z] + sed s/.ipynb$//
-[2024-06-01T03:49:18.105Z] + filename=stress-tests
-[2024-06-01T03:49:18.105Z] + [ -e buildout/stress-tests.output.ipynb ]
-[2024-06-01T03:49:18.105Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output stress-tests.output.ipynb notebooks/stress-tests.ipynb
-[2024-06-01T03:49:19.996Z] [NbConvertApp] Converting notebook notebooks/stress-tests.ipynb to notebook
-[2024-06-01T03:49:20.257Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:49:20.822Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-06-01T03:49:20.822Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-06-01T03:49:20.822Z] 0.00s - to python to disable frozen modules.
-[2024-06-01T03:49:20.822Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-06-01T03:49:20.822Z] Operation not permitted (src/thread.cpp:241)
-[2024-06-01T03:49:21.756Z] Aborted (core dumped)
-[2024-06-01T03:49:21.756Z] + exit 134
-[2024-06-01T03:49:21.756Z] + EXIT_CODE=134
-[2024-06-01T03:49:21.756Z] + ENV_DUMP_DIR=buildout/env-dump
-[2024-06-01T03:49:21.756Z] + mkdir -p buildout/env-dump
-[2024-06-01T03:49:21.756Z] + ENV_EXPORT_FILE=buildout/env-dump/environment-export-birdy.yml
-[2024-06-01T03:49:21.756Z] + rm -fv buildout/env-dump/environment-export-birdy.yml
-[2024-06-01T03:49:21.756Z] + conda env export -n birdy
-[2024-06-01T03:49:36.596Z] + LIST_EXPLICIT_FILE=buildout/env-dump/conda-list-explicit-birdy.txt
-[2024-06-01T03:49:36.596Z] + rm -fv buildout/env-dump/conda-list-explicit-birdy.txt
-[2024-06-01T03:49:36.596Z] + conda list -n birdy --explicit
-[2024-06-01T03:49:44.717Z] + PIP_FREEZE_FILE=buildout/env-dump/pip-freeze-birdy-requirements.txt
-[2024-06-01T03:49:44.717Z] + rm -fv buildout/env-dump/pip-freeze-birdy-requirements.txt
-[2024-06-01T03:49:44.717Z] + pip freeze
-[2024-06-01T03:49:44.717Z] + exit 134
+[2024-06-12T20:01:26.215Z] + VERIFY_SSL=true SAVE_RESULTING_NOTEBOOK=true ./testall
+[2024-06-12T20:01:26.215Z] TEST_PAVICS_SDI_REPO has been set to 'true'
+[2024-06-12T20:01:26.215Z] PAVICS_SDI_BRANCH has been set to 'master'
+[2024-06-12T20:01:26.215Z] PAVICS_SDI_REPO has been set to 'Ouranosinc/pavics-sdi'
+[2024-06-12T20:01:26.215Z] TEST_FINCH_REPO has been set to 'true'
+[2024-06-12T20:01:26.215Z] FINCH_BRANCH has been set to 'master'
+[2024-06-12T20:01:26.215Z] FINCH_REPO has been set to 'bird-house/finch'
+[2024-06-12T20:01:26.215Z] TEST_PAVICS_LANDING_REPO has been set to 'true'
+[2024-06-12T20:01:26.215Z] PAVICS_LANDING_BRANCH has been set to 'master'
+[2024-06-12T20:01:26.215Z] PAVICS_LANDING_REPO has been set to 'Ouranosinc/PAVICS-landing'
+[2024-06-12T20:01:26.215Z] TEST_RAVEN_REPO has been set to 'false'
+[2024-06-12T20:01:26.215Z] RAVEN_BRANCH has been set to 'main'
+[2024-06-12T20:01:26.215Z] RAVEN_REPO has been set to 'Ouranosinc/raven'
+[2024-06-12T20:01:26.215Z] TEST_RAVENPY_REPO has been set to 'false'
+[2024-06-12T20:01:26.215Z] RAVENPY_BRANCH has been set to 'master'
+[2024-06-12T20:01:26.215Z] RAVENPY_REPO has been set to 'CSHS-CWRA/RavenPy'
+[2024-06-12T20:01:26.215Z] TEST_ESGF_COMPUTE_API_REPO has been set to 'false'
+[2024-06-12T20:01:26.215Z] ESGF_COMPUTE_API_BRANCH has been set to 'devel'
+[2024-06-12T20:01:26.215Z] ESGF_COMPUTE_API_REPO has been set to 'ESGF/esgf-compute-api'
+[2024-06-12T20:01:26.215Z] TEST_LOCAL_NOTEBOOKS has been set to 'true'
+[2024-06-12T20:01:26.215Z] + [ -n https://gist.githubusercontent.com/tlvu/89115c6586e9d7b91262a68e9c4bc00b/raw/8f230c4fd4b40700a6e18dd755c30a7037db9925/jenkins-params-custom-branch.include.sh ]
+[2024-06-12T20:01:26.215Z] + TMP_PARAMS_OVERRIDE=/tmp/jenkins_params_override
+[2024-06-12T20:01:26.215Z] + rm -vf /tmp/jenkins_params_override
+[2024-06-12T20:01:26.215Z] removed '/tmp/jenkins_params_override'
+[2024-06-12T20:01:26.215Z] + curl --silent https://gist.githubusercontent.com/tlvu/89115c6586e9d7b91262a68e9c4bc00b/raw/8f230c4fd4b40700a6e18dd755c30a7037db9925/jenkins-params-custom-branch.include.sh
+[2024-06-12T20:01:26.215Z] + tee /tmp/jenkins_params_override
+[2024-06-12T20:01:26.215Z] + . /tmp/jenkins_params_override
+[2024-06-12T20:01:26.215Z] + git clean -fdx
+[2024-06-12T20:01:26.781Z] Removing PAVICS-landing-master/
+[2024-06-12T20:01:26.781Z] Removing RavenPy-master/
+[2024-06-12T20:01:26.781Z] Removing __pycache__/
+[2024-06-12T20:01:26.781Z] Removing buildout/
+[2024-06-12T20:01:26.781Z] Removing core.7110
+[2024-06-12T20:01:26.781Z] Removing core.7142
+[2024-06-12T20:01:26.781Z] Removing core.7160
+[2024-06-12T20:01:26.781Z] Removing core.7225
+[2024-06-12T20:01:26.781Z] Removing core.7243
+[2024-06-12T20:01:26.781Z] Removing core.7280
+[2024-06-12T20:01:26.781Z] Removing core.7311
+[2024-06-12T20:01:26.781Z] Removing core.7330
+[2024-06-12T20:01:26.781Z] Removing core.7347
+[2024-06-12T20:01:26.781Z] Removing core.7364
+[2024-06-12T20:01:26.781Z] Removing core.7382
+[2024-06-12T20:01:26.781Z] Removing core.7400
+[2024-06-12T20:01:26.781Z] Removing core.7438
+[2024-06-12T20:01:26.781Z] Removing core.7456
+[2024-06-12T20:01:26.781Z] Removing core.7473
+[2024-06-12T20:01:26.781Z] Removing core.7489
+[2024-06-12T20:01:26.781Z] Removing core.7507
+[2024-06-12T20:01:26.781Z] Removing core.7526
+[2024-06-12T20:01:26.781Z] Removing core.7564
+[2024-06-12T20:01:26.781Z] Removing core.7584
+[2024-06-12T20:01:26.781Z] Removing core.7596
+[2024-06-12T20:01:26.781Z] Removing core.7613
+[2024-06-12T20:01:26.781Z] Removing core.7631
+[2024-06-12T20:01:26.781Z] Removing core.7648
+[2024-06-12T20:01:26.781Z] Removing core.7674
+[2024-06-12T20:01:26.781Z] Removing core.7693
+[2024-06-12T20:01:26.781Z] Removing core.7709
+[2024-06-12T20:01:26.782Z] Removing core.7725
+[2024-06-12T20:01:26.782Z] Removing core.7743
+[2024-06-12T20:01:26.782Z] Removing core.7760
+[2024-06-12T20:01:26.782Z] Removing core.7780
+[2024-06-12T20:01:26.782Z] Removing esgf-compute-api-devel/
+[2024-06-12T20:01:26.782Z] Removing finch-master/
+[2024-06-12T20:01:26.782Z] Removing notebooks/core.7772
+[2024-06-12T20:01:26.782Z] Removing notebooks/core.7792
+[2024-06-12T20:01:26.782Z] Removing pavics-sdi-master/
+[2024-06-12T20:01:26.782Z] Removing raven-main/
+[2024-06-12T20:01:26.782Z] + ./downloadrepos
+[2024-06-12T20:01:26.782Z] TEST_PAVICS_SDI_REPO has been set to 'true'
+[2024-06-12T20:01:26.782Z] PAVICS_SDI_BRANCH has been set to 'master'
+[2024-06-12T20:01:26.782Z] PAVICS_SDI_REPO has been set to 'Ouranosinc/pavics-sdi'
+[2024-06-12T20:01:26.782Z] TEST_FINCH_REPO has been set to 'true'
+[2024-06-12T20:01:26.782Z] FINCH_BRANCH has been set to 'master'
+[2024-06-12T20:01:26.782Z] FINCH_REPO has been set to 'bird-house/finch'
+[2024-06-12T20:01:26.782Z] TEST_PAVICS_LANDING_REPO has been set to 'true'
+[2024-06-12T20:01:26.782Z] PAVICS_LANDING_BRANCH has been set to 'master'
+[2024-06-12T20:01:26.782Z] PAVICS_LANDING_REPO has been set to 'Ouranosinc/PAVICS-landing'
+[2024-06-12T20:01:26.782Z] TEST_RAVEN_REPO has been set to 'false'
+[2024-06-12T20:01:26.782Z] RAVEN_BRANCH has been set to 'main'
+[2024-06-12T20:01:26.782Z] RAVEN_REPO has been set to 'Ouranosinc/raven'
+[2024-06-12T20:01:26.782Z] TEST_RAVENPY_REPO has been set to 'false'
+[2024-06-12T20:01:26.782Z] RAVENPY_BRANCH has been set to 'master'
+[2024-06-12T20:01:26.782Z] RAVENPY_REPO has been set to 'CSHS-CWRA/RavenPy'
+[2024-06-12T20:01:26.782Z] TEST_ESGF_COMPUTE_API_REPO has been set to 'false'
+[2024-06-12T20:01:26.782Z] ESGF_COMPUTE_API_BRANCH has been set to 'devel'
+[2024-06-12T20:01:26.782Z] ESGF_COMPUTE_API_REPO has been set to 'ESGF/esgf-compute-api'
+[2024-06-12T20:01:26.782Z] TEST_LOCAL_NOTEBOOKS has been set to 'true'
+[2024-06-12T20:01:26.782Z] + rm -rf pavics-sdi-*
+[2024-06-12T20:01:26.782Z] + ls
+[2024-06-12T20:01:26.782Z] + grep pavics-sdi
+[2024-06-12T20:01:26.782Z] + downloadrepos https://github.com/Ouranosinc/pavics-sdi master
+[2024-06-12T20:01:26.782Z] + github_repo=https://github.com/Ouranosinc/pavics-sdi
+[2024-06-12T20:01:26.782Z] + shift
+[2024-06-12T20:01:26.782Z] + branch=master
+[2024-06-12T20:01:26.782Z] + shift
+[2024-06-12T20:01:26.782Z] + wget --quiet --output-document - https://github.com/Ouranosinc/pavics-sdi/archive/master.tar.gz
+[2024-06-12T20:01:26.782Z] + tar xz
+[2024-06-12T20:01:29.300Z] + ls
+[2024-06-12T20:01:29.300Z] + grep pavics-sdi
+[2024-06-12T20:01:29.300Z] pavics-sdi-master
+[2024-06-12T20:01:29.300Z] + set +x
+[2024-06-12T20:01:29.300Z] + rm -rf finch-*
+[2024-06-12T20:01:29.300Z] + ls
+[2024-06-12T20:01:29.300Z] + grep finch
+[2024-06-12T20:01:29.300Z] + downloadrepos https://github.com/bird-house/finch master
+[2024-06-12T20:01:29.300Z] + github_repo=https://github.com/bird-house/finch
+[2024-06-12T20:01:29.300Z] + shift
+[2024-06-12T20:01:29.300Z] + branch=master
+[2024-06-12T20:01:29.300Z] + shift
+[2024-06-12T20:01:29.300Z] + wget --quiet --output-document - https://github.com/bird-house/finch/archive/master.tar.gz
+[2024-06-12T20:01:29.300Z] + tar xz
+[2024-06-12T20:01:31.228Z] + ls
+[2024-06-12T20:01:31.228Z] + grep finch
+[2024-06-12T20:01:31.228Z] finch-master
+[2024-06-12T20:01:31.228Z] + set +x
+[2024-06-12T20:01:31.228Z] + rm -rf PAVICS-landing-*
+[2024-06-12T20:01:31.228Z] + ls
+[2024-06-12T20:01:31.228Z] + grep PAVICS-landing
+[2024-06-12T20:01:31.228Z] + downloadrepos https://github.com/Ouranosinc/PAVICS-landing master
+[2024-06-12T20:01:31.228Z] + github_repo=https://github.com/Ouranosinc/PAVICS-landing
+[2024-06-12T20:01:31.228Z] + shift
+[2024-06-12T20:01:31.228Z] + branch=master
+[2024-06-12T20:01:31.228Z] + shift
+[2024-06-12T20:01:31.228Z] + wget --quiet --output-document - https://github.com/Ouranosinc/PAVICS-landing/archive/master.tar.gz
+[2024-06-12T20:01:31.228Z] + tar xz
+[2024-06-12T20:01:41.181Z] + ls
+[2024-06-12T20:01:41.181Z] + grep PAVICS-landing
+[2024-06-12T20:01:41.181Z] PAVICS-landing-master
+[2024-06-12T20:01:41.181Z] + set +x
+[2024-06-12T20:01:41.181Z] + rm -rf raven-*
+[2024-06-12T20:01:41.181Z] + ls
+[2024-06-12T20:01:41.181Z] + grep raven
+[2024-06-12T20:01:41.181Z] + downloadrepos https://github.com/Ouranosinc/raven main
+[2024-06-12T20:01:41.181Z] + github_repo=https://github.com/Ouranosinc/raven
+[2024-06-12T20:01:41.181Z] + shift
+[2024-06-12T20:01:41.181Z] + branch=main
+[2024-06-12T20:01:41.181Z] + shift
+[2024-06-12T20:01:41.181Z] + wget --quiet --output-document - https://github.com/Ouranosinc/raven/archive/main.tar.gz
+[2024-06-12T20:01:41.181Z] + tar xz
+[2024-06-12T20:01:42.108Z] + ls
+[2024-06-12T20:01:42.108Z] + grep raven
+[2024-06-12T20:01:42.108Z] raven-main
+[2024-06-12T20:01:42.108Z] + set +x
+[2024-06-12T20:01:42.108Z] + rm -rf RavenPy-*
+[2024-06-12T20:01:42.108Z] + ls
+[2024-06-12T20:01:42.108Z] + grep RavenPy
+[2024-06-12T20:01:42.108Z] + downloadrepos https://github.com/CSHS-CWRA/RavenPy master
+[2024-06-12T20:01:42.108Z] + github_repo=https://github.com/CSHS-CWRA/RavenPy
+[2024-06-12T20:01:42.108Z] + shift
+[2024-06-12T20:01:42.108Z] + branch=master
+[2024-06-12T20:01:42.108Z] + shift
+[2024-06-12T20:01:42.108Z] + wget --quiet --output-document - https://github.com/CSHS-CWRA/RavenPy/archive/master.tar.gz+ 
+[2024-06-12T20:01:42.108Z] tar xz
+[2024-06-12T20:01:44.000Z] + ls
+[2024-06-12T20:01:44.000Z] + grep RavenPy
+[2024-06-12T20:01:44.000Z] RavenPy-master
+[2024-06-12T20:01:44.000Z] + set +x
+[2024-06-12T20:01:44.000Z] + rm -rf esgf-compute-api-*
+[2024-06-12T20:01:44.000Z] + + ls
+[2024-06-12T20:01:44.000Z] grep esgf-compute-api
+[2024-06-12T20:01:44.000Z] + downloadrepos https://github.com/ESGF/esgf-compute-api devel
+[2024-06-12T20:01:44.000Z] + github_repo=https://github.com/ESGF/esgf-compute-api
+[2024-06-12T20:01:44.000Z] + shift
+[2024-06-12T20:01:44.000Z] + branch=devel
+[2024-06-12T20:01:44.000Z] + shift
+[2024-06-12T20:01:44.000Z] + wget --quiet --output-document - https://github.com/ESGF/esgf-compute-api/archive/devel.tar.gz
+[2024-06-12T20:01:44.000Z] + tar xz
+[2024-06-12T20:01:44.931Z] + ls
+[2024-06-12T20:01:44.931Z] + grep esgf-compute-api
+[2024-06-12T20:01:44.932Z] esgf-compute-api-devel
+[2024-06-12T20:01:44.932Z] + set +x
+[2024-06-12T20:01:44.932Z] + echo master
+[2024-06-12T20:01:44.932Z] + sed s@/@-@g
+[2024-06-12T20:01:44.932Z] + export PAVICS_SDI_BRANCH=master
+[2024-06-12T20:01:44.932Z] + echo Ouranosinc/pavics-sdi
+[2024-06-12T20:01:44.932Z] + sed s@^.*/@@g
+[2024-06-12T20:01:44.932Z] + export PAVICS_SDI_REPO_NAME=pavics-sdi
+[2024-06-12T20:01:44.932Z] + echo master
+[2024-06-12T20:01:44.932Z] + sed s@/@-@g
+[2024-06-12T20:01:44.932Z] + export FINCH_BRANCH=master
+[2024-06-12T20:01:44.932Z] + echo bird-house/finch
+[2024-06-12T20:01:44.932Z] + sed s@^.*/@@g
+[2024-06-12T20:01:44.932Z] + export FINCH_REPO_NAME=finch
+[2024-06-12T20:01:44.932Z] + echo master
+[2024-06-12T20:01:44.932Z] + sed s@/@-@g
+[2024-06-12T20:01:44.932Z] + export PAVICS_LANDING_BRANCH=master
+[2024-06-12T20:01:44.932Z] + echo Ouranosinc/PAVICS-landing
+[2024-06-12T20:01:44.932Z] + sed s@^.*/@@g
+[2024-06-12T20:01:44.932Z] + export PAVICS_LANDING_REPO_NAME=PAVICS-landing
+[2024-06-12T20:01:44.932Z] + echo main
+[2024-06-12T20:01:44.932Z] + sed s@/@-@g
+[2024-06-12T20:01:44.932Z] + export RAVEN_BRANCH=main
+[2024-06-12T20:01:44.932Z] + echo Ouranosinc/raven
+[2024-06-12T20:01:44.932Z] + sed s@^.*/@@g
+[2024-06-12T20:01:44.932Z] + export RAVEN_REPO_NAME=raven
+[2024-06-12T20:01:44.932Z] + echo master
+[2024-06-12T20:01:44.932Z] + sed s@/@-@g
+[2024-06-12T20:01:44.932Z] + export RAVENPY_BRANCH=master
+[2024-06-12T20:01:44.932Z] + echo CSHS-CWRA/RavenPy
+[2024-06-12T20:01:44.932Z] + sed s@^.*/@@g
+[2024-06-12T20:01:44.932Z] + export RAVENPY_REPO_NAME=RavenPy
+[2024-06-12T20:01:44.932Z] + echo devel
+[2024-06-12T20:01:44.932Z] + sed s@/@-@g
+[2024-06-12T20:01:44.932Z] + export ESGF_COMPUTE_API_BRANCH=devel
+[2024-06-12T20:01:44.932Z] + echo ESGF/esgf-compute-api
+[2024-06-12T20:01:44.932Z] + sed s@^.*/@@g
+[2024-06-12T20:01:44.932Z] + export ESGF_COMPUTE_API_REPO_NAME=esgf-compute-api
+[2024-06-12T20:01:44.932Z] + echo pavics-sdi-master
+[2024-06-12T20:01:44.932Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-06-12T20:01:44.932Z] + export PAVICS_SDI_DIR=pavics-sdi-master
+[2024-06-12T20:01:44.932Z] + echo finch-master
+[2024-06-12T20:01:44.932Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-06-12T20:01:44.932Z] + export FINCH_DIR=finch-master
+[2024-06-12T20:01:44.932Z] + echo PAVICS-landing-master
+[2024-06-12T20:01:44.932Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-06-12T20:01:44.932Z] + export PAVICS_LANDING_DIR=PAVICS-landing-master
+[2024-06-12T20:01:44.932Z] + echo raven-main
+[2024-06-12T20:01:44.932Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-06-12T20:01:44.932Z] + export RAVEN_DIR=raven-main
+[2024-06-12T20:01:44.932Z] + echo RavenPy-master
+[2024-06-12T20:01:44.932Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-06-12T20:01:44.932Z] + export RAVENPY_DIR=RavenPy-master
+[2024-06-12T20:01:44.932Z] + echo esgf-compute-api-devel
+[2024-06-12T20:01:44.932Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-06-12T20:01:44.932Z] + export ESGF_COMPUTE_API_DIR=esgf-compute-api-devel
+[2024-06-12T20:01:44.932Z] + echo true
+[2024-06-12T20:01:44.932Z] + tr [:upper:] [:lower:]
+[2024-06-12T20:01:44.932Z] + VERIFY_SSL=true
+[2024-06-12T20:01:44.932Z] + [ xtrue = xfalse ]
+[2024-06-12T20:01:44.932Z] + rm -v finch-master/setup.cfg
+[2024-06-12T20:01:44.932Z] removed 'finch-master/setup.cfg'
+[2024-06-12T20:01:44.932Z] + rm -v raven-main/setup.cfg
+[2024-06-12T20:01:44.932Z] removed 'raven-main/setup.cfg'
+[2024-06-12T20:01:44.932Z] + rm -v raven-main/pyproject.toml
+[2024-06-12T20:01:44.932Z] removed 'raven-main/pyproject.toml'
+[2024-06-12T20:01:44.932Z] + rm -v RavenPy-master/setup.cfg
+[2024-06-12T20:01:44.932Z] removed 'RavenPy-master/setup.cfg'
+[2024-06-12T20:01:44.932Z] + rm -v RavenPy-master/tox.ini
+[2024-06-12T20:01:44.932Z] removed 'RavenPy-master/tox.ini'
+[2024-06-12T20:01:44.932Z] + rm -v RavenPy-master/pyproject.toml
+[2024-06-12T20:01:44.932Z] removed 'RavenPy-master/pyproject.toml'
+[2024-06-12T20:01:44.932Z] + rm -v esgf-compute-api-devel/setup.cfg
+[2024-06-12T20:01:44.932Z] rm: cannot remove 'esgf-compute-api-devel/setup.cfg': No such file or directory
+[2024-06-12T20:01:44.932Z] + rm -v esgf-compute-api-devel/tox.ini
+[2024-06-12T20:01:44.932Z] rm: cannot remove 'esgf-compute-api-devel/tox.ini': No such file or directory
+[2024-06-12T20:01:44.932Z] + echo false
+[2024-06-12T20:01:44.932Z] + tr [:upper:] [:lower:]
+[2024-06-12T20:01:44.932Z] + TEST_MAGPIE_AUTH=false
+[2024-06-12T20:01:44.932Z] + echo true
+[2024-06-12T20:01:44.932Z] + tr [:upper:] [:lower:]
+[2024-06-12T20:01:44.932Z] + TEST_PAVICS_SDI_REPO=true
+[2024-06-12T20:01:44.932Z] + echo false
+[2024-06-12T20:01:44.932Z] + tr [:upper:] [:lower:]
+[2024-06-12T20:01:44.932Z] + TEST_PAVICS_SDI_WEAVER=false
+[2024-06-12T20:01:44.932Z] + echo true
+[2024-06-12T20:01:44.932Z] + tr [:upper:] [:lower:]
+[2024-06-12T20:01:44.932Z] + TEST_FINCH_REPO=true
+[2024-06-12T20:01:44.932Z] + echo true
+[2024-06-12T20:01:44.932Z] + tr [:upper:] [:lower:]
+[2024-06-12T20:01:44.932Z] + TEST_PAVICS_LANDING_REPO=true
+[2024-06-12T20:01:44.932Z] + echo false
+[2024-06-12T20:01:44.932Z] + tr [:upper:] [:lower:]
+[2024-06-12T20:01:44.932Z] + TEST_RAVEN_REPO=false
+[2024-06-12T20:01:44.932Z] + echo false
+[2024-06-12T20:01:44.932Z] + tr [:upper:] [:lower:]
+[2024-06-12T20:01:44.932Z] + TEST_RAVENPY_REPO=false
+[2024-06-12T20:01:44.932Z] + echo false
+[2024-06-12T20:01:44.932Z] + tr [:upper:] [:lower:]
+[2024-06-12T20:01:44.932Z] + TEST_ESGF_COMPUTE_API_REPO=false
+[2024-06-12T20:01:44.932Z] + echo true
+[2024-06-12T20:01:44.932Z] + tr [:upper:] [:lower:]
+[2024-06-12T20:01:44.932Z] + TEST_LOCAL_NOTEBOOKS=true
+[2024-06-12T20:01:44.932Z] + NOTEBOOKS_TO_TEST=
+[2024-06-12T20:01:44.932Z] + [ xfalse = xtrue ]
+[2024-06-12T20:01:44.932Z] + [ xtrue = xtrue ]
+[2024-06-12T20:01:44.932Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb
+[2024-06-12T20:01:44.932Z] + [ xfalse = xtrue ]
+[2024-06-12T20:01:44.932Z] + [ xtrue = xtrue ]
+[2024-06-12T20:01:44.932Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb
+[2024-06-12T20:01:44.932Z] + [ xtrue = xtrue ]
+[2024-06-12T20:01:44.932Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/*.ipynb
+[2024-06-12T20:01:44.932Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/*.ipynb PAVICS-landing-master/content/notebooks/hydrology/*.ipynb
+[2024-06-12T20:01:44.932Z] + SETUP_SCRIPT=PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh
+[2024-06-12T20:01:44.932Z] + [ -x PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh ]
+[2024-06-12T20:01:44.932Z] + [ xfalse = xtrue ]
+[2024-06-12T20:01:44.932Z] + [ xfalse = xtrue ]
+[2024-06-12T20:01:44.932Z] + [ xfalse = xtrue ]
+[2024-06-12T20:01:44.932Z] + [ xtrue = xtrue ]
+[2024-06-12T20:01:44.932Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/*.ipynb PAVICS-landing-master/content/notebooks/hydrology/*.ipynb notebooks/*.ipynb
+[2024-06-12T20:01:44.932Z] + ./runtest  pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/*.ipynb PAVICS-landing-master/content/notebooks/hydrology/*.ipynb notebooks/*.ipynb
+[2024-06-12T20:01:44.932Z] + [ -n  ]
+[2024-06-12T20:01:44.932Z] + [ ! -z pavics.ouranos.ca ]
+[2024-06-12T20:01:44.932Z] + echo Will run notebooks against pavics.ouranos.ca
+[2024-06-12T20:01:44.932Z] Will run notebooks against pavics.ouranos.ca
+[2024-06-12T20:01:44.932Z] + [ -z  ]
+[2024-06-12T20:01:44.933Z] + sed -i /\(\.ncml\|TEST_USE_PROD_DATA\)/!s/pavics.ouranos.ca/pavics.ouranos.ca/g pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb pavics-sdi-master/docs/source/notebooks/WMS_example.ipynb pavics-sdi-master/docs/source/notebooks/climex.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb pavics-sdi-master/docs/source/notebooks/forecasts.ipynb pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb pavics-sdi-master/docs/source/notebooks/opendap.ipynb pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb pavics-sdi-master/docs/source/notebooks/regridding.ipynb pavics-sdi-master/docs/source/notebooks/rendering.ipynb pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb pavics-sdi-master/docs/source/notebooks/subsetting.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb PAVICS-landing-master/content/notebooks/hydrology/01_Intro.ipynb PAVICS-landing-master/content/notebooks/hydrology/02_Calibration.ipynb PAVICS-landing-master/content/notebooks/hydrology/03_Watershed_properties.ipynb PAVICS-landing-master/content/notebooks/hydrology/04_Time_series_analysis.ipynb notebooks/hummingbird.ipynb notebooks/stress-tests.ipynb
+[2024-06-12T20:01:44.933Z] + git diff
+[2024-06-12T20:01:44.933Z] + export PYTHONWARNINGS=ignore:Unverified HTTPS request
+[2024-06-12T20:01:44.933Z] + [ -n  ]
+[2024-06-12T20:01:44.933Z] + py.test --nbval pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb pavics-sdi-master/docs/source/notebooks/WMS_example.ipynb pavics-sdi-master/docs/source/notebooks/climex.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb pavics-sdi-master/docs/source/notebooks/forecasts.ipynb pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb pavics-sdi-master/docs/source/notebooks/opendap.ipynb pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb pavics-sdi-master/docs/source/notebooks/regridding.ipynb pavics-sdi-master/docs/source/notebooks/rendering.ipynb pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb pavics-sdi-master/docs/source/notebooks/subsetting.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb PAVICS-landing-master/content/notebooks/hydrology/01_Intro.ipynb PAVICS-landing-master/content/notebooks/hydrology/02_Calibration.ipynb PAVICS-landing-master/content/notebooks/hydrology/03_Watershed_properties.ipynb PAVICS-landing-master/content/notebooks/hydrology/04_Time_series_analysis.ipynb notebooks/hummingbird.ipynb notebooks/stress-tests.ipynb --nbval-sanitize-with notebooks/output-sanitize.cfg --dist=loadscope --numprocesses=0
+[2024-06-12T20:01:51.478Z] ============================= test session starts ==============================
+[2024-06-12T20:01:51.478Z] platform linux -- Python 3.11.6, pytest-8.2.2, pluggy-1.5.0
+[2024-06-12T20:01:51.478Z] rootdir: /home/jenkins/agent/workspace/_workflow-tests_new-docker-build
+[2024-06-12T20:01:51.478Z] plugins: anyio-4.4.0, dash-2.17.0, nbval-0.11.0, tornasync-0.6.0.post2, xdist-3.5.0
+[2024-06-12T20:01:51.478Z] collected 259 items
+[2024-06-12T20:01:51.478Z] 
+[2024-06-12T20:01:51.478Z] pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb Fatal Python error: Aborted
+[2024-06-12T20:01:51.478Z] 
+[2024-06-12T20:01:51.478Z] Current thread 0x00007ff399d7a740 (most recent call first):
+[2024-06-12T20:01:51.478Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/zmq/sugar/socket.py", line 156 in __init__
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/zmq/sugar/context.py", line 354 in socket
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_client/connect.py", line 658 in _create_connected_socket
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_client/manager.py", line 323 in _connect_control_socket
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_client/manager.py", line 371 in _async_post_start_kernel
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/asyncio/tasks.py", line 277 in __step
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/asyncio/events.py", line 80 in _run
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nest_asyncio.py", line 133 in _run_once
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nest_asyncio.py", line 92 in run_until_complete
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_client/utils.py", line 27 in wrapped
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_client/manager.py", line 396 in _async_start_kernel
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_client/manager.py", line 82 in wrapper
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/asyncio/tasks.py", line 277 in __step
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/asyncio/events.py", line 80 in _run
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nest_asyncio.py", line 133 in _run_once
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nest_asyncio.py", line 92 in run_until_complete
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_client/utils.py", line 27 in wrapped
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbval/kernel.py", line 53 in start_new_kernel
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbval/kernel.py", line 85 in __init__
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbval/plugin.py", line 264 in setup
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/runner.py", line 514 in setup
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/runner.py", line 159 in pytest_runtest_setup
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_callers.py", line 103 in _multicall
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_manager.py", line 120 in _hookexec
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_hooks.py", line 513 in __call__
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/runner.py", line 241 in <lambda>
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/runner.py", line 341 in from_call
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/runner.py", line 240 in call_and_report
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/runner.py", line 129 in runtestprotocol
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/runner.py", line 116 in pytest_runtest_protocol
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_callers.py", line 103 in _multicall
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_manager.py", line 120 in _hookexec
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_hooks.py", line 513 in __call__
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/main.py", line 364 in pytest_runtestloop
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_callers.py", line 103 in _multicall
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_manager.py", line 120 in _hookexec
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_hooks.py", line 513 in __call__
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/main.py", line 339 in _main
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/main.py", line 285 in wrap_session
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/main.py", line 332 in pytest_cmdline_main
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_callers.py", line 103 in _multicall
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_manager.py", line 120 in _hookexec
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/pluggy/_hooks.py", line 513 in __call__
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/config/__init__.py", line 178 in main
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/_pytest/config/__init__.py", line 206 in console_main
+[2024-06-12T20:01:51.479Z]   File "/opt/conda/envs/birdy/bin/py.test", line 10 in <module>
+[2024-06-12T20:01:51.479Z] 
+[2024-06-12T20:01:51.479Z] Extension modules: markupsafe._speedups, zmq.backend.cython._zmq, tornado.speedups, psutil._psutil_linux, psutil._psutil_posix, _brotli, zstandard.backend_c (total: 7)
+[2024-06-12T20:01:54.000Z] Aborted (core dumped)
+[2024-06-12T20:01:54.000Z] + EXIT_CODE=134
+[2024-06-12T20:01:54.000Z] + echo true
+[2024-06-12T20:01:54.000Z] + tr [:upper:] [:lower:]
+[2024-06-12T20:01:54.000Z] + SAVE_RESULTING_NOTEBOOK=true
+[2024-06-12T20:01:54.000Z] + [ xtrue = xtrue ]
+[2024-06-12T20:01:54.000Z] + mkdir -p buildout
+[2024-06-12T20:01:54.000Z] + basename pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb
+[2024-06-12T20:01:54.000Z] + filename=CaSR_basic.ipynb
+[2024-06-12T20:01:54.000Z] + echo CaSR_basic.ipynb
+[2024-06-12T20:01:54.000Z] + sed s/.ipynb$//
+[2024-06-12T20:01:54.000Z] + filename=CaSR_basic
+[2024-06-12T20:01:54.000Z] + [ -e buildout/CaSR_basic.output.ipynb ]
+[2024-06-12T20:01:54.000Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output CaSR_basic.output.ipynb pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb
+[2024-06-12T20:01:55.888Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb to notebook
+[2024-06-12T20:01:56.149Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:01:56.710Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:01:57.273Z] Aborted (core dumped)
+[2024-06-12T20:01:57.273Z] + basename pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb
+[2024-06-12T20:01:57.273Z] + filename=WCS_example.ipynb
+[2024-06-12T20:01:57.273Z] + echo WCS_example.ipynb
+[2024-06-12T20:01:57.273Z] + sed s/.ipynb$//
+[2024-06-12T20:01:57.273Z] + filename=WCS_example
+[2024-06-12T20:01:57.273Z] + [ -e buildout/WCS_example.output.ipynb ]
+[2024-06-12T20:01:57.273Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output WCS_example.output.ipynb pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb
+[2024-06-12T20:01:59.167Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb to notebook
+[2024-06-12T20:01:59.430Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:01:59.995Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:00.927Z] Aborted (core dumped)
+[2024-06-12T20:02:00.927Z] + basename pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb
+[2024-06-12T20:02:00.927Z] + filename=WFS_example.ipynb
+[2024-06-12T20:02:00.928Z] + echo WFS_example.ipynb
+[2024-06-12T20:02:00.928Z] + sed s/.ipynb$//
+[2024-06-12T20:02:00.928Z] + filename=WFS_example
+[2024-06-12T20:02:00.928Z] + [ -e buildout/WFS_example.output.ipynb ]
+[2024-06-12T20:02:00.928Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output WFS_example.output.ipynb pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb
+[2024-06-12T20:02:02.296Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb to notebook
+[2024-06-12T20:02:02.858Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:03.423Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:04.032Z] Aborted (core dumped)
+[2024-06-12T20:02:04.032Z] + basename pavics-sdi-master/docs/source/notebooks/WMS_example.ipynb
+[2024-06-12T20:02:04.032Z] + filename=WMS_example.ipynb
+[2024-06-12T20:02:04.032Z] + echo WMS_example.ipynb
+[2024-06-12T20:02:04.032Z] + sed s/.ipynb$//
+[2024-06-12T20:02:04.032Z] + filename=WMS_example
+[2024-06-12T20:02:04.032Z] + [ -e buildout/WMS_example.output.ipynb ]
+[2024-06-12T20:02:04.032Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output WMS_example.output.ipynb pavics-sdi-master/docs/source/notebooks/WMS_example.ipynb
+[2024-06-12T20:02:05.921Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/WMS_example.ipynb to notebook
+[2024-06-12T20:02:06.176Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:06.739Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:07.670Z] Aborted (core dumped)
+[2024-06-12T20:02:07.670Z] + basename pavics-sdi-master/docs/source/notebooks/climex.ipynb
+[2024-06-12T20:02:07.670Z] + filename=climex.ipynb
+[2024-06-12T20:02:07.670Z] + echo climex.ipynb
+[2024-06-12T20:02:07.670Z] + sed s/.ipynb$//
+[2024-06-12T20:02:07.670Z] + filename=climex
+[2024-06-12T20:02:07.670Z] + [ -e buildout/climex.output.ipynb ]
+[2024-06-12T20:02:07.670Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output climex.output.ipynb pavics-sdi-master/docs/source/notebooks/climex.ipynb
+[2024-06-12T20:02:09.565Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/climex.ipynb to notebook
+[2024-06-12T20:02:09.828Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:10.389Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:11.324Z] Aborted (core dumped)
+[2024-06-12T20:02:11.324Z] + basename pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb
+[2024-06-12T20:02:11.324Z] + filename=eccc-geoapi-climate-stations.ipynb
+[2024-06-12T20:02:11.324Z] + echo eccc-geoapi-climate-stations.ipynb
+[2024-06-12T20:02:11.324Z] + sed s/.ipynb$//
+[2024-06-12T20:02:11.324Z] + filename=eccc-geoapi-climate-stations
+[2024-06-12T20:02:11.324Z] + [ -e buildout/eccc-geoapi-climate-stations.output.ipynb ]
+[2024-06-12T20:02:11.324Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output eccc-geoapi-climate-stations.output.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb
+[2024-06-12T20:02:13.218Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb to notebook
+[2024-06-12T20:02:13.218Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:13.784Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:14.717Z] Aborted (core dumped)
+[2024-06-12T20:02:14.717Z] + basename pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb
+[2024-06-12T20:02:14.717Z] + filename=eccc-geoapi-xclim.ipynb
+[2024-06-12T20:02:14.717Z] + echo eccc-geoapi-xclim.ipynb
+[2024-06-12T20:02:14.717Z] + sed s/.ipynb$//
+[2024-06-12T20:02:14.717Z] + filename=eccc-geoapi-xclim
+[2024-06-12T20:02:14.717Z] + [ -e buildout/eccc-geoapi-xclim.output.ipynb ]
+[2024-06-12T20:02:14.717Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output eccc-geoapi-xclim.output.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb
+[2024-06-12T20:02:16.603Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb to notebook
+[2024-06-12T20:02:17.969Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:18.228Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:19.160Z] Aborted (core dumped)
+[2024-06-12T20:02:19.160Z] + basename pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb
+[2024-06-12T20:02:19.160Z] + filename=esgf-dap.ipynb
+[2024-06-12T20:02:19.160Z] + echo esgf-dap.ipynb
+[2024-06-12T20:02:19.160Z] + sed s/.ipynb$//
+[2024-06-12T20:02:19.160Z] + filename=esgf-dap
+[2024-06-12T20:02:19.160Z] + [ -e buildout/esgf-dap.output.ipynb ]
+[2024-06-12T20:02:19.160Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output esgf-dap.output.ipynb pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb
+[2024-06-12T20:02:21.049Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb to notebook
+[2024-06-12T20:02:21.309Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:21.875Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:22.846Z] Aborted (core dumped)
+[2024-06-12T20:02:22.846Z] + basename pavics-sdi-master/docs/source/notebooks/forecasts.ipynb
+[2024-06-12T20:02:22.846Z] + filename=forecasts.ipynb
+[2024-06-12T20:02:22.846Z] + echo forecasts.ipynb
+[2024-06-12T20:02:22.846Z] + sed s/.ipynb$//
+[2024-06-12T20:02:22.846Z] + filename=forecasts
+[2024-06-12T20:02:22.846Z] + [ -e buildout/forecasts.output.ipynb ]
+[2024-06-12T20:02:22.846Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output forecasts.output.ipynb pavics-sdi-master/docs/source/notebooks/forecasts.ipynb
+[2024-06-12T20:02:24.210Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/forecasts.ipynb to notebook
+[2024-06-12T20:02:24.781Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:25.345Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:25.906Z] Aborted (core dumped)
+[2024-06-12T20:02:25.906Z] + basename pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb
+[2024-06-12T20:02:25.906Z] + filename=jupyter_extensions.ipynb
+[2024-06-12T20:02:25.906Z] + echo jupyter_extensions.ipynb
+[2024-06-12T20:02:25.906Z] + sed s/.ipynb$//
+[2024-06-12T20:02:25.906Z] + filename=jupyter_extensions
+[2024-06-12T20:02:25.906Z] + [ -e buildout/jupyter_extensions.output.ipynb ]
+[2024-06-12T20:02:25.906Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output jupyter_extensions.output.ipynb pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb
+[2024-06-12T20:02:27.795Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb to notebook
+[2024-06-12T20:02:28.054Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:28.620Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:29.548Z] Aborted (core dumped)
+[2024-06-12T20:02:29.548Z] + basename pavics-sdi-master/docs/source/notebooks/opendap.ipynb
+[2024-06-12T20:02:29.548Z] + filename=opendap.ipynb
+[2024-06-12T20:02:29.548Z] + echo opendap.ipynb
+[2024-06-12T20:02:29.548Z] + sed s/.ipynb$//
+[2024-06-12T20:02:29.548Z] + filename=opendap
+[2024-06-12T20:02:29.548Z] + [ -e buildout/opendap.output.ipynb ]
+[2024-06-12T20:02:29.548Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output opendap.output.ipynb pavics-sdi-master/docs/source/notebooks/opendap.ipynb
+[2024-06-12T20:02:30.914Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/opendap.ipynb to notebook
+[2024-06-12T20:02:31.489Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:32.055Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:33.425Z] Aborted (core dumped)
+[2024-06-12T20:02:33.425Z] + basename pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb
+[2024-06-12T20:02:33.425Z] + filename=pavics_thredds.ipynb
+[2024-06-12T20:02:33.425Z] + echo pavics_thredds.ipynb
+[2024-06-12T20:02:33.425Z] + sed s/.ipynb$//
+[2024-06-12T20:02:33.425Z] + filename=pavics_thredds
+[2024-06-12T20:02:33.425Z] + [ -e buildout/pavics_thredds.output.ipynb ]
+[2024-06-12T20:02:33.425Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output pavics_thredds.output.ipynb pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb
+[2024-06-12T20:02:35.324Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb to notebook
+[2024-06-12T20:02:35.591Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:36.159Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:36.724Z] Aborted (core dumped)
+[2024-06-12T20:02:36.724Z] + basename pavics-sdi-master/docs/source/notebooks/regridding.ipynb
+[2024-06-12T20:02:36.724Z] + filename=regridding.ipynb
+[2024-06-12T20:02:36.724Z] + echo regridding.ipynb
+[2024-06-12T20:02:36.724Z] + sed s/.ipynb$//
+[2024-06-12T20:02:36.724Z] + filename=regridding
+[2024-06-12T20:02:36.724Z] + [ -e buildout/regridding.output.ipynb ]
+[2024-06-12T20:02:36.724Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output regridding.output.ipynb pavics-sdi-master/docs/source/notebooks/regridding.ipynb
+[2024-06-12T20:02:38.619Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/regridding.ipynb to notebook
+[2024-06-12T20:02:38.878Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:39.445Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:40.378Z] Aborted (core dumped)
+[2024-06-12T20:02:40.378Z] + basename pavics-sdi-master/docs/source/notebooks/rendering.ipynb
+[2024-06-12T20:02:40.378Z] + filename=rendering.ipynb
+[2024-06-12T20:02:40.378Z] + echo rendering.ipynb
+[2024-06-12T20:02:40.378Z] + sed s/.ipynb$//
+[2024-06-12T20:02:40.378Z] + filename=rendering
+[2024-06-12T20:02:40.378Z] + [ -e buildout/rendering.output.ipynb ]
+[2024-06-12T20:02:40.378Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output rendering.output.ipynb pavics-sdi-master/docs/source/notebooks/rendering.ipynb
+[2024-06-12T20:02:42.268Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/rendering.ipynb to notebook
+[2024-06-12T20:02:42.532Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:43.097Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:43.661Z] Aborted (core dumped)
+[2024-06-12T20:02:43.661Z] + basename pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb
+[2024-06-12T20:02:43.661Z] + filename=subset-user-input.ipynb
+[2024-06-12T20:02:43.661Z] + echo subset-user-input.ipynb
+[2024-06-12T20:02:43.661Z] + sed s/.ipynb$//
+[2024-06-12T20:02:43.661Z] + filename=subset-user-input
+[2024-06-12T20:02:43.661Z] + [ -e buildout/subset-user-input.output.ipynb ]
+[2024-06-12T20:02:43.661Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output subset-user-input.output.ipynb pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb
+[2024-06-12T20:02:45.548Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb to notebook
+[2024-06-12T20:02:45.806Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:46.368Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:48.261Z] Aborted (core dumped)
+[2024-06-12T20:02:48.261Z] + basename pavics-sdi-master/docs/source/notebooks/subsetting.ipynb
+[2024-06-12T20:02:48.261Z] + filename=subsetting.ipynb
+[2024-06-12T20:02:48.261Z] + echo subsetting.ipynb
+[2024-06-12T20:02:48.261Z] + sed s/.ipynb$//
+[2024-06-12T20:02:48.261Z] + filename=subsetting
+[2024-06-12T20:02:48.261Z] + [ -e buildout/subsetting.output.ipynb ]
+[2024-06-12T20:02:48.261Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output subsetting.output.ipynb pavics-sdi-master/docs/source/notebooks/subsetting.ipynb
+[2024-06-12T20:02:50.153Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/subsetting.ipynb to notebook
+[2024-06-12T20:02:50.409Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:50.971Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:51.901Z] Aborted (core dumped)
+[2024-06-12T20:02:51.901Z] + basename finch-master/docs/source/notebooks/dap_subset.ipynb
+[2024-06-12T20:02:51.901Z] + filename=dap_subset.ipynb
+[2024-06-12T20:02:51.901Z] + echo dap_subset.ipynb
+[2024-06-12T20:02:51.901Z] + sed s/.ipynb$//
+[2024-06-12T20:02:51.901Z] + filename=dap_subset
+[2024-06-12T20:02:51.901Z] + [ -e buildout/dap_subset.output.ipynb ]
+[2024-06-12T20:02:51.901Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output dap_subset.output.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb
+[2024-06-12T20:02:53.815Z] [NbConvertApp] Converting notebook finch-master/docs/source/notebooks/dap_subset.ipynb to notebook
+[2024-06-12T20:02:53.815Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:54.379Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:55.751Z] Aborted (core dumped)
+[2024-06-12T20:02:55.751Z] + basename finch-master/docs/source/notebooks/finch-usage.ipynb
+[2024-06-12T20:02:55.751Z] + filename=finch-usage.ipynb
+[2024-06-12T20:02:55.751Z] + echo finch-usage.ipynb
+[2024-06-12T20:02:55.751Z] + sed s/.ipynb$//
+[2024-06-12T20:02:55.751Z] + filename=finch-usage
+[2024-06-12T20:02:55.751Z] + [ -e buildout/finch-usage.output.ipynb ]
+[2024-06-12T20:02:55.751Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output finch-usage.output.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb
+[2024-06-12T20:02:57.655Z] [NbConvertApp] Converting notebook finch-master/docs/source/notebooks/finch-usage.ipynb to notebook
+[2024-06-12T20:02:57.655Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:58.226Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:02:58.486Z] Aborted (core dumped)
+[2024-06-12T20:02:58.486Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
+[2024-06-12T20:02:58.486Z] + filename=PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
+[2024-06-12T20:02:58.486Z] + echo PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
+[2024-06-12T20:02:58.486Z] + sed s/.ipynb$//
+[2024-06-12T20:02:58.486Z] + filename=PAVICStutorial_ClimateDataAnalysis-1DataAccess
+[2024-06-12T20:02:58.486Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-1DataAccess.output.ipynb ]
+[2024-06-12T20:02:58.486Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-1DataAccess.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
+[2024-06-12T20:03:00.388Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb to notebook
+[2024-06-12T20:03:00.647Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:01.209Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:01.770Z] Aborted (core dumped)
+[2024-06-12T20:03:01.770Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
+[2024-06-12T20:03:01.770Z] + filename=PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
+[2024-06-12T20:03:01.770Z] + echo PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
+[2024-06-12T20:03:01.770Z] + sed s/.ipynb$//
+[2024-06-12T20:03:01.770Z] + filename=PAVICStutorial_ClimateDataAnalysis-2Subsetting
+[2024-06-12T20:03:01.770Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-2Subsetting.output.ipynb ]
+[2024-06-12T20:03:01.770Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-2Subsetting.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
+[2024-06-12T20:03:03.713Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb to notebook
+[2024-06-12T20:03:03.713Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:04.280Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:05.218Z] Aborted (core dumped)
+[2024-06-12T20:03:05.218Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
+[2024-06-12T20:03:05.218Z] + filename=PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
+[2024-06-12T20:03:05.218Z] + echo PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
+[2024-06-12T20:03:05.218Z] + sed s/.ipynb$//
+[2024-06-12T20:03:05.218Z] + filename=PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators
+[2024-06-12T20:03:05.218Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.output.ipynb ]
+[2024-06-12T20:03:05.218Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
+[2024-06-12T20:03:06.605Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb to notebook
+[2024-06-12T20:03:07.173Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:07.737Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:08.307Z] Aborted (core dumped)
+[2024-06-12T20:03:08.307Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
+[2024-06-12T20:03:08.307Z] + filename=PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
+[2024-06-12T20:03:08.564Z] + echo PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
+[2024-06-12T20:03:08.564Z] + sed s/.ipynb$//
+[2024-06-12T20:03:08.564Z] + filename=PAVICStutorial_ClimateDataAnalysis-4Ensembles
+[2024-06-12T20:03:08.564Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-4Ensembles.output.ipynb ]
+[2024-06-12T20:03:08.564Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-4Ensembles.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
+[2024-06-12T20:03:09.932Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb to notebook
+[2024-06-12T20:03:10.498Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:11.063Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:11.630Z] Aborted (core dumped)
+[2024-06-12T20:03:11.630Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
+[2024-06-12T20:03:11.630Z] + filename=PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
+[2024-06-12T20:03:11.630Z] + echo PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
+[2024-06-12T20:03:11.630Z] + sed s/.ipynb$//
+[2024-06-12T20:03:11.630Z] + filename=PAVICStutorial_ClimateDataAnalysis-5Visualization
+[2024-06-12T20:03:11.630Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-5Visualization.output.ipynb ]
+[2024-06-12T20:03:11.630Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-5Visualization.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
+[2024-06-12T20:03:13.541Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb to notebook
+[2024-06-12T20:03:13.802Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:14.376Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:15.763Z] Aborted (core dumped)
+[2024-06-12T20:03:15.763Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb
+[2024-06-12T20:03:15.763Z] + filename=PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb
+[2024-06-12T20:03:15.763Z] + echo PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb
+[2024-06-12T20:03:15.763Z] + sed s/.ipynb$//
+[2024-06-12T20:03:15.763Z] + filename=PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion
+[2024-06-12T20:03:15.764Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.output.ipynb ]
+[2024-06-12T20:03:15.764Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb
+[2024-06-12T20:03:17.660Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb to notebook
+[2024-06-12T20:03:17.922Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:18.484Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:19.050Z] Aborted (core dumped)
+[2024-06-12T20:03:19.050Z] + basename PAVICS-landing-master/content/notebooks/hydrology/01_Intro.ipynb
+[2024-06-12T20:03:19.050Z] + filename=01_Intro.ipynb
+[2024-06-12T20:03:19.050Z] + echo 01_Intro.ipynb
+[2024-06-12T20:03:19.050Z] + sed s/.ipynb$//
+[2024-06-12T20:03:19.050Z] + filename=01_Intro
+[2024-06-12T20:03:19.050Z] + [ -e buildout/01_Intro.output.ipynb ]
+[2024-06-12T20:03:19.050Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output 01_Intro.output.ipynb PAVICS-landing-master/content/notebooks/hydrology/01_Intro.ipynb
+[2024-06-12T20:03:20.952Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/hydrology/01_Intro.ipynb to notebook
+[2024-06-12T20:03:21.210Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:21.827Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:22.395Z] Aborted (core dumped)
+[2024-06-12T20:03:22.395Z] + basename PAVICS-landing-master/content/notebooks/hydrology/02_Calibration.ipynb
+[2024-06-12T20:03:22.395Z] + filename=02_Calibration.ipynb
+[2024-06-12T20:03:22.395Z] + + sed s/.ipynb$//
+[2024-06-12T20:03:22.395Z] echo 02_Calibration.ipynb
+[2024-06-12T20:03:22.395Z] + filename=02_Calibration
+[2024-06-12T20:03:22.395Z] + [ -e buildout/02_Calibration.output.ipynb ]
+[2024-06-12T20:03:22.395Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output 02_Calibration.output.ipynb PAVICS-landing-master/content/notebooks/hydrology/02_Calibration.ipynb
+[2024-06-12T20:03:24.286Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/hydrology/02_Calibration.ipynb to notebook
+[2024-06-12T20:03:24.544Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:25.112Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:25.674Z] Aborted (core dumped)
+[2024-06-12T20:03:25.674Z] + basename PAVICS-landing-master/content/notebooks/hydrology/03_Watershed_properties.ipynb
+[2024-06-12T20:03:25.674Z] + filename=03_Watershed_properties.ipynb
+[2024-06-12T20:03:25.674Z] + sed s/.ipynb$//
+[2024-06-12T20:03:25.674Z] + echo 03_Watershed_properties.ipynb
+[2024-06-12T20:03:25.674Z] + filename=03_Watershed_properties
+[2024-06-12T20:03:25.674Z] + [ -e buildout/03_Watershed_properties.output.ipynb ]
+[2024-06-12T20:03:25.674Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output 03_Watershed_properties.output.ipynb PAVICS-landing-master/content/notebooks/hydrology/03_Watershed_properties.ipynb
+[2024-06-12T20:03:27.578Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/hydrology/03_Watershed_properties.ipynb to notebook
+[2024-06-12T20:03:27.836Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:28.769Z] Aborted (core dumped)
+[2024-06-12T20:03:28.769Z] + basename PAVICS-landing-master/content/notebooks/hydrology/04_Time_series_analysis.ipynb
+[2024-06-12T20:03:28.769Z] + filename=04_Time_series_analysis.ipynb
+[2024-06-12T20:03:28.769Z] + echo 04_Time_series_analysis.ipynb
+[2024-06-12T20:03:28.769Z] + sed s/.ipynb$//
+[2024-06-12T20:03:28.769Z] + filename=04_Time_series_analysis
+[2024-06-12T20:03:28.769Z] + [ -e buildout/04_Time_series_analysis.output.ipynb ]
+[2024-06-12T20:03:28.769Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output 04_Time_series_analysis.output.ipynb PAVICS-landing-master/content/notebooks/hydrology/04_Time_series_analysis.ipynb
+[2024-06-12T20:03:29.026Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:30.931Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/hydrology/04_Time_series_analysis.ipynb to notebook
+[2024-06-12T20:03:31.188Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:32.121Z] Aborted (core dumped)
+[2024-06-12T20:03:32.121Z] + basename notebooks/hummingbird.ipynb
+[2024-06-12T20:03:32.121Z] + filename=hummingbird.ipynb
+[2024-06-12T20:03:32.121Z] + echo hummingbird.ipynb
+[2024-06-12T20:03:32.121Z] + sed s/.ipynb$//
+[2024-06-12T20:03:32.121Z] + filename=hummingbird
+[2024-06-12T20:03:32.121Z] + [ -e buildout/hummingbird.output.ipynb ]
+[2024-06-12T20:03:32.121Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output hummingbird.output.ipynb notebooks/hummingbird.ipynb
+[2024-06-12T20:03:32.378Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:34.273Z] [NbConvertApp] Converting notebook notebooks/hummingbird.ipynb to notebook
+[2024-06-12T20:03:34.539Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:36.439Z] Aborted (core dumped)
+[2024-06-12T20:03:36.439Z] + basename notebooks/stress-tests.ipynb
+[2024-06-12T20:03:36.439Z] + filename=stress-tests.ipynb
+[2024-06-12T20:03:36.439Z] + sed s/.ipynb$//
+[2024-06-12T20:03:36.439Z] + echo stress-tests.ipynb
+[2024-06-12T20:03:36.439Z] + filename=stress-tests
+[2024-06-12T20:03:36.439Z] + [ -e buildout/stress-tests.output.ipynb ]
+[2024-06-12T20:03:36.439Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output stress-tests.output.ipynb notebooks/stress-tests.ipynb
+[2024-06-12T20:03:36.439Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:38.333Z] [NbConvertApp] Converting notebook notebooks/stress-tests.ipynb to notebook
+[2024-06-12T20:03:38.599Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:39.538Z] Aborted (core dumped)
+[2024-06-12T20:03:39.538Z] + exit 134
+[2024-06-12T20:03:39.538Z] + EXIT_CODE=134
+[2024-06-12T20:03:39.538Z] + ENV_DUMP_DIR=buildout/env-dump
+[2024-06-12T20:03:39.538Z] + mkdir -p buildout/env-dump
+[2024-06-12T20:03:39.538Z] + ENV_EXPORT_FILE=buildout/env-dump/environment-export-birdy.yml
+[2024-06-12T20:03:39.538Z] + rm -fv buildout/env-dump/environment-export-birdy.yml
+[2024-06-12T20:03:39.538Z] + conda env export -n birdy
+[2024-06-12T20:03:39.795Z] Operation not permitted (src/thread.cpp:241)
+[2024-06-12T20:03:52.022Z] + LIST_EXPLICIT_FILE=buildout/env-dump/conda-list-explicit-birdy.txt
+[2024-06-12T20:03:52.022Z] + rm -fv buildout/env-dump/conda-list-explicit-birdy.txt
+[2024-06-12T20:03:52.022Z] + conda list -n birdy --explicit
+[2024-06-12T20:03:58.575Z] + PIP_FREEZE_FILE=buildout/env-dump/pip-freeze-birdy-requirements.txt
+[2024-06-12T20:03:58.575Z] + rm -fv buildout/env-dump/pip-freeze-birdy-requirements.txt
+[2024-06-12T20:03:58.575Z] + pip freeze
+[2024-06-12T20:03:59.952Z] + exit 134
 [Pipeline] }
 [Pipeline] // withCredentials
 [Pipeline] }
@@ -848,40 +785,63 @@ $ docker top 58efa5416657361d8f1874e39e667a4fc4547a270969cfc916595caa599b0348 -e
 [Pipeline] stage
 [Pipeline] { (Declarative: Post Actions)
 [Pipeline] archiveArtifacts
-[2024-06-01T03:49:44.894Z] Archiving artifacts
-[2024-06-01T03:49:44.917Z] Recording fingerprints
+[2024-06-12T20:04:01.921Z] Archiving artifacts
+[2024-06-12T20:04:01.952Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-06-01T03:49:44.941Z] Archiving artifacts
-[2024-06-01T03:49:45.631Z] Recording fingerprints
+[2024-06-12T20:04:02.103Z] Archiving artifacts
+[2024-06-12T20:04:02.824Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-06-01T03:49:45.898Z] Archiving artifacts
-[2024-06-01T03:49:45.913Z] Recording fingerprints
+[2024-06-12T20:04:03.671Z] Archiving artifacts
+[2024-06-12T20:04:03.684Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-06-01T03:49:45.952Z] Archiving artifacts
-[2024-06-01T03:49:45.977Z] Recording fingerprints
+[2024-06-12T20:04:03.828Z] Archiving artifacts
+[2024-06-12T20:04:04.244Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-06-01T03:49:46.025Z] Archiving artifacts
-[2024-06-01T03:49:46.050Z] Recording fingerprints
+[2024-06-12T20:04:04.549Z] Archiving artifacts
+[2024-06-12T20:04:04.637Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-06-01T03:49:46.099Z] Archiving artifacts
-[2024-06-01T03:49:46.134Z] Recording fingerprints
+[2024-06-12T20:04:04.836Z] Archiving artifacts
+[2024-06-12T20:04:04.867Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-06-01T03:49:46.702Z] Archiving artifacts
-[2024-06-01T03:49:46.717Z] Recording fingerprints
+[2024-06-12T20:04:06.600Z] Archiving artifacts
+[2024-06-12T20:04:06.657Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-06-01T03:49:46.785Z] Archiving artifacts
-[2024-06-01T03:49:46.826Z] Recording fingerprints
+[2024-06-12T20:04:07.650Z] Archiving artifacts
+[2024-06-12T20:04:07.685Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-06-01T03:49:46.902Z] Archiving artifacts
-[2024-06-01T03:49:47.358Z] Recording fingerprints
+[2024-06-12T20:04:08.281Z] Archiving artifacts
+[2024-06-12T20:04:09.011Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-06-01T03:49:47.438Z] Archiving artifacts
+[2024-06-12T20:04:09.184Z] Archiving artifacts
 [Pipeline] archiveArtifacts
-[2024-06-01T03:49:47.461Z] Archiving artifacts
-[2024-06-01T03:49:47.479Z] Recording fingerprints
+[2024-06-12T20:04:09.327Z] Archiving artifacts
+[2024-06-12T20:04:09.393Z] Recording fingerprints
 [Pipeline] emailextrecipients
 [Pipeline] step
-[2024-06-01T03:49:47.604Z] Sending e-mails to: vu.long@ouranos.ca
+[2024-06-12T20:04:09.447Z] Sending e-mails to: vu.long@ouranos.ca
+[2024-06-12T20:04:09.513Z] ERROR: Invalid Addresses
+[2024-06-12T20:04:09.570Z] javax.mail.SendFailedException: Invalid Addresses;
+[2024-06-12T20:04:09.570Z]   nested exception is:
+[2024-06-12T20:04:09.570Z] 	com.sun.mail.smtp.SMTPAddressFailedException: 454 4.7.1 <vu.long@ouranos.ca>: Relay access denied
+[2024-06-12T20:04:09.570Z] 
+[2024-06-12T20:04:09.571Z] 	at com.sun.mail.smtp.SMTPTransport.rcptTo(SMTPTransport.java:1835)
+[2024-06-12T20:04:09.571Z] 	at com.sun.mail.smtp.SMTPTransport.sendMessage(SMTPTransport.java:1098)
+[2024-06-12T20:04:09.571Z] 	at javax.mail.Transport.send0(Transport.java:195)
+[2024-06-12T20:04:09.571Z] 	at javax.mail.Transport.send(Transport.java:124)
+[2024-06-12T20:04:09.571Z] 	at hudson.tasks.MailSender.run(MailSender.java:130)
+[2024-06-12T20:04:09.571Z] 	at hudson.tasks.Mailer.perform(Mailer.java:175)
+[2024-06-12T20:04:09.571Z] 	at org.jenkinsci.plugins.workflow.steps.CoreStep$Execution.run(CoreStep.java:80)
+[2024-06-12T20:04:09.571Z] 	at org.jenkinsci.plugins.workflow.steps.CoreStep$Execution.run(CoreStep.java:67)
+[2024-06-12T20:04:09.571Z] 	at org.jenkinsci.plugins.workflow.steps.SynchronousNonBlockingStepExecution.lambda$start$0(SynchronousNonBlockingStepExecution.java:47)
+[2024-06-12T20:04:09.571Z] 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+[2024-06-12T20:04:09.571Z] 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+[2024-06-12T20:04:09.571Z] 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+[2024-06-12T20:04:09.571Z] 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+[2024-06-12T20:04:09.571Z] 	at java.lang.Thread.run(Thread.java:748)
+[2024-06-12T20:04:09.571Z] Caused by: com.sun.mail.smtp.SMTPAddressFailedException: 454 4.7.1 <vu.long@ouranos.ca>: Relay access denied
+[2024-06-12T20:04:09.571Z] 
+[2024-06-12T20:04:09.571Z] 	at com.sun.mail.smtp.SMTPTransport.rcptTo(SMTPTransport.java:1733)
+[2024-06-12T20:04:09.571Z] 	... 13 more
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] }
@@ -891,8 +851,8 @@ $ docker top 58efa5416657361d8f1874e39e667a4fc4547a270969cfc916595caa599b0348 -e
 [Pipeline] }
 [Pipeline] // ansiColor
 [Pipeline] }
-$ docker stop --time=1 58efa5416657361d8f1874e39e667a4fc4547a270969cfc916595caa599b0348
-$ docker rm -f 58efa5416657361d8f1874e39e667a4fc4547a270969cfc916595caa599b0348
+$ docker stop --time=1 0239946f61b0ae9a30891a004d0c327a128ad5d11361c962ec0831ef86ec97de
+$ docker rm -f 0239946f61b0ae9a30891a004d0c327a128ad5d11361c962ec0831ef86ec97de
 [Pipeline] // withDockerContainer
 [Pipeline] }
 [Pipeline] // withEnv
