@@ -1,4 +1,4 @@
-Started by user Long Vu
+Started by user admin
  > git rev-parse --is-inside-work-tree # timeout=10
 Setting origin to https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git
  > git config remote.origin.url https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git # timeout=10
@@ -16,11 +16,11 @@ Seen branch in repository origin/new-docker-build
 Seen branch in repository origin/test-dockerhub-build
 Seen branch in repository origin/twitcher_perf_test_notebook
 Seen 8 remote branches
-Obtained Jenkinsfile from 153024f40fc287aceccab806c5b6507353b37bc5
+Obtained Jenkinsfile from 971327f0a05b1bfed8febf60080a660a672d5089
 Running in Durability level: MAX_SURVIVABILITY
 [Pipeline] Start of Pipeline
 [Pipeline] node
-Running on linux1 in /home/jenkins/agent/workspace/_workflow-tests_new-docker-build@2
+Running on linux1 in /home/jenkins/agent/workspace/_workflow-tests_new-docker-build
 [Pipeline] {
 [Pipeline] stage
 [Pipeline] { (Declarative: Checkout SCM)
@@ -33,859 +33,755 @@ Fetching without tags
 Fetching upstream changes from https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git
  > git --version # timeout=10
  > git fetch --no-tags --progress -- https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git +refs/heads/*:refs/remotes/origin/* # timeout=10
-Checking out Revision 153024f40fc287aceccab806c5b6507353b37bc5 (new-docker-build)
+Checking out Revision 971327f0a05b1bfed8febf60080a660a672d5089 (new-docker-build)
  > git config core.sparsecheckout # timeout=10
- > git checkout -f 153024f40fc287aceccab806c5b6507353b37bc5 # timeout=10
-Commit message: "docker: py311-240523: DockerHub build log"
- > git rev-list --no-walk 153024f40fc287aceccab806c5b6507353b37bc5 # timeout=10
+ > git checkout -f 971327f0a05b1bfed8febf60080a660a672d5089 # timeout=10
+Commit message: "docker: py311-240610: initial jenkins build, default nb, core dumped !"
+ > git rev-list --no-walk 971327f0a05b1bfed8febf60080a660a672d5089 # timeout=10
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] withEnv
 [Pipeline] {
 [Pipeline] isUnix
 [Pipeline] sh
-+ docker inspect -f . pavics/workflow-tests:py311-240523
++ docker inspect -f . pavics/workflow-tests:py311-240610
 .
 [Pipeline] withDockerContainer
-linux1 seems to be running inside container c7b47b12d037a55684325ed6aba8c5cdbf14095a9ef2302738499cdd57ccd08b
-$ docker run -t -d -u 1000:1000 -w /home/jenkins/agent/workspace/_workflow-tests_new-docker-build@2 --volumes-from c7b47b12d037a55684325ed6aba8c5cdbf14095a9ef2302738499cdd57ccd08b -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** pavics/workflow-tests:py311-240523 cat
-$ docker top 52ba0d78fedc5b836399b9e23174dcc3a26eb1f1a49ece2b685cbc25fc32fc83 -eo pid,comm
+linux1 seems to be running inside container 77dd366253b3d0b28395369fd38fea0f75346ac413ea9feb6d1f90bb2184b588
+$ docker run -t -d -u 1000:1000 -w /home/jenkins/agent/workspace/_workflow-tests_new-docker-build --volumes-from 77dd366253b3d0b28395369fd38fea0f75346ac413ea9feb6d1f90bb2184b588 -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** pavics/workflow-tests:py311-240610 cat
+$ docker top 24da7842c4fe7c716803ab2ffbc1ef729dcbfd11547edc15a68e80beaac9ee45 -eo pid,comm
 [Pipeline] {
 [Pipeline] ansiColor
 [Pipeline] {
 [Pipeline] timestamps
 [Pipeline] {
 [Pipeline] timeout
-[2024-05-24T01:31:45.740Z] Timeout set to expire in 2 hr 0 min
+[2024-07-31T00:15:46.461Z] Timeout set to expire in 2 hr 0 min
 [Pipeline] {
 [Pipeline] stage
 [Pipeline] { (Run tests)
 [Pipeline] script
 [Pipeline] {
 [Pipeline] withCredentials
-[2024-05-24T01:31:46.497Z] Masking supported pattern matches of $ESGF_AUTH_USERNAME or $ESGF_AUTH_PASSWORD or $ESGF_AUTH_TOKEN or $COMPUTE_TOKEN
+[2024-07-31T00:15:46.753Z] Masking supported pattern matches of $ESGF_AUTH_USERNAME or $ESGF_AUTH_PASSWORD or $ESGF_AUTH_TOKEN or $COMPUTE_TOKEN
 [Pipeline] {
 [Pipeline] sh
-[2024-05-24T01:31:46.791Z] + VERIFY_SSL=true SAVE_RESULTING_NOTEBOOK=true ./testall
-[2024-05-24T01:31:46.791Z] TEST_PAVICS_SDI_REPO has been set to 'true'
-[2024-05-24T01:31:46.791Z] PAVICS_SDI_BRANCH has been set to 'master'
-[2024-05-24T01:31:46.791Z] PAVICS_SDI_REPO has been set to 'Ouranosinc/pavics-sdi'
-[2024-05-24T01:31:46.791Z] TEST_FINCH_REPO has been set to 'true'
-[2024-05-24T01:31:46.791Z] FINCH_BRANCH has been set to 'master'
-[2024-05-24T01:31:46.791Z] FINCH_REPO has been set to 'bird-house/finch'
-[2024-05-24T01:31:46.791Z] TEST_PAVICS_LANDING_REPO has been set to 'true'
-[2024-05-24T01:31:46.791Z] PAVICS_LANDING_BRANCH has been set to 'master'
-[2024-05-24T01:31:46.791Z] PAVICS_LANDING_REPO has been set to 'Ouranosinc/PAVICS-landing'
-[2024-05-24T01:31:46.791Z] TEST_RAVEN_REPO has been set to 'false'
-[2024-05-24T01:31:46.791Z] RAVEN_BRANCH has been set to 'main'
-[2024-05-24T01:31:46.791Z] RAVEN_REPO has been set to 'Ouranosinc/raven'
-[2024-05-24T01:31:46.791Z] TEST_RAVENPY_REPO has been set to 'false'
-[2024-05-24T01:31:46.791Z] RAVENPY_BRANCH has been set to 'master'
-[2024-05-24T01:31:46.791Z] RAVENPY_REPO has been set to 'CSHS-CWRA/RavenPy'
-[2024-05-24T01:31:46.791Z] TEST_ESGF_COMPUTE_API_REPO has been set to 'false'
-[2024-05-24T01:31:46.791Z] ESGF_COMPUTE_API_BRANCH has been set to 'devel'
-[2024-05-24T01:31:46.791Z] ESGF_COMPUTE_API_REPO has been set to 'ESGF/esgf-compute-api'
-[2024-05-24T01:31:46.791Z] TEST_LOCAL_NOTEBOOKS has been set to 'true'
-[2024-05-24T01:31:46.791Z] + [ -n https://gist.githubusercontent.com/tlvu/813a1bcd325d753664c09526e4a5b759/raw/53062f04ed7ac554da75a84c59359de6cd66b4f6/jenkins-params-raven-nb-only.include.sh ]
-[2024-05-24T01:31:46.791Z] + TMP_PARAMS_OVERRIDE=/tmp/jenkins_params_override
-[2024-05-24T01:31:46.791Z] + rm -vf /tmp/jenkins_params_override
-[2024-05-24T01:31:46.791Z] removed '/tmp/jenkins_params_override'
-[2024-05-24T01:31:46.791Z] + curl --silent https://gist.githubusercontent.com/tlvu/813a1bcd325d753664c09526e4a5b759/raw/53062f04ed7ac554da75a84c59359de6cd66b4f6/jenkins-params-raven-nb-only.include.sh
-[2024-05-24T01:31:46.791Z] + tee /tmp/jenkins_params_override
-[2024-05-24T01:31:46.791Z] #!/bin/sh
-[2024-05-24T01:31:46.791Z] # https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests/blob/master/test-override/jenkins-params-raven-nb-only.include.sh
-[2024-05-24T01:31:46.791Z] 
-[2024-05-24T01:31:46.791Z] # Sample Jenkins params override script to only run Raven notebooks
-[2024-05-24T01:31:46.791Z] # with the proper --nbval-lax switch.
-[2024-05-24T01:31:46.791Z] 
-[2024-05-24T01:31:46.791Z] # Disable default repos.
-[2024-05-24T01:31:46.791Z] TEST_PAVICS_SDI_REPO="false"
-[2024-05-24T01:31:46.791Z] TEST_FINCH_REPO="false"
-[2024-05-24T01:31:46.791Z] TEST_PAVICS_LANDING_REPO="false"
-[2024-05-24T01:31:46.791Z] TEST_LOCAL_NOTEBOOKS="false"
-[2024-05-24T01:31:46.791Z] 
-[2024-05-24T01:31:46.791Z] # Enable raven repos.
-[2024-05-24T01:31:46.791Z] TEST_RAVEN_REPO="true"
-[2024-05-24T01:31:46.791Z] TEST_RAVENPY_REPO="true"
-[2024-05-24T01:31:46.791Z] 
-[2024-05-24T01:31:46.791Z] # Raven nbs outputs are not fully up-to-date or regexed escaped properly like
-[2024-05-24T01:31:46.791Z] # the other default nbs so need --nbval-lax for the moment.
-[2024-05-24T01:31:46.791Z] PYTEST_EXTRA_OPTS="$PYTEST_EXTRA_OPTS --nbval-lax"
-[2024-05-24T01:31:46.791Z] 
-[2024-05-24T01:31:46.791Z] # Set different test branch if required.
-[2024-05-24T01:31:46.791Z] #RAVEN_BRANCH=""
-[2024-05-24T01:31:46.791Z] #RAVENPY_BRANCH=""
-[2024-05-24T01:31:46.791Z] 
-[2024-05-24T01:31:46.791Z] ######################
-[2024-05-24T01:31:46.791Z] 
-[2024-05-24T01:31:47.047Z] SAVE_RESULTING_NOTEBOOK_TIMEOUT="600"+ . /tmp/jenkins_params_override
-[2024-05-24T01:31:47.047Z] + TEST_PAVICS_SDI_REPO=false
-[2024-05-24T01:31:47.047Z] + TEST_FINCH_REPO=false
-[2024-05-24T01:31:47.047Z] + TEST_PAVICS_LANDING_REPO=false
-[2024-05-24T01:31:47.047Z] + TEST_LOCAL_NOTEBOOKS=false
-[2024-05-24T01:31:47.047Z] + TEST_RAVEN_REPO=true
-[2024-05-24T01:31:47.047Z] + TEST_RAVENPY_REPO=true
-[2024-05-24T01:31:47.047Z] + PYTEST_EXTRA_OPTS=--dist=loadscope --numprocesses=0 --nbval-lax
-[2024-05-24T01:31:47.047Z] + SAVE_RESULTING_NOTEBOOK_TIMEOUT=600
-[2024-05-24T01:31:47.047Z] + git clean -fdx
-[2024-05-24T01:31:47.304Z] Removing .pytest_cache/
-[2024-05-24T01:31:47.304Z] Removing PAVICS-landing-master/
-[2024-05-24T01:31:47.304Z] Removing RavenPy-master/
-[2024-05-24T01:31:47.304Z] Removing __pycache__/
-[2024-05-24T01:31:47.304Z] Removing buildout/
-[2024-05-24T01:31:47.304Z] Removing esgf-compute-api-devel/
-[2024-05-24T01:31:47.304Z] Removing finch-master/
-[2024-05-24T01:31:47.304Z] Removing pavics-sdi-master/
-[2024-05-24T01:31:47.304Z] Removing raven-main/
-[2024-05-24T01:31:47.304Z] + ./downloadrepos
-[2024-05-24T01:31:47.304Z] TEST_PAVICS_SDI_REPO has been set to 'false'
-[2024-05-24T01:31:47.304Z] PAVICS_SDI_BRANCH has been set to 'master'
-[2024-05-24T01:31:47.304Z] PAVICS_SDI_REPO has been set to 'Ouranosinc/pavics-sdi'
-[2024-05-24T01:31:47.304Z] TEST_FINCH_REPO has been set to 'false'
-[2024-05-24T01:31:47.305Z] FINCH_BRANCH has been set to 'master'
-[2024-05-24T01:31:47.305Z] FINCH_REPO has been set to 'bird-house/finch'
-[2024-05-24T01:31:47.305Z] TEST_PAVICS_LANDING_REPO has been set to 'false'
-[2024-05-24T01:31:47.305Z] PAVICS_LANDING_BRANCH has been set to 'master'
-[2024-05-24T01:31:47.305Z] PAVICS_LANDING_REPO has been set to 'Ouranosinc/PAVICS-landing'
-[2024-05-24T01:31:47.305Z] TEST_RAVEN_REPO has been set to 'true'
-[2024-05-24T01:31:47.305Z] RAVEN_BRANCH has been set to 'main'
-[2024-05-24T01:31:47.305Z] RAVEN_REPO has been set to 'Ouranosinc/raven'
-[2024-05-24T01:31:47.305Z] TEST_RAVENPY_REPO has been set to 'true'
-[2024-05-24T01:31:47.305Z] RAVENPY_BRANCH has been set to 'master'
-[2024-05-24T01:31:47.305Z] RAVENPY_REPO has been set to 'CSHS-CWRA/RavenPy'
-[2024-05-24T01:31:47.305Z] TEST_ESGF_COMPUTE_API_REPO has been set to 'false'
-[2024-05-24T01:31:47.305Z] ESGF_COMPUTE_API_BRANCH has been set to 'devel'
-[2024-05-24T01:31:47.305Z] ESGF_COMPUTE_API_REPO has been set to 'ESGF/esgf-compute-api'
-[2024-05-24T01:31:47.305Z] TEST_LOCAL_NOTEBOOKS has been set to 'false'
-[2024-05-24T01:31:47.305Z] + rm -rf pavics-sdi-*
-[2024-05-24T01:31:47.305Z] + ls
-[2024-05-24T01:31:47.305Z] + grep pavics-sdi
-[2024-05-24T01:31:47.305Z] + downloadrepos https://github.com/Ouranosinc/pavics-sdi master
-[2024-05-24T01:31:47.305Z] + github_repo=https://github.com/Ouranosinc/pavics-sdi
-[2024-05-24T01:31:47.305Z] + shift
-[2024-05-24T01:31:47.305Z] + branch=master
-[2024-05-24T01:31:47.305Z] + shift
-[2024-05-24T01:31:47.305Z] + wget --quiet --output-document - https://github.com/Ouranosinc/pavics-sdi/archive/master.tar.gz
-[2024-05-24T01:31:47.305Z] + tar xz
-[2024-05-24T01:31:50.569Z] + ls
-[2024-05-24T01:31:50.569Z] + grep pavics-sdi
-[2024-05-24T01:31:50.569Z] pavics-sdi-master
-[2024-05-24T01:31:50.569Z] + set +x
-[2024-05-24T01:31:50.825Z] + rm -rf finch-*
-[2024-05-24T01:31:50.825Z] + grep finch
-[2024-05-24T01:31:50.825Z] + ls
-[2024-05-24T01:31:50.825Z] + downloadrepos https://github.com/bird-house/finch master
-[2024-05-24T01:31:50.825Z] + github_repo=https://github.com/bird-house/finch
-[2024-05-24T01:31:50.825Z] + shift
-[2024-05-24T01:31:50.825Z] + branch=master
-[2024-05-24T01:31:50.825Z] + shift
-[2024-05-24T01:31:50.825Z] + wget --quiet --output-document - https://github.com/bird-house/finch/archive/master.tar.gz
-[2024-05-24T01:31:50.825Z] + tar xz
-[2024-05-24T01:31:52.190Z] + ls
-[2024-05-24T01:31:52.190Z] + grep finch
-[2024-05-24T01:31:52.190Z] finch-master
-[2024-05-24T01:31:52.190Z] + set +x
-[2024-05-24T01:31:52.190Z] + rm -rf PAVICS-landing-*
-[2024-05-24T01:31:52.190Z] + ls
-[2024-05-24T01:31:52.190Z] + grep PAVICS-landing
-[2024-05-24T01:31:52.190Z] + downloadrepos https://github.com/Ouranosinc/PAVICS-landing master
-[2024-05-24T01:31:52.190Z] + github_repo=https://github.com/Ouranosinc/PAVICS-landing
-[2024-05-24T01:31:52.190Z] + shift
-[2024-05-24T01:31:52.190Z] + branch=master
-[2024-05-24T01:31:52.190Z] + shift
-[2024-05-24T01:31:52.190Z] + wget --quiet --output-document - https://github.com/Ouranosinc/PAVICS-landing/archive/master.tar.gz
-[2024-05-24T01:31:52.190Z] + tar xz
-[2024-05-24T01:32:07.029Z] + ls
-[2024-05-24T01:32:07.029Z] + grep PAVICS-landing
-[2024-05-24T01:32:07.029Z] PAVICS-landing-master
-[2024-05-24T01:32:07.029Z] + set +x
-[2024-05-24T01:32:07.029Z] + rm -rf raven-*
-[2024-05-24T01:32:07.029Z] + ls
-[2024-05-24T01:32:07.029Z] + grep raven
-[2024-05-24T01:32:07.029Z] + downloadrepos https://github.com/Ouranosinc/raven main
-[2024-05-24T01:32:07.029Z] + github_repo=https://github.com/Ouranosinc/raven
-[2024-05-24T01:32:07.029Z] + shift
-[2024-05-24T01:32:07.029Z] + branch=main
-[2024-05-24T01:32:07.029Z] + shift
-[2024-05-24T01:32:07.029Z] + wget --quiet --output-document - https://github.com/Ouranosinc/raven/archive/main.tar.gz
-[2024-05-24T01:32:07.029Z] + tar xz
-[2024-05-24T01:32:07.029Z] + ls
-[2024-05-24T01:32:07.029Z] + grep raven
-[2024-05-24T01:32:07.029Z] raven-main
-[2024-05-24T01:32:07.029Z] + set +x
-[2024-05-24T01:32:07.029Z] + rm -rf RavenPy-*
-[2024-05-24T01:32:07.029Z] + ls
-[2024-05-24T01:32:07.029Z] + grep RavenPy
-[2024-05-24T01:32:07.029Z] + downloadrepos https://github.com/CSHS-CWRA/RavenPy master
-[2024-05-24T01:32:07.029Z] + github_repo=https://github.com/CSHS-CWRA/RavenPy
-[2024-05-24T01:32:07.029Z] + shift
-[2024-05-24T01:32:07.029Z] + branch=master
-[2024-05-24T01:32:07.029Z] + shift
-[2024-05-24T01:32:07.029Z] + wget --quiet --output-document - https://github.com/CSHS-CWRA/RavenPy/archive/master.tar.gz
-[2024-05-24T01:32:07.029Z] + tar xz
-[2024-05-24T01:32:09.545Z] + ls
-[2024-05-24T01:32:09.545Z] + grep RavenPy
-[2024-05-24T01:32:09.545Z] RavenPy-master
-[2024-05-24T01:32:09.545Z] + set +x
-[2024-05-24T01:32:09.545Z] + rm -rf esgf-compute-api-*
-[2024-05-24T01:32:09.545Z] + ls
-[2024-05-24T01:32:09.545Z] + grep esgf-compute-api
-[2024-05-24T01:32:09.545Z] + downloadrepos https://github.com/ESGF/esgf-compute-api devel
-[2024-05-24T01:32:09.545Z] + github_repo=https://github.com/ESGF/esgf-compute-api
-[2024-05-24T01:32:09.545Z] + shift
-[2024-05-24T01:32:09.545Z] + branch=devel
-[2024-05-24T01:32:09.545Z] + shift
-[2024-05-24T01:32:09.545Z] + wget --quiet --output-document - https://github.com/ESGF/esgf-compute-api/archive/devel.tar.gz
-[2024-05-24T01:32:09.545Z] + tar xz
-[2024-05-24T01:32:10.108Z] + ls
-[2024-05-24T01:32:10.108Z] + grep esgf-compute-api
-[2024-05-24T01:32:10.108Z] esgf-compute-api-devel
-[2024-05-24T01:32:10.108Z] + set +x
-[2024-05-24T01:32:10.108Z] + echo master
-[2024-05-24T01:32:10.108Z] + sed s@/@-@g
-[2024-05-24T01:32:10.108Z] + export PAVICS_SDI_BRANCH=master
-[2024-05-24T01:32:10.108Z] + echo Ouranosinc/pavics-sdi
-[2024-05-24T01:32:10.108Z] + sed s@^.*/@@g
-[2024-05-24T01:32:10.108Z] + export PAVICS_SDI_REPO_NAME=pavics-sdi
-[2024-05-24T01:32:10.108Z] + echo master
-[2024-05-24T01:32:10.108Z] + sed s@/@-@g
-[2024-05-24T01:32:10.108Z] + export FINCH_BRANCH=master
-[2024-05-24T01:32:10.108Z] + echo bird-house/finch
-[2024-05-24T01:32:10.108Z] + sed s@^.*/@@g
-[2024-05-24T01:32:10.108Z] + export FINCH_REPO_NAME=finch
-[2024-05-24T01:32:10.108Z] + echo master
-[2024-05-24T01:32:10.108Z] + sed s@/@-@g
-[2024-05-24T01:32:10.108Z] + export PAVICS_LANDING_BRANCH=master
-[2024-05-24T01:32:10.108Z] + echo Ouranosinc/PAVICS-landing
-[2024-05-24T01:32:10.108Z] + sed s@^.*/@@g
-[2024-05-24T01:32:10.108Z] + export PAVICS_LANDING_REPO_NAME=PAVICS-landing
-[2024-05-24T01:32:10.108Z] + echo main
-[2024-05-24T01:32:10.108Z] + sed s@/@-@g
-[2024-05-24T01:32:10.108Z] + export RAVEN_BRANCH=main
-[2024-05-24T01:32:10.108Z] + echo Ouranosinc/raven
-[2024-05-24T01:32:10.108Z] + sed s@^.*/@@g
-[2024-05-24T01:32:10.108Z] + export RAVEN_REPO_NAME=raven
-[2024-05-24T01:32:10.108Z] + echo master
-[2024-05-24T01:32:10.108Z] + sed s@/@-@g
-[2024-05-24T01:32:10.108Z] + export RAVENPY_BRANCH=master
-[2024-05-24T01:32:10.108Z] + echo CSHS-CWRA/RavenPy
-[2024-05-24T01:32:10.108Z] + sed s@^.*/@@g
-[2024-05-24T01:32:10.108Z] + export RAVENPY_REPO_NAME=RavenPy
-[2024-05-24T01:32:10.108Z] + echo devel
-[2024-05-24T01:32:10.108Z] + sed s@/@-@g
-[2024-05-24T01:32:10.108Z] + export ESGF_COMPUTE_API_BRANCH=devel
-[2024-05-24T01:32:10.108Z] + echo ESGF/esgf-compute-api
-[2024-05-24T01:32:10.108Z] + sed s@^.*/@@g
-[2024-05-24T01:32:10.108Z] + export ESGF_COMPUTE_API_REPO_NAME=esgf-compute-api
-[2024-05-24T01:32:10.108Z] + echo pavics-sdi-master
-[2024-05-24T01:32:10.108Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-05-24T01:32:10.108Z] + export PAVICS_SDI_DIR=pavics-sdi-master
-[2024-05-24T01:32:10.108Z] + echo finch-master
-[2024-05-24T01:32:10.108Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-05-24T01:32:10.108Z] + export FINCH_DIR=finch-master
-[2024-05-24T01:32:10.108Z] + echo PAVICS-landing-master
-[2024-05-24T01:32:10.108Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-05-24T01:32:10.108Z] + export PAVICS_LANDING_DIR=PAVICS-landing-master
-[2024-05-24T01:32:10.108Z] + echo raven-main
-[2024-05-24T01:32:10.108Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-05-24T01:32:10.108Z] + export RAVEN_DIR=raven-main
-[2024-05-24T01:32:10.108Z] + echo RavenPy-master
-[2024-05-24T01:32:10.108Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-05-24T01:32:10.108Z] + export RAVENPY_DIR=RavenPy-master
-[2024-05-24T01:32:10.108Z] + echo esgf-compute-api-devel
-[2024-05-24T01:32:10.108Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-05-24T01:32:10.369Z] + export ESGF_COMPUTE_API_DIR=esgf-compute-api-devel
-[2024-05-24T01:32:10.370Z] + echo true
-[2024-05-24T01:32:10.370Z] + tr [:upper:] [:lower:]
-[2024-05-24T01:32:10.370Z] + VERIFY_SSL=true
-[2024-05-24T01:32:10.370Z] + [ xtrue = xfalse ]
-[2024-05-24T01:32:10.370Z] + rm -v finch-master/setup.cfg
-[2024-05-24T01:32:10.370Z] removed 'finch-master/setup.cfg'
-[2024-05-24T01:32:10.370Z] + rm -v raven-main/setup.cfg
-[2024-05-24T01:32:10.370Z] removed 'raven-main/setup.cfg'
-[2024-05-24T01:32:10.370Z] + rm -v raven-main/pyproject.toml
-[2024-05-24T01:32:10.370Z] removed 'raven-main/pyproject.toml'
-[2024-05-24T01:32:10.370Z] + rm -v RavenPy-master/setup.cfg
-[2024-05-24T01:32:10.370Z] removed 'RavenPy-master/setup.cfg'
-[2024-05-24T01:32:10.370Z] + rm -v RavenPy-master/tox.ini
-[2024-05-24T01:32:10.370Z] removed 'RavenPy-master/tox.ini'
-[2024-05-24T01:32:10.370Z] + rm -v RavenPy-master/pyproject.toml
-[2024-05-24T01:32:10.370Z] removed 'RavenPy-master/pyproject.toml'
-[2024-05-24T01:32:10.370Z] + rm -v esgf-compute-api-devel/setup.cfg
-[2024-05-24T01:32:10.370Z] rm: cannot remove 'esgf-compute-api-devel/setup.cfg': No such file or directory
-[2024-05-24T01:32:10.370Z] + rm -v esgf-compute-api-devel/tox.ini
-[2024-05-24T01:32:10.370Z] rm: cannot remove 'esgf-compute-api-devel/tox.ini': No such file or directory
-[2024-05-24T01:32:10.370Z] + echo false
-[2024-05-24T01:32:10.370Z] + tr [:upper:] [:lower:]
-[2024-05-24T01:32:10.370Z] + TEST_MAGPIE_AUTH=false
-[2024-05-24T01:32:10.370Z] + echo false
-[2024-05-24T01:32:10.370Z] + tr [:upper:] [:lower:]
-[2024-05-24T01:32:10.370Z] + TEST_PAVICS_SDI_REPO=false
-[2024-05-24T01:32:10.370Z] + echo false
-[2024-05-24T01:32:10.370Z] + tr [:upper:] [:lower:]
-[2024-05-24T01:32:10.370Z] + TEST_PAVICS_SDI_WEAVER=false
-[2024-05-24T01:32:10.370Z] + echo false
-[2024-05-24T01:32:10.370Z] + tr [:upper:] [:lower:]
-[2024-05-24T01:32:10.370Z] + TEST_FINCH_REPO=false
-[2024-05-24T01:32:10.370Z] + echo false
-[2024-05-24T01:32:10.370Z] + tr [:upper:] [:lower:]
-[2024-05-24T01:32:10.370Z] + TEST_PAVICS_LANDING_REPO=false
-[2024-05-24T01:32:10.370Z] + echo true
-[2024-05-24T01:32:10.370Z] + tr [:upper:] [:lower:]
-[2024-05-24T01:32:10.370Z] + TEST_RAVEN_REPO=true
-[2024-05-24T01:32:10.370Z] + echo true
-[2024-05-24T01:32:10.370Z] + tr [:upper:] [:lower:]
-[2024-05-24T01:32:10.370Z] + TEST_RAVENPY_REPO=true
-[2024-05-24T01:32:10.370Z] + echo false
-[2024-05-24T01:32:10.370Z] + tr [:upper:] [:lower:]
-[2024-05-24T01:32:10.370Z] + TEST_ESGF_COMPUTE_API_REPO=false
-[2024-05-24T01:32:10.370Z] + echo false
-[2024-05-24T01:32:10.370Z] + tr [:upper:] [:lower:]
-[2024-05-24T01:32:10.370Z] + TEST_LOCAL_NOTEBOOKS=false
-[2024-05-24T01:32:10.370Z] + NOTEBOOKS_TO_TEST=
-[2024-05-24T01:32:10.370Z] + [ xfalse = xtrue ]
-[2024-05-24T01:32:10.370Z] + [ xfalse = xtrue ]
-[2024-05-24T01:32:10.370Z] + [ xfalse = xtrue ]
-[2024-05-24T01:32:10.370Z] + [ xfalse = xtrue ]
-[2024-05-24T01:32:10.370Z] + [ xtrue = xtrue ]
-[2024-05-24T01:32:10.370Z] + NOTEBOOKS_TO_TEST= raven-main/docs/source/notebooks/*.ipynb
-[2024-05-24T01:32:10.370Z] + [ xtrue = xtrue ]
-[2024-05-24T01:32:10.370Z] + NOTEBOOKS_TO_TEST= raven-main/docs/source/notebooks/*.ipynb RavenPy-master/docs/notebooks/*.ipynb
-[2024-05-24T01:32:10.370Z] + NOTEBOOKS_TO_TEST= raven-main/docs/source/notebooks/*.ipynb RavenPy-master/docs/notebooks/*.ipynb RavenPy-master/docs/notebooks/paper/*.ipynb
-[2024-05-24T01:32:10.370Z] + [ xfalse = xtrue ]
-[2024-05-24T01:32:10.370Z] + [ xfalse = xtrue ]
-[2024-05-24T01:32:10.370Z] + ./runtest  raven-main/docs/source/notebooks/*.ipynb RavenPy-master/docs/notebooks/*.ipynb RavenPy-master/docs/notebooks/paper/*.ipynb
-[2024-05-24T01:32:10.370Z] + [ -n  ]
-[2024-05-24T01:32:10.370Z] + [ ! -z pavics.ouranos.ca ]
-[2024-05-24T01:32:10.370Z] + echo Will run notebooks against pavics.ouranos.ca
-[2024-05-24T01:32:10.370Z] Will run notebooks against pavics.ouranos.ca
-[2024-05-24T01:32:10.370Z] + [ -z  ]
-[2024-05-24T01:32:10.370Z] + sed -i /\(\.ncml\|TEST_USE_PROD_DATA\)/!s/pavics.ouranos.ca/pavics.ouranos.ca/g raven-main/docs/source/notebooks/Region_selection.ipynb raven-main/docs/source/notebooks/Subset_climate_data_over_watershed.ipynb RavenPy-master/docs/notebooks/00_Introduction_to_JupyterLab.ipynb RavenPy-master/docs/notebooks/01_Getting_watershed_boundaries.ipynb RavenPy-master/docs/notebooks/02_Extract_geographical_watershed_properties.ipynb RavenPy-master/docs/notebooks/03_Extracting_forcing_data.ipynb RavenPy-master/docs/notebooks/04_Emulating_hydrological_models.ipynb RavenPy-master/docs/notebooks/05_Advanced_RavenPy_configuration.ipynb RavenPy-master/docs/notebooks/06_Raven_calibration.ipynb RavenPy-master/docs/notebooks/07_Making_and_using_hotstart_files.ipynb RavenPy-master/docs/notebooks/08_Getting_and_bias_correcting_CMIP6_data.ipynb RavenPy-master/docs/notebooks/09_Hydrological_impacts_of_climate_change.ipynb RavenPy-master/docs/notebooks/10_Data_assimilation.ipynb RavenPy-master/docs/notebooks/11_Climatological_ESP_forecasting.ipynb RavenPy-master/docs/notebooks/12_Performing_hindcasting_experiments.ipynb RavenPy-master/docs/notebooks/Assess_probabilistic_flood_risk.ipynb RavenPy-master/docs/notebooks/Comparing_hindcasts_and_ESP_forecasts.ipynb RavenPy-master/docs/notebooks/Distributed_hydrological_modelling.ipynb RavenPy-master/docs/notebooks/HydroShare_integration.ipynb RavenPy-master/docs/notebooks/Hydrological_realtime_forecasting.ipynb RavenPy-master/docs/notebooks/Managing_Jupyter_Environments.ipynb RavenPy-master/docs/notebooks/Perform_Regionalization.ipynb RavenPy-master/docs/notebooks/Running_HMETS_with_CANOPEX_dataset.ipynb RavenPy-master/docs/notebooks/Sensitivity_analysis.ipynb RavenPy-master/docs/notebooks/time_series_analysis.ipynb RavenPy-master/docs/notebooks/paper/Perform_a_climate_change_impact_study_on_a_watershed.ipynb
-[2024-05-24T01:32:10.370Z] + git diff
-[2024-05-24T01:32:10.370Z] + export PYTHONWARNINGS=ignore:Unverified HTTPS request
-[2024-05-24T01:32:10.370Z] + [ -n  ]
-[2024-05-24T01:32:10.370Z] + py.test --nbval raven-main/docs/source/notebooks/Region_selection.ipynb raven-main/docs/source/notebooks/Subset_climate_data_over_watershed.ipynb RavenPy-master/docs/notebooks/00_Introduction_to_JupyterLab.ipynb RavenPy-master/docs/notebooks/01_Getting_watershed_boundaries.ipynb RavenPy-master/docs/notebooks/02_Extract_geographical_watershed_properties.ipynb RavenPy-master/docs/notebooks/03_Extracting_forcing_data.ipynb RavenPy-master/docs/notebooks/04_Emulating_hydrological_models.ipynb RavenPy-master/docs/notebooks/05_Advanced_RavenPy_configuration.ipynb RavenPy-master/docs/notebooks/06_Raven_calibration.ipynb RavenPy-master/docs/notebooks/07_Making_and_using_hotstart_files.ipynb RavenPy-master/docs/notebooks/08_Getting_and_bias_correcting_CMIP6_data.ipynb RavenPy-master/docs/notebooks/09_Hydrological_impacts_of_climate_change.ipynb RavenPy-master/docs/notebooks/10_Data_assimilation.ipynb RavenPy-master/docs/notebooks/11_Climatological_ESP_forecasting.ipynb RavenPy-master/docs/notebooks/12_Performing_hindcasting_experiments.ipynb RavenPy-master/docs/notebooks/Assess_probabilistic_flood_risk.ipynb RavenPy-master/docs/notebooks/Comparing_hindcasts_and_ESP_forecasts.ipynb RavenPy-master/docs/notebooks/Distributed_hydrological_modelling.ipynb RavenPy-master/docs/notebooks/HydroShare_integration.ipynb RavenPy-master/docs/notebooks/Hydrological_realtime_forecasting.ipynb RavenPy-master/docs/notebooks/Managing_Jupyter_Environments.ipynb RavenPy-master/docs/notebooks/Perform_Regionalization.ipynb RavenPy-master/docs/notebooks/Running_HMETS_with_CANOPEX_dataset.ipynb RavenPy-master/docs/notebooks/Sensitivity_analysis.ipynb RavenPy-master/docs/notebooks/time_series_analysis.ipynb RavenPy-master/docs/notebooks/paper/Perform_a_climate_change_impact_study_on_a_watershed.ipynb --nbval-sanitize-with notebooks/output-sanitize.cfg --dist=loadscope --numprocesses=0 --nbval-lax
-[2024-05-24T01:32:13.646Z] ============================= test session starts ==============================
-[2024-05-24T01:32:13.646Z] platform linux -- Python 3.11.6, pytest-8.2.1, pluggy-1.5.0
-[2024-05-24T01:32:13.646Z] rootdir: /home/jenkins/agent/workspace/_workflow-tests_new-docker-build@2
-[2024-05-24T01:32:13.646Z] plugins: anyio-4.3.0, dash-2.17.0, nbval-0.11.0, tornasync-0.6.0.post2, xdist-3.5.0
-[2024-05-24T01:32:13.646Z] collected 243 items
-[2024-05-24T01:32:13.646Z] 
-[2024-05-24T01:32:24.178Z] raven-main/docs/source/notebooks/Region_selection.ipynb .........        [  3%]
-[2024-05-24T01:32:26.699Z] raven-main/docs/source/notebooks/Subset_climate_data_over_watershed.ipynb . [  4%]
-[2024-05-24T01:32:42.441Z] ......                                                                   [  6%]
-[2024-05-24T01:32:44.062Z] RavenPy-master/docs/notebooks/00_Introduction_to_JupyterLab.ipynb ...... [  9%]
-[2024-05-24T01:32:44.062Z]                                                                          [  9%]
-[2024-05-24T01:32:46.592Z] RavenPy-master/docs/notebooks/01_Getting_watershed_boundaries.ipynb .... [ 10%]
-[2024-05-24T01:32:54.720Z] ....                                                                     [ 12%]
-[2024-05-24T01:33:01.261Z] RavenPy-master/docs/notebooks/02_Extract_geographical_watershed_properties.ipynb . [ 12%]
-[2024-05-24T01:33:09.314Z] ..............                                                           [ 18%]
-[2024-05-24T01:33:41.643Z] RavenPy-master/docs/notebooks/03_Extracting_forcing_data.ipynb ......... [ 22%]
-[2024-05-24T01:34:59.740Z] ..                                                                       [ 23%]
-[2024-05-24T01:35:04.388Z] RavenPy-master/docs/notebooks/04_Emulating_hydrological_models.ipynb ... [ 24%]
-[2024-05-24T01:35:15.163Z] .................                                                        [ 31%]
-[2024-05-24T01:35:21.854Z] RavenPy-master/docs/notebooks/05_Advanced_RavenPy_configuration.ipynb .. [ 32%]
-[2024-05-24T01:35:32.074Z] ...........                                                              [ 36%]
-[2024-05-24T01:35:44.239Z] RavenPy-master/docs/notebooks/06_Raven_calibration.ipynb ......          [ 39%]
-[2024-05-24T01:35:49.501Z] RavenPy-master/docs/notebooks/07_Making_and_using_hotstart_files.ipynb . [ 39%]
-[2024-05-24T01:35:54.911Z] .....                                                                    [ 41%]
-[2024-05-24T01:35:56.296Z] RavenPy-master/docs/notebooks/08_Getting_and_bias_correcting_CMIP6_data.ipynb . [ 41%]
-[2024-05-24T01:40:50.800Z] .................                                                        [ 48%]
-[2024-05-24T01:40:56.177Z] RavenPy-master/docs/notebooks/09_Hydrological_impacts_of_climate_change.ipynb . [ 49%]
-[2024-05-24T01:41:04.073Z] ....                                                                     [ 51%]
-[2024-05-24T01:42:08.939Z] RavenPy-master/docs/notebooks/10_Data_assimilation.ipynb ........        [ 54%]
-[2024-05-24T01:42:18.485Z] RavenPy-master/docs/notebooks/11_Climatological_ESP_forecasting.ipynb .. [ 55%]
-[2024-05-24T01:42:50.990Z] ......                                                                   [ 57%]
-[2024-05-24T01:43:01.014Z] RavenPy-master/docs/notebooks/12_Performing_hindcasting_experiments.ipynb . [ 58%]
-[2024-05-24T01:43:12.217Z] .......                                                                  [ 60%]
-[2024-05-24T01:43:20.261Z] RavenPy-master/docs/notebooks/Assess_probabilistic_flood_risk.ipynb .... [ 62%]
-[2024-05-24T01:43:40.887Z] ....                                                                     [ 64%]
-[2024-05-24T01:43:49.031Z] RavenPy-master/docs/notebooks/Comparing_hindcasts_and_ESP_forecasts.ipynb . [ 64%]
-[2024-05-24T01:44:12.907Z] .......                                                                  [ 67%]
-[2024-05-24T01:44:16.249Z] RavenPy-master/docs/notebooks/Distributed_hydrological_modelling.ipynb . [ 67%]
-[2024-05-24T01:44:43.160Z] .......                                                                  [ 70%]
-[2024-05-24T01:44:46.462Z] RavenPy-master/docs/notebooks/HydroShare_integration.ipynb FFFF          [ 72%]
-[2024-05-24T01:44:56.505Z] RavenPy-master/docs/notebooks/Hydrological_realtime_forecasting.ipynb .. [ 73%]
-[2024-05-24T01:45:05.545Z] ....                                                                     [ 74%]
-[2024-05-24T01:45:53.219Z] RavenPy-master/docs/notebooks/Managing_Jupyter_Environments.ipynb ...    [ 76%]
-[2024-05-24T01:46:19.420Z] RavenPy-master/docs/notebooks/Perform_Regionalization.ipynb .......      [ 79%]
-[2024-05-24T01:46:19.420Z] RavenPy-master/docs/notebooks/Running_HMETS_with_CANOPEX_dataset.ipynb . [ 79%]
-[2024-05-24T01:46:31.370Z] .............                                                            [ 84%]
-[2024-05-24T01:46:51.060Z] RavenPy-master/docs/notebooks/Sensitivity_analysis.ipynb .....           [ 86%]
-[2024-05-24T01:46:58.723Z] RavenPy-master/docs/notebooks/time_series_analysis.ipynb ...........     [ 91%]
-[2024-05-24T01:47:10.927Z] RavenPy-master/docs/notebooks/paper/Perform_a_climate_change_impact_study_on_a_watershed.ipynb . [ 91%]
-[2024-05-24T01:52:04.967Z] ....................                                                     [100%]
-[2024-05-24T01:52:04.967Z] 
-[2024-05-24T01:52:04.967Z] =================================== FAILURES ===================================
-[2024-05-24T01:52:04.967Z] ______ RavenPy-master/docs/notebooks/HydroShare_integration.ipynb::Cell 0 ______
-[2024-05-24T01:52:04.967Z] [91mNotebook cell execution failed[0m
-[2024-05-24T01:52:04.967Z] [94mCell 0: Cell execution caused an exception
-[2024-05-24T01:52:04.967Z] 
-[2024-05-24T01:52:04.967Z] Input:
-[2024-05-24T01:52:04.967Z] [0mimport os
-[2024-05-24T01:52:04.967Z] 
-[2024-05-24T01:52:04.967Z] from hsclient import HydroShare, Token
-[2024-05-24T01:52:04.967Z] 
-[2024-05-24T01:52:04.967Z] # Authentication method using username and password
-[2024-05-24T01:52:04.967Z] """
-[2024-05-24T01:52:04.967Z] username = 'XXXXX'
-[2024-05-24T01:52:04.967Z] password = 'XXXXX'
-[2024-05-24T01:52:04.967Z] hs = HydroShare(username=username, password=password)
-[2024-05-24T01:52:04.967Z] """
-[2024-05-24T01:52:04.967Z] 
-[2024-05-24T01:52:04.967Z] client_id = os.environ.get("HYDROSHARE_AUTH_CLIENT_ID", "<your_client_id>")
-[2024-05-24T01:52:04.968Z] access_token = os.environ.get("HYDROSHARE_AUTH_TOKEN", "<your_auth_token>")
-[2024-05-24T01:52:04.968Z] 
-[2024-05-24T01:52:04.968Z] token = Token(access_token=access_token, token_type="bearer")
-[2024-05-24T01:52:04.968Z] hs = HydroShare(client_id=client_id, token=token)
-[2024-05-24T01:52:04.968Z] 
-[2024-05-24T01:52:04.968Z] [94mTraceback:[0m
-[2024-05-24T01:52:04.968Z] 
-[2024-05-24T01:52:04.968Z] [0;31m---------------------------------------------------------------------------[0m
-[2024-05-24T01:52:04.968Z] [0;31mValidationError[0m                           Traceback (most recent call last)
-[2024-05-24T01:52:04.968Z] Cell [0;32mIn[1], line 15[0m
-[2024-05-24T01:52:04.968Z] [1;32m     12[0m client_id [38;5;241m=[39m os[38;5;241m.[39menviron[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mHYDROSHARE_AUTH_CLIENT_ID[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124m<your_client_id>[39m[38;5;124m"[39m)
-[2024-05-24T01:52:04.968Z] [1;32m     13[0m access_token [38;5;241m=[39m os[38;5;241m.[39menviron[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mHYDROSHARE_AUTH_TOKEN[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124m<your_auth_token>[39m[38;5;124m"[39m)
-[2024-05-24T01:52:04.968Z] [0;32m---> 15[0m token [38;5;241m=[39m [43mToken[49m[43m([49m[43maccess_token[49m[38;5;241;43m=[39;49m[43maccess_token[49m[43m,[49m[43m [49m[43mtoken_type[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mbearer[39;49m[38;5;124;43m"[39;49m[43m)[49m
-[2024-05-24T01:52:04.968Z] [1;32m     16[0m hs [38;5;241m=[39m HydroShare(client_id[38;5;241m=[39mclient_id, token[38;5;241m=[39mtoken)
-[2024-05-24T01:52:04.968Z] 
-[2024-05-24T01:52:04.968Z] File [0;32m/opt/conda/envs/birdy/lib/python3.11/site-packages/pydantic/main.py:176[0m, in [0;36mBaseModel.__init__[0;34m(self, **data)[0m
-[2024-05-24T01:52:04.968Z] [1;32m    174[0m [38;5;66;03m# `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks[39;00m
-[2024-05-24T01:52:04.968Z] [1;32m    175[0m __tracebackhide__ [38;5;241m=[39m [38;5;28;01mTrue[39;00m
-[2024-05-24T01:52:04.968Z] [0;32m--> 176[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m__pydantic_validator__[49m[38;5;241;43m.[39;49m[43mvalidate_python[49m[43m([49m[43mdata[49m[43m,[49m[43m [49m[43mself_instance[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[43m)[49m
-[2024-05-24T01:52:04.968Z] 
-[2024-05-24T01:52:04.968Z] [0;31mValidationError[0m: 4 validation errors for Token
-[2024-05-24T01:52:04.968Z] scope
-[2024-05-24T01:52:04.968Z]   Field required [type=missing, input_value={'access_token': '<your_a... 'token_type': 'bearer'}, input_type=dict]
-[2024-05-24T01:52:04.968Z]     For further information visit https://errors.pydantic.dev/2.7/v/missing
-[2024-05-24T01:52:04.968Z] state
-[2024-05-24T01:52:04.968Z]   Field required [type=missing, input_value={'access_token': '<your_a... 'token_type': 'bearer'}, input_type=dict]
-[2024-05-24T01:52:04.968Z]     For further information visit https://errors.pydantic.dev/2.7/v/missing
-[2024-05-24T01:52:04.968Z] expires_in
-[2024-05-24T01:52:04.968Z]   Field required [type=missing, input_value={'access_token': '<your_a... 'token_type': 'bearer'}, input_type=dict]
-[2024-05-24T01:52:04.968Z]     For further information visit https://errors.pydantic.dev/2.7/v/missing
-[2024-05-24T01:52:04.968Z] refresh_token
-[2024-05-24T01:52:04.968Z]   Field required [type=missing, input_value={'access_token': '<your_a... 'token_type': 'bearer'}, input_type=dict]
-[2024-05-24T01:52:04.968Z]     For further information visit https://errors.pydantic.dev/2.7/v/missing
-[2024-05-24T01:52:04.968Z] 
-[2024-05-24T01:52:04.968Z] ______ RavenPy-master/docs/notebooks/HydroShare_integration.ipynb::Cell 1 ______
-[2024-05-24T01:52:04.968Z] [91mNotebook cell execution failed[0m
-[2024-05-24T01:52:04.968Z] [94mCell 1: Cell execution caused an exception
-[2024-05-24T01:52:04.968Z] 
-[2024-05-24T01:52:04.968Z] Input:
-[2024-05-24T01:52:04.968Z] [0mresults = hs.search(subject=["Harvey"])
-[2024-05-24T01:52:04.968Z] for r in results:
-[2024-05-24T01:52:04.968Z]     print(r.resource_title, ": ", r.resource_id)
-[2024-05-24T01:52:04.968Z] 
-[2024-05-24T01:52:04.968Z] [94mTraceback:[0m
-[2024-05-24T01:52:04.968Z] 
-[2024-05-24T01:52:04.968Z] [0;31m---------------------------------------------------------------------------[0m
-[2024-05-24T01:52:04.968Z] [0;31mNameError[0m                                 Traceback (most recent call last)
-[2024-05-24T01:52:04.968Z] Cell [0;32mIn[1], line 1[0m
-[2024-05-24T01:52:04.968Z] [0;32m----> 1[0m results [38;5;241m=[39m [43mhs[49m[38;5;241m.[39msearch(subject[38;5;241m=[39m[[38;5;124m"[39m[38;5;124mHarvey[39m[38;5;124m"[39m])
-[2024-05-24T01:52:04.968Z] [1;32m      2[0m [38;5;28;01mfor[39;00m r [38;5;129;01min[39;00m results:
-[2024-05-24T01:52:04.968Z] [1;32m      3[0m     [38;5;28mprint[39m(r[38;5;241m.[39mresource_title, [38;5;124m"[39m[38;5;124m: [39m[38;5;124m"[39m, r[38;5;241m.[39mresource_id)
-[2024-05-24T01:52:04.968Z] 
-[2024-05-24T01:52:04.968Z] [0;31mNameError[0m: name 'hs' is not defined
-[2024-05-24T01:52:04.968Z] 
-[2024-05-24T01:52:04.968Z] ______ RavenPy-master/docs/notebooks/HydroShare_integration.ipynb::Cell 2 ______
-[2024-05-24T01:52:04.968Z] [91mNotebook cell execution failed[0m
-[2024-05-24T01:52:04.968Z] [94mCell 2: Cell execution caused an exception
-[2024-05-24T01:52:04.968Z] 
-[2024-05-24T01:52:04.968Z] Input:
-[2024-05-24T01:52:04.968Z] [0mres = hs.resource("51d1539bf6e94b15ac33f7631228118c", validate=False)
-[2024-05-24T01:52:04.968Z] res.files()
-[2024-05-24T01:52:04.968Z] 
-[2024-05-24T01:52:04.968Z] [94mTraceback:[0m
-[2024-05-24T01:52:04.968Z] 
-[2024-05-24T01:52:04.968Z] [0;31m---------------------------------------------------------------------------[0m
-[2024-05-24T01:52:04.968Z] [0;31mNameError[0m                                 Traceback (most recent call last)
-[2024-05-24T01:52:04.968Z] Cell [0;32mIn[1], line 1[0m
-[2024-05-24T01:52:04.968Z] [0;32m----> 1[0m res [38;5;241m=[39m [43mhs[49m[38;5;241m.[39mresource([38;5;124m"[39m[38;5;124m51d1539bf6e94b15ac33f7631228118c[39m[38;5;124m"[39m, validate[38;5;241m=[39m[38;5;28;01mFalse[39;00m)
-[2024-05-24T01:52:04.968Z] [1;32m      2[0m res[38;5;241m.[39mfiles()
-[2024-05-24T01:52:04.968Z] 
-[2024-05-24T01:52:04.968Z] [0;31mNameError[0m: name 'hs' is not defined
-[2024-05-24T01:52:04.968Z] 
-[2024-05-24T01:52:04.968Z] ______ RavenPy-master/docs/notebooks/HydroShare_integration.ipynb::Cell 3 ______
-[2024-05-24T01:52:04.968Z] [91mNotebook cell execution failed[0m
-[2024-05-24T01:52:04.968Z] [94mCell 3: Cell execution caused an exception
-[2024-05-24T01:52:04.968Z] 
-[2024-05-24T01:52:04.968Z] Input:
-[2024-05-24T01:52:04.969Z] [0mres.file_download("USGS_Harvey_gages_TxLaMsAr.csv", save_path="/tmp")
-[2024-05-24T01:52:04.969Z] 
-[2024-05-24T01:52:04.969Z] [94mTraceback:[0m
-[2024-05-24T01:52:04.969Z] 
-[2024-05-24T01:52:04.969Z] [0;31m---------------------------------------------------------------------------[0m
-[2024-05-24T01:52:04.969Z] [0;31mNameError[0m                                 Traceback (most recent call last)
-[2024-05-24T01:52:04.969Z] Cell [0;32mIn[1], line 1[0m
-[2024-05-24T01:52:04.969Z] [0;32m----> 1[0m [43mres[49m[38;5;241m.[39mfile_download([38;5;124m"[39m[38;5;124mUSGS_Harvey_gages_TxLaMsAr.csv[39m[38;5;124m"[39m, save_path[38;5;241m=[39m[38;5;124m"[39m[38;5;124m/tmp[39m[38;5;124m"[39m)
-[2024-05-24T01:52:04.969Z] 
-[2024-05-24T01:52:04.969Z] [0;31mNameError[0m: name 'res' is not defined
-[2024-05-24T01:52:04.969Z] 
-[2024-05-24T01:52:04.969Z] =========================== short test summary info ============================
-[2024-05-24T01:52:04.969Z] FAILED RavenPy-master/docs/notebooks/HydroShare_integration.ipynb::Cell 0
-[2024-05-24T01:52:04.969Z] FAILED RavenPy-master/docs/notebooks/HydroShare_integration.ipynb::Cell 1
-[2024-05-24T01:52:04.969Z] FAILED RavenPy-master/docs/notebooks/HydroShare_integration.ipynb::Cell 2
-[2024-05-24T01:52:04.969Z] FAILED RavenPy-master/docs/notebooks/HydroShare_integration.ipynb::Cell 3
-[2024-05-24T01:52:04.969Z] ================== 4 failed, 239 passed in 1192.06s (0:19:52) ==================
-[2024-05-24T01:52:05.229Z] + EXIT_CODE=1
-[2024-05-24T01:52:05.229Z] + echo true
-[2024-05-24T01:52:05.229Z] + tr [:upper:] [:lower:]
-[2024-05-24T01:52:05.229Z] + SAVE_RESULTING_NOTEBOOK=true
-[2024-05-24T01:52:05.229Z] + [ xtrue = xtrue ]
-[2024-05-24T01:52:05.229Z] + mkdir -p buildout
-[2024-05-24T01:52:05.229Z] + basename raven-main/docs/source/notebooks/Region_selection.ipynb
-[2024-05-24T01:52:05.229Z] + filename=Region_selection.ipynb
-[2024-05-24T01:52:05.229Z] + echo Region_selection.ipynb
-[2024-05-24T01:52:05.229Z] + sed s/.ipynb$//
-[2024-05-24T01:52:05.229Z] + filename=Region_selection
-[2024-05-24T01:52:05.229Z] + [ -e buildout/Region_selection.output.ipynb ]
-[2024-05-24T01:52:05.229Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Region_selection.output.ipynb raven-main/docs/source/notebooks/Region_selection.ipynb
-[2024-05-24T01:52:07.139Z] [NbConvertApp] Converting notebook raven-main/docs/source/notebooks/Region_selection.ipynb to notebook
-[2024-05-24T01:52:08.079Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T01:52:08.079Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T01:52:08.079Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T01:52:08.079Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T01:52:18.062Z] [NbConvertApp] Writing 107223 bytes to buildout/Region_selection.output.ipynb
-[2024-05-24T01:52:18.324Z] + basename raven-main/docs/source/notebooks/Subset_climate_data_over_watershed.ipynb
-[2024-05-24T01:52:18.324Z] + filename=Subset_climate_data_over_watershed.ipynb
-[2024-05-24T01:52:18.324Z] + + sed s/.ipynb$//
-[2024-05-24T01:52:18.324Z] echo Subset_climate_data_over_watershed.ipynb
-[2024-05-24T01:52:18.324Z] + filename=Subset_climate_data_over_watershed
-[2024-05-24T01:52:18.325Z] + [ -e buildout/Subset_climate_data_over_watershed.output.ipynb ]
-[2024-05-24T01:52:18.325Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Subset_climate_data_over_watershed.output.ipynb raven-main/docs/source/notebooks/Subset_climate_data_over_watershed.ipynb
-[2024-05-24T01:52:20.226Z] [NbConvertApp] Converting notebook raven-main/docs/source/notebooks/Subset_climate_data_over_watershed.ipynb to notebook
-[2024-05-24T01:52:20.797Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T01:52:20.798Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T01:52:20.798Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T01:52:20.798Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T01:52:38.898Z] [NbConvertApp] Writing 95137 bytes to buildout/Subset_climate_data_over_watershed.output.ipynb
-[2024-05-24T01:52:38.898Z] + basename RavenPy-master/docs/notebooks/00_Introduction_to_JupyterLab.ipynb
-[2024-05-24T01:52:38.898Z] + filename=00_Introduction_to_JupyterLab.ipynb
-[2024-05-24T01:52:38.898Z] + echo 00_Introduction_to_JupyterLab.ipynb
-[2024-05-24T01:52:38.898Z] + sed s/.ipynb$//
-[2024-05-24T01:52:38.898Z] + filename=00_Introduction_to_JupyterLab
-[2024-05-24T01:52:38.898Z] + [ -e buildout/00_Introduction_to_JupyterLab.output.ipynb ]
-[2024-05-24T01:52:38.898Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 00_Introduction_to_JupyterLab.output.ipynb RavenPy-master/docs/notebooks/00_Introduction_to_JupyterLab.ipynb
-[2024-05-24T01:52:38.898Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/00_Introduction_to_JupyterLab.ipynb to notebook
-[2024-05-24T01:52:39.158Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T01:52:39.158Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T01:52:39.158Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T01:52:39.158Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T01:52:40.550Z] [NbConvertApp] Writing 13178 bytes to buildout/00_Introduction_to_JupyterLab.output.ipynb
-[2024-05-24T01:52:40.551Z] + basename RavenPy-master/docs/notebooks/01_Getting_watershed_boundaries.ipynb
-[2024-05-24T01:52:40.551Z] + filename=01_Getting_watershed_boundaries.ipynb
-[2024-05-24T01:52:40.551Z] + echo 01_Getting_watershed_boundaries.ipynb
-[2024-05-24T01:52:40.551Z] + sed s/.ipynb$//
-[2024-05-24T01:52:40.551Z] + filename=01_Getting_watershed_boundaries
-[2024-05-24T01:52:40.551Z] + [ -e buildout/01_Getting_watershed_boundaries.output.ipynb ]
-[2024-05-24T01:52:40.551Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 01_Getting_watershed_boundaries.output.ipynb RavenPy-master/docs/notebooks/01_Getting_watershed_boundaries.ipynb
-[2024-05-24T01:52:42.456Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/01_Getting_watershed_boundaries.ipynb to notebook
-[2024-05-24T01:52:43.396Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T01:52:43.396Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T01:52:43.396Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T01:52:43.396Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T01:52:58.287Z] [NbConvertApp] Writing 109426 bytes to buildout/01_Getting_watershed_boundaries.output.ipynb
-[2024-05-24T01:52:58.287Z] + basename RavenPy-master/docs/notebooks/02_Extract_geographical_watershed_properties.ipynb
-[2024-05-24T01:52:58.287Z] + filename=02_Extract_geographical_watershed_properties.ipynb
-[2024-05-24T01:52:58.287Z] + echo 02_Extract_geographical_watershed_properties.ipynb
-[2024-05-24T01:52:58.287Z] + sed s/.ipynb$//
-[2024-05-24T01:52:58.287Z] + filename=02_Extract_geographical_watershed_properties
-[2024-05-24T01:52:58.287Z] + [ -e buildout/02_Extract_geographical_watershed_properties.output.ipynb ]
-[2024-05-24T01:52:58.287Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 02_Extract_geographical_watershed_properties.output.ipynb RavenPy-master/docs/notebooks/02_Extract_geographical_watershed_properties.ipynb
-[2024-05-24T01:52:58.287Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/02_Extract_geographical_watershed_properties.ipynb to notebook
-[2024-05-24T01:52:58.545Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T01:52:58.545Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T01:52:58.545Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T01:52:58.545Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T01:53:13.423Z] [NbConvertApp] Writing 279631 bytes to buildout/02_Extract_geographical_watershed_properties.output.ipynb
-[2024-05-24T01:53:13.423Z] + basename RavenPy-master/docs/notebooks/03_Extracting_forcing_data.ipynb
-[2024-05-24T01:53:13.423Z] + filename=03_Extracting_forcing_data.ipynb
-[2024-05-24T01:53:13.423Z] + echo 03_Extracting_forcing_data.ipynb
-[2024-05-24T01:53:13.423Z] + sed s/.ipynb$//
-[2024-05-24T01:53:13.423Z] + filename=03_Extracting_forcing_data
-[2024-05-24T01:53:13.423Z] + [ -e buildout/03_Extracting_forcing_data.output.ipynb ]
-[2024-05-24T01:53:13.423Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 03_Extracting_forcing_data.output.ipynb RavenPy-master/docs/notebooks/03_Extracting_forcing_data.ipynb
-[2024-05-24T01:53:13.681Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/03_Extracting_forcing_data.ipynb to notebook
-[2024-05-24T01:53:14.617Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T01:53:14.617Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T01:53:14.617Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T01:53:14.617Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T01:55:06.129Z] [NbConvertApp] Writing 107307 bytes to buildout/03_Extracting_forcing_data.output.ipynb
-[2024-05-24T01:55:06.129Z] + basename RavenPy-master/docs/notebooks/04_Emulating_hydrological_models.ipynb
-[2024-05-24T01:55:06.129Z] + filename=04_Emulating_hydrological_models.ipynb
-[2024-05-24T01:55:06.129Z] + echo 04_Emulating_hydrological_models.ipynb
-[2024-05-24T01:55:06.129Z] + sed s/.ipynb$//
-[2024-05-24T01:55:06.129Z] + filename=04_Emulating_hydrological_models
-[2024-05-24T01:55:06.129Z] + [ -e buildout/04_Emulating_hydrological_models.output.ipynb ]
-[2024-05-24T01:55:06.129Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 04_Emulating_hydrological_models.output.ipynb RavenPy-master/docs/notebooks/04_Emulating_hydrological_models.ipynb
-[2024-05-24T01:55:06.129Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/04_Emulating_hydrological_models.ipynb to notebook
-[2024-05-24T01:55:06.129Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T01:55:06.129Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T01:55:06.129Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T01:55:06.129Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T01:55:18.352Z] [NbConvertApp] Writing 385411 bytes to buildout/04_Emulating_hydrological_models.output.ipynb
-[2024-05-24T01:55:18.352Z] + basename RavenPy-master/docs/notebooks/05_Advanced_RavenPy_configuration.ipynb
-[2024-05-24T01:55:18.352Z] + filename=05_Advanced_RavenPy_configuration.ipynb
-[2024-05-24T01:55:18.352Z] + echo 05_Advanced_RavenPy_configuration.ipynb
-[2024-05-24T01:55:18.352Z] + sed s/.ipynb$//
-[2024-05-24T01:55:18.352Z] + filename=05_Advanced_RavenPy_configuration
-[2024-05-24T01:55:18.352Z] + [ -e buildout/05_Advanced_RavenPy_configuration.output.ipynb ]
-[2024-05-24T01:55:18.352Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 05_Advanced_RavenPy_configuration.output.ipynb RavenPy-master/docs/notebooks/05_Advanced_RavenPy_configuration.ipynb
-[2024-05-24T01:55:19.284Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/05_Advanced_RavenPy_configuration.ipynb to notebook
-[2024-05-24T01:55:20.218Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T01:55:20.218Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T01:55:20.218Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T01:55:20.218Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T01:55:38.314Z] [NbConvertApp] Writing 305131 bytes to buildout/05_Advanced_RavenPy_configuration.output.ipynb
-[2024-05-24T01:55:38.314Z] + basename RavenPy-master/docs/notebooks/06_Raven_calibration.ipynb
-[2024-05-24T01:55:38.314Z] + filename=06_Raven_calibration.ipynb
-[2024-05-24T01:55:38.314Z] + echo 06_Raven_calibration.ipynb
-[2024-05-24T01:55:38.314Z] + sed s/.ipynb$//
-[2024-05-24T01:55:38.314Z] + filename=06_Raven_calibration
-[2024-05-24T01:55:38.314Z] + [ -e buildout/06_Raven_calibration.output.ipynb ]
-[2024-05-24T01:55:38.314Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 06_Raven_calibration.output.ipynb RavenPy-master/docs/notebooks/06_Raven_calibration.ipynb
-[2024-05-24T01:55:38.575Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/06_Raven_calibration.ipynb to notebook
-[2024-05-24T01:55:39.510Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T01:55:39.510Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T01:55:39.510Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T01:55:39.510Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T01:55:54.369Z] [NbConvertApp] Writing 18802 bytes to buildout/06_Raven_calibration.output.ipynb
-[2024-05-24T01:55:54.369Z] + basename RavenPy-master/docs/notebooks/07_Making_and_using_hotstart_files.ipynb
-[2024-05-24T01:55:54.369Z] + filename=07_Making_and_using_hotstart_files.ipynb
-[2024-05-24T01:55:54.369Z] + echo 07_Making_and_using_hotstart_files.ipynb
-[2024-05-24T01:55:54.369Z] + sed s/.ipynb$//
-[2024-05-24T01:55:54.369Z] + filename=07_Making_and_using_hotstart_files
-[2024-05-24T01:55:54.369Z] + [ -e buildout/07_Making_and_using_hotstart_files.output.ipynb ]
-[2024-05-24T01:55:54.369Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 07_Making_and_using_hotstart_files.output.ipynb RavenPy-master/docs/notebooks/07_Making_and_using_hotstart_files.ipynb
-[2024-05-24T01:55:54.369Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/07_Making_and_using_hotstart_files.ipynb to notebook
-[2024-05-24T01:55:54.369Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T01:55:54.369Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T01:55:54.369Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T01:55:54.369Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T01:56:06.589Z] [NbConvertApp] Writing 193888 bytes to buildout/07_Making_and_using_hotstart_files.output.ipynb
-[2024-05-24T01:56:06.589Z] + basename RavenPy-master/docs/notebooks/08_Getting_and_bias_correcting_CMIP6_data.ipynb
-[2024-05-24T01:56:06.589Z] + filename=08_Getting_and_bias_correcting_CMIP6_data.ipynb
-[2024-05-24T01:56:06.589Z] + echo 08_Getting_and_bias_correcting_CMIP6_data.ipynb
-[2024-05-24T01:56:06.589Z] + sed s/.ipynb$//
-[2024-05-24T01:56:06.589Z] + filename=08_Getting_and_bias_correcting_CMIP6_data
-[2024-05-24T01:56:06.589Z] + [ -e buildout/08_Getting_and_bias_correcting_CMIP6_data.output.ipynb ]
-[2024-05-24T01:56:06.589Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 08_Getting_and_bias_correcting_CMIP6_data.output.ipynb RavenPy-master/docs/notebooks/08_Getting_and_bias_correcting_CMIP6_data.ipynb
-[2024-05-24T01:56:06.589Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/08_Getting_and_bias_correcting_CMIP6_data.ipynb to notebook
-[2024-05-24T01:56:07.529Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T01:56:07.529Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T01:56:07.529Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T01:56:07.529Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T02:00:14.010Z] [NbConvertApp] Writing 243330 bytes to buildout/08_Getting_and_bias_correcting_CMIP6_data.output.ipynb
-[2024-05-24T02:00:14.010Z] + basename RavenPy-master/docs/notebooks/09_Hydrological_impacts_of_climate_change.ipynb
-[2024-05-24T02:00:14.010Z] + filename=09_Hydrological_impacts_of_climate_change.ipynb
-[2024-05-24T02:00:14.010Z] + echo 09_Hydrological_impacts_of_climate_change.ipynb
-[2024-05-24T02:00:14.010Z] + sed s/.ipynb$//
-[2024-05-24T02:00:14.010Z] + filename=09_Hydrological_impacts_of_climate_change
-[2024-05-24T02:00:14.010Z] + [ -e buildout/09_Hydrological_impacts_of_climate_change.output.ipynb ]
-[2024-05-24T02:00:14.010Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 09_Hydrological_impacts_of_climate_change.output.ipynb RavenPy-master/docs/notebooks/09_Hydrological_impacts_of_climate_change.ipynb
-[2024-05-24T02:00:14.010Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/09_Hydrological_impacts_of_climate_change.ipynb to notebook
-[2024-05-24T02:00:14.010Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T02:00:14.010Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T02:00:14.010Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T02:00:14.010Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T02:00:18.194Z] [NbConvertApp] Writing 123805 bytes to buildout/09_Hydrological_impacts_of_climate_change.output.ipynb
-[2024-05-24T02:00:18.194Z] + basename RavenPy-master/docs/notebooks/10_Data_assimilation.ipynb
-[2024-05-24T02:00:18.194Z] + filename=10_Data_assimilation.ipynb
-[2024-05-24T02:00:18.194Z] + + echo 10_Data_assimilation.ipynb
-[2024-05-24T02:00:18.194Z] sed s/.ipynb$//
-[2024-05-24T02:00:18.194Z] + filename=10_Data_assimilation
-[2024-05-24T02:00:18.194Z] + [ -e buildout/10_Data_assimilation.output.ipynb ]
-[2024-05-24T02:00:18.194Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 10_Data_assimilation.output.ipynb RavenPy-master/docs/notebooks/10_Data_assimilation.ipynb
-[2024-05-24T02:00:19.571Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/10_Data_assimilation.ipynb to notebook
-[2024-05-24T02:00:20.181Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T02:00:20.181Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T02:00:20.181Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T02:00:20.181Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T02:01:27.893Z] [NbConvertApp] Writing 423849 bytes to buildout/10_Data_assimilation.output.ipynb
-[2024-05-24T02:01:27.893Z] + basename RavenPy-master/docs/notebooks/11_Climatological_ESP_forecasting.ipynb
-[2024-05-24T02:01:27.893Z] + filename=11_Climatological_ESP_forecasting.ipynb
-[2024-05-24T02:01:27.893Z] + echo 11_Climatological_ESP_forecasting.ipynb
-[2024-05-24T02:01:27.893Z] + sed s/.ipynb$//
-[2024-05-24T02:01:27.893Z] + filename=11_Climatological_ESP_forecasting
-[2024-05-24T02:01:27.893Z] + [ -e buildout/11_Climatological_ESP_forecasting.output.ipynb ]
-[2024-05-24T02:01:27.893Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 11_Climatological_ESP_forecasting.output.ipynb RavenPy-master/docs/notebooks/11_Climatological_ESP_forecasting.ipynb
-[2024-05-24T02:01:27.893Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/11_Climatological_ESP_forecasting.ipynb to notebook
-[2024-05-24T02:01:27.893Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T02:01:27.893Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T02:01:27.893Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T02:01:27.893Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T02:02:14.571Z] [NbConvertApp] Writing 175353 bytes to buildout/11_Climatological_ESP_forecasting.output.ipynb
-[2024-05-24T02:02:14.571Z] + basename RavenPy-master/docs/notebooks/12_Performing_hindcasting_experiments.ipynb
-[2024-05-24T02:02:14.571Z] + filename=12_Performing_hindcasting_experiments.ipynb
-[2024-05-24T02:02:14.571Z] + + sed s/.ipynb$//
-[2024-05-24T02:02:14.571Z] echo 12_Performing_hindcasting_experiments.ipynb
-[2024-05-24T02:02:14.571Z] + filename=12_Performing_hindcasting_experiments
-[2024-05-24T02:02:14.571Z] + [ -e buildout/12_Performing_hindcasting_experiments.output.ipynb ]
-[2024-05-24T02:02:14.571Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 12_Performing_hindcasting_experiments.output.ipynb RavenPy-master/docs/notebooks/12_Performing_hindcasting_experiments.ipynb
-[2024-05-24T02:02:14.571Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/12_Performing_hindcasting_experiments.ipynb to notebook
-[2024-05-24T02:02:14.571Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T02:02:14.571Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T02:02:14.571Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T02:02:14.571Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T02:02:32.659Z] [NbConvertApp] Writing 148015 bytes to buildout/12_Performing_hindcasting_experiments.output.ipynb
-[2024-05-24T02:02:32.659Z] + basename RavenPy-master/docs/notebooks/Assess_probabilistic_flood_risk.ipynb
-[2024-05-24T02:02:32.659Z] + filename=Assess_probabilistic_flood_risk.ipynb
-[2024-05-24T02:02:32.660Z] + echo Assess_probabilistic_flood_risk.ipynb
-[2024-05-24T02:02:32.660Z] + sed s/.ipynb$//
-[2024-05-24T02:02:32.660Z] + filename=Assess_probabilistic_flood_risk
-[2024-05-24T02:02:32.660Z] + [ -e buildout/Assess_probabilistic_flood_risk.output.ipynb ]
-[2024-05-24T02:02:32.660Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Assess_probabilistic_flood_risk.output.ipynb RavenPy-master/docs/notebooks/Assess_probabilistic_flood_risk.ipynb
-[2024-05-24T02:02:34.092Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/Assess_probabilistic_flood_risk.ipynb to notebook
-[2024-05-24T02:02:35.039Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T02:02:35.039Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T02:02:35.039Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T02:02:35.039Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T02:03:01.597Z] [NbConvertApp] Writing 158206 bytes to buildout/Assess_probabilistic_flood_risk.output.ipynb
-[2024-05-24T02:03:01.597Z] + basename RavenPy-master/docs/notebooks/Comparing_hindcasts_and_ESP_forecasts.ipynb
-[2024-05-24T02:03:01.597Z] + filename=Comparing_hindcasts_and_ESP_forecasts.ipynb
-[2024-05-24T02:03:01.597Z] + + sed s/.ipynb$//
-[2024-05-24T02:03:01.597Z] echo Comparing_hindcasts_and_ESP_forecasts.ipynb
-[2024-05-24T02:03:01.597Z] + filename=Comparing_hindcasts_and_ESP_forecasts
-[2024-05-24T02:03:01.597Z] + [ -e buildout/Comparing_hindcasts_and_ESP_forecasts.output.ipynb ]
-[2024-05-24T02:03:01.597Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Comparing_hindcasts_and_ESP_forecasts.output.ipynb RavenPy-master/docs/notebooks/Comparing_hindcasts_and_ESP_forecasts.ipynb
-[2024-05-24T02:03:02.988Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/Comparing_hindcasts_and_ESP_forecasts.ipynb to notebook
-[2024-05-24T02:03:04.374Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T02:03:04.374Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T02:03:04.374Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T02:03:04.374Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T02:03:43.103Z] [NbConvertApp] Writing 301974 bytes to buildout/Comparing_hindcasts_and_ESP_forecasts.output.ipynb
-[2024-05-24T02:03:43.103Z] + basename RavenPy-master/docs/notebooks/Distributed_hydrological_modelling.ipynb
-[2024-05-24T02:03:43.103Z] + filename=Distributed_hydrological_modelling.ipynb
-[2024-05-24T02:03:43.103Z] + echo Distributed_hydrological_modelling.ipynb
-[2024-05-24T02:03:43.103Z] + sed s/.ipynb$//
-[2024-05-24T02:03:43.103Z] + filename=Distributed_hydrological_modelling
-[2024-05-24T02:03:43.103Z] + [ -e buildout/Distributed_hydrological_modelling.output.ipynb ]
-[2024-05-24T02:03:43.103Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Distributed_hydrological_modelling.output.ipynb RavenPy-master/docs/notebooks/Distributed_hydrological_modelling.ipynb
-[2024-05-24T02:03:43.103Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/Distributed_hydrological_modelling.ipynb to notebook
-[2024-05-24T02:03:43.103Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T02:03:43.103Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T02:03:43.103Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T02:03:43.103Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T02:04:15.260Z] [NbConvertApp] Writing 101093 bytes to buildout/Distributed_hydrological_modelling.output.ipynb
-[2024-05-24T02:04:15.260Z] + basename RavenPy-master/docs/notebooks/HydroShare_integration.ipynb
-[2024-05-24T02:04:15.260Z] + filename=HydroShare_integration.ipynb
-[2024-05-24T02:04:15.260Z] + sed s/.ipynb$//
-[2024-05-24T02:04:15.260Z] + echo HydroShare_integration.ipynb
-[2024-05-24T02:04:15.260Z] + filename=HydroShare_integration
-[2024-05-24T02:04:15.260Z] + [ -e buildout/HydroShare_integration.output.ipynb ]
-[2024-05-24T02:04:15.260Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output HydroShare_integration.output.ipynb RavenPy-master/docs/notebooks/HydroShare_integration.ipynb
-[2024-05-24T02:04:15.260Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/HydroShare_integration.ipynb to notebook
-[2024-05-24T02:04:15.261Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T02:04:15.261Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T02:04:15.261Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T02:04:15.261Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T02:04:17.806Z] [NbConvertApp] Writing 11583 bytes to buildout/HydroShare_integration.output.ipynb
-[2024-05-24T02:04:17.806Z] + basename RavenPy-master/docs/notebooks/Hydrological_realtime_forecasting.ipynb
-[2024-05-24T02:04:17.806Z] + filename=Hydrological_realtime_forecasting.ipynb
-[2024-05-24T02:04:17.807Z] + sed s/.ipynb$//
-[2024-05-24T02:04:17.807Z] + echo Hydrological_realtime_forecasting.ipynb
-[2024-05-24T02:04:17.807Z] + filename=Hydrological_realtime_forecasting
-[2024-05-24T02:04:17.807Z] + [ -e buildout/Hydrological_realtime_forecasting.output.ipynb ]
-[2024-05-24T02:04:17.807Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Hydrological_realtime_forecasting.output.ipynb RavenPy-master/docs/notebooks/Hydrological_realtime_forecasting.ipynb
-[2024-05-24T02:04:19.188Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/Hydrological_realtime_forecasting.ipynb to notebook
-[2024-05-24T02:04:20.125Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T02:04:20.125Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T02:04:20.125Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T02:04:20.125Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T02:04:42.054Z] [NbConvertApp] Writing 149838 bytes to buildout/Hydrological_realtime_forecasting.output.ipynb
-[2024-05-24T02:04:42.054Z] + basename RavenPy-master/docs/notebooks/Managing_Jupyter_Environments.ipynb
-[2024-05-24T02:04:42.054Z] + filename=Managing_Jupyter_Environments.ipynb
-[2024-05-24T02:04:42.054Z] + echo Managing_Jupyter_Environments.ipynb
-[2024-05-24T02:04:42.054Z] + sed s/.ipynb$//
-[2024-05-24T02:04:42.054Z] + filename=Managing_Jupyter_Environments
-[2024-05-24T02:04:42.054Z] + [ -e buildout/Managing_Jupyter_Environments.output.ipynb ]
-[2024-05-24T02:04:42.054Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Managing_Jupyter_Environments.output.ipynb RavenPy-master/docs/notebooks/Managing_Jupyter_Environments.ipynb
-[2024-05-24T02:04:42.623Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/Managing_Jupyter_Environments.ipynb to notebook
-[2024-05-24T02:04:43.564Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T02:04:43.564Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T02:04:43.564Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T02:04:43.564Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T02:04:51.691Z] [NbConvertApp] Writing 8307 bytes to buildout/Managing_Jupyter_Environments.output.ipynb
-[2024-05-24T02:04:51.691Z] + basename RavenPy-master/docs/notebooks/Perform_Regionalization.ipynb
-[2024-05-24T02:04:51.691Z] + filename=Perform_Regionalization.ipynb
-[2024-05-24T02:04:51.691Z] + echo Perform_Regionalization.ipynb
-[2024-05-24T02:04:51.691Z] + sed s/.ipynb$//
-[2024-05-24T02:04:51.691Z] + filename=Perform_Regionalization
-[2024-05-24T02:04:51.691Z] + [ -e buildout/Perform_Regionalization.output.ipynb ]
-[2024-05-24T02:04:51.691Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Perform_Regionalization.output.ipynb RavenPy-master/docs/notebooks/Perform_Regionalization.ipynb
-[2024-05-24T02:04:53.080Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/Perform_Regionalization.ipynb to notebook
-[2024-05-24T02:04:53.649Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T02:04:53.649Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T02:04:53.649Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T02:04:53.649Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T02:05:20.353Z] [NbConvertApp] Writing 118935 bytes to buildout/Perform_Regionalization.output.ipynb
-[2024-05-24T02:05:20.353Z] + basename RavenPy-master/docs/notebooks/Running_HMETS_with_CANOPEX_dataset.ipynb
-[2024-05-24T02:05:20.353Z] + filename=Running_HMETS_with_CANOPEX_dataset.ipynb
-[2024-05-24T02:05:20.353Z] + + echosed s/.ipynb$// Running_HMETS_with_CANOPEX_dataset.ipynb
-[2024-05-24T02:05:20.353Z] 
-[2024-05-24T02:05:20.353Z] + filename=Running_HMETS_with_CANOPEX_dataset
-[2024-05-24T02:05:20.353Z] + [ -e buildout/Running_HMETS_with_CANOPEX_dataset.output.ipynb ]
-[2024-05-24T02:05:20.353Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Running_HMETS_with_CANOPEX_dataset.output.ipynb RavenPy-master/docs/notebooks/Running_HMETS_with_CANOPEX_dataset.ipynb
-[2024-05-24T02:05:20.924Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/Running_HMETS_with_CANOPEX_dataset.ipynb to notebook
-[2024-05-24T02:05:21.858Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T02:05:21.858Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T02:05:21.858Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T02:05:21.858Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T02:05:39.951Z] [NbConvertApp] Writing 104040 bytes to buildout/Running_HMETS_with_CANOPEX_dataset.output.ipynb
-[2024-05-24T02:05:39.951Z] + basename RavenPy-master/docs/notebooks/Sensitivity_analysis.ipynb
-[2024-05-24T02:05:39.951Z] + filename=Sensitivity_analysis.ipynb
-[2024-05-24T02:05:39.951Z] + + sed s/.ipynb$//
-[2024-05-24T02:05:39.951Z] echo Sensitivity_analysis.ipynb
-[2024-05-24T02:05:39.951Z] + filename=Sensitivity_analysis
-[2024-05-24T02:05:39.951Z] + [ -e buildout/Sensitivity_analysis.output.ipynb ]
-[2024-05-24T02:05:39.951Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Sensitivity_analysis.output.ipynb RavenPy-master/docs/notebooks/Sensitivity_analysis.ipynb
-[2024-05-24T02:05:39.951Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/Sensitivity_analysis.ipynb to notebook
-[2024-05-24T02:05:40.214Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T02:05:40.214Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T02:05:40.214Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T02:05:40.214Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T02:06:02.158Z] [NbConvertApp] Writing 28193 bytes to buildout/Sensitivity_analysis.output.ipynb
-[2024-05-24T02:06:02.158Z] + basename RavenPy-master/docs/notebooks/time_series_analysis.ipynb
-[2024-05-24T02:06:02.158Z] + filename=time_series_analysis.ipynb
-[2024-05-24T02:06:02.158Z] + echo time_series_analysis.ipynb
-[2024-05-24T02:06:02.158Z] + sed s/.ipynb$//
-[2024-05-24T02:06:02.158Z] + filename=time_series_analysis
-[2024-05-24T02:06:02.158Z] + [ -e buildout/time_series_analysis.output.ipynb ]
-[2024-05-24T02:06:02.158Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output time_series_analysis.output.ipynb RavenPy-master/docs/notebooks/time_series_analysis.ipynb
-[2024-05-24T02:06:02.158Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/time_series_analysis.ipynb to notebook
-[2024-05-24T02:06:02.158Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T02:06:02.158Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T02:06:02.158Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T02:06:02.158Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T02:06:12.151Z] [NbConvertApp] Writing 186559 bytes to buildout/time_series_analysis.output.ipynb
-[2024-05-24T02:06:12.151Z] + basename RavenPy-master/docs/notebooks/paper/Perform_a_climate_change_impact_study_on_a_watershed.ipynb
-[2024-05-24T02:06:12.151Z] + filename=Perform_a_climate_change_impact_study_on_a_watershed.ipynb
-[2024-05-24T02:06:12.151Z] + echo Perform_a_climate_change_impact_study_on_a_watershed.ipynb
-[2024-05-24T02:06:12.151Z] + sed s/.ipynb$//
-[2024-05-24T02:06:12.151Z] + filename=Perform_a_climate_change_impact_study_on_a_watershed
-[2024-05-24T02:06:12.151Z] + [ -e buildout/Perform_a_climate_change_impact_study_on_a_watershed.output.ipynb ]
-[2024-05-24T02:06:12.151Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Perform_a_climate_change_impact_study_on_a_watershed.output.ipynb RavenPy-master/docs/notebooks/paper/Perform_a_climate_change_impact_study_on_a_watershed.ipynb
-[2024-05-24T02:06:12.726Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/paper/Perform_a_climate_change_impact_study_on_a_watershed.ipynb to notebook
-[2024-05-24T02:06:13.668Z] 0.00s - Debugger warning: It seems that frozen modules are being used, which may
-[2024-05-24T02:06:13.668Z] 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
-[2024-05-24T02:06:13.668Z] 0.00s - to python to disable frozen modules.
-[2024-05-24T02:06:13.668Z] 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
-[2024-05-24T02:11:35.319Z] [NbConvertApp] Writing 449553 bytes to buildout/Perform_a_climate_change_impact_study_on_a_watershed.output.ipynb
-[2024-05-24T02:11:35.319Z] + exit 1
-[2024-05-24T02:11:35.319Z] + EXIT_CODE=1
-[2024-05-24T02:11:35.319Z] + ENV_DUMP_DIR=buildout/env-dump
-[2024-05-24T02:11:35.319Z] + mkdir -p buildout/env-dump
-[2024-05-24T02:11:35.319Z] + ENV_EXPORT_FILE=buildout/env-dump/environment-export-birdy.yml
-[2024-05-24T02:11:35.319Z] + rm -fv buildout/env-dump/environment-export-birdy.yml
-[2024-05-24T02:11:35.319Z] + conda env export -n birdy
-[2024-05-24T02:11:43.433Z] + LIST_EXPLICIT_FILE=buildout/env-dump/conda-list-explicit-birdy.txt
-[2024-05-24T02:11:43.433Z] + rm -fv buildout/env-dump/conda-list-explicit-birdy.txt
-[2024-05-24T02:11:43.433Z] + conda list -n birdy --explicit
-[2024-05-24T02:11:50.009Z] + PIP_FREEZE_FILE=buildout/env-dump/pip-freeze-birdy-requirements.txt
-[2024-05-24T02:11:50.009Z] + rm -fv buildout/env-dump/pip-freeze-birdy-requirements.txt
-[2024-05-24T02:11:50.009Z] + pip freeze
-[2024-05-24T02:11:50.574Z] + exit 1
+[2024-07-31T00:15:47.092Z] + VERIFY_SSL=true SAVE_RESULTING_NOTEBOOK=true ./testall
+[2024-07-31T00:15:47.092Z] TEST_PAVICS_SDI_REPO has been set to 'true'
+[2024-07-31T00:15:47.092Z] PAVICS_SDI_BRANCH has been set to 'master'
+[2024-07-31T00:15:47.092Z] PAVICS_SDI_REPO has been set to 'Ouranosinc/pavics-sdi'
+[2024-07-31T00:15:47.092Z] TEST_FINCH_REPO has been set to 'true'
+[2024-07-31T00:15:47.092Z] FINCH_BRANCH has been set to 'master'
+[2024-07-31T00:15:47.092Z] FINCH_REPO has been set to 'bird-house/finch'
+[2024-07-31T00:15:47.093Z] TEST_PAVICS_LANDING_REPO has been set to 'true'
+[2024-07-31T00:15:47.093Z] PAVICS_LANDING_BRANCH has been set to 'master'
+[2024-07-31T00:15:47.093Z] PAVICS_LANDING_REPO has been set to 'Ouranosinc/PAVICS-landing'
+[2024-07-31T00:15:47.093Z] TEST_RAVEN_REPO has been set to 'false'
+[2024-07-31T00:15:47.093Z] RAVEN_BRANCH has been set to 'main'
+[2024-07-31T00:15:47.093Z] RAVEN_REPO has been set to 'Ouranosinc/raven'
+[2024-07-31T00:15:47.093Z] TEST_RAVENPY_REPO has been set to 'false'
+[2024-07-31T00:15:47.093Z] RAVENPY_BRANCH has been set to 'master'
+[2024-07-31T00:15:47.093Z] RAVENPY_REPO has been set to 'CSHS-CWRA/RavenPy'
+[2024-07-31T00:15:47.093Z] TEST_ESGF_COMPUTE_API_REPO has been set to 'false'
+[2024-07-31T00:15:47.093Z] ESGF_COMPUTE_API_BRANCH has been set to 'devel'
+[2024-07-31T00:15:47.093Z] ESGF_COMPUTE_API_REPO has been set to 'ESGF/esgf-compute-api'
+[2024-07-31T00:15:47.093Z] TEST_LOCAL_NOTEBOOKS has been set to 'true'
+[2024-07-31T00:15:47.093Z] + [ -n https://gist.githubusercontent.com/tlvu/813a1bcd325d753664c09526e4a5b759/raw/53062f04ed7ac554da75a84c59359de6cd66b4f6/jenkins-params-raven-nb-only.include.sh ]
+[2024-07-31T00:15:47.093Z] + TMP_PARAMS_OVERRIDE=/tmp/jenkins_params_override
+[2024-07-31T00:15:47.093Z] + rm -vf /tmp/jenkins_params_override
+[2024-07-31T00:15:47.093Z] removed '/tmp/jenkins_params_override'
+[2024-07-31T00:15:47.094Z] + curl --silent https://gist.githubusercontent.com/tlvu/813a1bcd325d753664c09526e4a5b759/raw/53062f04ed7ac554da75a84c59359de6cd66b4f6/jenkins-params-raven-nb-only.include.sh
+[2024-07-31T00:15:47.094Z] + tee /tmp/jenkins_params_override
+[2024-07-31T00:15:48.050Z] #!/bin/sh
+[2024-07-31T00:15:48.050Z] # https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests/blob/master/test-override/jenkins-params-raven-nb-only.include.sh
+[2024-07-31T00:15:48.050Z] 
+[2024-07-31T00:15:48.050Z] # Sample Jenkins params override script to only run Raven notebooks
+[2024-07-31T00:15:48.050Z] # with the proper --nbval-lax switch.
+[2024-07-31T00:15:48.050Z] 
+[2024-07-31T00:15:48.051Z] # Disable default repos.
+[2024-07-31T00:15:48.051Z] TEST_PAVICS_SDI_REPO="false"
+[2024-07-31T00:15:48.051Z] TEST_FINCH_REPO="false"
+[2024-07-31T00:15:48.051Z] TEST_PAVICS_LANDING_REPO="false"
+[2024-07-31T00:15:48.051Z] TEST_LOCAL_NOTEBOOKS="false"
+[2024-07-31T00:15:48.051Z] 
+[2024-07-31T00:15:48.051Z] # Enable raven repos.
+[2024-07-31T00:15:48.051Z] TEST_RAVEN_REPO="true"
+[2024-07-31T00:15:48.051Z] TEST_RAVENPY_REPO="true"
+[2024-07-31T00:15:48.051Z] 
+[2024-07-31T00:15:48.051Z] # Raven nbs outputs are not fully up-to-date or regexed escaped properly like
+[2024-07-31T00:15:48.051Z] # the other default nbs so need --nbval-lax for the moment.
+[2024-07-31T00:15:48.052Z] PYTEST_EXTRA_OPTS="$PYTEST_EXTRA_OPTS --nbval-lax"
+[2024-07-31T00:15:48.052Z] 
+[2024-07-31T00:15:48.052Z] # Set different test branch if required.
+[2024-07-31T00:15:48.052Z] #RAVEN_BRANCH=""
+[2024-07-31T00:15:48.052Z] #RAVENPY_BRANCH=""
+[2024-07-31T00:15:48.052Z] 
+[2024-07-31T00:15:48.052Z] ######################
+[2024-07-31T00:15:48.052Z] 
+[2024-07-31T00:15:48.052Z] SAVE_RESULTING_NOTEBOOK_TIMEOUT="600"+ . /tmp/jenkins_params_override
+[2024-07-31T00:15:48.052Z] + TEST_PAVICS_SDI_REPO=false
+[2024-07-31T00:15:48.052Z] + TEST_FINCH_REPO=false
+[2024-07-31T00:15:48.052Z] + TEST_PAVICS_LANDING_REPO=false
+[2024-07-31T00:15:48.052Z] + TEST_LOCAL_NOTEBOOKS=false
+[2024-07-31T00:15:48.052Z] + TEST_RAVEN_REPO=true
+[2024-07-31T00:15:48.053Z] + TEST_RAVENPY_REPO=true
+[2024-07-31T00:15:48.053Z] + PYTEST_EXTRA_OPTS=--dist=loadscope --numprocesses=0 --nbval-lax
+[2024-07-31T00:15:48.053Z] + SAVE_RESULTING_NOTEBOOK_TIMEOUT=600
+[2024-07-31T00:15:48.053Z] + git clean -fdx
+[2024-07-31T00:15:48.333Z] Removing .pytest_cache/
+[2024-07-31T00:15:48.333Z] Removing PAVICS-landing-new-jupyter-env/
+[2024-07-31T00:15:48.333Z] Removing RavenPy-master/
+[2024-07-31T00:15:48.333Z] Removing __pycache__/
+[2024-07-31T00:15:48.333Z] Removing buildout/
+[2024-07-31T00:15:48.333Z] Removing esgf-compute-api-devel/
+[2024-07-31T00:15:48.334Z] Removing finch-master/
+[2024-07-31T00:15:48.334Z] Removing pavics-sdi-new-jupyter-env/
+[2024-07-31T00:15:48.334Z] Removing raven-main/
+[2024-07-31T00:15:48.334Z] + ./downloadrepos
+[2024-07-31T00:15:48.334Z] TEST_PAVICS_SDI_REPO has been set to 'false'
+[2024-07-31T00:15:48.334Z] PAVICS_SDI_BRANCH has been set to 'master'
+[2024-07-31T00:15:48.334Z] PAVICS_SDI_REPO has been set to 'Ouranosinc/pavics-sdi'
+[2024-07-31T00:15:48.334Z] TEST_FINCH_REPO has been set to 'false'
+[2024-07-31T00:15:48.334Z] FINCH_BRANCH has been set to 'master'
+[2024-07-31T00:15:48.334Z] FINCH_REPO has been set to 'bird-house/finch'
+[2024-07-31T00:15:48.334Z] TEST_PAVICS_LANDING_REPO has been set to 'false'
+[2024-07-31T00:15:48.334Z] PAVICS_LANDING_BRANCH has been set to 'master'
+[2024-07-31T00:15:48.334Z] PAVICS_LANDING_REPO has been set to 'Ouranosinc/PAVICS-landing'
+[2024-07-31T00:15:48.334Z] TEST_RAVEN_REPO has been set to 'true'
+[2024-07-31T00:15:48.334Z] RAVEN_BRANCH has been set to 'main'
+[2024-07-31T00:15:48.334Z] RAVEN_REPO has been set to 'Ouranosinc/raven'
+[2024-07-31T00:15:48.334Z] TEST_RAVENPY_REPO has been set to 'true'
+[2024-07-31T00:15:48.334Z] RAVENPY_BRANCH has been set to 'master'
+[2024-07-31T00:15:48.334Z] RAVENPY_REPO has been set to 'CSHS-CWRA/RavenPy'
+[2024-07-31T00:15:48.335Z] TEST_ESGF_COMPUTE_API_REPO has been set to 'false'
+[2024-07-31T00:15:48.335Z] ESGF_COMPUTE_API_BRANCH has been set to 'devel'
+[2024-07-31T00:15:48.335Z] ESGF_COMPUTE_API_REPO has been set to 'ESGF/esgf-compute-api'
+[2024-07-31T00:15:48.335Z] TEST_LOCAL_NOTEBOOKS has been set to 'false'
+[2024-07-31T00:15:48.335Z] + rm -rf pavics-sdi-*
+[2024-07-31T00:15:48.335Z] + ls
+[2024-07-31T00:15:48.335Z] + grep pavics-sdi
+[2024-07-31T00:15:48.335Z] + downloadrepos https://github.com/Ouranosinc/pavics-sdi master
+[2024-07-31T00:15:48.335Z] + github_repo=https://github.com/Ouranosinc/pavics-sdi
+[2024-07-31T00:15:48.335Z] + shift
+[2024-07-31T00:15:48.335Z] + branch=master
+[2024-07-31T00:15:48.335Z] + shift
+[2024-07-31T00:15:48.335Z] + wget --quiet --output-document - https://github.com/Ouranosinc/pavics-sdi/archive/master.tar.gz
+[2024-07-31T00:15:48.335Z] + tar xz
+[2024-07-31T00:15:53.649Z] + ls
+[2024-07-31T00:15:53.649Z] + grep pavics-sdi
+[2024-07-31T00:15:53.649Z] pavics-sdi-master
+[2024-07-31T00:15:53.649Z] + set +x
+[2024-07-31T00:15:53.651Z] + rm -rf finch-*
+[2024-07-31T00:15:53.651Z] + ls
+[2024-07-31T00:15:53.651Z] + grep finch
+[2024-07-31T00:15:53.651Z] + downloadrepos https://github.com/bird-house/finch master
+[2024-07-31T00:15:53.652Z] + github_repo=https://github.com/bird-house/finch
+[2024-07-31T00:15:53.652Z] + shift
+[2024-07-31T00:15:53.652Z] + branch=master
+[2024-07-31T00:15:53.652Z] + shift
+[2024-07-31T00:15:53.652Z] + wget --quiet+  --output-document - https://github.com/bird-house/finch/archive/master.tar.gz
+[2024-07-31T00:15:53.652Z] tar xz
+[2024-07-31T00:15:54.231Z] + ls
+[2024-07-31T00:15:54.233Z] + grep finch
+[2024-07-31T00:15:54.233Z] finch-master
+[2024-07-31T00:15:54.233Z] + set +x
+[2024-07-31T00:15:54.233Z] + rm -rf PAVICS-landing-*
+[2024-07-31T00:15:54.233Z] + + ls
+[2024-07-31T00:15:54.233Z] grep PAVICS-landing
+[2024-07-31T00:15:54.233Z] + downloadrepos https://github.com/Ouranosinc/PAVICS-landing master
+[2024-07-31T00:15:54.233Z] + github_repo=https://github.com/Ouranosinc/PAVICS-landing
+[2024-07-31T00:15:54.233Z] + shift
+[2024-07-31T00:15:54.233Z] + branch=master
+[2024-07-31T00:15:54.233Z] + shift
+[2024-07-31T00:15:54.233Z] + wget --quiet --output-document - https://github.com/Ouranosinc/PAVICS-landing/archive/master.tar.gz
+[2024-07-31T00:15:54.233Z] + tar xz
+[2024-07-31T00:17:30.800Z] + + ls
+[2024-07-31T00:17:30.800Z] grep PAVICS-landing
+[2024-07-31T00:17:30.800Z] PAVICS-landing-master
+[2024-07-31T00:17:30.800Z] + set +x
+[2024-07-31T00:17:30.800Z] + rm -rf raven-*
+[2024-07-31T00:17:30.800Z] + ls
+[2024-07-31T00:17:30.800Z] + grep raven
+[2024-07-31T00:17:30.800Z] + downloadrepos https://github.com/Ouranosinc/raven main
+[2024-07-31T00:17:30.800Z] + github_repo=https://github.com/Ouranosinc/raven
+[2024-07-31T00:17:30.800Z] + shift
+[2024-07-31T00:17:30.800Z] + branch=main
+[2024-07-31T00:17:30.800Z] + shift
+[2024-07-31T00:17:30.800Z] + wget --quiet --output-document - https://github.com/Ouranosinc/raven/archive/main.tar.gz
+[2024-07-31T00:17:30.800Z] + tar xz
+[2024-07-31T00:17:39.193Z] + ls
+[2024-07-31T00:17:39.193Z] + grep raven
+[2024-07-31T00:17:39.193Z] raven-main
+[2024-07-31T00:17:39.193Z] + set +x
+[2024-07-31T00:17:39.193Z] + rm -rf RavenPy-*
+[2024-07-31T00:17:39.193Z] + ls
+[2024-07-31T00:17:39.193Z] + grep RavenPy
+[2024-07-31T00:17:39.193Z] + downloadrepos https://github.com/CSHS-CWRA/RavenPy master
+[2024-07-31T00:17:39.193Z] + github_repo=https://github.com/CSHS-CWRA/RavenPy
+[2024-07-31T00:17:39.193Z] + shift
+[2024-07-31T00:17:39.193Z] + branch=master
+[2024-07-31T00:17:39.193Z] + shift
+[2024-07-31T00:17:39.194Z] + wget --quiet --output-document - https://github.com/CSHS-CWRA/RavenPy/archive/master.tar.gz
+[2024-07-31T00:17:39.194Z] + tar xz
+[2024-07-31T00:17:41.135Z] + ls
+[2024-07-31T00:17:41.135Z] + grep RavenPy
+[2024-07-31T00:17:41.135Z] RavenPy-master
+[2024-07-31T00:17:41.135Z] + set +x
+[2024-07-31T00:17:41.135Z] + rm -rf esgf-compute-api-*
+[2024-07-31T00:17:41.135Z] + + ls
+[2024-07-31T00:17:41.135Z] grep esgf-compute-api
+[2024-07-31T00:17:41.136Z] + downloadrepos https://github.com/ESGF/esgf-compute-api devel
+[2024-07-31T00:17:41.136Z] + github_repo=https://github.com/ESGF/esgf-compute-api
+[2024-07-31T00:17:41.136Z] + shift
+[2024-07-31T00:17:41.136Z] + branch=devel
+[2024-07-31T00:17:41.136Z] + shift
+[2024-07-31T00:17:41.136Z] + wget --quiet --output-document - https://github.com/ESGF/esgf-compute-api/archive/devel.tar.gz
+[2024-07-31T00:17:41.136Z] + tar xz
+[2024-07-31T00:17:42.539Z] + ls
+[2024-07-31T00:17:42.539Z] + grep esgf-compute-api
+[2024-07-31T00:17:42.539Z] esgf-compute-api-devel
+[2024-07-31T00:17:42.539Z] + set +x
+[2024-07-31T00:17:42.539Z] + echo master
+[2024-07-31T00:17:42.539Z] + sed s@/@-@g
+[2024-07-31T00:17:42.539Z] + export PAVICS_SDI_BRANCH=master
+[2024-07-31T00:17:42.539Z] + echo Ouranosinc/pavics-sdi
+[2024-07-31T00:17:42.539Z] + sed s@^.*/@@g
+[2024-07-31T00:17:42.540Z] + export PAVICS_SDI_REPO_NAME=pavics-sdi
+[2024-07-31T00:17:42.540Z] + echo master
+[2024-07-31T00:17:42.540Z] + sed s@/@-@g
+[2024-07-31T00:17:42.540Z] + export FINCH_BRANCH=master
+[2024-07-31T00:17:42.540Z] + echo bird-house/finch
+[2024-07-31T00:17:42.540Z] + sed s@^.*/@@g
+[2024-07-31T00:17:42.540Z] + export FINCH_REPO_NAME=finch
+[2024-07-31T00:17:42.540Z] + echo master
+[2024-07-31T00:17:42.540Z] + sed s@/@-@g
+[2024-07-31T00:17:42.540Z] + export PAVICS_LANDING_BRANCH=master
+[2024-07-31T00:17:42.540Z] + echo Ouranosinc/PAVICS-landing
+[2024-07-31T00:17:42.540Z] + sed s@^.*/@@g
+[2024-07-31T00:17:42.540Z] + export PAVICS_LANDING_REPO_NAME=PAVICS-landing
+[2024-07-31T00:17:42.540Z] + echo main
+[2024-07-31T00:17:42.540Z] + sed s@/@-@g
+[2024-07-31T00:17:42.540Z] + export RAVEN_BRANCH=main
+[2024-07-31T00:17:42.540Z] + echo Ouranosinc/raven
+[2024-07-31T00:17:42.540Z] + sed s@^.*/@@g
+[2024-07-31T00:17:42.540Z] + export RAVEN_REPO_NAME=raven
+[2024-07-31T00:17:42.540Z] + echo master
+[2024-07-31T00:17:42.540Z] + sed s@/@-@g
+[2024-07-31T00:17:42.540Z] + export RAVENPY_BRANCH=master
+[2024-07-31T00:17:42.540Z] + echo CSHS-CWRA/RavenPy
+[2024-07-31T00:17:42.540Z] + sed s@^.*/@@g
+[2024-07-31T00:17:42.540Z] + export RAVENPY_REPO_NAME=RavenPy
+[2024-07-31T00:17:42.540Z] + echo devel
+[2024-07-31T00:17:42.540Z] + sed s@/@-@g
+[2024-07-31T00:17:42.540Z] + export ESGF_COMPUTE_API_BRANCH=devel
+[2024-07-31T00:17:42.540Z] + echo ESGF/esgf-compute-api
+[2024-07-31T00:17:42.540Z] + sed s@^.*/@@g
+[2024-07-31T00:17:42.540Z] + export ESGF_COMPUTE_API_REPO_NAME=esgf-compute-api
+[2024-07-31T00:17:42.540Z] + echo pavics-sdi-master
+[2024-07-31T00:17:42.540Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-07-31T00:17:42.540Z] + export PAVICS_SDI_DIR=pavics-sdi-master
+[2024-07-31T00:17:42.540Z] + echo finch-master
+[2024-07-31T00:17:42.540Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-07-31T00:17:42.540Z] + export FINCH_DIR=finch-master
+[2024-07-31T00:17:42.540Z] + echo PAVICS-landing-master
+[2024-07-31T00:17:42.540Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-07-31T00:17:42.540Z] + export PAVICS_LANDING_DIR=PAVICS-landing-master
+[2024-07-31T00:17:42.540Z] + echo raven-main
+[2024-07-31T00:17:42.540Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-07-31T00:17:42.540Z] + export RAVEN_DIR=raven-main
+[2024-07-31T00:17:42.540Z] + echo RavenPy-master
+[2024-07-31T00:17:42.540Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-07-31T00:17:42.540Z] + export RAVENPY_DIR=RavenPy-master
+[2024-07-31T00:17:42.540Z] + echo esgf-compute-api-devel
+[2024-07-31T00:17:42.540Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-07-31T00:17:42.540Z] + export ESGF_COMPUTE_API_DIR=esgf-compute-api-devel
+[2024-07-31T00:17:42.540Z] + echo true
+[2024-07-31T00:17:42.540Z] + tr [:upper:] [:lower:]
+[2024-07-31T00:17:42.540Z] + VERIFY_SSL=true
+[2024-07-31T00:17:42.540Z] + [ xtrue = xfalse ]
+[2024-07-31T00:17:42.541Z] + rm -v finch-master/setup.cfg
+[2024-07-31T00:17:42.541Z] removed 'finch-master/setup.cfg'
+[2024-07-31T00:17:42.541Z] + rm -v raven-main/setup.cfg
+[2024-07-31T00:17:42.541Z] removed 'raven-main/setup.cfg'
+[2024-07-31T00:17:42.541Z] + rm -v raven-main/pyproject.toml
+[2024-07-31T00:17:42.541Z] removed 'raven-main/pyproject.toml'
+[2024-07-31T00:17:42.541Z] + rm -v RavenPy-master/setup.cfg
+[2024-07-31T00:17:42.541Z] removed 'RavenPy-master/setup.cfg'
+[2024-07-31T00:17:42.541Z] + rm -v RavenPy-master/tox.ini
+[2024-07-31T00:17:42.541Z] removed 'RavenPy-master/tox.ini'
+[2024-07-31T00:17:42.541Z] + rm -v RavenPy-master/pyproject.toml
+[2024-07-31T00:17:42.541Z] removed 'RavenPy-master/pyproject.toml'
+[2024-07-31T00:17:42.541Z] + rm -v esgf-compute-api-devel/setup.cfg
+[2024-07-31T00:17:42.541Z] rm: cannot remove 'esgf-compute-api-devel/setup.cfg': No such file or directory
+[2024-07-31T00:17:42.541Z] + rm -v esgf-compute-api-devel/tox.ini
+[2024-07-31T00:17:42.541Z] rm: cannot remove 'esgf-compute-api-devel/tox.ini': No such file or directory
+[2024-07-31T00:17:42.541Z] + echo false
+[2024-07-31T00:17:42.541Z] + tr [:upper:] [:lower:]
+[2024-07-31T00:17:42.541Z] + TEST_MAGPIE_AUTH=false
+[2024-07-31T00:17:42.541Z] + echo false
+[2024-07-31T00:17:42.541Z] + tr [:upper:] [:lower:]
+[2024-07-31T00:17:42.541Z] + TEST_PAVICS_SDI_REPO=false
+[2024-07-31T00:17:42.541Z] + echo false
+[2024-07-31T00:17:42.541Z] + tr [:upper:] [:lower:]
+[2024-07-31T00:17:42.541Z] + TEST_PAVICS_SDI_WEAVER=false
+[2024-07-31T00:17:42.541Z] + echo false
+[2024-07-31T00:17:42.541Z] + tr [:upper:] [:lower:]
+[2024-07-31T00:17:42.541Z] + TEST_FINCH_REPO=false
+[2024-07-31T00:17:42.541Z] + echo false
+[2024-07-31T00:17:42.541Z] + tr [:upper:] [:lower:]
+[2024-07-31T00:17:42.541Z] + TEST_PAVICS_LANDING_REPO=false
+[2024-07-31T00:17:42.541Z] + echo true
+[2024-07-31T00:17:42.541Z] + tr [:upper:] [:lower:]
+[2024-07-31T00:17:42.541Z] + TEST_RAVEN_REPO=true
+[2024-07-31T00:17:42.541Z] + echo true
+[2024-07-31T00:17:42.541Z] + tr [:upper:] [:lower:]
+[2024-07-31T00:17:42.541Z] + TEST_RAVENPY_REPO=true
+[2024-07-31T00:17:42.541Z] + echo false
+[2024-07-31T00:17:42.541Z] + tr [:upper:] [:lower:]
+[2024-07-31T00:17:42.541Z] + TEST_ESGF_COMPUTE_API_REPO=false
+[2024-07-31T00:17:42.541Z] + echo false
+[2024-07-31T00:17:42.541Z] + tr [:upper:] [:lower:]
+[2024-07-31T00:17:42.541Z] + TEST_LOCAL_NOTEBOOKS=false
+[2024-07-31T00:17:42.541Z] + NOTEBOOKS_TO_TEST=
+[2024-07-31T00:17:42.541Z] + [ xfalse = xtrue ]
+[2024-07-31T00:17:42.541Z] + [ xfalse = xtrue ]
+[2024-07-31T00:17:42.541Z] + [ xfalse = xtrue ]
+[2024-07-31T00:17:42.541Z] + [ xfalse = xtrue ]
+[2024-07-31T00:17:42.541Z] + [ xtrue = xtrue ]
+[2024-07-31T00:17:42.541Z] + NOTEBOOKS_TO_TEST= raven-main/docs/source/notebooks/*.ipynb
+[2024-07-31T00:17:42.541Z] + [ xtrue = xtrue ]
+[2024-07-31T00:17:42.541Z] + NOTEBOOKS_TO_TEST= raven-main/docs/source/notebooks/*.ipynb RavenPy-master/docs/notebooks/*.ipynb
+[2024-07-31T00:17:42.542Z] + NOTEBOOKS_TO_TEST= raven-main/docs/source/notebooks/*.ipynb RavenPy-master/docs/notebooks/*.ipynb RavenPy-master/docs/notebooks/paper/*.ipynb
+[2024-07-31T00:17:42.542Z] + [ xfalse = xtrue ]
+[2024-07-31T00:17:42.542Z] + [ xfalse = xtrue ]
+[2024-07-31T00:17:42.542Z] + ./runtest  raven-main/docs/source/notebooks/*.ipynb RavenPy-master/docs/notebooks/*.ipynb RavenPy-master/docs/notebooks/paper/*.ipynb
+[2024-07-31T00:17:42.542Z] + [ -n  ]
+[2024-07-31T00:17:42.542Z] + [ ! -z pavics.ouranos.ca ]
+[2024-07-31T00:17:42.542Z] + echo Will run notebooks against pavics.ouranos.ca
+[2024-07-31T00:17:42.542Z] Will run notebooks against pavics.ouranos.ca
+[2024-07-31T00:17:42.542Z] + [ -z  ]
+[2024-07-31T00:17:42.542Z] + sed -i /\(\.ncml\|TEST_USE_PROD_DATA\)/!s/pavics.ouranos.ca/pavics.ouranos.ca/g raven-main/docs/source/notebooks/Region_selection.ipynb raven-main/docs/source/notebooks/Subset_climate_data_over_watershed.ipynb RavenPy-master/docs/notebooks/00_Introduction_to_JupyterLab.ipynb RavenPy-master/docs/notebooks/01_Getting_watershed_boundaries.ipynb RavenPy-master/docs/notebooks/02_Extract_geographical_watershed_properties.ipynb RavenPy-master/docs/notebooks/03_Extracting_forcing_data.ipynb RavenPy-master/docs/notebooks/04_Emulating_hydrological_models.ipynb RavenPy-master/docs/notebooks/05_Advanced_RavenPy_configuration.ipynb RavenPy-master/docs/notebooks/06_Raven_calibration.ipynb RavenPy-master/docs/notebooks/07_Making_and_using_hotstart_files.ipynb RavenPy-master/docs/notebooks/08_Getting_and_bias_correcting_CMIP6_data.ipynb RavenPy-master/docs/notebooks/09_Hydrological_impacts_of_climate_change.ipynb RavenPy-master/docs/notebooks/10_Data_assimilation.ipynb RavenPy-master/docs/notebooks/11_Climatological_ESP_forecasting.ipynb RavenPy-master/docs/notebooks/12_Performing_hindcasting_experiments.ipynb RavenPy-master/docs/notebooks/Assess_probabilistic_flood_risk.ipynb RavenPy-master/docs/notebooks/Comparing_hindcasts_and_ESP_forecasts.ipynb RavenPy-master/docs/notebooks/Distributed_hydrological_modelling.ipynb RavenPy-master/docs/notebooks/HydroShare_integration.ipynb RavenPy-master/docs/notebooks/Hydrological_realtime_forecasting.ipynb RavenPy-master/docs/notebooks/Managing_Jupyter_Environments.ipynb RavenPy-master/docs/notebooks/Perform_Regionalization.ipynb RavenPy-master/docs/notebooks/Running_HMETS_with_CANOPEX_dataset.ipynb RavenPy-master/docs/notebooks/Sensitivity_analysis.ipynb RavenPy-master/docs/notebooks/time_series_analysis.ipynb RavenPy-master/docs/notebooks/paper/Perform_a_climate_change_impact_study_on_a_watershed.ipynb
+[2024-07-31T00:17:42.542Z] + git diff
+[2024-07-31T00:17:42.542Z] + export PYTHONWARNINGS=ignore:Unverified HTTPS request
+[2024-07-31T00:17:42.542Z] + [ -n  ]
+[2024-07-31T00:17:42.542Z] + py.test --nbval raven-main/docs/source/notebooks/Region_selection.ipynb raven-main/docs/source/notebooks/Subset_climate_data_over_watershed.ipynb RavenPy-master/docs/notebooks/00_Introduction_to_JupyterLab.ipynb RavenPy-master/docs/notebooks/01_Getting_watershed_boundaries.ipynb RavenPy-master/docs/notebooks/02_Extract_geographical_watershed_properties.ipynb RavenPy-master/docs/notebooks/03_Extracting_forcing_data.ipynb RavenPy-master/docs/notebooks/04_Emulating_hydrological_models.ipynb RavenPy-master/docs/notebooks/05_Advanced_RavenPy_configuration.ipynb RavenPy-master/docs/notebooks/06_Raven_calibration.ipynb RavenPy-master/docs/notebooks/07_Making_and_using_hotstart_files.ipynb RavenPy-master/docs/notebooks/08_Getting_and_bias_correcting_CMIP6_data.ipynb RavenPy-master/docs/notebooks/09_Hydrological_impacts_of_climate_change.ipynb RavenPy-master/docs/notebooks/10_Data_assimilation.ipynb RavenPy-master/docs/notebooks/11_Climatological_ESP_forecasting.ipynb RavenPy-master/docs/notebooks/12_Performing_hindcasting_experiments.ipynb RavenPy-master/docs/notebooks/Assess_probabilistic_flood_risk.ipynb RavenPy-master/docs/notebooks/Comparing_hindcasts_and_ESP_forecasts.ipynb RavenPy-master/docs/notebooks/Distributed_hydrological_modelling.ipynb RavenPy-master/docs/notebooks/HydroShare_integration.ipynb RavenPy-master/docs/notebooks/Hydrological_realtime_forecasting.ipynb RavenPy-master/docs/notebooks/Managing_Jupyter_Environments.ipynb RavenPy-master/docs/notebooks/Perform_Regionalization.ipynb RavenPy-master/docs/notebooks/Running_HMETS_with_CANOPEX_dataset.ipynb RavenPy-master/docs/notebooks/Sensitivity_analysis.ipynb RavenPy-master/docs/notebooks/time_series_analysis.ipynb RavenPy-master/docs/notebooks/paper/Perform_a_climate_change_impact_study_on_a_watershed.ipynb --nbval-sanitize-with notebooks/output-sanitize.cfg --dist=loadscope --numprocesses=0 --nbval-lax
+[2024-07-31T00:17:54.839Z] ============================= test session starts ==============================
+[2024-07-31T00:17:54.840Z] platform linux -- Python 3.11.6, pytest-8.2.2, pluggy-1.5.0
+[2024-07-31T00:17:54.840Z] rootdir: /home/jenkins/agent/workspace/_workflow-tests_new-docker-build
+[2024-07-31T00:17:54.840Z] plugins: anyio-4.4.0, dash-2.17.0, nbval-0.11.0, tornasync-0.6.0.post2, xdist-3.5.0
+[2024-07-31T00:17:54.840Z] collected 243 items
+[2024-07-31T00:17:54.840Z] 
+[2024-07-31T00:18:14.015Z] raven-main/docs/source/notebooks/Region_selection.ipynb .........        [  3%]
+[2024-07-31T00:18:16.010Z] raven-main/docs/source/notebooks/Subset_climate_data_over_watershed.ipynb . [  4%]
+[2024-07-31T00:18:41.078Z] ......                                                                   [  6%]
+[2024-07-31T00:18:42.039Z] RavenPy-master/docs/notebooks/00_Introduction_to_JupyterLab.ipynb ...... [  9%]
+[2024-07-31T00:18:42.039Z]                                                                          [  9%]
+[2024-07-31T00:18:44.582Z] RavenPy-master/docs/notebooks/01_Getting_watershed_boundaries.ipynb .... [ 10%]
+[2024-07-31T00:18:54.642Z] ....                                                                     [ 12%]
+[2024-07-31T00:19:01.233Z] RavenPy-master/docs/notebooks/02_Extract_geographical_watershed_properties.ipynb . [ 12%]
+[2024-07-31T00:19:10.367Z] ..............                                                           [ 18%]
+[2024-07-31T00:19:38.779Z] RavenPy-master/docs/notebooks/03_Extracting_forcing_data.ipynb ......... [ 22%]
+[2024-07-31T00:20:33.010Z] ..                                                                       [ 23%]
+[2024-07-31T00:20:33.581Z] RavenPy-master/docs/notebooks/04_Emulating_hydrological_models.ipynb ... [ 24%]
+[2024-07-31T00:20:44.452Z] .................                                                        [ 31%]
+[2024-07-31T00:20:53.056Z] RavenPy-master/docs/notebooks/05_Advanced_RavenPy_configuration.ipynb .. [ 32%]
+[2024-07-31T00:21:02.254Z] ...........                                                              [ 36%]
+[2024-07-31T00:21:13.307Z] RavenPy-master/docs/notebooks/06_Raven_calibration.ipynb ......          [ 39%]
+[2024-07-31T00:21:17.528Z] RavenPy-master/docs/notebooks/07_Making_and_using_hotstart_files.ipynb . [ 39%]
+[2024-07-31T00:21:22.164Z] .....                                                                    [ 41%]
+[2024-07-31T00:21:23.101Z] RavenPy-master/docs/notebooks/08_Getting_and_bias_correcting_CMIP6_data.ipynb . [ 41%]
+[2024-07-31T00:32:40.942Z] .................                                                        [ 48%]
+[2024-07-31T00:32:44.244Z] RavenPy-master/docs/notebooks/09_Hydrological_impacts_of_climate_change.ipynb . [ 49%]
+[2024-07-31T00:32:53.090Z] ....                                                                     [ 51%]
+[2024-07-31T00:33:26.357Z] RavenPy-master/docs/notebooks/10_Data_assimilation.ipynb ........        [ 54%]
+[2024-07-31T00:33:34.340Z] RavenPy-master/docs/notebooks/11_Climatological_ESP_forecasting.ipynb .. [ 55%]
+[2024-07-31T00:33:55.950Z] ......                                                                   [ 57%]
+[2024-07-31T00:34:02.566Z] RavenPy-master/docs/notebooks/12_Performing_hindcasting_experiments.ipynb . [ 58%]
+[2024-07-31T00:34:12.969Z] .......                                                                  [ 60%]
+[2024-07-31T00:34:19.770Z] RavenPy-master/docs/notebooks/Assess_probabilistic_flood_risk.ipynb .... [ 62%]
+[2024-07-31T00:34:33.537Z] ....                                                                     [ 64%]
+[2024-07-31T00:34:40.269Z] RavenPy-master/docs/notebooks/Comparing_hindcasts_and_ESP_forecasts.ipynb . [ 64%]
+[2024-07-31T00:34:57.875Z] .......                                                                  [ 67%]
+[2024-07-31T00:35:00.416Z] RavenPy-master/docs/notebooks/Distributed_hydrological_modelling.ipynb . [ 67%]
+[2024-07-31T00:35:25.400Z] .......                                                                  [ 70%]
+[2024-07-31T00:35:27.590Z] RavenPy-master/docs/notebooks/HydroShare_integration.ipynb FFFF          [ 72%]
+[2024-07-31T00:35:37.498Z] RavenPy-master/docs/notebooks/Hydrological_realtime_forecasting.ipynb .. [ 73%]
+[2024-07-31T00:35:45.838Z] ....                                                                     [ 74%]
+[2024-07-31T00:36:42.793Z] RavenPy-master/docs/notebooks/Managing_Jupyter_Environments.ipynb ...    [ 76%]
+[2024-07-31T00:37:04.625Z] RavenPy-master/docs/notebooks/Perform_Regionalization.ipynb .......      [ 79%]
+[2024-07-31T00:37:05.561Z] RavenPy-master/docs/notebooks/Running_HMETS_with_CANOPEX_dataset.ipynb . [ 79%]
+[2024-07-31T00:37:19.871Z] .............                                                            [ 84%]
+[2024-07-31T00:37:38.958Z] RavenPy-master/docs/notebooks/Sensitivity_analysis.ipynb .....           [ 86%]
+[2024-07-31T00:37:46.060Z] RavenPy-master/docs/notebooks/time_series_analysis.ipynb ...........     [ 91%]
+[2024-07-31T00:37:56.028Z] RavenPy-master/docs/notebooks/paper/Perform_a_climate_change_impact_study_on_a_watershed.ipynb . [ 91%]
+[2024-07-31T00:45:49.689Z] ....................                                                     [100%]
+[2024-07-31T00:45:49.689Z] 
+[2024-07-31T00:45:49.689Z] =================================== FAILURES ===================================
+[2024-07-31T00:45:49.689Z] ______ RavenPy-master/docs/notebooks/HydroShare_integration.ipynb::Cell 0 ______
+[2024-07-31T00:45:49.689Z] [91mNotebook cell execution failed[0m
+[2024-07-31T00:45:49.689Z] [94mCell 0: Cell execution caused an exception
+[2024-07-31T00:45:49.689Z] 
+[2024-07-31T00:45:49.689Z] Input:
+[2024-07-31T00:45:49.689Z] [0mimport os
+[2024-07-31T00:45:49.689Z] 
+[2024-07-31T00:45:49.689Z] from hsclient import HydroShare, Token
+[2024-07-31T00:45:49.689Z] 
+[2024-07-31T00:45:49.689Z] # Authentication method using username and password
+[2024-07-31T00:45:49.689Z] """
+[2024-07-31T00:45:49.689Z] username = 'XXXXX'
+[2024-07-31T00:45:49.689Z] password = 'XXXXX'
+[2024-07-31T00:45:49.689Z] hs = HydroShare(username=username, password=password)
+[2024-07-31T00:45:49.689Z] """
+[2024-07-31T00:45:49.689Z] 
+[2024-07-31T00:45:49.689Z] client_id = os.environ.get("HYDROSHARE_AUTH_CLIENT_ID", "<your_client_id>")
+[2024-07-31T00:45:49.689Z] access_token = os.environ.get("HYDROSHARE_AUTH_TOKEN", "<your_auth_token>")
+[2024-07-31T00:45:49.689Z] 
+[2024-07-31T00:45:49.689Z] token = Token(access_token=access_token, token_type="bearer")
+[2024-07-31T00:45:49.689Z] hs = HydroShare(client_id=client_id, token=token)
+[2024-07-31T00:45:49.689Z] 
+[2024-07-31T00:45:49.689Z] [94mTraceback:[0m
+[2024-07-31T00:45:49.689Z] 
+[2024-07-31T00:45:49.689Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-07-31T00:45:49.689Z] [0;31mValidationError[0m                           Traceback (most recent call last)
+[2024-07-31T00:45:49.689Z] Cell [0;32mIn[1], line 15[0m
+[2024-07-31T00:45:49.689Z] [1;32m     12[0m client_id [38;5;241m=[39m os[38;5;241m.[39menviron[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mHYDROSHARE_AUTH_CLIENT_ID[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124m<your_client_id>[39m[38;5;124m"[39m)
+[2024-07-31T00:45:49.689Z] [1;32m     13[0m access_token [38;5;241m=[39m os[38;5;241m.[39menviron[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mHYDROSHARE_AUTH_TOKEN[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124m<your_auth_token>[39m[38;5;124m"[39m)
+[2024-07-31T00:45:49.689Z] [0;32m---> 15[0m token [38;5;241m=[39m [43mToken[49m[43m([49m[43maccess_token[49m[38;5;241;43m=[39;49m[43maccess_token[49m[43m,[49m[43m [49m[43mtoken_type[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mbearer[39;49m[38;5;124;43m"[39;49m[43m)[49m
+[2024-07-31T00:45:49.689Z] [1;32m     16[0m hs [38;5;241m=[39m HydroShare(client_id[38;5;241m=[39mclient_id, token[38;5;241m=[39mtoken)
+[2024-07-31T00:45:49.689Z] 
+[2024-07-31T00:45:49.689Z] File [0;32m/opt/conda/envs/birdy/lib/python3.11/site-packages/pydantic/main.py:176[0m, in [0;36mBaseModel.__init__[0;34m(self, **data)[0m
+[2024-07-31T00:45:49.689Z] [1;32m    174[0m [38;5;66;03m# `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks[39;00m
+[2024-07-31T00:45:49.689Z] [1;32m    175[0m __tracebackhide__ [38;5;241m=[39m [38;5;28;01mTrue[39;00m
+[2024-07-31T00:45:49.689Z] [0;32m--> 176[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m__pydantic_validator__[49m[38;5;241;43m.[39;49m[43mvalidate_python[49m[43m([49m[43mdata[49m[43m,[49m[43m [49m[43mself_instance[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[43m)[49m
+[2024-07-31T00:45:49.689Z] 
+[2024-07-31T00:45:49.690Z] [0;31mValidationError[0m: 4 validation errors for Token
+[2024-07-31T00:45:49.690Z] scope
+[2024-07-31T00:45:49.690Z]   Field required [type=missing, input_value={'access_token': '<your_a... 'token_type': 'bearer'}, input_type=dict]
+[2024-07-31T00:45:49.690Z]     For further information visit https://errors.pydantic.dev/2.7/v/missing
+[2024-07-31T00:45:49.690Z] state
+[2024-07-31T00:45:49.690Z]   Field required [type=missing, input_value={'access_token': '<your_a... 'token_type': 'bearer'}, input_type=dict]
+[2024-07-31T00:45:49.690Z]     For further information visit https://errors.pydantic.dev/2.7/v/missing
+[2024-07-31T00:45:49.690Z] expires_in
+[2024-07-31T00:45:49.690Z]   Field required [type=missing, input_value={'access_token': '<your_a... 'token_type': 'bearer'}, input_type=dict]
+[2024-07-31T00:45:49.690Z]     For further information visit https://errors.pydantic.dev/2.7/v/missing
+[2024-07-31T00:45:49.690Z] refresh_token
+[2024-07-31T00:45:49.690Z]   Field required [type=missing, input_value={'access_token': '<your_a... 'token_type': 'bearer'}, input_type=dict]
+[2024-07-31T00:45:49.690Z]     For further information visit https://errors.pydantic.dev/2.7/v/missing
+[2024-07-31T00:45:49.690Z] 
+[2024-07-31T00:45:49.690Z] ______ RavenPy-master/docs/notebooks/HydroShare_integration.ipynb::Cell 1 ______
+[2024-07-31T00:45:49.690Z] [91mNotebook cell execution failed[0m
+[2024-07-31T00:45:49.690Z] [94mCell 1: Cell execution caused an exception
+[2024-07-31T00:45:49.690Z] 
+[2024-07-31T00:45:49.690Z] Input:
+[2024-07-31T00:45:49.690Z] [0mresults = hs.search(subject=["Harvey"])
+[2024-07-31T00:45:49.690Z] for r in results:
+[2024-07-31T00:45:49.690Z]     print(r.resource_title, ": ", r.resource_id)
+[2024-07-31T00:45:49.690Z] 
+[2024-07-31T00:45:49.690Z] [94mTraceback:[0m
+[2024-07-31T00:45:49.690Z] 
+[2024-07-31T00:45:49.690Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-07-31T00:45:49.690Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-07-31T00:45:49.690Z] Cell [0;32mIn[1], line 1[0m
+[2024-07-31T00:45:49.690Z] [0;32m----> 1[0m results [38;5;241m=[39m [43mhs[49m[38;5;241m.[39msearch(subject[38;5;241m=[39m[[38;5;124m"[39m[38;5;124mHarvey[39m[38;5;124m"[39m])
+[2024-07-31T00:45:49.690Z] [1;32m      2[0m [38;5;28;01mfor[39;00m r [38;5;129;01min[39;00m results:
+[2024-07-31T00:45:49.690Z] [1;32m      3[0m     [38;5;28mprint[39m(r[38;5;241m.[39mresource_title, [38;5;124m"[39m[38;5;124m: [39m[38;5;124m"[39m, r[38;5;241m.[39mresource_id)
+[2024-07-31T00:45:49.690Z] 
+[2024-07-31T00:45:49.690Z] [0;31mNameError[0m: name 'hs' is not defined
+[2024-07-31T00:45:49.690Z] 
+[2024-07-31T00:45:49.690Z] ______ RavenPy-master/docs/notebooks/HydroShare_integration.ipynb::Cell 2 ______
+[2024-07-31T00:45:49.690Z] [91mNotebook cell execution failed[0m
+[2024-07-31T00:45:49.690Z] [94mCell 2: Cell execution caused an exception
+[2024-07-31T00:45:49.690Z] 
+[2024-07-31T00:45:49.690Z] Input:
+[2024-07-31T00:45:49.690Z] [0mres = hs.resource("51d1539bf6e94b15ac33f7631228118c", validate=False)
+[2024-07-31T00:45:49.690Z] res.files()
+[2024-07-31T00:45:49.690Z] 
+[2024-07-31T00:45:49.690Z] [94mTraceback:[0m
+[2024-07-31T00:45:49.690Z] 
+[2024-07-31T00:45:49.690Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-07-31T00:45:49.690Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-07-31T00:45:49.690Z] Cell [0;32mIn[1], line 1[0m
+[2024-07-31T00:45:49.690Z] [0;32m----> 1[0m res [38;5;241m=[39m [43mhs[49m[38;5;241m.[39mresource([38;5;124m"[39m[38;5;124m51d1539bf6e94b15ac33f7631228118c[39m[38;5;124m"[39m, validate[38;5;241m=[39m[38;5;28;01mFalse[39;00m)
+[2024-07-31T00:45:49.690Z] [1;32m      2[0m res[38;5;241m.[39mfiles()
+[2024-07-31T00:45:49.690Z] 
+[2024-07-31T00:45:49.690Z] [0;31mNameError[0m: name 'hs' is not defined
+[2024-07-31T00:45:49.690Z] 
+[2024-07-31T00:45:49.690Z] ______ RavenPy-master/docs/notebooks/HydroShare_integration.ipynb::Cell 3 ______
+[2024-07-31T00:45:49.690Z] [91mNotebook cell execution failed[0m
+[2024-07-31T00:45:49.690Z] [94mCell 3: Cell execution caused an exception
+[2024-07-31T00:45:49.690Z] 
+[2024-07-31T00:45:49.690Z] Input:
+[2024-07-31T00:45:49.690Z] [0mres.file_download("USGS_Harvey_gages_TxLaMsAr.csv", save_path="/tmp")
+[2024-07-31T00:45:49.690Z] 
+[2024-07-31T00:45:49.690Z] [94mTraceback:[0m
+[2024-07-31T00:45:49.690Z] 
+[2024-07-31T00:45:49.690Z] [0;31m---------------------------------------------------------------------------[0m
+[2024-07-31T00:45:49.691Z] [0;31mNameError[0m                                 Traceback (most recent call last)
+[2024-07-31T00:45:49.691Z] Cell [0;32mIn[1], line 1[0m
+[2024-07-31T00:45:49.691Z] [0;32m----> 1[0m [43mres[49m[38;5;241m.[39mfile_download([38;5;124m"[39m[38;5;124mUSGS_Harvey_gages_TxLaMsAr.csv[39m[38;5;124m"[39m, save_path[38;5;241m=[39m[38;5;124m"[39m[38;5;124m/tmp[39m[38;5;124m"[39m)
+[2024-07-31T00:45:49.691Z] 
+[2024-07-31T00:45:49.691Z] [0;31mNameError[0m: name 'res' is not defined
+[2024-07-31T00:45:49.691Z] 
+[2024-07-31T00:45:49.691Z] =========================== short test summary info ============================
+[2024-07-31T00:45:49.691Z] FAILED RavenPy-master/docs/notebooks/HydroShare_integration.ipynb::Cell 0
+[2024-07-31T00:45:49.691Z] FAILED RavenPy-master/docs/notebooks/HydroShare_integration.ipynb::Cell 1
+[2024-07-31T00:45:49.691Z] FAILED RavenPy-master/docs/notebooks/HydroShare_integration.ipynb::Cell 2
+[2024-07-31T00:45:49.691Z] FAILED RavenPy-master/docs/notebooks/HydroShare_integration.ipynb::Cell 3
+[2024-07-31T00:45:49.691Z] ================== 4 failed, 239 passed in 1676.57s (0:27:56) ==================
+[2024-07-31T00:45:49.952Z] + EXIT_CODE=1
+[2024-07-31T00:45:49.952Z] + echo true
+[2024-07-31T00:45:49.952Z] + tr [:upper:] [:lower:]
+[2024-07-31T00:45:49.952Z] + SAVE_RESULTING_NOTEBOOK=true
+[2024-07-31T00:45:49.952Z] + [ xtrue = xtrue ]
+[2024-07-31T00:45:49.952Z] + mkdir -p buildout
+[2024-07-31T00:45:49.952Z] + basename raven-main/docs/source/notebooks/Region_selection.ipynb
+[2024-07-31T00:45:49.952Z] + filename=Region_selection.ipynb
+[2024-07-31T00:45:49.952Z] + echo Region_selection.ipynb
+[2024-07-31T00:45:49.952Z] + sed s/.ipynb$//
+[2024-07-31T00:45:49.952Z] + filename=Region_selection
+[2024-07-31T00:45:49.952Z] + [ -e buildout/Region_selection.output.ipynb ]
+[2024-07-31T00:45:49.952Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Region_selection.output.ipynb raven-main/docs/source/notebooks/Region_selection.ipynb
+[2024-07-31T00:45:51.852Z] [NbConvertApp] Converting notebook raven-main/docs/source/notebooks/Region_selection.ipynb to notebook
+[2024-07-31T00:46:04.108Z] [NbConvertApp] Writing 107223 bytes to buildout/Region_selection.output.ipynb
+[2024-07-31T00:46:04.108Z] + basename raven-main/docs/source/notebooks/Subset_climate_data_over_watershed.ipynb
+[2024-07-31T00:46:04.108Z] + filename=Subset_climate_data_over_watershed.ipynb
+[2024-07-31T00:46:04.108Z] + + echo Subset_climate_data_over_watershed.ipynb
+[2024-07-31T00:46:04.108Z] sed s/.ipynb$//
+[2024-07-31T00:46:04.108Z] + filename=Subset_climate_data_over_watershed
+[2024-07-31T00:46:04.108Z] + [ -e buildout/Subset_climate_data_over_watershed.output.ipynb ]
+[2024-07-31T00:46:04.108Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Subset_climate_data_over_watershed.output.ipynb raven-main/docs/source/notebooks/Subset_climate_data_over_watershed.ipynb
+[2024-07-31T00:46:06.009Z] [NbConvertApp] Converting notebook raven-main/docs/source/notebooks/Subset_climate_data_over_watershed.ipynb to notebook
+[2024-07-31T00:46:24.233Z] [NbConvertApp] Writing 95137 bytes to buildout/Subset_climate_data_over_watershed.output.ipynb
+[2024-07-31T00:46:24.233Z] + basename RavenPy-master/docs/notebooks/00_Introduction_to_JupyterLab.ipynb
+[2024-07-31T00:46:24.233Z] + filename=00_Introduction_to_JupyterLab.ipynb
+[2024-07-31T00:46:24.233Z] + + echo 00_Introduction_to_JupyterLab.ipynb
+[2024-07-31T00:46:24.233Z] sed s/.ipynb$//
+[2024-07-31T00:46:24.233Z] + filename=00_Introduction_to_JupyterLab
+[2024-07-31T00:46:24.233Z] + [ -e buildout/00_Introduction_to_JupyterLab.output.ipynb ]
+[2024-07-31T00:46:24.233Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 00_Introduction_to_JupyterLab.output.ipynb RavenPy-master/docs/notebooks/00_Introduction_to_JupyterLab.ipynb
+[2024-07-31T00:46:24.860Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/00_Introduction_to_JupyterLab.ipynb to notebook
+[2024-07-31T00:46:31.465Z] [NbConvertApp] Writing 13178 bytes to buildout/00_Introduction_to_JupyterLab.output.ipynb
+[2024-07-31T00:46:31.465Z] + basename RavenPy-master/docs/notebooks/01_Getting_watershed_boundaries.ipynb
+[2024-07-31T00:46:31.465Z] + filename=01_Getting_watershed_boundaries.ipynb
+[2024-07-31T00:46:31.465Z] + + echo 01_Getting_watershed_boundaries.ipynb
+[2024-07-31T00:46:31.465Z] sed s/.ipynb$//
+[2024-07-31T00:46:31.465Z] + filename=01_Getting_watershed_boundaries
+[2024-07-31T00:46:31.465Z] + [ -e buildout/01_Getting_watershed_boundaries.output.ipynb ]
+[2024-07-31T00:46:31.465Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 01_Getting_watershed_boundaries.output.ipynb RavenPy-master/docs/notebooks/01_Getting_watershed_boundaries.ipynb
+[2024-07-31T00:46:32.396Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/01_Getting_watershed_boundaries.ipynb to notebook
+[2024-07-31T00:46:44.666Z] [NbConvertApp] Writing 109426 bytes to buildout/01_Getting_watershed_boundaries.output.ipynb
+[2024-07-31T00:46:44.666Z] + basename RavenPy-master/docs/notebooks/02_Extract_geographical_watershed_properties.ipynb
+[2024-07-31T00:46:44.666Z] + filename=02_Extract_geographical_watershed_properties.ipynb
+[2024-07-31T00:46:44.666Z] + echo 02_Extract_geographical_watershed_properties.ipynb
+[2024-07-31T00:46:44.666Z] + sed s/.ipynb$//
+[2024-07-31T00:46:44.666Z] + filename=02_Extract_geographical_watershed_properties
+[2024-07-31T00:46:44.666Z] + [ -e buildout/02_Extract_geographical_watershed_properties.output.ipynb ]
+[2024-07-31T00:46:44.666Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 02_Extract_geographical_watershed_properties.output.ipynb RavenPy-master/docs/notebooks/02_Extract_geographical_watershed_properties.ipynb
+[2024-07-31T00:46:46.035Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/02_Extract_geographical_watershed_properties.ipynb to notebook
+[2024-07-31T00:47:00.947Z] [NbConvertApp] Writing 279631 bytes to buildout/02_Extract_geographical_watershed_properties.output.ipynb
+[2024-07-31T00:47:00.947Z] + basename RavenPy-master/docs/notebooks/03_Extracting_forcing_data.ipynb
+[2024-07-31T00:47:00.947Z] + filename=03_Extracting_forcing_data.ipynb
+[2024-07-31T00:47:00.947Z] + + echo 03_Extracting_forcing_data.ipynb
+[2024-07-31T00:47:00.947Z] sed s/.ipynb$//
+[2024-07-31T00:47:00.947Z] + filename=03_Extracting_forcing_data
+[2024-07-31T00:47:00.947Z] + [ -e buildout/03_Extracting_forcing_data.output.ipynb ]
+[2024-07-31T00:47:00.947Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 03_Extracting_forcing_data.output.ipynb RavenPy-master/docs/notebooks/03_Extracting_forcing_data.ipynb
+[2024-07-31T00:47:02.327Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/03_Extracting_forcing_data.ipynb to notebook
+[2024-07-31T00:48:23.858Z] [NbConvertApp] Writing 107307 bytes to buildout/03_Extracting_forcing_data.output.ipynb
+[2024-07-31T00:48:23.858Z] + basename RavenPy-master/docs/notebooks/04_Emulating_hydrological_models.ipynb
+[2024-07-31T00:48:23.858Z] + filename=04_Emulating_hydrological_models.ipynb
+[2024-07-31T00:48:23.858Z] + echo 04_Emulating_hydrological_models.ipynb
+[2024-07-31T00:48:23.858Z] + sed s/.ipynb$//
+[2024-07-31T00:48:23.858Z] + filename=04_Emulating_hydrological_models
+[2024-07-31T00:48:23.858Z] + [ -e buildout/04_Emulating_hydrological_models.output.ipynb ]
+[2024-07-31T00:48:23.858Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 04_Emulating_hydrological_models.output.ipynb RavenPy-master/docs/notebooks/04_Emulating_hydrological_models.ipynb
+[2024-07-31T00:48:23.858Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/04_Emulating_hydrological_models.ipynb to notebook
+[2024-07-31T00:48:30.426Z] [NbConvertApp] Writing 386153 bytes to buildout/04_Emulating_hydrological_models.output.ipynb
+[2024-07-31T00:48:30.426Z] + basename RavenPy-master/docs/notebooks/05_Advanced_RavenPy_configuration.ipynb
+[2024-07-31T00:48:30.426Z] + filename=05_Advanced_RavenPy_configuration.ipynb
+[2024-07-31T00:48:30.426Z] + echo 05_Advanced_RavenPy_configuration.ipynb
+[2024-07-31T00:48:30.426Z] + sed s/.ipynb$//
+[2024-07-31T00:48:30.426Z] + filename=05_Advanced_RavenPy_configuration
+[2024-07-31T00:48:30.426Z] + [ -e buildout/05_Advanced_RavenPy_configuration.output.ipynb ]
+[2024-07-31T00:48:30.426Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 05_Advanced_RavenPy_configuration.output.ipynb RavenPy-master/docs/notebooks/05_Advanced_RavenPy_configuration.ipynb
+[2024-07-31T00:48:32.323Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/05_Advanced_RavenPy_configuration.ipynb to notebook
+[2024-07-31T00:48:47.218Z] [NbConvertApp] Writing 305131 bytes to buildout/05_Advanced_RavenPy_configuration.output.ipynb
+[2024-07-31T00:48:47.218Z] + basename RavenPy-master/docs/notebooks/06_Raven_calibration.ipynb
+[2024-07-31T00:48:47.218Z] + filename=06_Raven_calibration.ipynb
+[2024-07-31T00:48:47.218Z] + + echo 06_Raven_calibration.ipynb
+[2024-07-31T00:48:47.218Z] sed s/.ipynb$//
+[2024-07-31T00:48:47.218Z] + filename=06_Raven_calibration
+[2024-07-31T00:48:47.218Z] + [ -e buildout/06_Raven_calibration.output.ipynb ]
+[2024-07-31T00:48:47.218Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 06_Raven_calibration.output.ipynb RavenPy-master/docs/notebooks/06_Raven_calibration.ipynb
+[2024-07-31T00:48:49.110Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/06_Raven_calibration.ipynb to notebook
+[2024-07-31T00:49:04.040Z] [NbConvertApp] Writing 18794 bytes to buildout/06_Raven_calibration.output.ipynb
+[2024-07-31T00:49:04.040Z] + basename RavenPy-master/docs/notebooks/07_Making_and_using_hotstart_files.ipynb
+[2024-07-31T00:49:04.040Z] + filename=07_Making_and_using_hotstart_files.ipynb
+[2024-07-31T00:49:04.040Z] + echo 07_Making_and_using_hotstart_files.ipynb
+[2024-07-31T00:49:04.040Z] + sed s/.ipynb$//
+[2024-07-31T00:49:04.040Z] + filename=07_Making_and_using_hotstart_files
+[2024-07-31T00:49:04.040Z] + [ -e buildout/07_Making_and_using_hotstart_files.output.ipynb ]
+[2024-07-31T00:49:04.040Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 07_Making_and_using_hotstart_files.output.ipynb RavenPy-master/docs/notebooks/07_Making_and_using_hotstart_files.ipynb
+[2024-07-31T00:49:04.040Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/07_Making_and_using_hotstart_files.ipynb to notebook
+[2024-07-31T00:49:14.034Z] [NbConvertApp] Writing 193888 bytes to buildout/07_Making_and_using_hotstart_files.output.ipynb
+[2024-07-31T00:49:14.034Z] + basename RavenPy-master/docs/notebooks/08_Getting_and_bias_correcting_CMIP6_data.ipynb
+[2024-07-31T00:49:14.034Z] + filename=08_Getting_and_bias_correcting_CMIP6_data.ipynb
+[2024-07-31T00:49:14.034Z] + + echo 08_Getting_and_bias_correcting_CMIP6_data.ipynb
+[2024-07-31T00:49:14.034Z] sed s/.ipynb$//
+[2024-07-31T00:49:14.034Z] + filename=08_Getting_and_bias_correcting_CMIP6_data
+[2024-07-31T00:49:14.034Z] + [ -e buildout/08_Getting_and_bias_correcting_CMIP6_data.output.ipynb ]
+[2024-07-31T00:49:14.034Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 08_Getting_and_bias_correcting_CMIP6_data.output.ipynb RavenPy-master/docs/notebooks/08_Getting_and_bias_correcting_CMIP6_data.ipynb
+[2024-07-31T00:49:15.419Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/08_Getting_and_bias_correcting_CMIP6_data.ipynb to notebook
+[2024-07-31T00:57:37.283Z] [NbConvertApp] Writing 243330 bytes to buildout/08_Getting_and_bias_correcting_CMIP6_data.output.ipynb
+[2024-07-31T00:57:37.283Z] + basename RavenPy-master/docs/notebooks/09_Hydrological_impacts_of_climate_change.ipynb
+[2024-07-31T00:57:37.284Z] + filename=09_Hydrological_impacts_of_climate_change.ipynb
+[2024-07-31T00:57:37.284Z] + echo+  09_Hydrological_impacts_of_climate_change.ipynb
+[2024-07-31T00:57:37.284Z] sed s/.ipynb$//
+[2024-07-31T00:57:37.284Z] + filename=09_Hydrological_impacts_of_climate_change
+[2024-07-31T00:57:37.284Z] + [ -e buildout/09_Hydrological_impacts_of_climate_change.output.ipynb ]
+[2024-07-31T00:57:37.284Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 09_Hydrological_impacts_of_climate_change.output.ipynb RavenPy-master/docs/notebooks/09_Hydrological_impacts_of_climate_change.ipynb
+[2024-07-31T00:57:37.284Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/09_Hydrological_impacts_of_climate_change.ipynb to notebook
+[2024-07-31T00:57:41.503Z] [NbConvertApp] Writing 123805 bytes to buildout/09_Hydrological_impacts_of_climate_change.output.ipynb
+[2024-07-31T00:57:41.503Z] + basename RavenPy-master/docs/notebooks/10_Data_assimilation.ipynb
+[2024-07-31T00:57:41.503Z] + filename=10_Data_assimilation.ipynb
+[2024-07-31T00:57:41.503Z] + + sed s/.ipynb$//
+[2024-07-31T00:57:41.503Z] echo 10_Data_assimilation.ipynb
+[2024-07-31T00:57:41.503Z] + filename=10_Data_assimilation
+[2024-07-31T00:57:41.503Z] + [ -e buildout/10_Data_assimilation.output.ipynb ]
+[2024-07-31T00:57:41.503Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 10_Data_assimilation.output.ipynb RavenPy-master/docs/notebooks/10_Data_assimilation.ipynb
+[2024-07-31T00:57:42.884Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/10_Data_assimilation.ipynb to notebook
+[2024-07-31T00:58:21.612Z] [NbConvertApp] Writing 423849 bytes to buildout/10_Data_assimilation.output.ipynb
+[2024-07-31T00:58:21.612Z] + basename RavenPy-master/docs/notebooks/11_Climatological_ESP_forecasting.ipynb
+[2024-07-31T00:58:21.612Z] + filename=11_Climatological_ESP_forecasting.ipynb
+[2024-07-31T00:58:21.612Z] + echo 11_Climatological_ESP_forecasting.ipynb
+[2024-07-31T00:58:21.612Z] + sed s/.ipynb$//
+[2024-07-31T00:58:21.612Z] + filename=11_Climatological_ESP_forecasting
+[2024-07-31T00:58:21.612Z] + [ -e buildout/11_Climatological_ESP_forecasting.output.ipynb ]
+[2024-07-31T00:58:21.612Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 11_Climatological_ESP_forecasting.output.ipynb RavenPy-master/docs/notebooks/11_Climatological_ESP_forecasting.ipynb
+[2024-07-31T00:58:21.612Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/11_Climatological_ESP_forecasting.ipynb to notebook
+[2024-07-31T00:58:53.745Z] [NbConvertApp] Writing 175353 bytes to buildout/11_Climatological_ESP_forecasting.output.ipynb
+[2024-07-31T00:58:53.745Z] + basename RavenPy-master/docs/notebooks/12_Performing_hindcasting_experiments.ipynb
+[2024-07-31T00:58:53.745Z] + filename=12_Performing_hindcasting_experiments.ipynb
+[2024-07-31T00:58:53.745Z] + echo 12_Performing_hindcasting_experiments.ipynb
+[2024-07-31T00:58:53.745Z] + sed s/.ipynb$//
+[2024-07-31T00:58:53.745Z] + filename=12_Performing_hindcasting_experiments
+[2024-07-31T00:58:53.745Z] + [ -e buildout/12_Performing_hindcasting_experiments.output.ipynb ]
+[2024-07-31T00:58:53.745Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output 12_Performing_hindcasting_experiments.output.ipynb RavenPy-master/docs/notebooks/12_Performing_hindcasting_experiments.ipynb
+[2024-07-31T00:58:53.745Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/12_Performing_hindcasting_experiments.ipynb to notebook
+[2024-07-31T00:59:11.936Z] [NbConvertApp] Writing 148015 bytes to buildout/12_Performing_hindcasting_experiments.output.ipynb
+[2024-07-31T00:59:11.936Z] + basename RavenPy-master/docs/notebooks/Assess_probabilistic_flood_risk.ipynb
+[2024-07-31T00:59:11.936Z] + filename=Assess_probabilistic_flood_risk.ipynb
+[2024-07-31T00:59:11.936Z] + + echo Assess_probabilistic_flood_risk.ipynb
+[2024-07-31T00:59:11.936Z] sed s/.ipynb$//
+[2024-07-31T00:59:11.936Z] + filename=Assess_probabilistic_flood_risk
+[2024-07-31T00:59:11.936Z] + [ -e buildout/Assess_probabilistic_flood_risk.output.ipynb ]
+[2024-07-31T00:59:11.936Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Assess_probabilistic_flood_risk.output.ipynb RavenPy-master/docs/notebooks/Assess_probabilistic_flood_risk.ipynb
+[2024-07-31T00:59:11.936Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/Assess_probabilistic_flood_risk.ipynb to notebook
+[2024-07-31T00:59:33.901Z] [NbConvertApp] Writing 158206 bytes to buildout/Assess_probabilistic_flood_risk.output.ipynb
+[2024-07-31T00:59:33.901Z] + basename RavenPy-master/docs/notebooks/Comparing_hindcasts_and_ESP_forecasts.ipynb
+[2024-07-31T00:59:33.901Z] + filename=Comparing_hindcasts_and_ESP_forecasts.ipynb
+[2024-07-31T00:59:33.901Z] + echo Comparing_hindcasts_and_ESP_forecasts.ipynb
+[2024-07-31T00:59:33.901Z] + sed s/.ipynb$//
+[2024-07-31T00:59:33.901Z] + filename=Comparing_hindcasts_and_ESP_forecasts
+[2024-07-31T00:59:33.901Z] + [ -e buildout/Comparing_hindcasts_and_ESP_forecasts.output.ipynb ]
+[2024-07-31T00:59:33.901Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Comparing_hindcasts_and_ESP_forecasts.output.ipynb RavenPy-master/docs/notebooks/Comparing_hindcasts_and_ESP_forecasts.ipynb
+[2024-07-31T00:59:33.901Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/Comparing_hindcasts_and_ESP_forecasts.ipynb to notebook
+[2024-07-31T01:00:00.477Z] [NbConvertApp] Writing 301974 bytes to buildout/Comparing_hindcasts_and_ESP_forecasts.output.ipynb
+[2024-07-31T01:00:00.477Z] + basename RavenPy-master/docs/notebooks/Distributed_hydrological_modelling.ipynb
+[2024-07-31T01:00:00.477Z] + filename=Distributed_hydrological_modelling.ipynb
+[2024-07-31T01:00:00.477Z] + + echo Distributed_hydrological_modelling.ipynb
+[2024-07-31T01:00:00.477Z] sed s/.ipynb$//
+[2024-07-31T01:00:00.477Z] + filename=Distributed_hydrological_modelling
+[2024-07-31T01:00:00.477Z] + [ -e buildout/Distributed_hydrological_modelling.output.ipynb ]
+[2024-07-31T01:00:00.478Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Distributed_hydrological_modelling.output.ipynb RavenPy-master/docs/notebooks/Distributed_hydrological_modelling.ipynb
+[2024-07-31T01:00:00.478Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/Distributed_hydrological_modelling.ipynb to notebook
+[2024-07-31T01:00:27.126Z] [NbConvertApp] Writing 101093 bytes to buildout/Distributed_hydrological_modelling.output.ipynb
+[2024-07-31T01:00:27.126Z] + basename RavenPy-master/docs/notebooks/HydroShare_integration.ipynb
+[2024-07-31T01:00:27.126Z] + filename=HydroShare_integration.ipynb
+[2024-07-31T01:00:27.126Z] + + echo HydroShare_integration.ipynb
+[2024-07-31T01:00:27.126Z] sed s/.ipynb$//
+[2024-07-31T01:00:27.126Z] + filename=HydroShare_integration
+[2024-07-31T01:00:27.126Z] + [ -e buildout/HydroShare_integration.output.ipynb ]
+[2024-07-31T01:00:27.126Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output HydroShare_integration.output.ipynb RavenPy-master/docs/notebooks/HydroShare_integration.ipynb
+[2024-07-31T01:00:27.691Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/HydroShare_integration.ipynb to notebook
+[2024-07-31T01:00:31.870Z] [NbConvertApp] Writing 11583 bytes to buildout/HydroShare_integration.output.ipynb
+[2024-07-31T01:00:31.870Z] + basename RavenPy-master/docs/notebooks/Hydrological_realtime_forecasting.ipynb
+[2024-07-31T01:00:31.870Z] + filename=Hydrological_realtime_forecasting.ipynb
+[2024-07-31T01:00:31.870Z] + echo Hydrological_realtime_forecasting.ipynb+ 
+[2024-07-31T01:00:31.870Z] sed s/.ipynb$//
+[2024-07-31T01:00:31.870Z] + filename=Hydrological_realtime_forecasting
+[2024-07-31T01:00:31.870Z] + [ -e buildout/Hydrological_realtime_forecasting.output.ipynb ]
+[2024-07-31T01:00:31.870Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Hydrological_realtime_forecasting.output.ipynb RavenPy-master/docs/notebooks/Hydrological_realtime_forecasting.ipynb
+[2024-07-31T01:00:33.249Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/Hydrological_realtime_forecasting.ipynb to notebook
+[2024-07-31T01:00:55.252Z] [NbConvertApp] Writing 174122 bytes to buildout/Hydrological_realtime_forecasting.output.ipynb
+[2024-07-31T01:00:55.252Z] + basename RavenPy-master/docs/notebooks/Managing_Jupyter_Environments.ipynb
+[2024-07-31T01:00:55.252Z] + filename=Managing_Jupyter_Environments.ipynb
+[2024-07-31T01:00:55.252Z] + echo Managing_Jupyter_Environments.ipynb
+[2024-07-31T01:00:55.252Z] + sed s/.ipynb$//
+[2024-07-31T01:00:55.252Z] + filename=Managing_Jupyter_Environments
+[2024-07-31T01:00:55.252Z] + [ -e buildout/Managing_Jupyter_Environments.output.ipynb ]
+[2024-07-31T01:00:55.252Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Managing_Jupyter_Environments.output.ipynb RavenPy-master/docs/notebooks/Managing_Jupyter_Environments.ipynb
+[2024-07-31T01:00:55.252Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/Managing_Jupyter_Environments.ipynb to notebook
+[2024-07-31T01:01:01.830Z] [NbConvertApp] Writing 14103 bytes to buildout/Managing_Jupyter_Environments.output.ipynb
+[2024-07-31T01:01:01.830Z] + basename RavenPy-master/docs/notebooks/Perform_Regionalization.ipynb
+[2024-07-31T01:01:01.830Z] + filename=Perform_Regionalization.ipynb
+[2024-07-31T01:01:01.830Z] + echo Perform_Regionalization.ipynb+ 
+[2024-07-31T01:01:01.830Z] sed s/.ipynb$//
+[2024-07-31T01:01:01.830Z] + filename=Perform_Regionalization
+[2024-07-31T01:01:01.830Z] + [ -e buildout/Perform_Regionalization.output.ipynb ]
+[2024-07-31T01:01:01.830Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Perform_Regionalization.output.ipynb RavenPy-master/docs/notebooks/Perform_Regionalization.ipynb
+[2024-07-31T01:01:03.737Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/Perform_Regionalization.ipynb to notebook
+[2024-07-31T01:01:30.300Z] [NbConvertApp] Writing 118935 bytes to buildout/Perform_Regionalization.output.ipynb
+[2024-07-31T01:01:30.300Z] + basename RavenPy-master/docs/notebooks/Running_HMETS_with_CANOPEX_dataset.ipynb
+[2024-07-31T01:01:30.300Z] + filename=Running_HMETS_with_CANOPEX_dataset.ipynb
+[2024-07-31T01:01:30.300Z] + + echo Running_HMETS_with_CANOPEX_dataset.ipynb
+[2024-07-31T01:01:30.300Z] sed s/.ipynb$//
+[2024-07-31T01:01:30.300Z] + filename=Running_HMETS_with_CANOPEX_dataset
+[2024-07-31T01:01:30.300Z] + [ -e buildout/Running_HMETS_with_CANOPEX_dataset.output.ipynb ]
+[2024-07-31T01:01:30.300Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Running_HMETS_with_CANOPEX_dataset.output.ipynb RavenPy-master/docs/notebooks/Running_HMETS_with_CANOPEX_dataset.ipynb
+[2024-07-31T01:01:30.300Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/Running_HMETS_with_CANOPEX_dataset.ipynb to notebook
+[2024-07-31T01:01:48.405Z] [NbConvertApp] Writing 100732 bytes to buildout/Running_HMETS_with_CANOPEX_dataset.output.ipynb
+[2024-07-31T01:01:48.405Z] + basename RavenPy-master/docs/notebooks/Sensitivity_analysis.ipynb
+[2024-07-31T01:01:48.405Z] + filename=Sensitivity_analysis.ipynb
+[2024-07-31T01:01:48.405Z] + echo Sensitivity_analysis.ipynb
+[2024-07-31T01:01:48.405Z] + sed s/.ipynb$//
+[2024-07-31T01:01:48.405Z] + filename=Sensitivity_analysis
+[2024-07-31T01:01:48.405Z] + [ -e buildout/Sensitivity_analysis.output.ipynb ]
+[2024-07-31T01:01:48.405Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Sensitivity_analysis.output.ipynb RavenPy-master/docs/notebooks/Sensitivity_analysis.ipynb
+[2024-07-31T01:01:48.405Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/Sensitivity_analysis.ipynb to notebook
+[2024-07-31T01:02:10.345Z] [NbConvertApp] Writing 28248 bytes to buildout/Sensitivity_analysis.output.ipynb
+[2024-07-31T01:02:10.345Z] + basename RavenPy-master/docs/notebooks/time_series_analysis.ipynb
+[2024-07-31T01:02:10.345Z] + filename=time_series_analysis.ipynb
+[2024-07-31T01:02:10.345Z] + + echo time_series_analysis.ipynb
+[2024-07-31T01:02:10.345Z] sed s/.ipynb$//
+[2024-07-31T01:02:10.345Z] + filename=time_series_analysis
+[2024-07-31T01:02:10.345Z] + [ -e buildout/time_series_analysis.output.ipynb ]
+[2024-07-31T01:02:10.345Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output time_series_analysis.output.ipynb RavenPy-master/docs/notebooks/time_series_analysis.ipynb
+[2024-07-31T01:02:10.345Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/time_series_analysis.ipynb to notebook
+[2024-07-31T01:02:18.481Z] [NbConvertApp] Writing 186559 bytes to buildout/time_series_analysis.output.ipynb
+[2024-07-31T01:02:18.481Z] + basename RavenPy-master/docs/notebooks/paper/Perform_a_climate_change_impact_study_on_a_watershed.ipynb
+[2024-07-31T01:02:18.481Z] + filename=Perform_a_climate_change_impact_study_on_a_watershed.ipynb
+[2024-07-31T01:02:18.481Z] + echo Perform_a_climate_change_impact_study_on_a_watershed.ipynb+ 
+[2024-07-31T01:02:18.481Z] sed s/.ipynb$//
+[2024-07-31T01:02:18.481Z] + filename=Perform_a_climate_change_impact_study_on_a_watershed
+[2024-07-31T01:02:18.481Z] + [ -e buildout/Perform_a_climate_change_impact_study_on_a_watershed.output.ipynb ]
+[2024-07-31T01:02:18.481Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --allow-errors --output-dir buildout --output Perform_a_climate_change_impact_study_on_a_watershed.output.ipynb RavenPy-master/docs/notebooks/paper/Perform_a_climate_change_impact_study_on_a_watershed.ipynb
+[2024-07-31T01:02:19.051Z] [NbConvertApp] Converting notebook RavenPy-master/docs/notebooks/paper/Perform_a_climate_change_impact_study_on_a_watershed.ipynb to notebook
+[2024-07-31T01:10:40.909Z] [NbConvertApp] Writing 621143 bytes to buildout/Perform_a_climate_change_impact_study_on_a_watershed.output.ipynb
+[2024-07-31T01:10:40.909Z] + exit 1
+[2024-07-31T01:10:40.909Z] + EXIT_CODE=1
+[2024-07-31T01:10:40.909Z] + ENV_DUMP_DIR=buildout/env-dump
+[2024-07-31T01:10:40.909Z] + mkdir -p buildout/env-dump
+[2024-07-31T01:10:40.909Z] + ENV_EXPORT_FILE=buildout/env-dump/environment-export-birdy.yml
+[2024-07-31T01:10:40.909Z] + rm -fv buildout/env-dump/environment-export-birdy.yml
+[2024-07-31T01:10:40.909Z] + conda env export -n birdy
+[2024-07-31T01:10:40.909Z] + LIST_EXPLICIT_FILE=buildout/env-dump/conda-list-explicit-birdy.txt
+[2024-07-31T01:10:40.909Z] + rm -fv buildout/env-dump/conda-list-explicit-birdy.txt
+[2024-07-31T01:10:40.909Z] + conda list -n birdy --explicit
+[2024-07-31T01:10:46.192Z] + PIP_FREEZE_FILE=buildout/env-dump/pip-freeze-birdy-requirements.txt
+[2024-07-31T01:10:46.192Z] + rm -fv buildout/env-dump/pip-freeze-birdy-requirements.txt
+[2024-07-31T01:10:46.192Z] + pip freeze
+[2024-07-31T01:10:49.531Z] + exit 1
 [Pipeline] }
 [Pipeline] // withCredentials
 [Pipeline] }
@@ -895,41 +791,42 @@ $ docker top 52ba0d78fedc5b836399b9e23174dcc3a26eb1f1a49ece2b685cbc25fc32fc83 -e
 [Pipeline] stage
 [Pipeline] { (Declarative: Post Actions)
 [Pipeline] archiveArtifacts
-[2024-05-24T02:11:52.503Z] Archiving artifacts
-[2024-05-24T02:11:52.527Z] Recording fingerprints
+[2024-07-31T01:10:49.688Z] Archiving artifacts
+[2024-07-31T01:10:49.766Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-05-24T02:11:52.550Z] Archiving artifacts
-[2024-05-24T02:11:53.352Z] Recording fingerprints
+[2024-07-31T01:10:49.797Z] Archiving artifacts
+[2024-07-31T01:10:50.439Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-05-24T02:11:54.307Z] Archiving artifacts
-[2024-05-24T02:11:54.338Z] Recording fingerprints
+[2024-07-31T01:10:50.574Z] Archiving artifacts
+[2024-07-31T01:10:50.589Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-05-24T02:11:54.702Z] Archiving artifacts
-[2024-05-24T02:11:54.919Z] Recording fingerprints
+[2024-07-31T01:10:50.621Z] Archiving artifacts
+[2024-07-31T01:10:50.639Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-05-24T02:11:55.009Z] Archiving artifacts
-[2024-05-24T02:11:55.032Z] Recording fingerprints
+[2024-07-31T01:10:50.682Z] Archiving artifacts
+[2024-07-31T01:10:50.707Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-05-24T02:11:55.120Z] Archiving artifacts
-[2024-05-24T02:11:55.160Z] Recording fingerprints
+[2024-07-31T01:10:50.764Z] Archiving artifacts
+[2024-07-31T01:10:50.803Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-05-24T02:11:57.450Z] Archiving artifacts
-[2024-05-24T02:11:57.702Z] Recording fingerprints
+[2024-07-31T01:10:50.853Z] Archiving artifacts
+[2024-07-31T01:10:50.870Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-05-24T02:11:58.246Z] Archiving artifacts
-[2024-05-24T02:11:58.286Z] Recording fingerprints
+[2024-07-31T01:10:50.901Z] Archiving artifacts
+[2024-07-31T01:10:50.929Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-05-24T02:11:58.849Z] Archiving artifacts
-[2024-05-24T02:11:59.240Z] Recording fingerprints
+[2024-07-31T01:10:50.971Z] Archiving artifacts
+[2024-07-31T01:10:51.326Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-05-24T02:12:01.113Z] Archiving artifacts
-[2024-05-24T02:12:01.489Z] Recording fingerprints
+[2024-07-31T01:10:51.397Z] Archiving artifacts
+[2024-07-31T01:10:51.767Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-05-24T02:12:04.597Z] Archiving artifacts
-[2024-05-24T02:12:04.620Z] Recording fingerprints
+[2024-07-31T01:10:51.870Z] Archiving artifacts
+[2024-07-31T01:10:51.886Z] Recording fingerprints
 [Pipeline] emailextrecipients
+[2024-07-31T01:10:51.928Z] Failed to send e-mail to admin because no e-mail address is known, and no default e-mail domain is configured
 [Pipeline] step
-[2024-05-24T02:12:04.767Z] Sending e-mails to: vu.long@ouranos.ca
+[2024-07-31T01:10:51.989Z] An attempt to send an e-mail to empty list of recipients, ignored.
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] }
@@ -939,8 +836,8 @@ $ docker top 52ba0d78fedc5b836399b9e23174dcc3a26eb1f1a49ece2b685cbc25fc32fc83 -e
 [Pipeline] }
 [Pipeline] // ansiColor
 [Pipeline] }
-$ docker stop --time=1 52ba0d78fedc5b836399b9e23174dcc3a26eb1f1a49ece2b685cbc25fc32fc83
-$ docker rm -f 52ba0d78fedc5b836399b9e23174dcc3a26eb1f1a49ece2b685cbc25fc32fc83
+$ docker stop --time=1 24da7842c4fe7c716803ab2ffbc1ef729dcbfd11547edc15a68e80beaac9ee45
+$ docker rm -f 24da7842c4fe7c716803ab2ffbc1ef729dcbfd11547edc15a68e80beaac9ee45
 [Pipeline] // withDockerContainer
 [Pipeline] }
 [Pipeline] // withEnv
