@@ -1,4 +1,4 @@
-FROM pavics/workflow-tests:py311-240610
+FROM pavics/workflow-tests:py311-240730
 
 USER root
 
