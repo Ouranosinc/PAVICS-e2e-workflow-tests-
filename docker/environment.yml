@@ -19,12 +19,12 @@ dependencies:
 
   # Pin latest xclim and ravenpy to avoid downgrading during the second installation phase.
   # Mamba is quicker to solve dependencies than conda, but it is less precise so accidental downgrades can happen.
-  - xclim >= 0.49.0
-  - ravenpy >= 0.14.1
+  - xclim >= 0.52.2
+  - ravenpy >= 0.15.0
 
   # https://anaconda.org/conda-forge/xscen
   # A climate change scenario-building analysis framework, built with xclim/xarray.
-  - xscen >= 0.9.0
+  - xscen >= 0.9.1
 
     #- dask  # from xclim and ravenpy
     #- distributed
@@ -42,8 +42,7 @@ dependencies:
   - birdy >= 0.8.7
     # - owslib>=0.23.0  # from ravenpy
     # - netcdf4  # from ravenpy
-  # TODO: remove libnetcdf PIN because https://github.com/Ouranosinc/PAVICS-landing/issues/66
-  - libnetcdf <= 4.8.1
+  - libnetcdf
   # https://github.com/ecmwf/cfgrib
   # Python interface to map GRIB files to the Unidata's Common Data Model v4
   # following the CF Conventions.
