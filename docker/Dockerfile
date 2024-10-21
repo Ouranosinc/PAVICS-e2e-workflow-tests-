@@ -53,7 +53,7 @@ ENV PATH="/opt/conda/envs/birdy/bin:$PATH"
 
 # our notebooks are hardcoded to lookup for kernel named 'birdy'
 # this python is from the birdy env above
-RUN python -m ipykernel install --name birdy
+RUN python -m ipykernel install --name birdy && conda env export --name birdy
 
 # install using same channel preferences as birdy original env to not downgrade
 # anything accidentally
