@@ -40,8 +40,6 @@ downloadgithubrepos $ROOK_REPO $ROOK_BRANCH
 ROOK_REPO_NAME="$(extract_repo_name "$ROOK_REPO")"
 ROOK_DIR="$(sanitize_extracted_folder_name "${ROOK_REPO_NAME}-${ROOK_BRANCH}")"
 
-delete_files_confusing_pytest "$ROOK_DIR"
-
 # Set new nbs as nb list to test.
 NOTEBOOKS="$ROOK_DIR/notebooks/*.ipynb"
 ' > "$CONFIG_OVERRIDE_SCRIPT_URL"

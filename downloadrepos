@@ -59,16 +59,6 @@ sanitize_extracted_folder_name() {
     echo "$1" | sed "s@[^a-zA-Z0-9_\-\.]@-@g"
 }
 
-# Presence of setup.cfg, tox.ini, pyproject.toml files confuse py.test execution rootdir discovery.
-# USAGE: delete_files_confusing_pytest "$CHECKOUT_DIR"
-delete_files_confusing_pytest() {
-    for afile in setup.cfg tox.ini pyproject.toml; do
-        if [ -f "$1/$afile" ]; then
-            rm -v "$1/$afile"
-        fi
-    done
-}
-
 downloadrepos_main() {
     . ./default_build_params
 

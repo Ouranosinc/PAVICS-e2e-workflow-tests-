@@ -69,7 +69,7 @@ if [ -n "$CONFIG_OVERRIDE_SCRIPT_URL" ]; then
 fi
 
 # CONFIG_OVERRIDE_SCRIPT_URL can override NBVAL_SANITIZE_CFG_FILE.
-py.test --nbval $NOTEBOOKS --nbval-sanitize-with "${NBVAL_SANITIZE_CFG_FILE:=notebooks/output-sanitize.cfg}" $PYTEST_EXTRA_OPTS
+py.test --rootdir=. --nbval $NOTEBOOKS --nbval-sanitize-with "${NBVAL_SANITIZE_CFG_FILE:=notebooks/output-sanitize.cfg}" $PYTEST_EXTRA_OPTS
 EXIT_CODE="$?"
 
 # lowercase SAVE_RESULTING_NOTEBOOK string
