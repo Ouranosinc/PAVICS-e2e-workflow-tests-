@@ -106,14 +106,15 @@ downloadrepos_main() {
 #
 # Ex: when given 'pavics-sdi-master/docs/source/notebooks/regridding.ipynb',
 # the current implementation will return
-# 'pavics-sdi-master__docs__source__notebooks__regridding.ipynb', which means
+# 'pavics-sdi-master--regridding.ipynb', which means
 # there will be
-# "buildout/pavics-sdi-master__docs__source__notebooks__regridding.ipynb" and
-# "buildout/pavics-sdi-master__docs__source__notebooks__regridding.output.ipynb"
+# "buildout/pavics-sdi-master--regridding.ipynb" and
+# "buildout/pavics-sdi-master--regridding.output.ipynb"
 #
 # USAGE: artifact_filename="$(choose_artifact_filename "$original_nb_filename")"
 choose_artifact_filename() {
-    echo "$1" | sed "s@/@__@g"
+    repo_branch="$(echo "$1" | sed "s@/.*@@")"
+    echo "${repo_branch}--$(basename "$1")"
 }
 
 
