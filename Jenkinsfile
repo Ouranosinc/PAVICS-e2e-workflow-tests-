@@ -144,7 +144,7 @@ Note this is another run, will double the time and no guaranty to have same erro
 
     post {
         always {
-            archiveArtifacts(artifacts: 'buildout/*.ipynb', fingerprint: true, allowEmptyArchive: true)
+            archiveArtifacts(artifacts: 'buildout/**/*.ipynb', fingerprint: true, allowEmptyArchive: true)
             archiveArtifacts(artifacts: 'buildout/env-dump/', fingerprint: true)
         }
 	unsuccessful {  // Run if the current builds status is "Aborted", "Failure" or "Unstable"

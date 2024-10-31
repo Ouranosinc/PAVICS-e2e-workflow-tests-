@@ -89,8 +89,7 @@ BUILDOUT_DIR="buildout"  # hardcode in Jenkinsfile, can not be override.
 
 mkdir -p "$BUILDOUT_DIR/"
 for nb in $NOTEBOOKS; do
-    repo_branch_name="$(extract_repo_name "$nb")"
-    filename="${repo_branch_name}--$(basename "$nb")"
+    filename="$(choose_artifact_filename "$nb")"
     filename="$(echo "$filename" | sed "s/.ipynb$//")"  # remove .ipynb ext
     if [ -e "${BUILDOUT_DIR}/${filename}.ipynb" ]; then
         # prevent name clash

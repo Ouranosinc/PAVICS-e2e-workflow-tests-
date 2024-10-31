@@ -96,6 +96,27 @@ downloadrepos_main() {
     fi
 }
 
+
+# Choose artifact filename format under buildout/ dir that is archived by Jenkins.
+#
+# The corresponding .output.ipynb will also have the same filename format.
+#
+# Override this function in CONFIG_OVERRIDE_SCRIPT_URL to choose another
+# format, see demo in test-override/jenkins-params-external-repos.include.sh.
+#
+# Ex: when given 'pavics-sdi-master/docs/source/notebooks/regridding.ipynb',
+# the current implementation will return
+# 'pavics-sdi-master__docs__source__notebooks__regridding.ipynb', which means
+# there will be
+# "buildout/pavics-sdi-master__docs__source__notebooks__regridding.ipynb" and
+# "buildout/pavics-sdi-master__docs__source__notebooks__regridding.output.ipynb"
+#
+# USAGE: artifact_filename="$(choose_artifact_filename "$original_nb_filename")"
+choose_artifact_filename() {
+    echo "$1" | sed "s@/@__@g"
+}
+
+
 if [ -z "$DOWNLOADREPOS_AS_LIB" ]; then
     # Script mode, not library mode.
     downloadrepos_main "$@"

@@ -42,4 +42,9 @@ ROOK_DIR="$(sanitize_extracted_folder_name "${ROOK_REPO_NAME}-${ROOK_BRANCH}")"
 
 # Set new nbs as nb list to test.
 NOTEBOOKS="$ROOK_DIR/notebooks/*.ipynb"
+
+# Sample demo override choose_artifact_filename: keep the original file path hierarchy.
+choose_artifact_filename() {
+    echo "$1"
+}
 ' > "$CONFIG_OVERRIDE_SCRIPT_URL"
