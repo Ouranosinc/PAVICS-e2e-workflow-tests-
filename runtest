@@ -114,5 +114,10 @@ for nb in $NOTEBOOKS; do
     fi
 done
 
+
+# Post-processing steps override in CONFIG_OVERRIDE_SCRIPT_URL.
+post_runtest
+
+
 # exit with return code from py.test
 exit $EXIT_CODE

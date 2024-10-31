@@ -117,6 +117,17 @@ choose_artifact_filename() {
 }
 
 
+# Any post-processing steps at the end of runtest.
+#
+# Override this function in CONFIG_OVERRIDE_SCRIPT_URL to add extra steps,
+# see demo in test-override/jenkins-params-external-repos.include.sh.
+#
+post_runtest() {
+    # Can not have empty function, have to put something here.
+    echo "Default: no post_runtest() override."
+}
+
+
 if [ -z "$DOWNLOADREPOS_AS_LIB" ]; then
     # Script mode, not library mode.
     downloadrepos_main "$@"

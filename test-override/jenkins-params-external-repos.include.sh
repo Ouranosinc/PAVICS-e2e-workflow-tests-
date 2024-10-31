@@ -47,4 +47,12 @@ NOTEBOOKS="$ROOK_DIR/notebooks/*.ipynb"
 choose_artifact_filename() {
     echo "$1"
 }
+
+# Sample demo override post_runtest: create lots of artifacts for Jenkins to
+# archive to test how Jenkins will display its archive page.
+post_runtest() {
+    for i in $(seq --equal-width 500); do
+        echo "file${i}" > "${BUILDOUT_DIR}/file${i}.ipynb"
+    done
+}
 ' > "$CONFIG_OVERRIDE_SCRIPT_URL"
