@@ -27,6 +27,7 @@ dependencies:
   - xscen >= 0.10.1
 
     #- dask  # from xclim and ravenpy
+  - dask != 2024.11.0  # bug in this specific version broke Raven nb
     #- distributed
 
   # flox: fast & furious GroupBy reductions for dask.array
