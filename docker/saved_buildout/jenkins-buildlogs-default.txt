@@ -1,4 +1,4 @@
-Branch indexing
+Started by user Long Vu
  > git rev-parse --is-inside-work-tree # timeout=10
 Setting origin to https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git
  > git config remote.origin.url https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git # timeout=10
@@ -17,7 +17,7 @@ Seen branch in repository origin/pin-jupyter-env
 Seen branch in repository origin/test-dockerhub-build
 Seen branch in repository origin/twitcher_perf_test_notebook
 Seen 9 remote branches
-Obtained Jenkinsfile from 34f763760c0c83ff095f608b4d1eacbdd247edf2
+Obtained Jenkinsfile from a59c6547bdc73db9daf217a069862a06b8435f73
 Running in Durability level: MAX_SURVIVABILITY
 [Pipeline] Start of Pipeline
 [Pipeline] node
@@ -29,860 +29,922 @@ Running on linux1 in /home/jenkins/agent/workspace/_workflow-tests_new-docker-bu
 No credentials specified
 Fetching changes from the remote Git repository
 Fetching without tags
+Checking out Revision a59c6547bdc73db9daf217a069862a06b8435f73 (new-docker-build)
+Commit message: "docker: show conda env size diff during build for logging purposes"
  > git rev-parse --is-inside-work-tree # timeout=10
  > git config remote.origin.url https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git # timeout=10
 Fetching upstream changes from https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git
  > git --version # timeout=10
  > git fetch --no-tags --progress -- https://github.com/Ouranosinc/PAVICS-e2e-workflow-tests.git +refs/heads/*:refs/remotes/origin/* # timeout=10
-Checking out Revision 34f763760c0c83ff095f608b4d1eacbdd247edf2 (new-docker-build)
-Commit message: "release: update to use image pavics/workflow-tests:py311-241216"
  > git config core.sparsecheckout # timeout=10
- > git checkout -f 34f763760c0c83ff095f608b4d1eacbdd247edf2 # timeout=10
- > git rev-list --no-walk 7c20923407aa03af907b4c7a3f566a32b3aa1d2c # timeout=10
+ > git checkout -f a59c6547bdc73db9daf217a069862a06b8435f73 # timeout=10
+ > git rev-list --no-walk 34f763760c0c83ff095f608b4d1eacbdd247edf2 # timeout=10
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] withEnv
 [Pipeline] {
 [Pipeline] isUnix
 [Pipeline] sh
-+ docker inspect -f . pavics/workflow-tests:py311-241216
-.
++ docker inspect -f . pavics/workflow-tests:py311-241219
+
+Error: No such object: pavics/workflow-tests:py311-241219
+[Pipeline] isUnix
+[Pipeline] sh
++ docker pull pavics/workflow-tests:py311-241219
+py311-241219: Pulling from pavics/workflow-tests
+bc0965b23a04: Pulling fs layer
+8be53c7108a0: Pulling fs layer
+ef307b4ab329: Pulling fs layer
+38be507f64d3: Pulling fs layer
+7c4fac62f8df: Pulling fs layer
+6a2e5ddfded9: Pulling fs layer
+e8eb518044dc: Pulling fs layer
+74e2e92ca480: Pulling fs layer
+1be7ef76b08d: Pulling fs layer
+69d505e0b179: Pulling fs layer
+7d083273255d: Pulling fs layer
+8457674932ce: Pulling fs layer
+7c4fac62f8df: Waiting
+6a2e5ddfded9: Waiting
+e8eb518044dc: Waiting
+74e2e92ca480: Waiting
+1be7ef76b08d: Waiting
+38be507f64d3: Waiting
+69d505e0b179: Waiting
+7d083273255d: Waiting
+8457674932ce: Waiting
+bc0965b23a04: Verifying Checksum
+bc0965b23a04: Download complete
+8be53c7108a0: Verifying Checksum
+8be53c7108a0: Download complete
+bc0965b23a04: Pull complete
+ef307b4ab329: Verifying Checksum
+ef307b4ab329: Download complete
+38be507f64d3: Download complete
+e8eb518044dc: Verifying Checksum
+e8eb518044dc: Download complete
+8be53c7108a0: Pull complete
+7c4fac62f8df: Verifying Checksum
+7c4fac62f8df: Download complete
+1be7ef76b08d: Download complete
+6a2e5ddfded9: Verifying Checksum
+6a2e5ddfded9: Download complete
+7d083273255d: Verifying Checksum
+7d083273255d: Download complete
+8457674932ce: Verifying Checksum
+8457674932ce: Download complete
+69d505e0b179: Verifying Checksum
+69d505e0b179: Download complete
+ef307b4ab329: Pull complete
+74e2e92ca480: Verifying Checksum
+74e2e92ca480: Download complete
+38be507f64d3: Pull complete
+7c4fac62f8df: Pull complete
+6a2e5ddfded9: Pull complete
+e8eb518044dc: Pull complete
+74e2e92ca480: Pull complete
+1be7ef76b08d: Pull complete
+69d505e0b179: Pull complete
+7d083273255d: Pull complete
+8457674932ce: Pull complete
+Digest: sha256:a27901bd1200ec29b37a85ef974b9e51cabb60de126d6fbc46a324248fa4193f
+Status: Downloaded newer image for pavics/workflow-tests:py311-241219
 [Pipeline] withDockerContainer
 linux1 seems to be running inside container 6ca2491e7f43a3bf757202f625309feff7bf027df899f42e43bc71ba740ac9b6
-$ docker run -t -d -u 1000:1000 -w /home/jenkins/agent/workspace/_workflow-tests_new-docker-build --volumes-from 6ca2491e7f43a3bf757202f625309feff7bf027df899f42e43bc71ba740ac9b6 -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** pavics/workflow-tests:py311-241216 cat
-$ docker top 90f9b291c9bb102cb2f6473bfbe3a2253d4a3592e207bb7d543860430301037e -eo pid,comm
+$ docker run -t -d -u 1000:1000 -w /home/jenkins/agent/workspace/_workflow-tests_new-docker-build --volumes-from 6ca2491e7f43a3bf757202f625309feff7bf027df899f42e43bc71ba740ac9b6 -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** pavics/workflow-tests:py311-241219 cat
+$ docker top 6cc77029ca47f4b0fdf04c578b84152f1df7cb65e8d647c09bb1b272a7df768e -eo pid,comm
 [Pipeline] {
 [Pipeline] ansiColor
 [Pipeline] {
 [Pipeline] timestamps
 [Pipeline] {
 [Pipeline] timeout
-[2024-12-18T02:10:23.314Z] Timeout set to expire in 2 hr 0 min
+[2024-12-19T20:55:00.358Z] Timeout set to expire in 2 hr 0 min
 [Pipeline] {
 [Pipeline] stage
 [Pipeline] { (Run tests)
 [Pipeline] script
 [Pipeline] {
 [Pipeline] withCredentials
-[2024-12-18T02:10:23.648Z] Masking supported pattern matches of $ESGF_AUTH_USERNAME or $ESGF_AUTH_PASSWORD or $ESGF_AUTH_TOKEN or $COMPUTE_TOKEN
+[2024-12-19T20:55:00.436Z] Masking supported pattern matches of $ESGF_AUTH_USERNAME or $ESGF_AUTH_PASSWORD or $ESGF_AUTH_TOKEN or $COMPUTE_TOKEN
 [Pipeline] {
 [Pipeline] sh
-[2024-12-18T02:10:24.302Z] + VERIFY_SSL=true SAVE_RESULTING_NOTEBOOK=true ./testall
-[2024-12-18T02:10:24.302Z] TEST_PAVICS_SDI_REPO has been set to 'true'
-[2024-12-18T02:10:24.302Z] PAVICS_SDI_BRANCH has been set to 'master'
-[2024-12-18T02:10:24.302Z] PAVICS_SDI_REPO has been set to 'Ouranosinc/pavics-sdi'
-[2024-12-18T02:10:24.302Z] TEST_FINCH_REPO has been set to 'true'
-[2024-12-18T02:10:24.302Z] FINCH_BRANCH has been set to 'master'
-[2024-12-18T02:10:24.302Z] FINCH_REPO has been set to 'bird-house/finch'
-[2024-12-18T02:10:24.302Z] TEST_PAVICS_LANDING_REPO has been set to 'true'
-[2024-12-18T02:10:24.302Z] PAVICS_LANDING_BRANCH has been set to 'master'
-[2024-12-18T02:10:24.302Z] PAVICS_LANDING_REPO has been set to 'Ouranosinc/PAVICS-landing'
-[2024-12-18T02:10:24.302Z] TEST_RAVEN_REPO has been set to 'false'
-[2024-12-18T02:10:24.302Z] RAVEN_BRANCH has been set to 'main'
-[2024-12-18T02:10:24.302Z] RAVEN_REPO has been set to 'Ouranosinc/raven'
-[2024-12-18T02:10:24.302Z] TEST_RAVENPY_REPO has been set to 'false'
-[2024-12-18T02:10:24.302Z] RAVENPY_BRANCH has been set to 'master'
-[2024-12-18T02:10:24.302Z] RAVENPY_REPO has been set to 'CSHS-CWRA/RavenPy'
-[2024-12-18T02:10:24.302Z] TEST_ESGF_COMPUTE_API_REPO has been set to 'false'
-[2024-12-18T02:10:24.302Z] ESGF_COMPUTE_API_BRANCH has been set to 'devel'
-[2024-12-18T02:10:24.302Z] ESGF_COMPUTE_API_REPO has been set to 'ESGF/esgf-compute-api'
-[2024-12-18T02:10:24.302Z] TEST_LOCAL_NOTEBOOKS has been set to 'true'
-[2024-12-18T02:10:24.302Z] + [ -n  ]
-[2024-12-18T02:10:24.302Z] + git clean -fdx
-[2024-12-18T02:10:24.302Z] Removing .pytest_cache/
-[2024-12-18T02:10:24.302Z] Removing PAVICS-landing-master/
-[2024-12-18T02:10:24.302Z] Removing RavenPy-master/
-[2024-12-18T02:10:24.302Z] Removing __pycache__/
-[2024-12-18T02:10:24.302Z] Removing buildout/
-[2024-12-18T02:10:24.302Z] Removing esgf-compute-api-devel/
-[2024-12-18T02:10:24.302Z] Removing finch-master/
-[2024-12-18T02:10:24.302Z] Removing pavics-sdi-master/
-[2024-12-18T02:10:24.302Z] Removing raven-main/
-[2024-12-18T02:10:24.302Z] + ./downloadrepos
-[2024-12-18T02:10:24.302Z] TEST_PAVICS_SDI_REPO has been set to 'true'
-[2024-12-18T02:10:24.302Z] PAVICS_SDI_BRANCH has been set to 'master'
-[2024-12-18T02:10:24.302Z] PAVICS_SDI_REPO has been set to 'Ouranosinc/pavics-sdi'
-[2024-12-18T02:10:24.302Z] TEST_FINCH_REPO has been set to 'true'
-[2024-12-18T02:10:24.302Z] FINCH_BRANCH has been set to 'master'
-[2024-12-18T02:10:24.302Z] FINCH_REPO has been set to 'bird-house/finch'
-[2024-12-18T02:10:24.302Z] TEST_PAVICS_LANDING_REPO has been set to 'true'
-[2024-12-18T02:10:24.302Z] PAVICS_LANDING_BRANCH has been set to 'master'
-[2024-12-18T02:10:24.302Z] PAVICS_LANDING_REPO has been set to 'Ouranosinc/PAVICS-landing'
-[2024-12-18T02:10:24.302Z] TEST_RAVEN_REPO has been set to 'false'
-[2024-12-18T02:10:24.302Z] RAVEN_BRANCH has been set to 'main'
-[2024-12-18T02:10:24.302Z] RAVEN_REPO has been set to 'Ouranosinc/raven'
-[2024-12-18T02:10:24.303Z] TEST_RAVENPY_REPO has been set to 'false'
-[2024-12-18T02:10:24.303Z] RAVENPY_BRANCH has been set to 'master'
-[2024-12-18T02:10:24.303Z] RAVENPY_REPO has been set to 'CSHS-CWRA/RavenPy'
-[2024-12-18T02:10:24.303Z] TEST_ESGF_COMPUTE_API_REPO has been set to 'false'
-[2024-12-18T02:10:24.303Z] ESGF_COMPUTE_API_BRANCH has been set to 'devel'
-[2024-12-18T02:10:24.303Z] ESGF_COMPUTE_API_REPO has been set to 'ESGF/esgf-compute-api'
-[2024-12-18T02:10:24.303Z] TEST_LOCAL_NOTEBOOKS has been set to 'true'
-[2024-12-18T02:10:24.303Z] + rm -rf pavics-sdi-*
-[2024-12-18T02:10:24.303Z] + ls
-[2024-12-18T02:10:24.303Z] + grep pavics-sdi
-[2024-12-18T02:10:24.303Z] + downloadrepos https://github.com/Ouranosinc/pavics-sdi master
-[2024-12-18T02:10:24.303Z] + github_repo=https://github.com/Ouranosinc/pavics-sdi
-[2024-12-18T02:10:24.303Z] + shift
-[2024-12-18T02:10:24.303Z] + branch=master
-[2024-12-18T02:10:24.303Z] + shift
-[2024-12-18T02:10:24.303Z] + wget --quiet --output-document - https://github.com/Ouranosinc/pavics-sdi/archive/master.tar.gz
-[2024-12-18T02:10:24.303Z] + tar xz
-[2024-12-18T02:10:27.564Z] + ls
-[2024-12-18T02:10:27.564Z] + grep pavics-sdi
-[2024-12-18T02:10:27.564Z] pavics-sdi-master
-[2024-12-18T02:10:27.564Z] + set +x
-[2024-12-18T02:10:27.564Z] + rm -rf finch-*
-[2024-12-18T02:10:27.564Z] + ls
-[2024-12-18T02:10:27.564Z] + grep finch
-[2024-12-18T02:10:27.564Z] + downloadrepos https://github.com/bird-house/finch master
-[2024-12-18T02:10:27.564Z] + github_repo=https://github.com/bird-house/finch
-[2024-12-18T02:10:27.564Z] + shift
-[2024-12-18T02:10:27.564Z] + branch=master
-[2024-12-18T02:10:27.564Z] + shift
-[2024-12-18T02:10:27.564Z] + wget --quiet --output-document - https://github.com/bird-house/finch/archive/master.tar.gz
-[2024-12-18T02:10:27.564Z] + tar xz
-[2024-12-18T02:10:28.924Z] + ls
-[2024-12-18T02:10:28.924Z] + grep finch
-[2024-12-18T02:10:28.924Z] finch-master
-[2024-12-18T02:10:28.924Z] + set +x
-[2024-12-18T02:10:28.924Z] + rm -rf PAVICS-landing-*
-[2024-12-18T02:10:28.924Z] + ls
-[2024-12-18T02:10:28.924Z] + grep PAVICS-landing
-[2024-12-18T02:10:28.924Z] + downloadrepos https://github.com/Ouranosinc/PAVICS-landing master
-[2024-12-18T02:10:28.924Z] + github_repo=https://github.com/Ouranosinc/PAVICS-landing
-[2024-12-18T02:10:28.924Z] + shift
-[2024-12-18T02:10:28.924Z] + branch=master
-[2024-12-18T02:10:28.924Z] + shift
-[2024-12-18T02:10:28.924Z] + wget --quiet --output-document - https://github.com/Ouranosinc/PAVICS-landing/archive/master.tar.gz
-[2024-12-18T02:10:28.924Z] + tar xz
-[2024-12-18T02:10:38.875Z] + ls
-[2024-12-18T02:10:38.875Z] + grep PAVICS-landing
-[2024-12-18T02:10:38.875Z] PAVICS-landing-master
-[2024-12-18T02:10:38.875Z] + set +x
-[2024-12-18T02:10:38.875Z] + rm -rf raven-*
-[2024-12-18T02:10:38.875Z] + ls
-[2024-12-18T02:10:38.875Z] + grep raven
-[2024-12-18T02:10:38.875Z] + downloadrepos https://github.com/Ouranosinc/raven main
-[2024-12-18T02:10:38.875Z] + github_repo=https://github.com/Ouranosinc/raven
-[2024-12-18T02:10:38.875Z] + shift
-[2024-12-18T02:10:38.875Z] + branch=main
-[2024-12-18T02:10:38.875Z] + shift
-[2024-12-18T02:10:38.875Z] + wget --quiet --output-document - https://github.com/Ouranosinc/raven/archive/main.tar.gz
-[2024-12-18T02:10:38.875Z] + tar xz
-[2024-12-18T02:10:39.798Z] + ls
-[2024-12-18T02:10:39.798Z] + grep raven
-[2024-12-18T02:10:39.798Z] raven-main
-[2024-12-18T02:10:39.798Z] + set +x
-[2024-12-18T02:10:39.798Z] + rm -rf RavenPy-*
-[2024-12-18T02:10:39.798Z] + ls
-[2024-12-18T02:10:39.798Z] + grep RavenPy
-[2024-12-18T02:10:39.798Z] + downloadrepos https://github.com/CSHS-CWRA/RavenPy master
-[2024-12-18T02:10:39.798Z] + github_repo=https://github.com/CSHS-CWRA/RavenPy
-[2024-12-18T02:10:39.798Z] + shift
-[2024-12-18T02:10:39.798Z] + branch=master
-[2024-12-18T02:10:39.798Z] + shift
-[2024-12-18T02:10:39.798Z] + wget --quiet --output-document - https://github.com/CSHS-CWRA/RavenPy/archive/master.tar.gz
-[2024-12-18T02:10:39.798Z] + tar xz
-[2024-12-18T02:10:41.680Z] + ls
-[2024-12-18T02:10:41.680Z] + grep RavenPy
-[2024-12-18T02:10:41.680Z] RavenPy-master
-[2024-12-18T02:10:41.680Z] + set +x
-[2024-12-18T02:10:41.680Z] + rm -rf esgf-compute-api-*
-[2024-12-18T02:10:41.680Z] + ls
-[2024-12-18T02:10:41.680Z] + grep esgf-compute-api
-[2024-12-18T02:10:41.680Z] + downloadrepos https://github.com/ESGF/esgf-compute-api devel
-[2024-12-18T02:10:41.680Z] + github_repo=https://github.com/ESGF/esgf-compute-api
-[2024-12-18T02:10:41.680Z] + shift
-[2024-12-18T02:10:41.680Z] + branch=devel
-[2024-12-18T02:10:41.680Z] + shift
-[2024-12-18T02:10:41.680Z] + wget --quiet --output-document - https://github.com/ESGF/esgf-compute-api/archive/devel.tar.gz
-[2024-12-18T02:10:41.680Z] + tar xz
-[2024-12-18T02:10:43.041Z] + ls
-[2024-12-18T02:10:43.041Z] + grep esgf-compute-api
-[2024-12-18T02:10:43.041Z] esgf-compute-api-devel
-[2024-12-18T02:10:43.041Z] + set +x
-[2024-12-18T02:10:43.041Z] + echo master
-[2024-12-18T02:10:43.041Z] + sed s@/@-@g
-[2024-12-18T02:10:43.041Z] + export PAVICS_SDI_BRANCH=master
-[2024-12-18T02:10:43.041Z] + echo Ouranosinc/pavics-sdi
-[2024-12-18T02:10:43.041Z] + sed s@^.*/@@g
-[2024-12-18T02:10:43.041Z] + export PAVICS_SDI_REPO_NAME=pavics-sdi
-[2024-12-18T02:10:43.041Z] + echo master
-[2024-12-18T02:10:43.041Z] + sed s@/@-@g
-[2024-12-18T02:10:43.041Z] + export FINCH_BRANCH=master
-[2024-12-18T02:10:43.041Z] + echo bird-house/finch
-[2024-12-18T02:10:43.041Z] + sed s@^.*/@@g
-[2024-12-18T02:10:43.041Z] + export FINCH_REPO_NAME=finch
-[2024-12-18T02:10:43.041Z] + echo master
-[2024-12-18T02:10:43.041Z] + sed s@/@-@g
-[2024-12-18T02:10:43.041Z] + export PAVICS_LANDING_BRANCH=master
-[2024-12-18T02:10:43.041Z] + echo Ouranosinc/PAVICS-landing
-[2024-12-18T02:10:43.041Z] + sed s@^.*/@@g
-[2024-12-18T02:10:43.041Z] + export PAVICS_LANDING_REPO_NAME=PAVICS-landing
-[2024-12-18T02:10:43.041Z] + echo main
-[2024-12-18T02:10:43.041Z] + sed s@/@-@g
-[2024-12-18T02:10:43.041Z] + export RAVEN_BRANCH=main
-[2024-12-18T02:10:43.041Z] + echo Ouranosinc/raven
-[2024-12-18T02:10:43.041Z] + sed s@^.*/@@g
-[2024-12-18T02:10:43.041Z] + export RAVEN_REPO_NAME=raven
-[2024-12-18T02:10:43.041Z] + echo master
-[2024-12-18T02:10:43.041Z] + sed s@/@-@g
-[2024-12-18T02:10:43.041Z] + export RAVENPY_BRANCH=master
-[2024-12-18T02:10:43.041Z] + echo CSHS-CWRA/RavenPy
-[2024-12-18T02:10:43.041Z] + sed s@^.*/@@g
-[2024-12-18T02:10:43.041Z] + export RAVENPY_REPO_NAME=RavenPy
-[2024-12-18T02:10:43.041Z] + echo devel
-[2024-12-18T02:10:43.041Z] + sed s@/@-@g
-[2024-12-18T02:10:43.041Z] + export ESGF_COMPUTE_API_BRANCH=devel
-[2024-12-18T02:10:43.041Z] + echo ESGF/esgf-compute-api
-[2024-12-18T02:10:43.041Z] + sed s@^.*/@@g
-[2024-12-18T02:10:43.041Z] + export ESGF_COMPUTE_API_REPO_NAME=esgf-compute-api
-[2024-12-18T02:10:43.041Z] + echo pavics-sdi-master
-[2024-12-18T02:10:43.041Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-12-18T02:10:43.041Z] + export PAVICS_SDI_DIR=pavics-sdi-master
-[2024-12-18T02:10:43.041Z] + echo finch-master
-[2024-12-18T02:10:43.041Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-12-18T02:10:43.041Z] + export FINCH_DIR=finch-master
-[2024-12-18T02:10:43.041Z] + echo PAVICS-landing-master
-[2024-12-18T02:10:43.041Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-12-18T02:10:43.041Z] + export PAVICS_LANDING_DIR=PAVICS-landing-master
-[2024-12-18T02:10:43.041Z] + echo raven-main
-[2024-12-18T02:10:43.041Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-12-18T02:10:43.041Z] + export RAVEN_DIR=raven-main
-[2024-12-18T02:10:43.041Z] + echo RavenPy-master
-[2024-12-18T02:10:43.041Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-12-18T02:10:43.041Z] + export RAVENPY_DIR=RavenPy-master
-[2024-12-18T02:10:43.041Z] + echo esgf-compute-api-devel
-[2024-12-18T02:10:43.041Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
-[2024-12-18T02:10:43.041Z] + export ESGF_COMPUTE_API_DIR=esgf-compute-api-devel
-[2024-12-18T02:10:43.041Z] + echo true
-[2024-12-18T02:10:43.041Z] + tr [:upper:] [:lower:]
-[2024-12-18T02:10:43.041Z] + VERIFY_SSL=true
-[2024-12-18T02:10:43.042Z] + [ xtrue = xfalse ]
-[2024-12-18T02:10:43.042Z] + rm -v finch-master/setup.cfg
-[2024-12-18T02:10:43.042Z] removed 'finch-master/setup.cfg'
-[2024-12-18T02:10:43.042Z] + rm -v raven-main/setup.cfg
-[2024-12-18T02:10:43.042Z] removed 'raven-main/setup.cfg'
-[2024-12-18T02:10:43.042Z] + rm -v raven-main/pyproject.toml
-[2024-12-18T02:10:43.042Z] removed 'raven-main/pyproject.toml'
-[2024-12-18T02:10:43.042Z] + rm -v RavenPy-master/setup.cfg
-[2024-12-18T02:10:43.042Z] rm: cannot remove 'RavenPy-master/setup.cfg': No such file or directory
-[2024-12-18T02:10:43.042Z] + rm -v RavenPy-master/tox.ini
-[2024-12-18T02:10:43.042Z] removed 'RavenPy-master/tox.ini'
-[2024-12-18T02:10:43.042Z] + rm -v RavenPy-master/pyproject.toml
-[2024-12-18T02:10:43.042Z] removed 'RavenPy-master/pyproject.toml'
-[2024-12-18T02:10:43.042Z] + rm -v esgf-compute-api-devel/setup.cfg
-[2024-12-18T02:10:43.042Z] rm: cannot remove 'esgf-compute-api-devel/setup.cfg': No such file or directory
-[2024-12-18T02:10:43.042Z] + rm -v esgf-compute-api-devel/tox.ini
-[2024-12-18T02:10:43.042Z] rm: cannot remove 'esgf-compute-api-devel/tox.ini': No such file or directory
-[2024-12-18T02:10:43.042Z] + echo false
-[2024-12-18T02:10:43.042Z] + tr [:upper:] [:lower:]
-[2024-12-18T02:10:43.042Z] + TEST_MAGPIE_AUTH=false
-[2024-12-18T02:10:43.042Z] + echo true
-[2024-12-18T02:10:43.042Z] + tr [:upper:] [:lower:]
-[2024-12-18T02:10:43.042Z] + TEST_PAVICS_SDI_REPO=true
-[2024-12-18T02:10:43.042Z] + echo false
-[2024-12-18T02:10:43.042Z] + tr [:upper:] [:lower:]
-[2024-12-18T02:10:43.042Z] + TEST_PAVICS_SDI_WEAVER=false
-[2024-12-18T02:10:43.042Z] + echo true
-[2024-12-18T02:10:43.042Z] + tr [:upper:] [:lower:]
-[2024-12-18T02:10:43.042Z] + TEST_FINCH_REPO=true
-[2024-12-18T02:10:43.042Z] + echo true
-[2024-12-18T02:10:43.042Z] + tr [:upper:] [:lower:]
-[2024-12-18T02:10:43.042Z] + TEST_PAVICS_LANDING_REPO=true
-[2024-12-18T02:10:43.042Z] + echo false
-[2024-12-18T02:10:43.042Z] + tr [:upper:] [:lower:]
-[2024-12-18T02:10:43.042Z] + TEST_RAVEN_REPO=false
-[2024-12-18T02:10:43.042Z] + echo false
-[2024-12-18T02:10:43.042Z] + tr [:upper:] [:lower:]
-[2024-12-18T02:10:43.042Z] + TEST_RAVENPY_REPO=false
-[2024-12-18T02:10:43.042Z] + echo false
-[2024-12-18T02:10:43.042Z] + tr [:upper:] [:lower:]
-[2024-12-18T02:10:43.042Z] + TEST_ESGF_COMPUTE_API_REPO=false
-[2024-12-18T02:10:43.042Z] + echo true
-[2024-12-18T02:10:43.042Z] + tr [:upper:] [:lower:]
-[2024-12-18T02:10:43.042Z] + TEST_LOCAL_NOTEBOOKS=true
-[2024-12-18T02:10:43.042Z] + NOTEBOOKS_TO_TEST=
-[2024-12-18T02:10:43.042Z] + [ xfalse = xtrue ]
-[2024-12-18T02:10:43.042Z] + [ xtrue = xtrue ]
-[2024-12-18T02:10:43.042Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb
-[2024-12-18T02:10:43.042Z] + [ xfalse = xtrue ]
-[2024-12-18T02:10:43.042Z] + [ xtrue = xtrue ]
-[2024-12-18T02:10:43.042Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb
-[2024-12-18T02:10:43.042Z] + [ xtrue = xtrue ]
-[2024-12-18T02:10:43.042Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/*.ipynb
-[2024-12-18T02:10:43.042Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/*.ipynb PAVICS-landing-master/content/notebooks/hydrology/*.ipynb
-[2024-12-18T02:10:43.042Z] + SETUP_SCRIPT=PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh
-[2024-12-18T02:10:43.042Z] + [ -x PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh ]
-[2024-12-18T02:10:43.042Z] + PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh
-[2024-12-18T02:10:43.042Z] + realpath PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh
-[2024-12-18T02:10:43.042Z] + THIS_FILE=/home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh
-[2024-12-18T02:10:43.042Z] + dirname /home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh
-[2024-12-18T02:10:43.042Z] + THIS_DIR=/home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators
-[2024-12-18T02:10:43.042Z] + NOTEBOOK_OUTDIR_BASE=/notebook_dir/writable-workspace/tmp
-[2024-12-18T02:10:43.042Z] + mkdir -p /notebook_dir/writable-workspace/tmp
-[2024-12-18T02:10:43.042Z] + unzip /home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/tutorial3.zip -d /notebook_dir/writable-workspace/tmp/
-[2024-12-18T02:10:43.042Z] Archive:  /home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/tutorial3.zip
-[2024-12-18T02:10:43.042Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-LR_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.042Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-LR_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.042Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-LR_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.042Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-HR_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.042Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-HR_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.042Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-HR_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.042Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-HR_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.042Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC6_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.042Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC6_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.042Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC6_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.042Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC6_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.042Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_INM_INM-CM5-0_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.042Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_INM_INM-CM5-0_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.042Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_INM_INM-CM5-0_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.042Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_INM_INM-CM5-0_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.042Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO_ACCESS-ESM1-5_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.042Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO_ACCESS-ESM1-5_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.042Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO_ACCESS-ESM1-5_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.042Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO_ACCESS-ESM1-5_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.043Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO-ARCCSS_ACCESS-CM2_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.043Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO-ARCCSS_ACCESS-CM2_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.043Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO-ARCCSS_ACCESS-CM2_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.043Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CNRM-CERFACS_CNRM-ESM2-1_ssp245_r1i1p1f2_1980-2100.nc  
-[2024-12-18T02:10:43.043Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CMCC_CMCC-ESM2_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.043Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-LR_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.043Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CNRM-CERFACS_CNRM-ESM2-1_ssp245_r1i1p1f2_1980-2100.nc  
-[2024-12-18T02:10:43.043Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CMCC_CMCC-ESM2_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.043Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO-ARCCSS_ACCESS-CM2_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.043Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CNRM-CERFACS_CNRM-ESM2-1_ssp245_r1i1p1f2_1981-2100.nc  
-[2024-12-18T02:10:43.043Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CNRM-CERFACS_CNRM-ESM2-1_ssp245_r1i1p1f2_1981-2100.nc  
-[2024-12-18T02:10:43.043Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CMCC_CMCC-ESM2_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.043Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CNRM-CERFACS_CNRM-ESM2-1_ssp370_r1i1p1f2_1981-2100.nc  
-[2024-12-18T02:10:43.043Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CNRM-CERFACS_CNRM-ESM2-1_ssp370_r1i1p1f2_1980-2100.nc  
-[2024-12-18T02:10:43.043Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CNRM-CERFACS_CNRM-ESM2-1_ssp370_r1i1p1f2_1981-2100.nc  
-[2024-12-18T02:10:43.043Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CNRM-CERFACS_CNRM-ESM2-1_ssp370_r1i1p1f2_1980-2100.nc  
-[2024-12-18T02:10:43.043Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CMCC_CMCC-ESM2_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.043Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CMCC_CMCC-ESM2_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.043Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CMCC_CMCC-ESM2_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CMCC_CMCC-ESM2_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CAS_FGOALS-g3_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CAS_FGOALS-g3_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CAS_FGOALS-g3_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CAS_FGOALS-g3_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_BCC_BCC-CSM2-MR_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_BCC_BCC-CSM2-MR_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_BCC_BCC-CSM2-MR_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_BCC_BCC-CSM2-MR_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC-ES2L_ssp245_r1i1p1f2_1981-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC-ES2L_ssp245_r1i1p1f2_1980-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC-ES2L_ssp245_r1i1p1f2_1981-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC-ES2L_ssp245_r1i1p1f2_1980-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC-ES2L_ssp370_r1i1p1f2_1981-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC-ES2L_ssp370_r1i1p1f2_1980-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC-ES2L_ssp370_r1i1p1f2_1981-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC-ES2L_ssp370_r1i1p1f2_1980-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CMCC_CMCC-ESM2_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CAS_FGOALS-g3_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CAS_FGOALS-g3_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CAS_FGOALS-g3_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CAS_FGOALS-g3_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_BCC_BCC-CSM2-MR_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_BCC_BCC-CSM2-MR_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_BCC_BCC-CSM2-MR_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_BCC_BCC-CSM2-MR_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NOAA-GFDL_GFDL-ESM4_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NOAA-GFDL_GFDL-ESM4_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NOAA-GFDL_GFDL-ESM4_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NOAA-GFDL_GFDL-ESM4_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NIMS-KMA_KACE-1-0-G_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.298Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NIMS-KMA_KACE-1-0-G_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.299Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NIMS-KMA_KACE-1-0-G_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.299Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NIMS-KMA_KACE-1-0-G_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.299Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NCC_NorESM2-LM_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.299Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NCC_NorESM2-LM_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.299Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NOAA-GFDL_GFDL-ESM4_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.299Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NOAA-GFDL_GFDL-ESM4_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.299Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NOAA-GFDL_GFDL-ESM4_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NOAA-GFDL_GFDL-ESM4_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NIMS-KMA_KACE-1-0-G_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NIMS-KMA_KACE-1-0-G_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NIMS-KMA_KACE-1-0-G_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NIMS-KMA_KACE-1-0-G_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NCC_NorESM2-LM_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NCC_NorESM2-LM_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NCC_NorESM2-LM_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NCC_NorESM2-LM_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MRI_MRI-ESM2-0_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MRI_MRI-ESM2-0_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MRI_MRI-ESM2-0_ssp245_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MRI_MRI-ESM2-0_ssp245_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NCC_NorESM2-LM_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NCC_NorESM2-LM_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MRI_MRI-ESM2-0_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MRI_MRI-ESM2-0_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MRI_MRI-ESM2-0_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MRI_MRI-ESM2-0_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-LR_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-LR_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-LR_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-LR_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-HR_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-HR_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-HR_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-HR_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC6_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC6_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC6_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC6_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_INM_INM-CM5-0_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_INM_INM-CM5-0_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_INM_INM-CM5-0_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_INM_INM-CM5-0_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.554Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO_ACCESS-ESM1-5_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.811Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO_ACCESS-ESM1-5_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.811Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO_ACCESS-ESM1-5_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.811Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO_ACCESS-ESM1-5_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.811Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO-ARCCSS_ACCESS-CM2_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.811Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO-ARCCSS_ACCESS-CM2_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.811Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO-ARCCSS_ACCESS-CM2_ssp370_r1i1p1f1_1981-2100.nc  
-[2024-12-18T02:10:43.811Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO-ARCCSS_ACCESS-CM2_ssp370_r1i1p1f1_1980-2100.nc  
-[2024-12-18T02:10:43.811Z] + unzip /home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/tutorial5.zip -d /notebook_dir/writable-workspace/tmp/
-[2024-12-18T02:10:43.811Z] Archive:  /home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/tutorial5.zip
-[2024-12-18T02:10:43.811Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial5/output/Gaspesie_ESPO-G6-R2_30yAvg_ensemble_percentiles.nc  
-[2024-12-18T02:10:43.811Z] + HOMEPAGE_ROOT_DIR=/notebook_dir/pavics-homepage
-[2024-12-18T02:10:43.811Z] + mkdir -p /notebook_dir/pavics-homepage
-[2024-12-18T02:10:43.811Z] + ln -sv /home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/tutorial_data /notebook_dir/pavics-homepage/tutorial_data
-[2024-12-18T02:10:43.811Z] '/notebook_dir/pavics-homepage/tutorial_data' -> '/home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/tutorial_data'
-[2024-12-18T02:10:43.811Z] + [ xfalse = xtrue ]
-[2024-12-18T02:10:43.811Z] + [ xfalse = xtrue ]
-[2024-12-18T02:10:43.811Z] + [ xfalse = xtrue ]
-[2024-12-18T02:10:43.811Z] + [ xtrue = xtrue ]
-[2024-12-18T02:10:43.811Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/*.ipynb PAVICS-landing-master/content/notebooks/hydrology/*.ipynb notebooks/*.ipynb
-[2024-12-18T02:10:43.811Z] + ./runtest  pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/*.ipynb PAVICS-landing-master/content/notebooks/hydrology/*.ipynb notebooks/*.ipynb
-[2024-12-18T02:10:43.811Z] + [ -n  ]
-[2024-12-18T02:10:43.811Z] + [ ! -z pavics.ouranos.ca ]
-[2024-12-18T02:10:43.811Z] + echo Will run notebooks against pavics.ouranos.ca
-[2024-12-18T02:10:43.811Z] Will run notebooks against pavics.ouranos.ca
-[2024-12-18T02:10:43.811Z] + [ -z  ]
-[2024-12-18T02:10:43.812Z] + sed -i /\(\.ncml\|TEST_USE_PROD_DATA\)/!s/pavics.ouranos.ca/pavics.ouranos.ca/g pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb pavics-sdi-master/docs/source/notebooks/climex.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb pavics-sdi-master/docs/source/notebooks/forecasts.ipynb pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb pavics-sdi-master/docs/source/notebooks/opendap.ipynb pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb pavics-sdi-master/docs/source/notebooks/regridding.ipynb pavics-sdi-master/docs/source/notebooks/rendering.ipynb pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb pavics-sdi-master/docs/source/notebooks/subsetting.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-01_Intro.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-02_Calibration.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-03_Watershed_properties.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-04_Time_series_analysis.ipynb notebooks/hummingbird.ipynb notebooks/stress-tests.ipynb
-[2024-12-18T02:10:43.812Z] + git diff
-[2024-12-18T02:10:43.812Z] + export PYTHONWARNINGS=ignore:Unverified HTTPS request
-[2024-12-18T02:10:43.812Z] + [ -n  ]
-[2024-12-18T02:10:43.812Z] + py.test --nbval pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb pavics-sdi-master/docs/source/notebooks/climex.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb pavics-sdi-master/docs/source/notebooks/forecasts.ipynb pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb pavics-sdi-master/docs/source/notebooks/opendap.ipynb pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb pavics-sdi-master/docs/source/notebooks/regridding.ipynb pavics-sdi-master/docs/source/notebooks/rendering.ipynb pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb pavics-sdi-master/docs/source/notebooks/subsetting.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-01_Intro.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-02_Calibration.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-03_Watershed_properties.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-04_Time_series_analysis.ipynb notebooks/hummingbird.ipynb notebooks/stress-tests.ipynb --nbval-sanitize-with notebooks/output-sanitize.cfg --dist=loadscope --numprocesses=0
-[2024-12-18T02:10:46.321Z] ============================= test session starts ==============================
-[2024-12-18T02:10:46.321Z] platform linux -- Python 3.11.11, pytest-8.3.4, pluggy-1.5.0
-[2024-12-18T02:10:46.321Z] rootdir: /home/jenkins/agent/workspace/_workflow-tests_new-docker-build
-[2024-12-18T02:10:46.321Z] plugins: anyio-4.7.0, dash-2.18.2, nbval-0.11.0, tornasync-0.6.0.post2, xdist-3.6.1
-[2024-12-18T02:10:46.321Z] collected 253 items
-[2024-12-18T02:10:46.321Z] 
-[2024-12-18T02:11:38.656Z] pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb ......          [  2%]
-[2024-12-18T02:11:47.662Z] pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb .......        [  5%]
-[2024-12-18T02:11:53.625Z] pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb ......         [  7%]
-[2024-12-18T02:20:17.635Z] pavics-sdi-master/docs/source/notebooks/climex.ipynb ............        [ 12%]
-[2024-12-18T02:20:17.635Z] pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb . [ 12%]
-[2024-12-18T02:20:17.635Z] ...............                                                          [ 18%]
-[2024-12-18T02:20:21.809Z] pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb .....    [ 20%]
-[2024-12-18T02:20:29.087Z] pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb .......           [ 23%]
-[2024-12-18T02:20:42.682Z] pavics-sdi-master/docs/source/notebooks/forecasts.ipynb ......           [ 25%]
-[2024-12-18T02:20:54.788Z] pavics-sdi-master/docs/source/notebooks/opendap.ipynb .......            [ 28%]
-[2024-12-18T02:20:58.161Z] pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb .....       [ 30%]
-[2024-12-18T02:21:33.705Z] pavics-sdi-master/docs/source/notebooks/regridding.ipynb ............... [ 36%]
-[2024-12-18T02:22:40.470Z] .............                                                            [ 41%]
-[2024-12-18T02:22:41.287Z] pavics-sdi-master/docs/source/notebooks/rendering.ipynb .....            [ 43%]
-[2024-12-18T02:22:43.032Z] pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb ........ [ 46%]
-[2024-12-18T02:23:03.449Z] .................                                                        [ 53%]
-[2024-12-18T02:23:11.514Z] pavics-sdi-master/docs/source/notebooks/subsetting.ipynb ......          [ 55%]
-[2024-12-18T02:23:20.124Z] finch-master/docs/source/notebooks/dap_subset.ipynb ...........          [ 60%]
-[2024-12-18T02:23:28.035Z] finch-master/docs/source/notebooks/finch-usage.ipynb ......              [ 62%]
-[2024-12-18T02:23:28.959Z] PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb . [ 62%]
-[2024-12-18T02:23:40.305Z] .....                                                                    [ 64%]
-[2024-12-18T02:25:46.663Z] PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb . [ 65%]
-[2024-12-18T02:26:16.238Z] ............                                                             [ 69%]
-[2024-12-18T02:26:48.262Z] PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb . [ 70%]
-[2024-12-18T02:28:09.603Z] .....s.                                                                  [ 73%]
-[2024-12-18T02:28:09.603Z] PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb . [ 73%]
-[2024-12-18T02:28:14.851Z] ..                                                                       [ 74%]
-[2024-12-18T02:28:32.968Z] PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb . [ 74%]
-[2024-12-18T02:29:31.497Z] .........                                                                [ 78%]
-[2024-12-18T02:29:53.384Z] PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb . [ 78%]
-[2024-12-18T02:33:20.339Z] ....                                                                     [ 80%]
-[2024-12-18T02:33:22.855Z] PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-01_Intro.ipynb . [ 80%]
-[2024-12-18T02:33:28.057Z] ....                                                                     [ 82%]
-[2024-12-18T02:33:32.217Z] PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-02_Calibration.ipynb . [ 82%]
-[2024-12-18T02:33:40.981Z] .....                                                                    [ 84%]
-[2024-12-18T02:33:44.262Z] PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-03_Watershed_properties.ipynb . [ 84%]
-[2024-12-18T02:33:51.102Z] .............                                                            [ 90%]
-[2024-12-18T02:33:55.266Z] PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-04_Time_series_analysis.ipynb . [ 90%]
-[2024-12-18T02:33:56.045Z] ......                                                                   [ 92%]
-[2024-12-18T02:33:58.595Z] notebooks/hummingbird.ipynb ............                                 [ 97%]
-[2024-12-18T02:35:39.153Z] notebooks/stress-tests.ipynb ......                                      [100%]
-[2024-12-18T02:35:39.153Z] 
-[2024-12-18T02:35:39.153Z] =============================== warnings summary ===============================
-[2024-12-18T02:35:39.153Z] PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb:Cell 4:0
-[2024-12-18T02:35:39.153Z]   /home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb:Cell 4:0: UserWarning: Conflicting comment markers found, using the latest:  NBVAL_IGNORE_OUTPUT VS NBVAL_IGNORE_OUTPUT
-[2024-12-18T02:35:39.153Z] 
-[2024-12-18T02:35:39.153Z] -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-[2024-12-18T02:35:39.153Z] ============ 252 passed, 1 skipped, 1 warning in 1490.74s (0:24:50) ============
-[2024-12-18T02:35:39.153Z] + EXIT_CODE=0
-[2024-12-18T02:35:39.153Z] + echo true
-[2024-12-18T02:35:39.153Z] + tr [:upper:] [:lower:]
-[2024-12-18T02:35:39.153Z] + SAVE_RESULTING_NOTEBOOK=true
-[2024-12-18T02:35:39.153Z] + [ xtrue = xtrue ]
-[2024-12-18T02:35:39.153Z] + mkdir -p buildout
-[2024-12-18T02:35:39.153Z] + basename pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb
-[2024-12-18T02:35:39.153Z] + filename=CaSR_basic.ipynb
-[2024-12-18T02:35:39.153Z] + echo CaSR_basic.ipynb
-[2024-12-18T02:35:39.153Z] + sed s/.ipynb$//
-[2024-12-18T02:35:39.153Z] + filename=CaSR_basic
-[2024-12-18T02:35:39.153Z] + [ -e buildout/CaSR_basic.output.ipynb ]
-[2024-12-18T02:35:39.153Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output CaSR_basic.output.ipynb pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb
-[2024-12-18T02:35:39.153Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb to notebook
-[2024-12-18T02:36:35.336Z] [NbConvertApp] Writing 731397 bytes to buildout/CaSR_basic.output.ipynb
-[2024-12-18T02:36:35.336Z] + basename pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb
-[2024-12-18T02:36:35.336Z] + filename=WCS_example.ipynb
-[2024-12-18T02:36:35.336Z] + echo WCS_example.ipynb
-[2024-12-18T02:36:35.336Z] + sed s/.ipynb$//
-[2024-12-18T02:36:35.336Z] + filename=WCS_example
-[2024-12-18T02:36:35.336Z] + [ -e buildout/WCS_example.output.ipynb ]
-[2024-12-18T02:36:35.336Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output WCS_example.output.ipynb pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb
-[2024-12-18T02:36:35.336Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb to notebook
-[2024-12-18T02:36:43.414Z] [NbConvertApp] Writing 148126 bytes to buildout/WCS_example.output.ipynb
-[2024-12-18T02:36:43.414Z] + basename pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb
-[2024-12-18T02:36:43.414Z] + filename=WFS_example.ipynb
-[2024-12-18T02:36:43.414Z] + echo WFS_example.ipynb
-[2024-12-18T02:36:43.414Z] + sed s/.ipynb$//
-[2024-12-18T02:36:43.414Z] + filename=WFS_example
-[2024-12-18T02:36:43.414Z] + [ -e buildout/WFS_example.output.ipynb ]
-[2024-12-18T02:36:43.414Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output WFS_example.output.ipynb pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb
-[2024-12-18T02:36:44.781Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb to notebook
-[2024-12-18T02:36:51.313Z] [NbConvertApp] Writing 44573 bytes to buildout/WFS_example.output.ipynb
-[2024-12-18T02:36:51.313Z] + basename pavics-sdi-master/docs/source/notebooks/climex.ipynb
-[2024-12-18T02:36:51.313Z] + filename=climex.ipynb
-[2024-12-18T02:36:51.313Z] + echo climex.ipynb
-[2024-12-18T02:36:51.313Z] + sed s/.ipynb$//
-[2024-12-18T02:36:51.313Z] + filename=climex
-[2024-12-18T02:36:51.313Z] + [ -e buildout/climex.output.ipynb ]
-[2024-12-18T02:36:51.313Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output climex.output.ipynb pavics-sdi-master/docs/source/notebooks/climex.ipynb
-[2024-12-18T02:36:52.677Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/climex.ipynb to notebook
-[2024-12-18T02:44:29.205Z] [NbConvertApp] Writing 1797583 bytes to buildout/climex.output.ipynb
-[2024-12-18T02:44:29.205Z] + basename pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb
-[2024-12-18T02:44:29.205Z] + filename=eccc-geoapi-climate-stations.ipynb
-[2024-12-18T02:44:29.205Z] + echo eccc-geoapi-climate-stations.ipynb
-[2024-12-18T02:44:29.205Z] + sed s/.ipynb$//
-[2024-12-18T02:44:29.205Z] + filename=eccc-geoapi-climate-stations
-[2024-12-18T02:44:29.205Z] + [ -e buildout/eccc-geoapi-climate-stations.output.ipynb ]
-[2024-12-18T02:44:29.205Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output eccc-geoapi-climate-stations.output.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb
-[2024-12-18T02:44:29.205Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb to notebook
-[2024-12-18T02:44:39.136Z] [NbConvertApp] Writing 372095 bytes to buildout/eccc-geoapi-climate-stations.output.ipynb
-[2024-12-18T02:44:39.136Z] + basename pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb
-[2024-12-18T02:44:39.136Z] + filename=eccc-geoapi-xclim.ipynb
-[2024-12-18T02:44:39.136Z] + echo eccc-geoapi-xclim.ipynb
-[2024-12-18T02:44:39.136Z] + sed s/.ipynb$//
-[2024-12-18T02:44:39.136Z] + filename=eccc-geoapi-xclim
-[2024-12-18T02:44:39.136Z] + [ -e buildout/eccc-geoapi-xclim.output.ipynb ]
-[2024-12-18T02:44:39.136Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output eccc-geoapi-xclim.output.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb
-[2024-12-18T02:44:40.523Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb to notebook
-[2024-12-18T02:44:50.465Z] [NbConvertApp] Writing 106964 bytes to buildout/eccc-geoapi-xclim.output.ipynb
-[2024-12-18T02:44:50.465Z] + basename pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb
-[2024-12-18T02:44:50.465Z] + filename=esgf-dap.ipynb
-[2024-12-18T02:44:50.465Z] + echo esgf-dap.ipynb
-[2024-12-18T02:44:50.465Z] + sed s/.ipynb$//
-[2024-12-18T02:44:50.465Z] + filename=esgf-dap
-[2024-12-18T02:44:50.465Z] + [ -e buildout/esgf-dap.output.ipynb ]
-[2024-12-18T02:44:50.466Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output esgf-dap.output.ipynb pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb
-[2024-12-18T02:44:50.466Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb to notebook
-[2024-12-18T02:45:46.624Z] [NbConvertApp] Writing 64457 bytes to buildout/esgf-dap.output.ipynb
-[2024-12-18T02:45:46.624Z] + basename pavics-sdi-master/docs/source/notebooks/forecasts.ipynb
-[2024-12-18T02:45:46.624Z] + filename=forecasts.ipynb
-[2024-12-18T02:45:46.624Z] + echo forecasts.ipynb
-[2024-12-18T02:45:46.624Z] + sed s/.ipynb$//
-[2024-12-18T02:45:46.624Z] + filename=forecasts
-[2024-12-18T02:45:46.624Z] + [ -e buildout/forecasts.output.ipynb ]
-[2024-12-18T02:45:46.624Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output forecasts.output.ipynb pavics-sdi-master/docs/source/notebooks/forecasts.ipynb
-[2024-12-18T02:45:47.188Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/forecasts.ipynb to notebook
-[2024-12-18T02:46:02.029Z] [NbConvertApp] Writing 177470 bytes to buildout/forecasts.output.ipynb
-[2024-12-18T02:46:02.289Z] + basename pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb
-[2024-12-18T02:46:02.290Z] + filename=jupyter_extensions.ipynb
-[2024-12-18T02:46:02.290Z] + echo jupyter_extensions.ipynb
-[2024-12-18T02:46:02.290Z] + sed s/.ipynb$//
-[2024-12-18T02:46:02.290Z] + filename=jupyter_extensions
-[2024-12-18T02:46:02.290Z] + [ -e buildout/jupyter_extensions.output.ipynb ]
-[2024-12-18T02:46:02.290Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output jupyter_extensions.output.ipynb pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb
-[2024-12-18T02:46:03.666Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb to notebook
-[2024-12-18T02:46:05.555Z] [NbConvertApp] Writing 7997 bytes to buildout/jupyter_extensions.output.ipynb
-[2024-12-18T02:46:05.555Z] + basename pavics-sdi-master/docs/source/notebooks/opendap.ipynb
-[2024-12-18T02:46:05.555Z] + filename=opendap.ipynb
-[2024-12-18T02:46:05.555Z] + sed s/.ipynb$//
-[2024-12-18T02:46:05.555Z] + echo opendap.ipynb
-[2024-12-18T02:46:05.555Z] + filename=opendap
-[2024-12-18T02:46:05.555Z] + [ -e buildout/opendap.output.ipynb ]
-[2024-12-18T02:46:05.555Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output opendap.output.ipynb pavics-sdi-master/docs/source/notebooks/opendap.ipynb
-[2024-12-18T02:46:06.924Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/opendap.ipynb to notebook
-[2024-12-18T02:46:16.867Z] [NbConvertApp] Writing 112904 bytes to buildout/opendap.output.ipynb
-[2024-12-18T02:46:16.867Z] + basename pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb
-[2024-12-18T02:46:16.867Z] + filename=pavics_thredds.ipynb
-[2024-12-18T02:46:16.867Z] + echo pavics_thredds.ipynb
-[2024-12-18T02:46:16.867Z] + sed s/.ipynb$//
-[2024-12-18T02:46:16.867Z] + filename=pavics_thredds
-[2024-12-18T02:46:16.867Z] + [ -e buildout/pavics_thredds.output.ipynb ]
-[2024-12-18T02:46:16.868Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output pavics_thredds.output.ipynb pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb
-[2024-12-18T02:46:17.128Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb to notebook
-[2024-12-18T02:46:20.392Z] syntax error, unexpected WORD_WORD, expecting SCAN_ATTR or SCAN_DATASET or SCAN_ERROR
-[2024-12-18T02:46:20.392Z] context: <?xml^ version="1.0" encoding="utf-8"?><ExceptionReport version="1.0.0" xmlns="http://www.opengis.net/ows/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/ows/1.1 http://schemas.opengis.net/ows/1.1.0/owsExceptionReport.xsd"> <Exception exceptionCode="NoApplicableCode" locator="AccessForbidden"> <ExceptionText>Access to service is forbidden.</ExceptionText> </Exception></ExceptionReport>
-[2024-12-18T02:46:20.392Z] syntax error, unexpected WORD_WORD, expecting SCAN_ATTR or SCAN_DATASET or SCAN_ERROR
-[2024-12-18T02:46:20.392Z] context: <?xml^ version="1.0" encoding="utf-8"?><ExceptionReport version="1.0.0" xmlns="http://www.opengis.net/ows/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/ows/1.1 http://schemas.opengis.net/ows/1.1.0/owsExceptionReport.xsd"> <Exception exceptionCode="NoApplicableCode" locator="AccessForbidden"> <ExceptionText>Access to service is forbidden.</ExceptionText> </Exception></ExceptionReport>
-[2024-12-18T02:46:21.756Z] [NbConvertApp] Writing 92036 bytes to buildout/pavics_thredds.output.ipynb
-[2024-12-18T02:46:21.756Z] + basename pavics-sdi-master/docs/source/notebooks/regridding.ipynb
-[2024-12-18T02:46:21.756Z] + filename=regridding.ipynb
-[2024-12-18T02:46:21.756Z] + + sed s/.ipynb$//echo
-[2024-12-18T02:46:21.756Z]  regridding.ipynb
-[2024-12-18T02:46:21.756Z] + filename=regridding
-[2024-12-18T02:46:21.756Z] + [ -e buildout/regridding.output.ipynb ]
-[2024-12-18T02:46:21.756Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output regridding.output.ipynb pavics-sdi-master/docs/source/notebooks/regridding.ipynb
-[2024-12-18T02:46:23.119Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/regridding.ipynb to notebook
-[2024-12-18T02:48:14.551Z] [NbConvertApp] Writing 1241689 bytes to buildout/regridding.output.ipynb
-[2024-12-18T02:48:14.551Z] + basename pavics-sdi-master/docs/source/notebooks/rendering.ipynb
-[2024-12-18T02:48:14.551Z] + filename=rendering.ipynb
-[2024-12-18T02:48:14.551Z] + echo rendering.ipynb
-[2024-12-18T02:48:14.551Z] + sed s/.ipynb$//
-[2024-12-18T02:48:14.551Z] + filename=rendering
-[2024-12-18T02:48:14.551Z] + [ -e buildout/rendering.output.ipynb ]
-[2024-12-18T02:48:14.551Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output rendering.output.ipynb pavics-sdi-master/docs/source/notebooks/rendering.ipynb
-[2024-12-18T02:48:14.551Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/rendering.ipynb to notebook
-[2024-12-18T02:48:14.551Z] [NbConvertApp] Writing 20830 bytes to buildout/rendering.output.ipynb
-[2024-12-18T02:48:14.551Z] + basename pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb
-[2024-12-18T02:48:14.551Z] + filename=subset-user-input.ipynb
-[2024-12-18T02:48:14.551Z] + echo subset-user-input.ipynb
-[2024-12-18T02:48:14.551Z] + sed s/.ipynb$//
-[2024-12-18T02:48:14.551Z] + filename=subset-user-input
-[2024-12-18T02:48:14.551Z] + [ -e buildout/subset-user-input.output.ipynb ]
-[2024-12-18T02:48:14.551Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output subset-user-input.output.ipynb pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb
-[2024-12-18T02:48:14.551Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb to notebook
-[2024-12-18T02:48:36.444Z] [NbConvertApp] Writing 262845 bytes to buildout/subset-user-input.output.ipynb
-[2024-12-18T02:48:36.444Z] + basename pavics-sdi-master/docs/source/notebooks/subsetting.ipynb
-[2024-12-18T02:48:36.444Z] + filename=subsetting.ipynb
-[2024-12-18T02:48:36.444Z] + + echo subsetting.ipynb
-[2024-12-18T02:48:36.444Z] sed s/.ipynb$//
-[2024-12-18T02:48:36.444Z] + filename=subsetting
-[2024-12-18T02:48:36.444Z] + [ -e buildout/subsetting.output.ipynb ]
-[2024-12-18T02:48:36.444Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output subsetting.output.ipynb pavics-sdi-master/docs/source/notebooks/subsetting.ipynb
-[2024-12-18T02:48:36.444Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/subsetting.ipynb to notebook
-[2024-12-18T02:48:46.386Z] [NbConvertApp] Writing 93680 bytes to buildout/subsetting.output.ipynb
-[2024-12-18T02:48:46.386Z] + basename finch-master/docs/source/notebooks/dap_subset.ipynb
-[2024-12-18T02:48:46.386Z] + filename=dap_subset.ipynb
-[2024-12-18T02:48:46.386Z] + echo dap_subset.ipynb
-[2024-12-18T02:48:46.386Z] + sed s/.ipynb$//
-[2024-12-18T02:48:46.386Z] + filename=dap_subset
-[2024-12-18T02:48:46.386Z] + [ -e buildout/dap_subset.output.ipynb ]
-[2024-12-18T02:48:46.386Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output dap_subset.output.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb
-[2024-12-18T02:48:46.947Z] [NbConvertApp] Converting notebook finch-master/docs/source/notebooks/dap_subset.ipynb to notebook
-[2024-12-18T02:48:56.923Z] [NbConvertApp] Writing 165301 bytes to buildout/dap_subset.output.ipynb
-[2024-12-18T02:48:56.923Z] + basename finch-master/docs/source/notebooks/finch-usage.ipynb
-[2024-12-18T02:48:56.923Z] + filename=finch-usage.ipynb
-[2024-12-18T02:48:56.923Z] + echo finch-usage.ipynb
-[2024-12-18T02:48:56.923Z] + sed s/.ipynb$//
-[2024-12-18T02:48:56.923Z] + filename=finch-usage
-[2024-12-18T02:48:56.923Z] + [ -e buildout/finch-usage.output.ipynb ]
-[2024-12-18T02:48:56.923Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output finch-usage.output.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb
-[2024-12-18T02:48:58.287Z] [NbConvertApp] Converting notebook finch-master/docs/source/notebooks/finch-usage.ipynb to notebook
-[2024-12-18T02:49:08.224Z] [NbConvertApp] Writing 65913 bytes to buildout/finch-usage.output.ipynb
-[2024-12-18T02:49:08.224Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
-[2024-12-18T02:49:08.224Z] + filename=PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
-[2024-12-18T02:49:08.224Z] + echo PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
-[2024-12-18T02:49:08.224Z] + sed s/.ipynb$//
-[2024-12-18T02:49:08.224Z] + filename=PAVICStutorial_ClimateDataAnalysis-1DataAccess
-[2024-12-18T02:49:08.224Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-1DataAccess.output.ipynb ]
-[2024-12-18T02:49:08.224Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-1DataAccess.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
-[2024-12-18T02:49:09.156Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb to notebook
-[2024-12-18T02:49:21.321Z] [NbConvertApp] Writing 219849 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-1DataAccess.output.ipynb
-[2024-12-18T02:49:21.321Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
-[2024-12-18T02:49:21.321Z] + filename=PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
-[2024-12-18T02:49:21.321Z] + sed s/.ipynb$//
-[2024-12-18T02:49:21.321Z] + echo PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
-[2024-12-18T02:49:21.321Z] + filename=PAVICStutorial_ClimateDataAnalysis-2Subsetting
-[2024-12-18T02:49:21.321Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-2Subsetting.output.ipynb ]
-[2024-12-18T02:49:21.322Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-2Subsetting.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
-[2024-12-18T02:49:22.247Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb to notebook
-[2024-12-18T02:51:58.666Z] [NbConvertApp] Writing 1692995 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-2Subsetting.output.ipynb
-[2024-12-18T02:51:58.666Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
-[2024-12-18T02:51:58.666Z] + filename=PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
-[2024-12-18T02:51:58.666Z] + echo PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
-[2024-12-18T02:51:58.666Z] + sed s/.ipynb$//
-[2024-12-18T02:51:58.666Z] + filename=PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators
-[2024-12-18T02:51:58.666Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.output.ipynb ]
-[2024-12-18T02:51:58.667Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
-[2024-12-18T02:51:58.667Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb to notebook
-[2024-12-18T02:57:35.137Z] [NbConvertApp] ERROR | Timeout waiting for execute reply (240s).
-[2024-12-18T02:57:36.499Z] Traceback (most recent call last):
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbclient/client.py", line 782, in _async_poll_for_reply
-[2024-12-18T02:57:36.499Z]     msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
-[2024-12-18T02:57:36.499Z]           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 198, in ensure_async
-[2024-12-18T02:57:36.499Z]     result = await obj
-[2024-12-18T02:57:36.499Z]              ^^^^^^^^^
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_client/channels.py", line 230, in get_msg
-[2024-12-18T02:57:36.499Z]     raise Empty
-[2024-12-18T02:57:36.499Z] _queue.Empty
-[2024-12-18T02:57:36.499Z] 
-[2024-12-18T02:57:36.499Z] During handling of the above exception, another exception occurred:
-[2024-12-18T02:57:36.499Z] 
-[2024-12-18T02:57:36.499Z] Traceback (most recent call last):
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/bin/jupyter-nbconvert", line 10, in <module>
-[2024-12-18T02:57:36.499Z]     sys.exit(main())
-[2024-12-18T02:57:36.499Z]              ^^^^^^
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_core/application.py", line 283, in launch_instance
-[2024-12-18T02:57:36.499Z]     super().launch_instance(argv=argv, **kwargs)
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/traitlets/config/application.py", line 1075, in launch_instance
-[2024-12-18T02:57:36.499Z]     app.start()
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 420, in start
-[2024-12-18T02:57:36.499Z]     self.convert_notebooks()
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
-[2024-12-18T02:57:36.499Z]     self.convert_single_notebook(notebook_filename)
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
-[2024-12-18T02:57:36.499Z]     output, resources = self.export_single_notebook(
-[2024-12-18T02:57:36.499Z]                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
-[2024-12-18T02:57:36.499Z]     output, resources = self.exporter.from_filename(
-[2024-12-18T02:57:36.499Z]                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
-[2024-12-18T02:57:36.499Z]     return self.from_file(f, resources=resources, **kw)
-[2024-12-18T02:57:36.499Z]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
-[2024-12-18T02:57:36.499Z]     return self.from_notebook_node(
-[2024-12-18T02:57:36.499Z]            ^^^^^^^^^^^^^^^^^^^^^^^^
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/exporters/notebook.py", line 36, in from_notebook_node
-[2024-12-18T02:57:36.499Z]     nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
-[2024-12-18T02:57:36.499Z]                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
-[2024-12-18T02:57:36.499Z]     nb_copy, resources = self._preprocess(nb_copy, resources)
-[2024-12-18T02:57:36.499Z]                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
-[2024-12-18T02:57:36.499Z]     nbc, resc = preprocessor(nbc, resc)
-[2024-12-18T02:57:36.499Z]                 ^^^^^^^^^^^^^^^^^^^^^^^
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
-[2024-12-18T02:57:36.499Z]     return self.preprocess(nb, resources)
-[2024-12-18T02:57:36.499Z]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
-[2024-12-18T02:57:36.499Z]     self.preprocess_cell(cell, resources, index)
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
-[2024-12-18T02:57:36.499Z]     cell = self.execute_cell(cell, index, store_history=True)
-[2024-12-18T02:57:36.499Z]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
-[2024-12-18T02:57:36.499Z]     return loop.run_until_complete(inner)
-[2024-12-18T02:57:36.499Z]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
-[2024-12-18T02:57:36.499Z]     return future.result()
-[2024-12-18T02:57:36.499Z]            ^^^^^^^^^^^^^^^
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbclient/client.py", line 1005, in async_execute_cell
-[2024-12-18T02:57:36.499Z]     exec_reply = await self.task_poll_for_reply
-[2024-12-18T02:57:36.499Z]                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbclient/client.py", line 806, in _async_poll_for_reply
-[2024-12-18T02:57:36.499Z]     error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
-[2024-12-18T02:57:36.499Z]                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-[2024-12-18T02:57:36.499Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbclient/client.py", line 856, in _async_handle_timeout
-[2024-12-18T02:57:36.499Z]     raise CellTimeoutError.error_from_timeout_and_cell(
-[2024-12-18T02:57:36.499Z] nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 240 seconds.
-[2024-12-18T02:57:36.499Z] The message was: Cell execution timed out.
-[2024-12-18T02:57:36.500Z] Here is a preview of the cell contents:
-[2024-12-18T02:57:36.500Z] -------------------
-[2024-12-18T02:57:36.500Z] ['# NBVAL_SKIP', '', '# Parallel computing part...', 'dask_kwargs = dict(', '    n_workers=6,']
-[2024-12-18T02:57:36.500Z] ...
-[2024-12-18T02:57:36.500Z] ['                dsout.to_netcdf(outfile, mode="w")', '', '    c.restart()', 'clear_output()', 'print("Finished")']
-[2024-12-18T02:57:36.500Z] -------------------
-[2024-12-18T02:57:36.500Z] 
-[2024-12-18T02:57:36.759Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
-[2024-12-18T02:57:36.759Z] + filename=PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
-[2024-12-18T02:57:36.759Z] + echo PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
-[2024-12-18T02:57:36.759Z] + sed s/.ipynb$//
-[2024-12-18T02:57:36.759Z] + filename=PAVICStutorial_ClimateDataAnalysis-4Ensembles
-[2024-12-18T02:57:36.759Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-4Ensembles.output.ipynb ]
-[2024-12-18T02:57:36.759Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-4Ensembles.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
-[2024-12-18T02:57:38.120Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb to notebook
-[2024-12-18T02:57:56.160Z] [NbConvertApp] Writing 829394 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-4Ensembles.output.ipynb
-[2024-12-18T02:57:56.160Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
-[2024-12-18T02:57:56.160Z] + filename=PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
-[2024-12-18T02:57:56.160Z] + echo PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
-[2024-12-18T02:57:56.160Z] + sed s/.ipynb$//
-[2024-12-18T02:57:56.160Z] + filename=PAVICStutorial_ClimateDataAnalysis-5Visualization
-[2024-12-18T02:57:56.160Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-5Visualization.output.ipynb ]
-[2024-12-18T02:57:56.160Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-5Visualization.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
-[2024-12-18T02:57:56.160Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb to notebook
-[2024-12-18T02:59:17.531Z] [NbConvertApp] Writing 1410625 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-5Visualization.output.ipynb
-[2024-12-18T02:59:17.531Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb
-[2024-12-18T02:59:17.531Z] + filename=PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb
-[2024-12-18T02:59:17.531Z] + echo PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb
-[2024-12-18T02:59:17.531Z] + sed s/.ipynb$//
-[2024-12-18T02:59:17.531Z] + filename=PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion
-[2024-12-18T02:59:17.531Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.output.ipynb ]
-[2024-12-18T02:59:17.531Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb
-[2024-12-18T02:59:17.531Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb to notebook
-[2024-12-18T03:03:23.946Z] [NbConvertApp] Writing 675099 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.output.ipynb
-[2024-12-18T03:03:23.946Z] + basename PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-01_Intro.ipynb
-[2024-12-18T03:03:23.946Z] + filename=PAVICStutorial_Hydrology-01_Intro.ipynb
-[2024-12-18T03:03:23.946Z] + echo PAVICStutorial_Hydrology-01_Intro.ipynb
-[2024-12-18T03:03:23.946Z] + sed s/.ipynb$//
-[2024-12-18T03:03:23.946Z] + filename=PAVICStutorial_Hydrology-01_Intro
-[2024-12-18T03:03:23.946Z] + [ -e buildout/PAVICStutorial_Hydrology-01_Intro.output.ipynb ]
-[2024-12-18T03:03:23.946Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_Hydrology-01_Intro.output.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-01_Intro.ipynb
-[2024-12-18T03:03:23.946Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-01_Intro.ipynb to notebook
-[2024-12-18T03:03:23.946Z] [NbConvertApp] Writing 126339 bytes to buildout/PAVICStutorial_Hydrology-01_Intro.output.ipynb
-[2024-12-18T03:03:23.946Z] + basename PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-02_Calibration.ipynb
-[2024-12-18T03:03:23.946Z] + filename=PAVICStutorial_Hydrology-02_Calibration.ipynb
-[2024-12-18T03:03:23.946Z] + echo PAVICStutorial_Hydrology-02_Calibration.ipynb
-[2024-12-18T03:03:23.946Z] + sed s/.ipynb$//
-[2024-12-18T03:03:23.946Z] + filename=PAVICStutorial_Hydrology-02_Calibration
-[2024-12-18T03:03:23.946Z] + [ -e buildout/PAVICStutorial_Hydrology-02_Calibration.output.ipynb ]
-[2024-12-18T03:03:23.946Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_Hydrology-02_Calibration.output.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-02_Calibration.ipynb
-[2024-12-18T03:03:23.946Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-02_Calibration.ipynb to notebook
-[2024-12-18T03:03:36.168Z] [NbConvertApp] Writing 35794 bytes to buildout/PAVICStutorial_Hydrology-02_Calibration.output.ipynb
-[2024-12-18T03:03:36.168Z] + basename PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-03_Watershed_properties.ipynb
-[2024-12-18T03:03:36.169Z] + filename=PAVICStutorial_Hydrology-03_Watershed_properties.ipynb
-[2024-12-18T03:03:36.169Z] + echo PAVICStutorial_Hydrology-03_Watershed_properties.ipynb
-[2024-12-18T03:03:36.169Z] + sed s/.ipynb$//
-[2024-12-18T03:03:36.169Z] + filename=PAVICStutorial_Hydrology-03_Watershed_properties
-[2024-12-18T03:03:36.169Z] + [ -e buildout/PAVICStutorial_Hydrology-03_Watershed_properties.output.ipynb ]
-[2024-12-18T03:03:36.169Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_Hydrology-03_Watershed_properties.output.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-03_Watershed_properties.ipynb
-[2024-12-18T03:03:36.169Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-03_Watershed_properties.ipynb to notebook
-[2024-12-18T03:03:48.332Z] [NbConvertApp] Writing 278825 bytes to buildout/PAVICStutorial_Hydrology-03_Watershed_properties.output.ipynb
-[2024-12-18T03:03:48.332Z] + basename PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-04_Time_series_analysis.ipynb
-[2024-12-18T03:03:48.332Z] + filename=PAVICStutorial_Hydrology-04_Time_series_analysis.ipynb
-[2024-12-18T03:03:48.332Z] + echo PAVICStutorial_Hydrology-04_Time_series_analysis.ipynb
-[2024-12-18T03:03:48.332Z] + sed s/.ipynb$//
-[2024-12-18T03:03:48.332Z] + filename=PAVICStutorial_Hydrology-04_Time_series_analysis
-[2024-12-18T03:03:48.332Z] + [ -e buildout/PAVICStutorial_Hydrology-04_Time_series_analysis.output.ipynb ]
-[2024-12-18T03:03:48.332Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_Hydrology-04_Time_series_analysis.output.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-04_Time_series_analysis.ipynb
-[2024-12-18T03:03:49.256Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-04_Time_series_analysis.ipynb to notebook
-[2024-12-18T03:03:57.338Z] [NbConvertApp] Writing 220301 bytes to buildout/PAVICStutorial_Hydrology-04_Time_series_analysis.output.ipynb
-[2024-12-18T03:03:57.338Z] + basename notebooks/hummingbird.ipynb
-[2024-12-18T03:03:57.338Z] + filename=hummingbird.ipynb
-[2024-12-18T03:03:57.338Z] + echo+  hummingbird.ipynb
-[2024-12-18T03:03:57.338Z] sed s/.ipynb$//
-[2024-12-18T03:03:57.338Z] + filename=hummingbird
-[2024-12-18T03:03:57.338Z] + [ -e buildout/hummingbird.output.ipynb ]
-[2024-12-18T03:03:57.338Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output hummingbird.output.ipynb notebooks/hummingbird.ipynb
-[2024-12-18T03:03:57.598Z] [NbConvertApp] Converting notebook notebooks/hummingbird.ipynb to notebook
-[2024-12-18T03:04:00.860Z] [NbConvertApp] Writing 15864 bytes to buildout/hummingbird.output.ipynb
-[2024-12-18T03:04:01.118Z] + basename notebooks/stress-tests.ipynb
-[2024-12-18T03:04:01.118Z] + filename=stress-tests.ipynb
-[2024-12-18T03:04:01.118Z] + echo stress-tests.ipynb
-[2024-12-18T03:04:01.118Z] + sed s/.ipynb$//
-[2024-12-18T03:04:01.118Z] + filename=stress-tests
-[2024-12-18T03:04:01.118Z] + [ -e buildout/stress-tests.output.ipynb ]
-[2024-12-18T03:04:01.118Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output stress-tests.output.ipynb notebooks/stress-tests.ipynb
-[2024-12-18T03:04:02.483Z] [NbConvertApp] Converting notebook notebooks/stress-tests.ipynb to notebook
-[2024-12-18T03:05:38.887Z] [NbConvertApp] Writing 428177 bytes to buildout/stress-tests.output.ipynb
-[2024-12-18T03:05:39.146Z] + exit 0
-[2024-12-18T03:05:39.146Z] + EXIT_CODE=0
-[2024-12-18T03:05:39.146Z] + ENV_DUMP_DIR=buildout/env-dump
-[2024-12-18T03:05:39.146Z] + mkdir -p buildout/env-dump
-[2024-12-18T03:05:39.146Z] + ENV_EXPORT_FILE=buildout/env-dump/environment-export-birdy.yml
-[2024-12-18T03:05:39.146Z] + rm -fv buildout/env-dump/environment-export-birdy.yml
-[2024-12-18T03:05:39.146Z] + conda env export -n birdy
-[2024-12-18T03:05:49.092Z] + LIST_EXPLICIT_FILE=buildout/env-dump/conda-list-explicit-birdy.txt
-[2024-12-18T03:05:49.092Z] + rm -fv buildout/env-dump/conda-list-explicit-birdy.txt
-[2024-12-18T03:05:49.092Z] + conda list -n birdy --explicit
-[2024-12-18T03:05:55.640Z] + PIP_FREEZE_FILE=buildout/env-dump/pip-freeze-birdy-requirements.txt
-[2024-12-18T03:05:55.640Z] + rm -fv buildout/env-dump/pip-freeze-birdy-requirements.txt
-[2024-12-18T03:05:55.640Z] + pip freeze
-[2024-12-18T03:05:55.640Z] + exit 0
+[2024-12-19T20:55:00.770Z] + VERIFY_SSL=true SAVE_RESULTING_NOTEBOOK=true ./testall
+[2024-12-19T20:55:00.770Z] TEST_PAVICS_SDI_REPO has been set to 'true'
+[2024-12-19T20:55:00.770Z] PAVICS_SDI_BRANCH has been set to 'master'
+[2024-12-19T20:55:00.770Z] PAVICS_SDI_REPO has been set to 'Ouranosinc/pavics-sdi'
+[2024-12-19T20:55:00.770Z] TEST_FINCH_REPO has been set to 'true'
+[2024-12-19T20:55:00.770Z] FINCH_BRANCH has been set to 'master'
+[2024-12-19T20:55:00.770Z] FINCH_REPO has been set to 'bird-house/finch'
+[2024-12-19T20:55:00.770Z] TEST_PAVICS_LANDING_REPO has been set to 'true'
+[2024-12-19T20:55:00.770Z] PAVICS_LANDING_BRANCH has been set to 'master'
+[2024-12-19T20:55:00.770Z] PAVICS_LANDING_REPO has been set to 'Ouranosinc/PAVICS-landing'
+[2024-12-19T20:55:00.770Z] TEST_RAVEN_REPO has been set to 'false'
+[2024-12-19T20:55:00.770Z] RAVEN_BRANCH has been set to 'main'
+[2024-12-19T20:55:00.770Z] RAVEN_REPO has been set to 'Ouranosinc/raven'
+[2024-12-19T20:55:00.770Z] TEST_RAVENPY_REPO has been set to 'false'
+[2024-12-19T20:55:00.770Z] RAVENPY_BRANCH has been set to 'master'
+[2024-12-19T20:55:00.770Z] RAVENPY_REPO has been set to 'CSHS-CWRA/RavenPy'
+[2024-12-19T20:55:00.770Z] TEST_ESGF_COMPUTE_API_REPO has been set to 'false'
+[2024-12-19T20:55:00.770Z] ESGF_COMPUTE_API_BRANCH has been set to 'devel'
+[2024-12-19T20:55:00.770Z] ESGF_COMPUTE_API_REPO has been set to 'ESGF/esgf-compute-api'
+[2024-12-19T20:55:00.770Z] TEST_LOCAL_NOTEBOOKS has been set to 'true'
+[2024-12-19T20:55:00.770Z] + [ -n  ]
+[2024-12-19T20:55:00.770Z] + git clean -fdx
+[2024-12-19T20:55:00.770Z] Removing .pytest_cache/
+[2024-12-19T20:55:00.770Z] Removing PAVICS-landing-master/
+[2024-12-19T20:55:00.770Z] Removing RavenPy-master/
+[2024-12-19T20:55:00.770Z] Removing __pycache__/
+[2024-12-19T20:55:00.770Z] Removing buildout/
+[2024-12-19T20:55:00.770Z] Removing esgf-compute-api-devel/
+[2024-12-19T20:55:00.770Z] Removing finch-master/
+[2024-12-19T20:55:00.770Z] Removing pavics-sdi-master/
+[2024-12-19T20:55:00.770Z] Removing raven-main/
+[2024-12-19T20:55:00.770Z] + ./downloadrepos
+[2024-12-19T20:55:00.770Z] TEST_PAVICS_SDI_REPO has been set to 'true'
+[2024-12-19T20:55:00.770Z] PAVICS_SDI_BRANCH has been set to 'master'
+[2024-12-19T20:55:00.770Z] PAVICS_SDI_REPO has been set to 'Ouranosinc/pavics-sdi'
+[2024-12-19T20:55:00.770Z] TEST_FINCH_REPO has been set to 'true'
+[2024-12-19T20:55:00.770Z] FINCH_BRANCH has been set to 'master'
+[2024-12-19T20:55:00.770Z] FINCH_REPO has been set to 'bird-house/finch'
+[2024-12-19T20:55:00.770Z] TEST_PAVICS_LANDING_REPO has been set to 'true'
+[2024-12-19T20:55:00.770Z] PAVICS_LANDING_BRANCH has been set to 'master'
+[2024-12-19T20:55:00.770Z] PAVICS_LANDING_REPO has been set to 'Ouranosinc/PAVICS-landing'
+[2024-12-19T20:55:00.770Z] TEST_RAVEN_REPO has been set to 'false'
+[2024-12-19T20:55:00.770Z] RAVEN_BRANCH has been set to 'main'
+[2024-12-19T20:55:00.770Z] RAVEN_REPO has been set to 'Ouranosinc/raven'
+[2024-12-19T20:55:00.770Z] TEST_RAVENPY_REPO has been set to 'false'
+[2024-12-19T20:55:00.770Z] RAVENPY_BRANCH has been set to 'master'
+[2024-12-19T20:55:00.770Z] RAVENPY_REPO has been set to 'CSHS-CWRA/RavenPy'
+[2024-12-19T20:55:00.770Z] TEST_ESGF_COMPUTE_API_REPO has been set to 'false'
+[2024-12-19T20:55:00.770Z] ESGF_COMPUTE_API_BRANCH has been set to 'devel'
+[2024-12-19T20:55:00.770Z] ESGF_COMPUTE_API_REPO has been set to 'ESGF/esgf-compute-api'
+[2024-12-19T20:55:00.770Z] TEST_LOCAL_NOTEBOOKS has been set to 'true'
+[2024-12-19T20:55:00.770Z] + rm -rf pavics-sdi-*
+[2024-12-19T20:55:00.770Z] + ls
+[2024-12-19T20:55:00.770Z] + grep pavics-sdi
+[2024-12-19T20:55:00.770Z] + downloadrepos https://github.com/Ouranosinc/pavics-sdi master
+[2024-12-19T20:55:00.770Z] + github_repo=https://github.com/Ouranosinc/pavics-sdi
+[2024-12-19T20:55:00.770Z] + shift
+[2024-12-19T20:55:00.770Z] + branch=master
+[2024-12-19T20:55:00.770Z] + shift
+[2024-12-19T20:55:00.770Z] + wget --quiet --output-document - https://github.com/Ouranosinc/pavics-sdi/archive/master.tar.gz
+[2024-12-19T20:55:00.770Z] + tar xz
+[2024-12-19T20:55:03.280Z] + ls
+[2024-12-19T20:55:03.280Z] + grep pavics-sdi
+[2024-12-19T20:55:03.280Z] pavics-sdi-master
+[2024-12-19T20:55:03.280Z] + set +x
+[2024-12-19T20:55:03.280Z] + rm -rf finch-*
+[2024-12-19T20:55:03.280Z] + ls
+[2024-12-19T20:55:03.280Z] + grep finch
+[2024-12-19T20:55:03.280Z] + downloadrepos https://github.com/bird-house/finch master
+[2024-12-19T20:55:03.280Z] + github_repo=https://github.com/bird-house/finch
+[2024-12-19T20:55:03.280Z] + shift
+[2024-12-19T20:55:03.280Z] + branch=master
+[2024-12-19T20:55:03.280Z] + shift
+[2024-12-19T20:55:03.280Z] + wget --quiet --output-document - https://github.com/bird-house/finch/archive/master.tar.gz
+[2024-12-19T20:55:03.280Z] + tar xz
+[2024-12-19T20:55:04.642Z] + ls
+[2024-12-19T20:55:04.642Z] + grep finch
+[2024-12-19T20:55:04.642Z] finch-master
+[2024-12-19T20:55:04.642Z] + set +x
+[2024-12-19T20:55:04.642Z] + rm -rf PAVICS-landing-*
+[2024-12-19T20:55:04.642Z] + ls
+[2024-12-19T20:55:04.642Z] + grep PAVICS-landing
+[2024-12-19T20:55:04.642Z] + downloadrepos https://github.com/Ouranosinc/PAVICS-landing master
+[2024-12-19T20:55:04.642Z] + github_repo=https://github.com/Ouranosinc/PAVICS-landing
+[2024-12-19T20:55:04.642Z] + shift
+[2024-12-19T20:55:04.642Z] + branch=master
+[2024-12-19T20:55:04.642Z] + shift
+[2024-12-19T20:55:04.642Z] + wget --quiet --output-document - https://github.com/Ouranosinc/PAVICS-landing/archive/master.tar.gz
+[2024-12-19T20:55:04.642Z] + tar xz
+[2024-12-19T20:55:22.669Z] + ls
+[2024-12-19T20:55:22.669Z] + grep PAVICS-landing
+[2024-12-19T20:55:22.669Z] PAVICS-landing-master
+[2024-12-19T20:55:22.669Z] + set +x
+[2024-12-19T20:55:22.669Z] + rm -rf raven-*
+[2024-12-19T20:55:22.669Z] + ls
+[2024-12-19T20:55:22.669Z] + grep raven
+[2024-12-19T20:55:22.669Z] + downloadrepos https://github.com/Ouranosinc/raven main
+[2024-12-19T20:55:22.669Z] + github_repo=https://github.com/Ouranosinc/raven
+[2024-12-19T20:55:22.669Z] + shift
+[2024-12-19T20:55:22.669Z] + branch=main
+[2024-12-19T20:55:22.669Z] + shift
+[2024-12-19T20:55:22.669Z] + wget --quiet --output-document - https://github.com/Ouranosinc/raven/archive/main.tar.gz
+[2024-12-19T20:55:22.669Z] + tar xz
+[2024-12-19T20:55:22.669Z] + ls
+[2024-12-19T20:55:22.669Z] + grep raven
+[2024-12-19T20:55:22.669Z] raven-main
+[2024-12-19T20:55:22.669Z] + set +x
+[2024-12-19T20:55:22.669Z] + rm -rf RavenPy-*
+[2024-12-19T20:55:22.669Z] + ls
+[2024-12-19T20:55:22.669Z] + grep RavenPy
+[2024-12-19T20:55:22.669Z] + downloadrepos https://github.com/CSHS-CWRA/RavenPy master
+[2024-12-19T20:55:22.669Z] + github_repo=https://github.com/CSHS-CWRA/RavenPy
+[2024-12-19T20:55:22.669Z] + shift
+[2024-12-19T20:55:22.669Z] + branch=master
+[2024-12-19T20:55:22.669Z] + shift
+[2024-12-19T20:55:22.669Z] + wget --quiet --output-document - https://github.com/CSHS-CWRA/RavenPy/archive/master.tar.gz
+[2024-12-19T20:55:22.669Z] + tar xz
+[2024-12-19T20:55:23.229Z] + ls
+[2024-12-19T20:55:23.229Z] + grep RavenPy
+[2024-12-19T20:55:23.229Z] RavenPy-master
+[2024-12-19T20:55:23.229Z] + set +x
+[2024-12-19T20:55:23.229Z] + rm -rf esgf-compute-api-*
+[2024-12-19T20:55:23.230Z] + ls
+[2024-12-19T20:55:23.230Z] + grep esgf-compute-api
+[2024-12-19T20:55:23.230Z] + downloadrepos https://github.com/ESGF/esgf-compute-api devel
+[2024-12-19T20:55:23.230Z] + github_repo=https://github.com/ESGF/esgf-compute-api
+[2024-12-19T20:55:23.230Z] + shift
+[2024-12-19T20:55:23.230Z] + branch=devel
+[2024-12-19T20:55:23.230Z] + shift
+[2024-12-19T20:55:23.230Z] + wget --quiet --output-document - https://github.com/ESGF/esgf-compute-api/archive/devel.tar.gz
+[2024-12-19T20:55:23.230Z] + tar xz
+[2024-12-19T20:55:24.153Z] + ls
+[2024-12-19T20:55:24.153Z] + grep esgf-compute-api
+[2024-12-19T20:55:24.153Z] esgf-compute-api-devel
+[2024-12-19T20:55:24.153Z] + set +x
+[2024-12-19T20:55:24.153Z] + echo master
+[2024-12-19T20:55:24.153Z] + sed s@/@-@g
+[2024-12-19T20:55:24.153Z] + export PAVICS_SDI_BRANCH=master
+[2024-12-19T20:55:24.153Z] + echo Ouranosinc/pavics-sdi
+[2024-12-19T20:55:24.153Z] + sed s@^.*/@@g
+[2024-12-19T20:55:24.153Z] + export PAVICS_SDI_REPO_NAME=pavics-sdi
+[2024-12-19T20:55:24.153Z] + echo master
+[2024-12-19T20:55:24.153Z] + sed s@/@-@g
+[2024-12-19T20:55:24.153Z] + export FINCH_BRANCH=master
+[2024-12-19T20:55:24.153Z] + echo bird-house/finch
+[2024-12-19T20:55:24.153Z] + sed s@^.*/@@g
+[2024-12-19T20:55:24.153Z] + export FINCH_REPO_NAME=finch
+[2024-12-19T20:55:24.153Z] + echo master
+[2024-12-19T20:55:24.153Z] + sed s@/@-@g
+[2024-12-19T20:55:24.153Z] + export PAVICS_LANDING_BRANCH=master
+[2024-12-19T20:55:24.153Z] + echo Ouranosinc/PAVICS-landing
+[2024-12-19T20:55:24.153Z] + sed s@^.*/@@g
+[2024-12-19T20:55:24.153Z] + export PAVICS_LANDING_REPO_NAME=PAVICS-landing
+[2024-12-19T20:55:24.153Z] + echo main
+[2024-12-19T20:55:24.153Z] + sed s@/@-@g
+[2024-12-19T20:55:24.153Z] + export RAVEN_BRANCH=main
+[2024-12-19T20:55:24.153Z] + echo Ouranosinc/raven
+[2024-12-19T20:55:24.153Z] + sed s@^.*/@@g
+[2024-12-19T20:55:24.153Z] + export RAVEN_REPO_NAME=raven
+[2024-12-19T20:55:24.153Z] + echo master
+[2024-12-19T20:55:24.153Z] + sed s@/@-@g
+[2024-12-19T20:55:24.153Z] + export RAVENPY_BRANCH=master
+[2024-12-19T20:55:24.153Z] + echo CSHS-CWRA/RavenPy
+[2024-12-19T20:55:24.153Z] + sed s@^.*/@@g
+[2024-12-19T20:55:24.153Z] + export RAVENPY_REPO_NAME=RavenPy
+[2024-12-19T20:55:24.153Z] + echo devel
+[2024-12-19T20:55:24.153Z] + sed s@/@-@g
+[2024-12-19T20:55:24.153Z] + export ESGF_COMPUTE_API_BRANCH=devel
+[2024-12-19T20:55:24.153Z] + echo ESGF/esgf-compute-api
+[2024-12-19T20:55:24.153Z] + sed s@^.*/@@g
+[2024-12-19T20:55:24.153Z] + export ESGF_COMPUTE_API_REPO_NAME=esgf-compute-api
+[2024-12-19T20:55:24.153Z] + echo pavics-sdi-master
+[2024-12-19T20:55:24.153Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-12-19T20:55:24.153Z] + export PAVICS_SDI_DIR=pavics-sdi-master
+[2024-12-19T20:55:24.153Z] + echo finch-master
+[2024-12-19T20:55:24.153Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-12-19T20:55:24.153Z] + export FINCH_DIR=finch-master
+[2024-12-19T20:55:24.153Z] + echo PAVICS-landing-master
+[2024-12-19T20:55:24.153Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-12-19T20:55:24.153Z] + export PAVICS_LANDING_DIR=PAVICS-landing-master
+[2024-12-19T20:55:24.153Z] + echo raven-main
+[2024-12-19T20:55:24.153Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-12-19T20:55:24.153Z] + export RAVEN_DIR=raven-main
+[2024-12-19T20:55:24.153Z] + echo RavenPy-master
+[2024-12-19T20:55:24.153Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-12-19T20:55:24.153Z] + export RAVENPY_DIR=RavenPy-master
+[2024-12-19T20:55:24.153Z] + echo esgf-compute-api-devel
+[2024-12-19T20:55:24.153Z] + sed s@[^a-zA-Z0-9_\-\.]@-@g
+[2024-12-19T20:55:24.153Z] + export ESGF_COMPUTE_API_DIR=esgf-compute-api-devel
+[2024-12-19T20:55:24.153Z] + echo true
+[2024-12-19T20:55:24.153Z] + tr [:upper:] [:lower:]
+[2024-12-19T20:55:24.153Z] + VERIFY_SSL=true
+[2024-12-19T20:55:24.153Z] + [ xtrue = xfalse ]
+[2024-12-19T20:55:24.153Z] + rm -v finch-master/setup.cfg
+[2024-12-19T20:55:24.153Z] removed 'finch-master/setup.cfg'
+[2024-12-19T20:55:24.153Z] + rm -v raven-main/setup.cfg
+[2024-12-19T20:55:24.153Z] removed 'raven-main/setup.cfg'
+[2024-12-19T20:55:24.153Z] + rm -v raven-main/pyproject.toml
+[2024-12-19T20:55:24.153Z] removed 'raven-main/pyproject.toml'
+[2024-12-19T20:55:24.153Z] + rm -v RavenPy-master/setup.cfg
+[2024-12-19T20:55:24.153Z] rm: cannot remove 'RavenPy-master/setup.cfg': No such file or directory
+[2024-12-19T20:55:24.153Z] + rm -v RavenPy-master/tox.ini
+[2024-12-19T20:55:24.153Z] removed 'RavenPy-master/tox.ini'
+[2024-12-19T20:55:24.153Z] + rm -v RavenPy-master/pyproject.toml
+[2024-12-19T20:55:24.153Z] removed 'RavenPy-master/pyproject.toml'
+[2024-12-19T20:55:24.153Z] + rm -v esgf-compute-api-devel/setup.cfg
+[2024-12-19T20:55:24.153Z] rm: cannot remove 'esgf-compute-api-devel/setup.cfg': No such file or directory
+[2024-12-19T20:55:24.153Z] + rm -v esgf-compute-api-devel/tox.ini
+[2024-12-19T20:55:24.153Z] rm: cannot remove 'esgf-compute-api-devel/tox.ini': No such file or directory
+[2024-12-19T20:55:24.153Z] + echo false
+[2024-12-19T20:55:24.153Z] + tr [:upper:] [:lower:]
+[2024-12-19T20:55:24.153Z] + TEST_MAGPIE_AUTH=false
+[2024-12-19T20:55:24.153Z] + echo true
+[2024-12-19T20:55:24.153Z] + tr [:upper:] [:lower:]
+[2024-12-19T20:55:24.153Z] + TEST_PAVICS_SDI_REPO=true
+[2024-12-19T20:55:24.153Z] + echo false
+[2024-12-19T20:55:24.153Z] + tr [:upper:] [:lower:]
+[2024-12-19T20:55:24.153Z] + TEST_PAVICS_SDI_WEAVER=false
+[2024-12-19T20:55:24.153Z] + echo true
+[2024-12-19T20:55:24.153Z] + tr [:upper:] [:lower:]
+[2024-12-19T20:55:24.153Z] + TEST_FINCH_REPO=true
+[2024-12-19T20:55:24.153Z] + echo true
+[2024-12-19T20:55:24.153Z] + tr [:upper:] [:lower:]
+[2024-12-19T20:55:24.153Z] + TEST_PAVICS_LANDING_REPO=true
+[2024-12-19T20:55:24.153Z] + echo false
+[2024-12-19T20:55:24.153Z] + tr [:upper:] [:lower:]
+[2024-12-19T20:55:24.153Z] + TEST_RAVEN_REPO=false
+[2024-12-19T20:55:24.153Z] + echo false
+[2024-12-19T20:55:24.153Z] + tr [:upper:] [:lower:]
+[2024-12-19T20:55:24.153Z] + TEST_RAVENPY_REPO=false
+[2024-12-19T20:55:24.153Z] + echo false
+[2024-12-19T20:55:24.153Z] + tr [:upper:] [:lower:]
+[2024-12-19T20:55:24.153Z] + TEST_ESGF_COMPUTE_API_REPO=false
+[2024-12-19T20:55:24.153Z] + echo true
+[2024-12-19T20:55:24.153Z] + tr [:upper:] [:lower:]
+[2024-12-19T20:55:24.153Z] + TEST_LOCAL_NOTEBOOKS=true
+[2024-12-19T20:55:24.153Z] + NOTEBOOKS_TO_TEST=
+[2024-12-19T20:55:24.153Z] + [ xfalse = xtrue ]
+[2024-12-19T20:55:24.153Z] + [ xtrue = xtrue ]
+[2024-12-19T20:55:24.153Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb
+[2024-12-19T20:55:24.153Z] + [ xfalse = xtrue ]
+[2024-12-19T20:55:24.153Z] + [ xtrue = xtrue ]
+[2024-12-19T20:55:24.154Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb
+[2024-12-19T20:55:24.154Z] + [ xtrue = xtrue ]
+[2024-12-19T20:55:24.154Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/*.ipynb
+[2024-12-19T20:55:24.154Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/*.ipynb PAVICS-landing-master/content/notebooks/hydrology/*.ipynb
+[2024-12-19T20:55:24.154Z] + SETUP_SCRIPT=PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh
+[2024-12-19T20:55:24.154Z] + [ -x PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh ]
+[2024-12-19T20:55:24.154Z] + PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh
+[2024-12-19T20:55:24.154Z] + realpath PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh
+[2024-12-19T20:55:24.154Z] + THIS_FILE=/home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh
+[2024-12-19T20:55:24.154Z] + dirname /home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/setup_dirlayout.sh
+[2024-12-19T20:55:24.154Z] + THIS_DIR=/home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators
+[2024-12-19T20:55:24.154Z] + NOTEBOOK_OUTDIR_BASE=/notebook_dir/writable-workspace/tmp
+[2024-12-19T20:55:24.154Z] + mkdir -p /notebook_dir/writable-workspace/tmp
+[2024-12-19T20:55:24.154Z] + unzip /home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/tutorial3.zip -d /notebook_dir/writable-workspace/tmp/
+[2024-12-19T20:55:24.154Z] Archive:  /home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/tutorial3.zip
+[2024-12-19T20:55:24.154Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-LR_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.411Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-LR_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.411Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-LR_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.411Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-HR_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.411Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-HR_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.411Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-HR_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.411Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-HR_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.411Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC6_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.411Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC6_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.411Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC6_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.411Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC6_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.411Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_INM_INM-CM5-0_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.411Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_INM_INM-CM5-0_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.411Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_INM_INM-CM5-0_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.411Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_INM_INM-CM5-0_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.411Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO_ACCESS-ESM1-5_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.411Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO_ACCESS-ESM1-5_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO_ACCESS-ESM1-5_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO_ACCESS-ESM1-5_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO-ARCCSS_ACCESS-CM2_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO-ARCCSS_ACCESS-CM2_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO-ARCCSS_ACCESS-CM2_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CNRM-CERFACS_CNRM-ESM2-1_ssp245_r1i1p1f2_1980-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CMCC_CMCC-ESM2_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-LR_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CNRM-CERFACS_CNRM-ESM2-1_ssp245_r1i1p1f2_1980-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CMCC_CMCC-ESM2_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO-ARCCSS_ACCESS-CM2_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CNRM-CERFACS_CNRM-ESM2-1_ssp245_r1i1p1f2_1981-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CNRM-CERFACS_CNRM-ESM2-1_ssp245_r1i1p1f2_1981-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CMCC_CMCC-ESM2_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CNRM-CERFACS_CNRM-ESM2-1_ssp370_r1i1p1f2_1981-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CNRM-CERFACS_CNRM-ESM2-1_ssp370_r1i1p1f2_1980-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CNRM-CERFACS_CNRM-ESM2-1_ssp370_r1i1p1f2_1981-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CNRM-CERFACS_CNRM-ESM2-1_ssp370_r1i1p1f2_1980-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CMCC_CMCC-ESM2_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CMCC_CMCC-ESM2_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CMCC_CMCC-ESM2_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CMCC_CMCC-ESM2_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CAS_FGOALS-g3_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.412Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CAS_FGOALS-g3_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.672Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CAS_FGOALS-g3_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.672Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CAS_FGOALS-g3_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.672Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_BCC_BCC-CSM2-MR_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.672Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_BCC_BCC-CSM2-MR_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.672Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_BCC_BCC-CSM2-MR_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_BCC_BCC-CSM2-MR_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC-ES2L_ssp245_r1i1p1f2_1981-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC-ES2L_ssp245_r1i1p1f2_1980-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC-ES2L_ssp245_r1i1p1f2_1981-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC-ES2L_ssp245_r1i1p1f2_1980-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC-ES2L_ssp370_r1i1p1f2_1981-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC-ES2L_ssp370_r1i1p1f2_1980-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC-ES2L_ssp370_r1i1p1f2_1981-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC-ES2L_ssp370_r1i1p1f2_1980-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CMCC_CMCC-ESM2_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CAS_FGOALS-g3_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CAS_FGOALS-g3_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CAS_FGOALS-g3_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CAS_FGOALS-g3_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_BCC_BCC-CSM2-MR_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_BCC_BCC-CSM2-MR_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_BCC_BCC-CSM2-MR_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_BCC_BCC-CSM2-MR_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NOAA-GFDL_GFDL-ESM4_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NOAA-GFDL_GFDL-ESM4_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NOAA-GFDL_GFDL-ESM4_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NOAA-GFDL_GFDL-ESM4_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NIMS-KMA_KACE-1-0-G_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NIMS-KMA_KACE-1-0-G_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NIMS-KMA_KACE-1-0-G_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NIMS-KMA_KACE-1-0-G_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NCC_NorESM2-LM_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NCC_NorESM2-LM_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NOAA-GFDL_GFDL-ESM4_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NOAA-GFDL_GFDL-ESM4_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NOAA-GFDL_GFDL-ESM4_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NOAA-GFDL_GFDL-ESM4_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.673Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NIMS-KMA_KACE-1-0-G_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NIMS-KMA_KACE-1-0-G_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NIMS-KMA_KACE-1-0-G_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NIMS-KMA_KACE-1-0-G_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NCC_NorESM2-LM_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NCC_NorESM2-LM_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NCC_NorESM2-LM_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NCC_NorESM2-LM_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MRI_MRI-ESM2-0_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MRI_MRI-ESM2-0_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MRI_MRI-ESM2-0_ssp245_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MRI_MRI-ESM2-0_ssp245_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NCC_NorESM2-LM_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_NCC_NorESM2-LM_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MRI_MRI-ESM2-0_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MRI_MRI-ESM2-0_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MRI_MRI-ESM2-0_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MRI_MRI-ESM2-0_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-LR_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-LR_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-LR_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-LR_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-HR_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-HR_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-HR_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MPI-M_MPI-ESM1-2-HR_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC6_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC6_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC6_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_MIROC_MIROC6_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_INM_INM-CM5-0_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_INM_INM-CM5-0_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_INM_INM-CM5-0_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_INM_INM-CM5-0_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.934Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO_ACCESS-ESM1-5_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.935Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO_ACCESS-ESM1-5_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.935Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO_ACCESS-ESM1-5_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:24.935Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO_ACCESS-ESM1-5_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:24.935Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO-ARCCSS_ACCESS-CM2_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:25.189Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_days_above_27_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO-ARCCSS_ACCESS-CM2_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:25.189Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_annual_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO-ARCCSS_ACCESS-CM2_ssp370_r1i1p1f1_1981-2100.nc  
+[2024-12-19T20:55:25.189Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial3/output/tx_mean_seasonal_ESPO-G6-R2_v1.0.0_CMIP6_ScenarioMIP_NAM_CSIRO-ARCCSS_ACCESS-CM2_ssp370_r1i1p1f1_1980-2100.nc  
+[2024-12-19T20:55:25.189Z] + unzip /home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/tutorial5.zip -d /notebook_dir/writable-workspace/tmp/
+[2024-12-19T20:55:25.189Z] Archive:  /home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/tutorial5.zip
+[2024-12-19T20:55:25.189Z]   inflating: /notebook_dir/writable-workspace/tmp/tutorial5/output/Gaspesie_ESPO-G6-R2_30yAvg_ensemble_percentiles.nc  
+[2024-12-19T20:55:25.189Z] + HOMEPAGE_ROOT_DIR=/notebook_dir/pavics-homepage
+[2024-12-19T20:55:25.189Z] + mkdir -p /notebook_dir/pavics-homepage
+[2024-12-19T20:55:25.189Z] + ln -sv /home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/tutorial_data /notebook_dir/pavics-homepage/tutorial_data
+[2024-12-19T20:55:25.189Z] '/notebook_dir/pavics-homepage/tutorial_data' -> '/home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/tutorial_data'
+[2024-12-19T20:55:25.189Z] + [ xfalse = xtrue ]
+[2024-12-19T20:55:25.189Z] + [ xfalse = xtrue ]
+[2024-12-19T20:55:25.189Z] + [ xfalse = xtrue ]
+[2024-12-19T20:55:25.189Z] + [ xtrue = xtrue ]
+[2024-12-19T20:55:25.189Z] + NOTEBOOKS_TO_TEST= pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/*.ipynb PAVICS-landing-master/content/notebooks/hydrology/*.ipynb notebooks/*.ipynb
+[2024-12-19T20:55:25.189Z] + ./runtest  pavics-sdi-master/docs/source/notebooks/*.ipynb finch-master/docs/source/notebooks/*.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/*.ipynb PAVICS-landing-master/content/notebooks/hydrology/*.ipynb notebooks/*.ipynb
+[2024-12-19T20:55:25.189Z] + [ -n  ]
+[2024-12-19T20:55:25.189Z] + [ ! -z pavics.ouranos.ca ]
+[2024-12-19T20:55:25.189Z] + echo Will run notebooks against pavics.ouranos.ca
+[2024-12-19T20:55:25.189Z] Will run notebooks against pavics.ouranos.ca
+[2024-12-19T20:55:25.189Z] + [ -z  ]
+[2024-12-19T20:55:25.190Z] + sed -i /\(\.ncml\|TEST_USE_PROD_DATA\)/!s/pavics.ouranos.ca/pavics.ouranos.ca/g pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb pavics-sdi-master/docs/source/notebooks/climex.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb pavics-sdi-master/docs/source/notebooks/forecasts.ipynb pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb pavics-sdi-master/docs/source/notebooks/opendap.ipynb pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb pavics-sdi-master/docs/source/notebooks/regridding.ipynb pavics-sdi-master/docs/source/notebooks/rendering.ipynb pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb pavics-sdi-master/docs/source/notebooks/subsetting.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-01_Intro.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-02_Calibration.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-03_Watershed_properties.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-04_Time_series_analysis.ipynb notebooks/hummingbird.ipynb notebooks/stress-tests.ipynb
+[2024-12-19T20:55:25.190Z] + git diff
+[2024-12-19T20:55:25.190Z] + export PYTHONWARNINGS=ignore:Unverified HTTPS request
+[2024-12-19T20:55:25.190Z] + [ -n  ]
+[2024-12-19T20:55:25.190Z] + py.test --nbval pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb pavics-sdi-master/docs/source/notebooks/climex.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb pavics-sdi-master/docs/source/notebooks/forecasts.ipynb pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb pavics-sdi-master/docs/source/notebooks/opendap.ipynb pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb pavics-sdi-master/docs/source/notebooks/regridding.ipynb pavics-sdi-master/docs/source/notebooks/rendering.ipynb pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb pavics-sdi-master/docs/source/notebooks/subsetting.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-01_Intro.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-02_Calibration.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-03_Watershed_properties.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-04_Time_series_analysis.ipynb notebooks/hummingbird.ipynb notebooks/stress-tests.ipynb --nbval-sanitize-with notebooks/output-sanitize.cfg --dist=loadscope --numprocesses=0
+[2024-12-19T20:55:27.700Z] ============================= test session starts ==============================
+[2024-12-19T20:55:27.700Z] platform linux -- Python 3.11.11, pytest-8.3.4, pluggy-1.5.0
+[2024-12-19T20:55:27.700Z] rootdir: /home/jenkins/agent/workspace/_workflow-tests_new-docker-build
+[2024-12-19T20:55:27.700Z] plugins: anyio-4.7.0, dash-2.18.2, nbval-0.11.0, tornasync-0.6.0.post2, xdist-3.6.1
+[2024-12-19T20:55:27.700Z] collected 253 items
+[2024-12-19T20:55:27.700Z] 
+[2024-12-19T20:56:21.091Z] pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb ......          [  2%]
+[2024-12-19T20:56:36.259Z] pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb .......        [  5%]
+[2024-12-19T20:56:42.095Z] pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb ......         [  7%]
+[2024-12-19T21:04:06.339Z] pavics-sdi-master/docs/source/notebooks/climex.ipynb ............        [ 12%]
+[2024-12-19T21:04:06.339Z] pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb . [ 12%]
+[2024-12-19T21:04:10.930Z] ...............                                                          [ 18%]
+[2024-12-19T21:04:18.345Z] pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb .....    [ 20%]
+[2024-12-19T21:04:24.150Z] pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb .......           [ 23%]
+[2024-12-19T21:04:36.609Z] pavics-sdi-master/docs/source/notebooks/forecasts.ipynb ......           [ 25%]
+[2024-12-19T21:04:45.294Z] pavics-sdi-master/docs/source/notebooks/opendap.ipynb .......            [ 28%]
+[2024-12-19T21:04:48.699Z] pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb .....       [ 30%]
+[2024-12-19T21:05:23.136Z] pavics-sdi-master/docs/source/notebooks/regridding.ipynb ............... [ 36%]
+[2024-12-19T21:06:29.600Z] .............                                                            [ 41%]
+[2024-12-19T21:06:30.532Z] pavics-sdi-master/docs/source/notebooks/rendering.ipynb .....            [ 43%]
+[2024-12-19T21:06:32.277Z] pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb ........ [ 46%]
+[2024-12-19T21:06:49.170Z] .................                                                        [ 53%]
+[2024-12-19T21:06:55.933Z] pavics-sdi-master/docs/source/notebooks/subsetting.ipynb ......          [ 55%]
+[2024-12-19T21:07:05.300Z] finch-master/docs/source/notebooks/dap_subset.ipynb ...........          [ 60%]
+[2024-12-19T21:07:13.913Z] finch-master/docs/source/notebooks/finch-usage.ipynb ......              [ 62%]
+[2024-12-19T21:07:15.276Z] PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb . [ 62%]
+[2024-12-19T21:07:25.868Z] .....                                                                    [ 64%]
+[2024-12-19T21:09:02.272Z] PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb . [ 65%]
+[2024-12-19T21:09:28.305Z] ............                                                             [ 69%]
+[2024-12-19T21:09:54.786Z] PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb . [ 70%]
+[2024-12-19T21:11:16.180Z] .....s.                                                                  [ 73%]
+[2024-12-19T21:11:16.180Z] PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb . [ 73%]
+[2024-12-19T21:11:23.265Z] ..                                                                       [ 74%]
+[2024-12-19T21:11:45.149Z] PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb . [ 74%]
+[2024-12-19T21:12:42.249Z] .........                                                                [ 78%]
+[2024-12-19T21:13:04.127Z] PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb . [ 78%]
+[2024-12-19T21:17:16.720Z] ....                                                                     [ 80%]
+[2024-12-19T21:17:16.720Z] PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-01_Intro.ipynb . [ 80%]
+[2024-12-19T21:17:16.720Z] ....                                                                     [ 82%]
+[2024-12-19T21:17:16.720Z] PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-02_Calibration.ipynb . [ 82%]
+[2024-12-19T21:17:23.336Z] .....                                                                    [ 84%]
+[2024-12-19T21:17:26.650Z] PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-03_Watershed_properties.ipynb . [ 84%]
+[2024-12-19T21:17:35.144Z] .............                                                            [ 90%]
+[2024-12-19T21:17:39.313Z] PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-04_Time_series_analysis.ipynb . [ 90%]
+[2024-12-19T21:17:40.343Z] ......                                                                   [ 92%]
+[2024-12-19T21:17:43.161Z] notebooks/hummingbird.ipynb ............                                 [ 97%]
+[2024-12-19T21:19:31.917Z] notebooks/stress-tests.ipynb ......                                      [100%]
+[2024-12-19T21:19:31.917Z] 
+[2024-12-19T21:19:31.917Z] =============================== warnings summary ===============================
+[2024-12-19T21:19:31.917Z] PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb:Cell 4:0
+[2024-12-19T21:19:31.917Z]   /home/jenkins/agent/workspace/_workflow-tests_new-docker-build/PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb:Cell 4:0: UserWarning: Conflicting comment markers found, using the latest:  NBVAL_IGNORE_OUTPUT VS NBVAL_IGNORE_OUTPUT
+[2024-12-19T21:19:31.918Z] 
+[2024-12-19T21:19:31.918Z] -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+[2024-12-19T21:19:31.918Z] ============ 252 passed, 1 skipped, 1 warning in 1443.31s (0:24:03) ============
+[2024-12-19T21:19:31.918Z] + EXIT_CODE=0
+[2024-12-19T21:19:31.918Z] + echo true
+[2024-12-19T21:19:31.918Z] + tr [:upper:] [:lower:]
+[2024-12-19T21:19:31.918Z] + SAVE_RESULTING_NOTEBOOK=true
+[2024-12-19T21:19:31.918Z] + [ xtrue = xtrue ]
+[2024-12-19T21:19:31.918Z] + mkdir -p buildout
+[2024-12-19T21:19:31.918Z] + basename pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb
+[2024-12-19T21:19:31.918Z] + filename=CaSR_basic.ipynb
+[2024-12-19T21:19:31.918Z] + echo CaSR_basic.ipynb
+[2024-12-19T21:19:31.918Z] + sed s/.ipynb$//
+[2024-12-19T21:19:31.918Z] + filename=CaSR_basic
+[2024-12-19T21:19:31.918Z] + [ -e buildout/CaSR_basic.output.ipynb ]
+[2024-12-19T21:19:31.918Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output CaSR_basic.output.ipynb pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb
+[2024-12-19T21:19:31.918Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/CaSR_basic.ipynb to notebook
+[2024-12-19T21:20:39.543Z] [NbConvertApp] Writing 731397 bytes to buildout/CaSR_basic.output.ipynb
+[2024-12-19T21:20:39.543Z] + basename pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb
+[2024-12-19T21:20:39.543Z] + filename=WCS_example.ipynb
+[2024-12-19T21:20:39.543Z] + echo WCS_example.ipynb
+[2024-12-19T21:20:39.543Z] + sed s/.ipynb$//
+[2024-12-19T21:20:39.543Z] + filename=WCS_example
+[2024-12-19T21:20:39.543Z] + [ -e buildout/WCS_example.output.ipynb ]
+[2024-12-19T21:20:39.543Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output WCS_example.output.ipynb pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb
+[2024-12-19T21:20:39.543Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/WCS_example.ipynb to notebook
+[2024-12-19T21:20:49.481Z] [NbConvertApp] Writing 147277 bytes to buildout/WCS_example.output.ipynb
+[2024-12-19T21:20:49.481Z] + basename pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb
+[2024-12-19T21:20:49.481Z] + filename=WFS_example.ipynb
+[2024-12-19T21:20:49.481Z] + echo WFS_example.ipynb
+[2024-12-19T21:20:49.481Z] + sed s/.ipynb$//
+[2024-12-19T21:20:49.481Z] + filename=WFS_example
+[2024-12-19T21:20:49.481Z] + [ -e buildout/WFS_example.output.ipynb ]
+[2024-12-19T21:20:49.481Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output WFS_example.output.ipynb pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb
+[2024-12-19T21:20:49.741Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/WFS_example.ipynb to notebook
+[2024-12-19T21:20:57.813Z] [NbConvertApp] Writing 44573 bytes to buildout/WFS_example.output.ipynb
+[2024-12-19T21:20:57.813Z] + basename pavics-sdi-master/docs/source/notebooks/climex.ipynb
+[2024-12-19T21:20:57.813Z] + filename=climex.ipynb
+[2024-12-19T21:20:57.813Z] + echo climex.ipynb
+[2024-12-19T21:20:57.813Z] + sed s/.ipynb$//
+[2024-12-19T21:20:57.813Z] + filename=climex
+[2024-12-19T21:20:57.813Z] + [ -e buildout/climex.output.ipynb ]
+[2024-12-19T21:20:57.813Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output climex.output.ipynb pavics-sdi-master/docs/source/notebooks/climex.ipynb
+[2024-12-19T21:20:58.378Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/climex.ipynb to notebook
+[2024-12-19T21:28:49.905Z] [NbConvertApp] Writing 1799003 bytes to buildout/climex.output.ipynb
+[2024-12-19T21:28:49.905Z] + basename pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb
+[2024-12-19T21:28:49.905Z] + filename=eccc-geoapi-climate-stations.ipynb
+[2024-12-19T21:28:49.905Z] + echo eccc-geoapi-climate-stations.ipynb
+[2024-12-19T21:28:49.905Z] + sed s/.ipynb$//
+[2024-12-19T21:28:49.905Z] + filename=eccc-geoapi-climate-stations
+[2024-12-19T21:28:49.905Z] + [ -e buildout/eccc-geoapi-climate-stations.output.ipynb ]
+[2024-12-19T21:28:49.905Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output eccc-geoapi-climate-stations.output.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb
+[2024-12-19T21:28:49.905Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb to notebook
+[2024-12-19T21:29:02.095Z] [NbConvertApp] Writing 372564 bytes to buildout/eccc-geoapi-climate-stations.output.ipynb
+[2024-12-19T21:29:02.095Z] + basename pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb
+[2024-12-19T21:29:02.095Z] + filename=eccc-geoapi-xclim.ipynb
+[2024-12-19T21:29:02.095Z] + + sedecho s/.ipynb$//
+[2024-12-19T21:29:02.095Z]  eccc-geoapi-xclim.ipynb
+[2024-12-19T21:29:02.095Z] + filename=eccc-geoapi-xclim
+[2024-12-19T21:29:02.095Z] + [ -e buildout/eccc-geoapi-xclim.output.ipynb ]
+[2024-12-19T21:29:02.095Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output eccc-geoapi-xclim.output.ipynb pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb
+[2024-12-19T21:29:02.095Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/eccc-geoapi-xclim.ipynb to notebook
+[2024-12-19T21:29:12.029Z] [NbConvertApp] Writing 106569 bytes to buildout/eccc-geoapi-xclim.output.ipynb
+[2024-12-19T21:29:12.029Z] + basename pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb
+[2024-12-19T21:29:12.029Z] + filename=esgf-dap.ipynb
+[2024-12-19T21:29:12.029Z] + echo esgf-dap.ipynb
+[2024-12-19T21:29:12.029Z] + sed s/.ipynb$//
+[2024-12-19T21:29:12.029Z] + filename=esgf-dap
+[2024-12-19T21:29:12.029Z] + [ -e buildout/esgf-dap.output.ipynb ]
+[2024-12-19T21:29:12.029Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output esgf-dap.output.ipynb pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb
+[2024-12-19T21:29:12.029Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/esgf-dap.ipynb to notebook
+[2024-12-19T21:29:20.118Z] [NbConvertApp] Writing 64457 bytes to buildout/esgf-dap.output.ipynb
+[2024-12-19T21:29:20.118Z] + basename pavics-sdi-master/docs/source/notebooks/forecasts.ipynb
+[2024-12-19T21:29:20.118Z] + filename=forecasts.ipynb
+[2024-12-19T21:29:20.118Z] + sed s/.ipynb$//
+[2024-12-19T21:29:20.118Z] + echo forecasts.ipynb
+[2024-12-19T21:29:20.118Z] + filename=forecasts
+[2024-12-19T21:29:20.118Z] + [ -e buildout/forecasts.output.ipynb ]
+[2024-12-19T21:29:20.118Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output forecasts.output.ipynb pavics-sdi-master/docs/source/notebooks/forecasts.ipynb
+[2024-12-19T21:29:22.013Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/forecasts.ipynb to notebook
+[2024-12-19T21:29:40.055Z] [NbConvertApp] Writing 177654 bytes to buildout/forecasts.output.ipynb
+[2024-12-19T21:29:40.055Z] + basename pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb
+[2024-12-19T21:29:40.055Z] + filename=jupyter_extensions.ipynb
+[2024-12-19T21:29:40.055Z] + echo jupyter_extensions.ipynb
+[2024-12-19T21:29:40.055Z] + sed s/.ipynb$//
+[2024-12-19T21:29:40.055Z] + filename=jupyter_extensions
+[2024-12-19T21:29:40.055Z] + [ -e buildout/jupyter_extensions.output.ipynb ]
+[2024-12-19T21:29:40.055Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output jupyter_extensions.output.ipynb pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb
+[2024-12-19T21:29:40.055Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/jupyter_extensions.ipynb to notebook
+[2024-12-19T21:29:40.981Z] [NbConvertApp] Writing 7997 bytes to buildout/jupyter_extensions.output.ipynb
+[2024-12-19T21:29:41.240Z] + basename pavics-sdi-master/docs/source/notebooks/opendap.ipynb
+[2024-12-19T21:29:41.240Z] + filename=opendap.ipynb
+[2024-12-19T21:29:41.240Z] + sed s/.ipynb$//
+[2024-12-19T21:29:41.240Z] + echo opendap.ipynb
+[2024-12-19T21:29:41.240Z] + filename=opendap
+[2024-12-19T21:29:41.241Z] + [ -e buildout/opendap.output.ipynb ]
+[2024-12-19T21:29:41.241Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output opendap.output.ipynb pavics-sdi-master/docs/source/notebooks/opendap.ipynb
+[2024-12-19T21:29:42.614Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/opendap.ipynb to notebook
+[2024-12-19T21:29:52.546Z] [NbConvertApp] Writing 112904 bytes to buildout/opendap.output.ipynb
+[2024-12-19T21:29:52.546Z] + basename pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb
+[2024-12-19T21:29:52.546Z] + filename=pavics_thredds.ipynb
+[2024-12-19T21:29:52.546Z] + echo pavics_thredds.ipynb
+[2024-12-19T21:29:52.546Z] + sed s/.ipynb$//
+[2024-12-19T21:29:52.546Z] + filename=pavics_thredds
+[2024-12-19T21:29:52.546Z] + [ -e buildout/pavics_thredds.output.ipynb ]
+[2024-12-19T21:29:52.546Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output pavics_thredds.output.ipynb pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb
+[2024-12-19T21:29:53.472Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/pavics_thredds.ipynb to notebook
+[2024-12-19T21:29:56.736Z] syntax error, unexpected WORD_WORD, expecting SCAN_ATTR or SCAN_DATASET or SCAN_ERROR
+[2024-12-19T21:29:56.736Z] context: <?xml^ version="1.0" encoding="utf-8"?><ExceptionReport version="1.0.0" xmlns="http://www.opengis.net/ows/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/ows/1.1 http://schemas.opengis.net/ows/1.1.0/owsExceptionReport.xsd"> <Exception exceptionCode="NoApplicableCode" locator="AccessForbidden"> <ExceptionText>Access to service is forbidden.</ExceptionText> </Exception></ExceptionReport>
+[2024-12-19T21:29:56.736Z] syntax error, unexpected WORD_WORD, expecting SCAN_ATTR or SCAN_DATASET or SCAN_ERROR
+[2024-12-19T21:29:56.736Z] context: <?xml^ version="1.0" encoding="utf-8"?><ExceptionReport version="1.0.0" xmlns="http://www.opengis.net/ows/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/ows/1.1 http://schemas.opengis.net/ows/1.1.0/owsExceptionReport.xsd"> <Exception exceptionCode="NoApplicableCode" locator="AccessForbidden"> <ExceptionText>Access to service is forbidden.</ExceptionText> </Exception></ExceptionReport>
+[2024-12-19T21:29:58.620Z] [NbConvertApp] Writing 92036 bytes to buildout/pavics_thredds.output.ipynb
+[2024-12-19T21:29:58.620Z] + basename pavics-sdi-master/docs/source/notebooks/regridding.ipynb
+[2024-12-19T21:29:58.620Z] + filename=regridding.ipynb
+[2024-12-19T21:29:58.620Z] + sed s/.ipynb$//
+[2024-12-19T21:29:58.620Z] + echo regridding.ipynb
+[2024-12-19T21:29:58.620Z] + filename=regridding
+[2024-12-19T21:29:58.620Z] + [ -e buildout/regridding.output.ipynb ]
+[2024-12-19T21:29:58.620Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output regridding.output.ipynb pavics-sdi-master/docs/source/notebooks/regridding.ipynb
+[2024-12-19T21:29:59.987Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/regridding.ipynb to notebook
+[2024-12-19T21:31:51.377Z] [NbConvertApp] Writing 1241689 bytes to buildout/regridding.output.ipynb
+[2024-12-19T21:31:51.377Z] + basename pavics-sdi-master/docs/source/notebooks/rendering.ipynb
+[2024-12-19T21:31:51.377Z] + filename=rendering.ipynb
+[2024-12-19T21:31:51.377Z] + + echo rendering.ipynb
+[2024-12-19T21:31:51.378Z] sed s/.ipynb$//
+[2024-12-19T21:31:51.378Z] + filename=rendering
+[2024-12-19T21:31:51.378Z] + [ -e buildout/rendering.output.ipynb ]
+[2024-12-19T21:31:51.378Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output rendering.output.ipynb pavics-sdi-master/docs/source/notebooks/rendering.ipynb
+[2024-12-19T21:31:51.378Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/rendering.ipynb to notebook
+[2024-12-19T21:31:51.378Z] [NbConvertApp] Writing 20830 bytes to buildout/rendering.output.ipynb
+[2024-12-19T21:31:51.378Z] + basename pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb
+[2024-12-19T21:31:51.378Z] + filename=subset-user-input.ipynb
+[2024-12-19T21:31:51.378Z] + echo subset-user-input.ipynb
+[2024-12-19T21:31:51.378Z] + sed s/.ipynb$//
+[2024-12-19T21:31:51.378Z] + filename=subset-user-input
+[2024-12-19T21:31:51.378Z] + [ -e buildout/subset-user-input.output.ipynb ]
+[2024-12-19T21:31:51.378Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output subset-user-input.output.ipynb pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb
+[2024-12-19T21:31:52.307Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/subset-user-input.ipynb to notebook
+[2024-12-19T21:32:18.793Z] [NbConvertApp] Writing 262965 bytes to buildout/subset-user-input.output.ipynb
+[2024-12-19T21:32:18.793Z] + basename pavics-sdi-master/docs/source/notebooks/subsetting.ipynb
+[2024-12-19T21:32:18.793Z] + filename=subsetting.ipynb
+[2024-12-19T21:32:18.793Z] + echo subsetting.ipynb
+[2024-12-19T21:32:18.793Z] + sed s/.ipynb$//
+[2024-12-19T21:32:18.793Z] + filename=subsetting
+[2024-12-19T21:32:18.793Z] + [ -e buildout/subsetting.output.ipynb ]
+[2024-12-19T21:32:18.793Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output subsetting.output.ipynb pavics-sdi-master/docs/source/notebooks/subsetting.ipynb
+[2024-12-19T21:32:19.729Z] [NbConvertApp] Converting notebook pavics-sdi-master/docs/source/notebooks/subsetting.ipynb to notebook
+[2024-12-19T21:32:29.681Z] [NbConvertApp] Writing 93680 bytes to buildout/subsetting.output.ipynb
+[2024-12-19T21:32:29.681Z] + basename finch-master/docs/source/notebooks/dap_subset.ipynb
+[2024-12-19T21:32:29.681Z] + filename=dap_subset.ipynb
+[2024-12-19T21:32:29.681Z] + echo dap_subset.ipynb
+[2024-12-19T21:32:29.681Z] + sed s/.ipynb$//
+[2024-12-19T21:32:29.681Z] + filename=dap_subset
+[2024-12-19T21:32:29.681Z] + [ -e buildout/dap_subset.output.ipynb ]
+[2024-12-19T21:32:29.681Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output dap_subset.output.ipynb finch-master/docs/source/notebooks/dap_subset.ipynb
+[2024-12-19T21:32:31.057Z] [NbConvertApp] Converting notebook finch-master/docs/source/notebooks/dap_subset.ipynb to notebook
+[2024-12-19T21:32:43.218Z] [NbConvertApp] Writing 165301 bytes to buildout/dap_subset.output.ipynb
+[2024-12-19T21:32:43.218Z] + basename finch-master/docs/source/notebooks/finch-usage.ipynb
+[2024-12-19T21:32:43.218Z] + filename=finch-usage.ipynb
+[2024-12-19T21:32:43.218Z] + echo finch-usage.ipynb
+[2024-12-19T21:32:43.218Z] + sed s/.ipynb$//
+[2024-12-19T21:32:43.218Z] + filename=finch-usage
+[2024-12-19T21:32:43.218Z] + [ -e buildout/finch-usage.output.ipynb ]
+[2024-12-19T21:32:43.218Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output finch-usage.output.ipynb finch-master/docs/source/notebooks/finch-usage.ipynb
+[2024-12-19T21:32:43.218Z] [NbConvertApp] Converting notebook finch-master/docs/source/notebooks/finch-usage.ipynb to notebook
+[2024-12-19T21:32:53.153Z] [NbConvertApp] Writing 65913 bytes to buildout/finch-usage.output.ipynb
+[2024-12-19T21:32:53.413Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
+[2024-12-19T21:32:53.413Z] + filename=PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
+[2024-12-19T21:32:53.413Z] + echo PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
+[2024-12-19T21:32:53.413Z] + sed s/.ipynb$//
+[2024-12-19T21:32:53.413Z] + filename=PAVICStutorial_ClimateDataAnalysis-1DataAccess
+[2024-12-19T21:32:53.413Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-1DataAccess.output.ipynb ]
+[2024-12-19T21:32:53.413Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-1DataAccess.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
+[2024-12-19T21:32:54.782Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb to notebook
+[2024-12-19T21:33:09.607Z] [NbConvertApp] Writing 219849 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-1DataAccess.output.ipynb
+[2024-12-19T21:33:09.607Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
+[2024-12-19T21:33:09.607Z] + filename=PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
+[2024-12-19T21:33:09.607Z] + sed s/.ipynb$//
+[2024-12-19T21:33:09.607Z] + echo PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
+[2024-12-19T21:33:09.607Z] + filename=PAVICStutorial_ClimateDataAnalysis-2Subsetting
+[2024-12-19T21:33:09.608Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-2Subsetting.output.ipynb ]
+[2024-12-19T21:33:09.608Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-2Subsetting.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
+[2024-12-19T21:33:10.535Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb to notebook
+[2024-12-19T21:36:31.921Z] [NbConvertApp] Writing 1742880 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-2Subsetting.output.ipynb
+[2024-12-19T21:36:31.921Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
+[2024-12-19T21:36:31.921Z] + filename=PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
+[2024-12-19T21:36:31.921Z] + + echo PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
+[2024-12-19T21:36:31.921Z] sed s/.ipynb$//
+[2024-12-19T21:36:31.922Z] + filename=PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators
+[2024-12-19T21:36:31.922Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.output.ipynb ]
+[2024-12-19T21:36:31.922Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
+[2024-12-19T21:36:31.922Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb to notebook
+[2024-12-19T21:42:38.390Z] [NbConvertApp] ERROR | Timeout waiting for execute reply (240s).
+[2024-12-19T21:42:38.390Z] Traceback (most recent call last):
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbclient/client.py", line 782, in _async_poll_for_reply
+[2024-12-19T21:42:38.390Z]     msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+[2024-12-19T21:42:38.390Z]           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 198, in ensure_async
+[2024-12-19T21:42:38.390Z]     result = await obj
+[2024-12-19T21:42:38.390Z]              ^^^^^^^^^
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_client/channels.py", line 230, in get_msg
+[2024-12-19T21:42:38.390Z]     raise Empty
+[2024-12-19T21:42:38.390Z] _queue.Empty
+[2024-12-19T21:42:38.390Z] 
+[2024-12-19T21:42:38.390Z] During handling of the above exception, another exception occurred:
+[2024-12-19T21:42:38.390Z] 
+[2024-12-19T21:42:38.390Z] Traceback (most recent call last):
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/bin/jupyter-nbconvert", line 10, in <module>
+[2024-12-19T21:42:38.390Z]     sys.exit(main())
+[2024-12-19T21:42:38.390Z]              ^^^^^^
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_core/application.py", line 283, in launch_instance
+[2024-12-19T21:42:38.390Z]     super().launch_instance(argv=argv, **kwargs)
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+[2024-12-19T21:42:38.390Z]     app.start()
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+[2024-12-19T21:42:38.390Z]     self.convert_notebooks()
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+[2024-12-19T21:42:38.390Z]     self.convert_single_notebook(notebook_filename)
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+[2024-12-19T21:42:38.390Z]     output, resources = self.export_single_notebook(
+[2024-12-19T21:42:38.390Z]                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+[2024-12-19T21:42:38.390Z]     output, resources = self.exporter.from_filename(
+[2024-12-19T21:42:38.390Z]                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+[2024-12-19T21:42:38.390Z]     return self.from_file(f, resources=resources, **kw)
+[2024-12-19T21:42:38.390Z]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+[2024-12-19T21:42:38.390Z]     return self.from_notebook_node(
+[2024-12-19T21:42:38.390Z]            ^^^^^^^^^^^^^^^^^^^^^^^^
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/exporters/notebook.py", line 36, in from_notebook_node
+[2024-12-19T21:42:38.390Z]     nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+[2024-12-19T21:42:38.390Z]                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+[2024-12-19T21:42:38.390Z]     nb_copy, resources = self._preprocess(nb_copy, resources)
+[2024-12-19T21:42:38.390Z]                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+[2024-12-19T21:42:38.390Z]     nbc, resc = preprocessor(nbc, resc)
+[2024-12-19T21:42:38.390Z]                 ^^^^^^^^^^^^^^^^^^^^^^^
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+[2024-12-19T21:42:38.390Z]     return self.preprocess(nb, resources)
+[2024-12-19T21:42:38.390Z]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+[2024-12-19T21:42:38.390Z]     self.preprocess_cell(cell, resources, index)
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+[2024-12-19T21:42:38.390Z]     cell = self.execute_cell(cell, index, store_history=True)
+[2024-12-19T21:42:38.390Z]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+[2024-12-19T21:42:38.390Z]     return loop.run_until_complete(inner)
+[2024-12-19T21:42:38.390Z]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+[2024-12-19T21:42:38.390Z]     return future.result()
+[2024-12-19T21:42:38.390Z]            ^^^^^^^^^^^^^^^
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbclient/client.py", line 1005, in async_execute_cell
+[2024-12-19T21:42:38.390Z]     exec_reply = await self.task_poll_for_reply
+[2024-12-19T21:42:38.390Z]                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbclient/client.py", line 806, in _async_poll_for_reply
+[2024-12-19T21:42:38.390Z]     error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
+[2024-12-19T21:42:38.390Z]                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2024-12-19T21:42:38.390Z]   File "/opt/conda/envs/birdy/lib/python3.11/site-packages/nbclient/client.py", line 856, in _async_handle_timeout
+[2024-12-19T21:42:38.390Z]     raise CellTimeoutError.error_from_timeout_and_cell(
+[2024-12-19T21:42:38.390Z] nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 240 seconds.
+[2024-12-19T21:42:38.390Z] The message was: Cell execution timed out.
+[2024-12-19T21:42:38.390Z] Here is a preview of the cell contents:
+[2024-12-19T21:42:38.390Z] -------------------
+[2024-12-19T21:42:38.390Z] ['# NBVAL_SKIP', '', '# Parallel computing part...', 'dask_kwargs = dict(', '    n_workers=6,']
+[2024-12-19T21:42:38.390Z] ...
+[2024-12-19T21:42:38.390Z] ['                dsout.to_netcdf(outfile, mode="w")', '', '    c.restart()', 'clear_output()', 'print("Finished")']
+[2024-12-19T21:42:38.390Z] -------------------
+[2024-12-19T21:42:38.390Z] 
+[2024-12-19T21:42:38.390Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
+[2024-12-19T21:42:38.391Z] + filename=PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
+[2024-12-19T21:42:38.391Z] + echo PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
+[2024-12-19T21:42:38.391Z] + sed s/.ipynb$//
+[2024-12-19T21:42:38.391Z] + filename=PAVICStutorial_ClimateDataAnalysis-4Ensembles
+[2024-12-19T21:42:38.391Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-4Ensembles.output.ipynb ]
+[2024-12-19T21:42:38.391Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-4Ensembles.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
+[2024-12-19T21:42:38.391Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb to notebook
+[2024-12-19T21:42:48.352Z] [NbConvertApp] Writing 829394 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-4Ensembles.output.ipynb
+[2024-12-19T21:42:48.352Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
+[2024-12-19T21:42:48.352Z] + filename=PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
+[2024-12-19T21:42:48.352Z] + echo PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
+[2024-12-19T21:42:48.352Z] + sed s/.ipynb$//
+[2024-12-19T21:42:48.352Z] + filename=PAVICStutorial_ClimateDataAnalysis-5Visualization
+[2024-12-19T21:42:48.352Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-5Visualization.output.ipynb ]
+[2024-12-19T21:42:48.352Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-5Visualization.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
+[2024-12-19T21:42:49.281Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb to notebook
+[2024-12-19T21:44:25.646Z] [NbConvertApp] Writing 1411102 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-5Visualization.output.ipynb
+[2024-12-19T21:44:25.646Z] + basename PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb
+[2024-12-19T21:44:25.646Z] + filename=PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb
+[2024-12-19T21:44:25.646Z] + + echosed PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb s/.ipynb$//
+[2024-12-19T21:44:25.646Z] 
+[2024-12-19T21:44:25.646Z] + filename=PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion
+[2024-12-19T21:44:25.646Z] + [ -e buildout/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.output.ipynb ]
+[2024-12-19T21:44:25.646Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.output.ipynb PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb
+[2024-12-19T21:44:25.646Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.ipynb to notebook
+[2024-12-19T21:48:02.097Z] [NbConvertApp] Writing 642468 bytes to buildout/PAVICStutorial_ClimateDataAnalysis-6Regridding_Conversion.output.ipynb
+[2024-12-19T21:48:02.097Z] + basename PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-01_Intro.ipynb
+[2024-12-19T21:48:02.097Z] + filename=PAVICStutorial_Hydrology-01_Intro.ipynb
+[2024-12-19T21:48:02.097Z] + echo PAVICStutorial_Hydrology-01_Intro.ipynb
+[2024-12-19T21:48:02.097Z] + sed s/.ipynb$//
+[2024-12-19T21:48:02.097Z] + filename=PAVICStutorial_Hydrology-01_Intro
+[2024-12-19T21:48:02.097Z] + [ -e buildout/PAVICStutorial_Hydrology-01_Intro.output.ipynb ]
+[2024-12-19T21:48:02.097Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_Hydrology-01_Intro.output.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-01_Intro.ipynb
+[2024-12-19T21:48:02.097Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-01_Intro.ipynb to notebook
+[2024-12-19T21:48:02.097Z] [NbConvertApp] Writing 126339 bytes to buildout/PAVICStutorial_Hydrology-01_Intro.output.ipynb
+[2024-12-19T21:48:02.097Z] + basename PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-02_Calibration.ipynb
+[2024-12-19T21:48:02.097Z] + filename=PAVICStutorial_Hydrology-02_Calibration.ipynb
+[2024-12-19T21:48:02.097Z] + echo PAVICStutorial_Hydrology-02_Calibration.ipynb
+[2024-12-19T21:48:02.097Z] + sed s/.ipynb$//
+[2024-12-19T21:48:02.097Z] + filename=PAVICStutorial_Hydrology-02_Calibration
+[2024-12-19T21:48:02.097Z] + [ -e buildout/PAVICStutorial_Hydrology-02_Calibration.output.ipynb ]
+[2024-12-19T21:48:02.097Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_Hydrology-02_Calibration.output.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-02_Calibration.ipynb
+[2024-12-19T21:48:02.097Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-02_Calibration.ipynb to notebook
+[2024-12-19T21:48:14.265Z] [NbConvertApp] Writing 35797 bytes to buildout/PAVICStutorial_Hydrology-02_Calibration.output.ipynb
+[2024-12-19T21:48:14.265Z] + basename PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-03_Watershed_properties.ipynb
+[2024-12-19T21:48:14.265Z] + filename=PAVICStutorial_Hydrology-03_Watershed_properties.ipynb
+[2024-12-19T21:48:14.265Z] + echo PAVICStutorial_Hydrology-03_Watershed_properties.ipynb
+[2024-12-19T21:48:14.265Z] + sed s/.ipynb$//
+[2024-12-19T21:48:14.265Z] + filename=PAVICStutorial_Hydrology-03_Watershed_properties
+[2024-12-19T21:48:14.265Z] + [ -e buildout/PAVICStutorial_Hydrology-03_Watershed_properties.output.ipynb ]
+[2024-12-19T21:48:14.265Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_Hydrology-03_Watershed_properties.output.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-03_Watershed_properties.ipynb
+[2024-12-19T21:48:14.525Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-03_Watershed_properties.ipynb to notebook
+[2024-12-19T21:48:29.355Z] [NbConvertApp] Writing 278825 bytes to buildout/PAVICStutorial_Hydrology-03_Watershed_properties.output.ipynb
+[2024-12-19T21:48:29.355Z] + basename PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-04_Time_series_analysis.ipynb
+[2024-12-19T21:48:29.355Z] + filename=PAVICStutorial_Hydrology-04_Time_series_analysis.ipynb
+[2024-12-19T21:48:29.355Z] + echo PAVICStutorial_Hydrology-04_Time_series_analysis.ipynb
+[2024-12-19T21:48:29.355Z] + sed s/.ipynb$//
+[2024-12-19T21:48:29.355Z] + filename=PAVICStutorial_Hydrology-04_Time_series_analysis
+[2024-12-19T21:48:29.355Z] + [ -e buildout/PAVICStutorial_Hydrology-04_Time_series_analysis.output.ipynb ]
+[2024-12-19T21:48:29.355Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output PAVICStutorial_Hydrology-04_Time_series_analysis.output.ipynb PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-04_Time_series_analysis.ipynb
+[2024-12-19T21:48:29.355Z] [NbConvertApp] Converting notebook PAVICS-landing-master/content/notebooks/hydrology/PAVICStutorial_Hydrology-04_Time_series_analysis.ipynb to notebook
+[2024-12-19T21:48:35.929Z] [NbConvertApp] Writing 220301 bytes to buildout/PAVICStutorial_Hydrology-04_Time_series_analysis.output.ipynb
+[2024-12-19T21:48:35.929Z] + basename notebooks/hummingbird.ipynb
+[2024-12-19T21:48:35.929Z] + filename=hummingbird.ipynb
+[2024-12-19T21:48:35.929Z] + echo hummingbird.ipynb
+[2024-12-19T21:48:35.929Z] + sed s/.ipynb$//
+[2024-12-19T21:48:35.929Z] + filename=hummingbird
+[2024-12-19T21:48:35.929Z] + [ -e buildout/hummingbird.output.ipynb ]
+[2024-12-19T21:48:35.929Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output hummingbird.output.ipynb notebooks/hummingbird.ipynb
+[2024-12-19T21:48:37.297Z] [NbConvertApp] Converting notebook notebooks/hummingbird.ipynb to notebook
+[2024-12-19T21:48:41.465Z] [NbConvertApp] Writing 15864 bytes to buildout/hummingbird.output.ipynb
+[2024-12-19T21:48:41.465Z] + basename notebooks/stress-tests.ipynb
+[2024-12-19T21:48:41.465Z] + filename=stress-tests.ipynb
+[2024-12-19T21:48:41.465Z] + echo stress-tests.ipynb
+[2024-12-19T21:48:41.465Z] + sed s/.ipynb$//
+[2024-12-19T21:48:41.465Z] + filename=stress-tests
+[2024-12-19T21:48:41.465Z] + [ -e buildout/stress-tests.output.ipynb ]
+[2024-12-19T21:48:41.465Z] + jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=240 --allow-errors --output-dir buildout --output stress-tests.output.ipynb notebooks/stress-tests.ipynb
+[2024-12-19T21:48:42.394Z] [NbConvertApp] Converting notebook notebooks/stress-tests.ipynb to notebook
+[2024-12-19T21:50:33.767Z] [NbConvertApp] Writing 428612 bytes to buildout/stress-tests.output.ipynb
+[2024-12-19T21:50:33.767Z] + exit 0
+[2024-12-19T21:50:33.767Z] + EXIT_CODE=0
+[2024-12-19T21:50:33.767Z] + ENV_DUMP_DIR=buildout/env-dump
+[2024-12-19T21:50:33.767Z] + mkdir -p buildout/env-dump
+[2024-12-19T21:50:33.767Z] + ENV_EXPORT_FILE=buildout/env-dump/environment-export-birdy.yml
+[2024-12-19T21:50:33.767Z] + rm -fv buildout/env-dump/environment-export-birdy.yml
+[2024-12-19T21:50:33.767Z] + conda env export -n birdy
+[2024-12-19T21:50:41.850Z] + LIST_EXPLICIT_FILE=buildout/env-dump/conda-list-explicit-birdy.txt
+[2024-12-19T21:50:41.850Z] + rm -fv buildout/env-dump/conda-list-explicit-birdy.txt
+[2024-12-19T21:50:41.850Z] + conda list -n birdy --explicit
+[2024-12-19T21:50:47.100Z] + PIP_FREEZE_FILE=buildout/env-dump/pip-freeze-birdy-requirements.txt
+[2024-12-19T21:50:47.100Z] + rm -fv buildout/env-dump/pip-freeze-birdy-requirements.txt
+[2024-12-19T21:50:47.100Z] + pip freeze
+[2024-12-19T21:50:50.368Z] + exit 0
 [Pipeline] }
 [Pipeline] // withCredentials
 [Pipeline] }
@@ -892,38 +954,38 @@ $ docker top 90f9b291c9bb102cb2f6473bfbe3a2253d4a3592e207bb7d543860430301037e -e
 [Pipeline] stage
 [Pipeline] { (Declarative: Post Actions)
 [Pipeline] archiveArtifacts
-[2024-12-18T03:05:55.863Z] Archiving artifacts
-[2024-12-18T03:05:55.883Z] Recording fingerprints
+[2024-12-19T21:50:50.510Z] Archiving artifacts
+[2024-12-19T21:50:50.579Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-12-18T03:05:55.988Z] Archiving artifacts
-[2024-12-18T03:05:56.471Z] Recording fingerprints
+[2024-12-19T21:50:50.599Z] Archiving artifacts
+[2024-12-19T21:50:51.092Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-12-18T03:05:56.690Z] Archiving artifacts
-[2024-12-18T03:05:56.702Z] Recording fingerprints
+[2024-12-19T21:50:51.180Z] Archiving artifacts
+[2024-12-19T21:50:51.193Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-12-18T03:05:56.799Z] Archiving artifacts
-[2024-12-18T03:05:56.820Z] Recording fingerprints
+[2024-12-19T21:50:51.209Z] Archiving artifacts
+[2024-12-19T21:50:51.221Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-12-18T03:05:56.942Z] Archiving artifacts
-[2024-12-18T03:05:56.967Z] Recording fingerprints
+[2024-12-19T21:50:51.240Z] Archiving artifacts
+[2024-12-19T21:50:51.264Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-12-18T03:05:56.993Z] Archiving artifacts
-[2024-12-18T03:05:57.024Z] Recording fingerprints
+[2024-12-19T21:50:51.288Z] Archiving artifacts
+[2024-12-19T21:50:51.316Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-12-18T03:05:58.001Z] Archiving artifacts
-[2024-12-18T03:05:58.034Z] Recording fingerprints
+[2024-12-19T21:50:51.440Z] Archiving artifacts
+[2024-12-19T21:50:51.449Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-12-18T03:05:58.192Z] Archiving artifacts
-[2024-12-18T03:05:58.232Z] Recording fingerprints
+[2024-12-19T21:50:51.483Z] Archiving artifacts
+[2024-12-19T21:50:51.544Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-12-18T03:05:58.380Z] Archiving artifacts
-[2024-12-18T03:05:58.908Z] Recording fingerprints
+[2024-12-19T21:50:51.575Z] Archiving artifacts
+[2024-12-19T21:50:52.057Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-12-18T03:05:59.140Z] Archiving artifacts
-[2024-12-18T03:06:00.029Z] Recording fingerprints
+[2024-12-19T21:50:52.197Z] Archiving artifacts
+[2024-12-19T21:50:53.191Z] Recording fingerprints
 [Pipeline] archiveArtifacts
-[2024-12-18T03:06:00.674Z] Archiving artifacts
-[2024-12-18T03:06:00.687Z] Recording fingerprints
+[2024-12-19T21:50:53.466Z] Archiving artifacts
+[2024-12-19T21:50:53.479Z] Recording fingerprints
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] }
@@ -933,8 +995,8 @@ $ docker top 90f9b291c9bb102cb2f6473bfbe3a2253d4a3592e207bb7d543860430301037e -e
 [Pipeline] }
 [Pipeline] // ansiColor
 [Pipeline] }
-$ docker stop --time=1 90f9b291c9bb102cb2f6473bfbe3a2253d4a3592e207bb7d543860430301037e
-$ docker rm -f 90f9b291c9bb102cb2f6473bfbe3a2253d4a3592e207bb7d543860430301037e
+$ docker stop --time=1 6cc77029ca47f4b0fdf04c578b84152f1df7cb65e8d647c09bb1b272a7df768e
+$ docker rm -f 6cc77029ca47f4b0fdf04c578b84152f1df7cb65e8d647c09bb1b272a7df768e
 [Pipeline] // withDockerContainer
 [Pipeline] }
 [Pipeline] // withEnv
