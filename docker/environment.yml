@@ -141,6 +141,9 @@ dependencies:
   - salib
   # https://anaconda.org/conda-forge/geopy
   - geopy
+  # Hydrological analysis library built with xarray.
+  # https://anaconda.org/conda-forge/xhydro
+  - xhydro
   # https://anaconda.org/anaconda/memory_profiler
   # Monitor memory consumption of a process as well as line-by-line analysis
   # of memory consumption for Python programs.
