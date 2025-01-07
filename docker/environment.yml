@@ -114,7 +114,11 @@ dependencies:
   - intake-esm >= 2023.6.14
   # load netCDF, Zarr and other multi-dimensional data (xarray_image, netcdf,
   # grib, opendap, rasterio, remote-xarray, zarr)
-  - intake-xarray
+  # TODO: Unpin intake-xarray
+  # https://github.com/Ouranosinc/pavics-jupyter-env-issues/issues/17
+  # https://github.com/intake/intake-esm/issues/688
+  # https://github.com/intake/intake-thredds/issues/136
+  - intake-xarray < 2.0.0
   # load from ESRI Shape Files, GeoJSON, and geospatial databases with
   # geopandas (geojson, postgis, shapefile, spatialite) and regionmask for
   # opening shapefiles into regionmask.
