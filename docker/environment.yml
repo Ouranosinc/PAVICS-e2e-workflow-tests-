@@ -144,6 +144,9 @@ dependencies:
   # Hydrological analysis library built with xarray.
   # https://anaconda.org/conda-forge/xhydro
   - xhydro
+  # Estimate linear moments for statistical distribution functions.
+  # https://anaconda.org/conda-forge/lmoments3
+  - lmoments3
   # https://anaconda.org/anaconda/memory_profiler
   # Monitor memory consumption of a process as well as line-by-line analysis
   # of memory consumption for Python programs.
